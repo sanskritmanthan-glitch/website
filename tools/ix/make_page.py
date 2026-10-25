@@ -1,8 +1,9 @@
 """Write <page>.html for an index collection, ix.js (shared engine) and refresh the index nav on every index page."""
 import re, sys, json, os
 HERE = os.path.dirname(os.path.abspath(__file__)); WEB = os.path.join(HERE, '..', '..')
-NAV = [('shloka.html', 'श्लोकाः'), ('sutra.html', 'सूत्राणि'), ('mantra.html', 'मन्त्राः'), ('itihasa.html', 'इतिहासपुराणम्'),
-       ('subhashita.html', 'सुभाषितम्'), ('kosha.html', 'कोशः'), ('chandas.html', 'छन्दः')]
+# two separate families of pages, each with its own menu
+NAV_A = [('shloka.html', 'श्लोकाः'), ('sutra.html', 'सूत्राणि'), ('mantra.html', 'मन्त्राः'), ('chandas.html', 'छन्दः')]
+NAV_B = [('granthalaya.html', 'ग्रन्थालयः'), ('itihasa.html', 'इतिहासपुराणम्'), ('subhashita.html', 'सुभाषितम्'), ('kosha.html', 'कोशः'), ('shastra.html', 'शास्त्राणि')]
 PAGES = {
  'mantra': dict(dir='mn', unitWord='mantras', title='मन्त्रान्वेषणम्', en='Mantra Index', tabs=[('works', 'ग्रन्थाः A–Z'), ('metres', 'छन्दांसि')],
    sub='Mantra Index of the Vedas and Upaniṣads · every pāda of Ṛgveda, Atharvaveda and Sāmaveda, every mantra of the principal Upaniṣads, in varṇamālā order',
@@ -30,6 +31,8 @@ def build(name):
     head = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{c["desc"]}">', head)
     head = head.replace('</style>', """.prose{font-size:1.08rem;line-height:1.9;text-align:justify}.sarga .prose{font-size:1rem}
 .rf2{color:var(--gold);font-size:.95rem;margin-top:4px}a.ml{color:var(--saffron)}
+.poet{font-size:1rem;color:var(--saffron);margin:6px 0 0 1.6em}.poet.sm{font-size:.85rem;margin-left:0}
+.xr{font-family:var(--la);font-size:.88rem;color:var(--muted);margin-top:10px}.xr b{font-weight:600;color:var(--gold);margin-right:6px}.xr a{color:var(--saffron)}.xr.sm{font-size:.78rem}
 </style>""")
     tabs = ''.join(f'<button role="tab" data-tab="{k}" aria-selected="{"true" if i == 0 else "false"}">{v}</button>' for i, (k, v) in enumerate(c['tabs']))
     body = f'''<body>
@@ -68,16 +71,17 @@ def engine():
     tr = s[s.index("const V={'अ'"):s.index('/* ---------- scansion')]
     open(f'{WEB}/ix.js', 'w').write(open(f'{HERE}/ix_engine.js').read().replace('/*TRANSLIT*/', tr))
 def nav():
-    live = [(f, l) for f, l in NAV if os.path.exists(f'{WEB}/{f}')]
-    for f, _ in live:
-        p = open(f'{WEB}/{f}').read()
-        links = ''.join(f'<a href="{g}"{" aria-current=\"page\"" if g == f else ""}>{l}</a>' for g, l in live)
-        p = re.sub(r'<nav class="seg" aria-label="Index">.*?</nav>', f'<nav class="seg" aria-label="Index">{links}</nav>', p, count=1, flags=re.S)
-        if 'nav.seg a{' not in p:
-            p = p.replace('</style>', 'nav.seg a{padding:4px 12px;font-size:.9rem;text-decoration:none;color:var(--ink)}\nnav.seg a[aria-current="page"]{background:var(--saffron);color:#fff}\n</style>', 1)
-        if 'nav.seg{' not in p:
-            p = p.replace('</style>', 'nav.seg{flex-wrap:wrap;border-radius:14px}\n</style>', 1)
-        open(f'{WEB}/{f}', 'w').write(p)
+    for NAV in (NAV_A, NAV_B):
+        live = [(f, l) for f, l in NAV if os.path.exists(f'{WEB}/{f}')]
+        for f, _ in live:
+            p = open(f'{WEB}/{f}').read()
+            links = ''.join(f'<a href="{g}"{" aria-current=\"page\"" if g == f else ""}>{l}</a>' for g, l in live)
+            p = re.sub(r'<nav class="seg" aria-label="Index">.*?</nav>', f'<nav class="seg" aria-label="Index">{links}</nav>', p, count=1, flags=re.S)
+            if 'nav.seg a{' not in p:
+                p = p.replace('</style>', 'nav.seg a{padding:4px 12px;font-size:.9rem;text-decoration:none;color:var(--ink)}\nnav.seg a[aria-current="page"]{background:var(--saffron);color:#fff}\n</style>', 1)
+            if 'nav.seg{' not in p:
+                p = p.replace('</style>', 'nav.seg{flex-wrap:wrap;border-radius:14px}\n</style>', 1)
+            open(f'{WEB}/{f}', 'w').write(p)
 if __name__ == '__main__':
     for n in sys.argv[1:]: build(n)
     engine(); nav(); print('pages written')

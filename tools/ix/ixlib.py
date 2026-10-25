@@ -46,6 +46,7 @@ def dev_or_prose(segs):
     return p, m
 
 def entry(s, v, slps, m=''):
+    slps = [re.sub(r'\s+', ' ', re.sub(r'[0-9.|]+', ' ', x)).strip() for x in slps]   # stray daṇḍas and verse numbers
     slps = [x for x in slps if pattern(x)]
     return dict(s=str(s), v=v, p=[slp2dev(x) for x in slps], k=[loose(x) for x in slps],
                 o=[sortkey(x) for x in slps], i=[initial(x) for x in slps], m=m)

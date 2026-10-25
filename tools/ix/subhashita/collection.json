@@ -1,0 +1,7 @@
+{"dir": "sb", "small": true, "poets": true, "xref": true, "page": "subhashita.html",
+ "groups": [["सुभाषितसंग्रहाः", ["vidyakara", "subhashitavali", "padyavali", "mahasubhashita"]]],
+ "works": {
+  "vidyakara": {"title": "सुभाषितरत्नकोशः", "abbr": "सु॰र॰को॰", "note": "विद्याकरः", "alias": ["skm", "vidyakara", "subhasitaratnakosa", "srk"]},
+  "subhashitavali": {"title": "सुभाषितावलिः", "abbr": "सुभा॰", "note": "वल्लभदेवः", "alias": ["subhashitavali", "subhv", "vallabhadeva"]},
+  "padyavali": {"title": "पद्यावली", "abbr": "पद्या॰", "note": "रूपगोस्वामी", "alias": ["padyavali"]},
+  "mahasubhashita": {"title": "महासुभाषितसंग्रहः", "abbr": "म॰सु॰सं॰", "note": "स्टर्नबाखः (सं॰)", "alias": ["mss", "mahasubhashita", "sternbach"]}}}

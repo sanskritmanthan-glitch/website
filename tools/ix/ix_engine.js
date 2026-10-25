@@ -4,6 +4,12 @@ const C=window.IXC;let CAT=null, TX={}, KEYS={}, SCRIPT='dv', LIMIT=200, TAB='wo
 const SEL={book:null,s:null,v:null,work:null,metre:null}, OPEN={work:null,book:null};
 try{SCRIPT=localStorage.getItem('sl-script')||'dv';TAB=localStorage.getItem(C.dir+'-tab')||'works'}catch(e){}
 /*TRANSLIT*/
+/* SLP1 → Devanagari (big collections store their text in SLP1) */
+const SV={a:'अ',A:'आ',i:'इ',I:'ई',u:'उ',U:'ऊ',f:'ऋ',F:'ॠ',x:'ऌ',X:'ॡ',e:'ए',E:'ऐ',o:'ओ',O:'औ'}, SM={a:'',A:'ा',i:'ि',I:'ी',u:'ु',U:'ू',f:'ृ',F:'ॄ',x:'ॢ',X:'ॣ',e:'े',E:'ै',o:'ो',O:'ौ'};
+const SC={k:'क',K:'ख',g:'ग',G:'घ',N:'ङ',c:'च',C:'छ',j:'ज',J:'झ',Y:'ञ',w:'ट',W:'ठ',q:'ड',Q:'ढ',R:'ण',t:'त',T:'थ',d:'द',D:'ध',n:'न',p:'प',P:'फ',b:'ब',B:'भ',m:'म',y:'य',r:'र',l:'ल',v:'व',S:'श',z:'ष',s:'स',h:'ह',L:'ळ'};
+function s2d(s){let o='';for(let i=0;i<s.length;i++){const c=s[i],n=s[i+1];if(SC[c]){o+=SC[c];if(SM[n]!==undefined){o+=SM[n];i++}else o+='्'}
+  else if(SV[c])o+=SV[c];else if(c==='M')o+='ं';else if(c==='H')o+='ः';else if(c==='~')o+='ँ';else if(c==="'")o+='ऽ';else o+=c}return o}
+const TXT=s=>CAT&&CAT.slp?s2d(s):s;
 const get=u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u);return r.json()});
 async function text(id){if(!TX[id])TX[id]=await get(C.dir+'/t/'+id+'.json');return TX[id]}
 async function keys(id){if(!KEYS[id])KEYS[id]=await get(C.dir+'/k/'+id+'.json');return KEYS[id]}
@@ -13,7 +19,7 @@ const unitN=(b,s)=>{if(!b.units.length)return s;const n=String(s).split('.');ret
 const bookName=b=>{const w=W(b.work);return multiB(w)?`${w.title} · ${b.title}`:w.title};
 const ref=(bid,s,v)=>{const b=B(bid),w=W(b.work);const num=[multiB(w)?b.num:null,multiS(b)?s:null,v].filter(x=>x!==null&&x!=='').join('.');return `${show(w.abbr)} ${num}`};
 const isVerse=m=>!!m;
-function bodyHTML(p,m){if(isVerse(m)||p.length<=1&&p[0]&&p[0].length<60)return p.map((x,i)=>`<div class="${i%2?'l2':''}">${esc(show(x))}${i%2&&i!==p.length-1?' ।':''}</div>`).join('');
+function bodyHTML(p,m){p=p.map(TXT);if(isVerse(m)||p.length<=1&&p[0]&&p[0].length<60)return p.map((x,i)=>`<div class="${i%2?'l2':''}">${esc(show(x))}${i%2&&i!==p.length-1?' ।':''}</div>`).join('');
   return `<div class="prose">${p.map(x=>esc(show(x))).join(' । ')}</div>`}
 function metreLink(m){if(!m)return'';const d=CAT.metres.find(x=>x.dev===m);if(d&&d.link)return `<a class="ml" href="shloka.html#m/${d.link}">${esc(show(m))}</a>`;
   return `<button class="ml" data-mt="${d?d.slug:''}" title="${d?esc(d.note):''}">${esc(show(m))}</button>`}
@@ -21,10 +27,10 @@ function wireMetres(root){root.querySelectorAll('button.ml[data-mt]').forEach(b=
 /* ---------- views ---------- */
 async function openVerse(bid,s,v,push=true){
   const t=await text(bid), all=t.v, ix=all.findIndex(x=>x[0]===s&&x[1]===v); if(ix<0)return;
-  const [S,Vn,P,m]=all[ix], b=B(bid), w=W(b.work);
+  const [S,Vn,P,m,A,XS]=all[ix], b=B(bid), w=W(b.work);
   Object.assign(SEL,{book:bid,s:S,v:Vn,work:b.work,metre:null});
   $('#out').innerHTML=`<div class="card"><div class="hd"><span>${esc(show(bookName(b)))}${multiS(b)?` · ${esc(show(unitN(b,S)))}`:''} · ${Vn}</span><span class="mt">${metreLink(m)}</span></div>
-   <div class="v">${bodyHTML(P,m)}<div class="rf2">॥ ${esc(ref(bid,S,Vn))} ॥</div></div>
+   <div class="v">${bodyHTML(P,m)}<div class="rf2">॥ ${esc(ref(bid,S,Vn))} ॥</div></div>${A?`<div class="poet">— ${esc(show(A))}</div>`:''}${XS&&XS.length?`<div class="xr"><b>अन्यत्र · also found in</b> ${XS.map(x=>`<a href="${x[1]}">${esc(show(x[0]))}</a>`).join(' · ')}</div>`:''}
    <div class="nav"><button id="pv" ${ix?'':'disabled'}>‹ पूर्वम्</button><button id="nx" ${ix<all.length-1?'':'disabled'}>परम् ›</button>
    <button id="sg">${multiS(b)?esc(show(unitN(b,S).split(' · ').pop())):'सम्पूर्णम्'}</button><button id="cp">लिङ्कं प्रतिलिखतु · copy link</button></div></div>`;
   $('#info').textContent='';wireMetres($('#out'));
@@ -37,7 +43,7 @@ async function openSarga(bid,s,hl,push=true){
   Object.assign(SEL,{book:bid,s,v:hl||null,work:b.work,metre:null});
   $('#info').textContent=`${show(bookName(b))} · ${multiS(b)?show(unitN(b,s))+' · ':''}${vs.length}`;
   $('#out').innerHTML=`<div class="nav" style="margin:0 0 8px"><button id="ov">‹ ${esc(show(bookName(b)))}</button>${k>0?`<button id="ps">‹ ${esc(show(unitN(b,sg[k-1])))}</button>`:''}${k<sg.length-1?`<button id="ns">${esc(show(unitN(b,sg[k+1])))} ›</button>`:''}</div>
-   <div class="sarga">`+vs.map(x=>`<div class="vs${x[1]===hl?' on':''}" id="v${x[1]}"><div class="n" title="open">${x[1]}</div><div><div class="v">${bodyHTML(x[2],x[3])}</div>${x[3]?`<div class="mt">${metreLink(x[3])}</div>`:''}</div></div>`).join('')+`</div>`;
+   <div class="sarga">`+vs.map(x=>`<div class="vs${x[1]===hl?' on':''}" id="v${x[1]}"><div class="n" title="open">${x[1]}</div><div><div class="v">${bodyHTML(x[2],x[3])}</div>${x[4]?`<div class="poet sm">— ${esc(show(x[4]))}</div>`:''}${x[3]?`<div class="mt">${metreLink(x[3])}${x[5]&&x[5].length?` · <span class="xr sm">${x[5].map(y=>`<a href="${y[1]}">${esc(show(y[0]))}</a>`).join(' · ')}</span>`:''}</div>`:''}</div></div>`).join('')+`</div>`;
   wireMetres($('#out'));$('#ov').onclick=()=>openBook(bid);
   if($('#ps'))$('#ps').onclick=()=>openSarga(bid,sg[k-1]);if($('#ns'))$('#ns').onclick=()=>openSarga(bid,sg[k+1]);
   $$('.sarga .vs').forEach(el=>{el.ondblclick=()=>openVerse(bid,s,+el.id.slice(1));el.querySelector('.n').onclick=()=>openVerse(bid,s,+el.id.slice(1))});
@@ -50,7 +56,7 @@ async function openBook(bid,push=true){
   const first={};t.v.forEach(x=>{if(!first[x[0]])first[x[0]]=x[2][0]});
   $('#info').textContent='';
   $('#out').innerHTML=`<div class="card"><div class="hd"><span>${esc(show(W(b.work).title))}</span><span>${b.verses}</span></div><h2 class="nm">${esc(show(bookName(b)))}</h2>
-   <ul class="sgl">${b.sargas.map(([s,n])=>`<li data-s="${s}"><span class="n">${esc(show(unitN(b,s)))}</span><span class="pd">${esc(show(first[s]||''))} …</span><span class="mt">${n}</span></li>`).join('')}</ul></div>`;
+   <ul class="sgl">${b.sargas.map(([s,n])=>`<li data-s="${s}"><span class="n">${esc(show(unitN(b,s)))}</span><span class="pd">${esc(show(TXT(first[s]||'')))} …</span><span class="mt">${n}</span></li>`).join('')}</ul></div>`;
   $$('.sgl li').forEach(li=>li.onclick=()=>openSarga(bid,li.dataset.s));
   if(push)history.replaceState(null,'',`#${bid}`);syncNav();window.scrollTo({top:0});
 }
@@ -71,7 +77,7 @@ async function openMetre(slug,push=true){
   if(push)history.replaceState(null,'','#m/'+slug);syncNav();
 }
 function listInto(el,rows){let n=LIMIT;const draw=()=>{
-    el.innerHTML='<ul class="res">'+rows.slice(0,n).map((r,i)=>`<li data-i="${i}"><span class="pd">${esc(show(r[0]))}</span><span class="rf">${esc(ref(r[1],r[2],r[3]))}${r[4]?' · '+'abcdef'[r[4]]:''}</span></li>`).join('')+'</ul>'+(rows.length>n?`<button class="more">+ ${rows.length-n}</button>`:'');
+    el.innerHTML='<ul class="res">'+rows.slice(0,n).map((r,i)=>`<li data-i="${i}"><span class="pd">${esc(show(TXT(r[0])))}</span><span class="rf">${esc(ref(r[1],r[2],r[3]))}${r[4]?' · '+'abcdef'[r[4]]:''}</span></li>`).join('')+'</ul>'+(rows.length>n?`<button class="more">+ ${rows.length-n}</button>`:'');
     el.querySelectorAll('.res li').forEach(li=>li.onclick=()=>{const r=rows[+li.dataset.i];openVerse(r[1],r[2],r[3])});
     const mb=el.querySelector('.more');if(mb)mb.onclick=()=>{n+=LIMIT;draw()}};draw()}
 function list(rows){$('#out').innerHTML='<div id="lst"></div>';listInto($('#lst'),rows)}
@@ -88,7 +94,7 @@ async function search(){
   const raw=$('#q').value.trim(); if(!raw){$('#out').innerHTML='';$('#info').textContent=intro();return}
   const r2=raw.replace(/[०-९]/g,d=>'०१२३४५६७८९'.indexOf(d)).replace(/[౦-౯]/g,d=>'౦౧౨౩౪౫౬౭౮౯'.indexOf(d));
   const m=r2.match(/^(.+?)\s*(\d+(?:\s*[.:,]\s*\d+)*)$/);
-  if(m){const k=loose(m[1]);const w=CAT.works.find(w=>w.aliases.some(a=>a===k))||CAT.works.find(w=>k.length>=3&&w.aliases.some(a=>a.length>=3&&(a.startsWith(k)||k.startsWith(a))));
+  if(m){const k=loose(m[1]),k0=m[1].trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');const w=CAT.works.find(w=>w.aliases.some(a=>a===k||a===k0))||CAT.works.find(w=>k.length>=3&&w.aliases.some(a=>a.length>=3&&(a.startsWith(k)||k.startsWith(a))));
     if(w){let n=m[2].split(/\s*[.:,]\s*/).map(Number);let b=B(w.books[0]);
       if(multiB(w)){b=wb(w).find(x=>+x.num===n[0]);n=n.slice(1);if(!b)return}
       if(!n.length)return openBook(b.id);
