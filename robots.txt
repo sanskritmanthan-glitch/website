@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sanskritmanthan.in/sitemap.xml
