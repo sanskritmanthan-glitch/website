@@ -321,7 +321,7 @@ async function route(){const h=decodeURIComponent(location.hash.slice(1));if(!h)
   if(p[0]==='d'&&p[1])return openDar(p.slice(1).join('/'),false);
   if(T(p[0])){if(p[2])return openVerse(p[0],p[1],+p[2],false);if(p[1])return openSarga(p[0],p[1],0,false);return multi(T(p[0]))?openText(p[0],false):openSarga(p[0],T(p[0]).sargas[0][0],0,false)}}
 (async()=>{CAT=await get('su/catalog.json');
-  $('#foot').innerHTML='Texts: digital editions from the Göttingen Register of Electronic Texts in Indian Languages (GRETIL), shown for study and reference; editors and typists are credited in the GRETIL files. Sūtras are indexed whole; kārikās and ślokas by pāda, with metres worked out automatically. Readings follow the source files; variant readings are omitted. · <a href="shloka.html">श्लोकान्वेषणम् · Śloka Index</a> · <a href="./">sanskritmanthan.in</a>';
+  $('#foot').innerHTML='<a href="sources.html#sutra">आधारग्रन्थाः · Sources and licences</a> · Texts: digital editions from the Göttingen Register of Electronic Texts in Indian Languages (GRETIL), shown for study and reference; editors and typists are credited in the GRETIL files. Sūtras are indexed whole; kārikās and ślokas by pāda, with metres worked out automatically. Readings follow the source files; variant readings are omitted. · <a href="shloka.html">श्लोकान्वेषणम् · Śloka Index</a> · <a href="./">sanskritmanthan.in</a>';
   $$('#script button').forEach(b=>b.onclick=()=>setScript(b.dataset.s));
   $$('.tabs button').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
   if(matchMedia('(max-width:1080px)').matches){$('#lp').classList.add('shut');$('#rp').classList.add('shut')}

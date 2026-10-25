@@ -403,7 +403,7 @@ async function route(){const h=decodeURIComponent(location.hash.slice(1));if(!h)
   if(p[0]==='p'&&p[1])return openPoet(p.slice(1).join('/'),false);
   if(T(p[0])){if(p[2])return openVerse(p[0],+p[1],+p[2],false);if(p[1]!==undefined&&p[1]!=='')return openSarga(p[0],+p[1],0,false);return multi(T(p[0]))?openText(p[0],false):openSarga(p[0],T(p[0]).sargas[0][0],0,false)}}
 (async()=>{[CAT,MET]=await Promise.all([get('sl/catalog.json'),get('sl/metres.json')]);
-  $('#foot').innerHTML='Texts: digital editions from the Göttingen Register of Electronic Texts in Indian Languages (GRETIL), shown for study and reference; editors and typists are credited in the GRETIL files. Pāda divisions and metres are worked out automatically and may be missing where the source text is irregular; Gītagovinda songs (prabandhas) are lines of song, not metrical verses. · <a href="./">sanskritmanthan.in</a>';
+  $('#foot').innerHTML='<a href="sources.html#shloka">आधारग्रन्थाः · Sources and licences</a> · Texts: digital editions from the Göttingen Register of Electronic Texts in Indian Languages (GRETIL), shown for study and reference; editors and typists are credited in the GRETIL files. Pāda divisions and metres are worked out automatically and may be missing where the source text is irregular; Gītagovinda songs (prabandhas) are lines of song, not metrical verses. · <a href="./">sanskritmanthan.in</a>';
   $$('#script button').forEach(b=>b.onclick=()=>setScript(b.dataset.s));
   $$('.tabs button').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
   if(matchMedia('(max-width:1080px)').matches){$('#lp').classList.add('shut');$('#rp').classList.add('shut')}

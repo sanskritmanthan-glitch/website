@@ -69,3 +69,5 @@ def shastra():
     open(f'{WEB}/shastra.html', 'w').write(h)
 if __name__ == '__main__':
     shastra(); granthalaya(); print('hubs written')
+    import sys as _s; _s.path.insert(0, os.path.join(HERE, '..')); import credits; credits.build(); credits.link_footers()
+

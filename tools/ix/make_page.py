@@ -112,6 +112,8 @@ if __name__ == '__main__':
     for n in sys.argv[1:]:
         if n in PAGES: build(n)
     engine(); nav(); print('pages written')
+    import sys as _s; _s.path.insert(0, os.path.join(HERE, '..')); import credits; credits.build(); credits.link_footers()
+
 def kosha_page():
     s = open(f'{WEB}/shloka.html').read(); ch = open(f'{WEB}/chandas.html').read()
     head = s[:s.index('</head>')]
