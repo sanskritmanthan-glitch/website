@@ -1,0 +1,2156 @@
+{
+"texts": [
+{
+"id": "ashtadhyayi",
+"title": "अष्टाध्यायी",
+"author": "पाणिनिः",
+"darshana": "vyakarana",
+"ddev": "व्याकरणम्",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः",
+"पादः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+45
+],
+[
+"1.2",
+73
+],
+[
+"1.3",
+93
+],
+[
+"1.4",
+110
+],
+[
+"2.1",
+72
+],
+[
+"2.2",
+38
+],
+[
+"2.3",
+73
+],
+[
+"2.4",
+85
+],
+[
+"3.1",
+150
+],
+[
+"3.2",
+188
+],
+[
+"3.3",
+176
+],
+[
+"3.4",
+117
+],
+[
+"4.1",
+178
+],
+[
+"4.2",
+145
+],
+[
+"4.3",
+168
+],
+[
+"4.4",
+144
+],
+[
+"5.1",
+136
+],
+[
+"5.2",
+140
+],
+[
+"5.3",
+119
+],
+[
+"5.4",
+160
+],
+[
+"6.1",
+223
+],
+[
+"6.2",
+199
+],
+[
+"6.3",
+139
+],
+[
+"6.4",
+175
+],
+[
+"7.1",
+103
+],
+[
+"7.2",
+118
+],
+[
+"7.3",
+120
+],
+[
+"7.4",
+97
+],
+[
+"8.1",
+74
+],
+[
+"8.2",
+108
+],
+[
+"8.3",
+117
+],
+[
+"8.4",
+68
+]
+],
+"verses": 3951,
+"aliases": [
+"astadh",
+"ashtad",
+"panini",
+"pan",
+"astadhyayi"
+]
+},
+{
+"id": "ashtavakragita",
+"title": "अष्टावक्रगीता",
+"author": "अष्टावक्रः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [
+"प्रकरणम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+20
+],
+[
+"2",
+25
+],
+[
+"3",
+14
+],
+[
+"4",
+6
+],
+[
+"5",
+4
+],
+[
+"6",
+4
+],
+[
+"7",
+5
+],
+[
+"8",
+4
+],
+[
+"9",
+8
+],
+[
+"10",
+8
+],
+[
+"11",
+8
+],
+[
+"12",
+8
+],
+[
+"13",
+7
+],
+[
+"14",
+4
+],
+[
+"15",
+20
+],
+[
+"16",
+11
+],
+[
+"17",
+20
+],
+[
+"18",
+100
+],
+[
+"19",
+8
+],
+[
+"20",
+14
+]
+],
+"verses": 298,
+"aliases": [
+"astava",
+"ashtav"
+]
+},
+{
+"id": "ishvarapratyabhijnakarika",
+"title": "ईश्वरप्रत्यभिज्ञाकारिका",
+"author": "उत्पलदेवः",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [
+"अधिकारः",
+"आह्निकम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+5
+],
+[
+"1.2",
+11
+],
+[
+"1.3",
+7
+],
+[
+"1.4",
+8
+],
+[
+"1.5",
+21
+],
+[
+"1.6",
+11
+],
+[
+"1.7",
+14
+],
+[
+"1.8",
+11
+],
+[
+"2.1",
+8
+],
+[
+"2.2",
+7
+],
+[
+"2.3",
+17
+],
+[
+"2.4",
+21
+],
+[
+"3.1",
+11
+],
+[
+"3.2",
+20
+],
+[
+"4",
+18
+]
+],
+"verses": 190,
+"aliases": [
+"isvara",
+"ishvar"
+]
+},
+{
+"id": "upadeshasahasri",
+"title": "उपदेशसाहस्री",
+"author": "शङ्कराचार्यः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [
+"प्रकरणम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+44
+],
+[
+"2",
+70
+],
+[
+"3",
+9
+],
+[
+"4",
+5
+],
+[
+"5",
+5
+],
+[
+"6",
+6
+],
+[
+"7",
+6
+],
+[
+"8",
+6
+],
+[
+"9",
+9
+],
+[
+"10",
+14
+],
+[
+"11",
+16
+],
+[
+"12",
+19
+],
+[
+"13",
+27
+],
+[
+"14",
+50
+],
+[
+"15",
+54
+],
+[
+"16",
+73
+],
+[
+"17",
+87
+],
+[
+"18",
+230
+],
+[
+"19",
+28
+]
+],
+"verses": 758,
+"aliases": [
+"upades",
+"upades"
+]
+},
+{
+"id": "nyayasutra",
+"title": "न्यायसूत्रम्",
+"author": "गौतमः",
+"darshana": "nyaya",
+"ddev": "न्यायः",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः",
+"आह्निकम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+41
+],
+[
+"1.2",
+20
+],
+[
+"2.1",
+69
+],
+[
+"2.2",
+71
+],
+[
+"3.1",
+73
+],
+[
+"3.2",
+72
+],
+[
+"4.1",
+68
+],
+[
+"4.2",
+51
+],
+[
+"5.1",
+43
+],
+[
+"5.2",
+25
+]
+],
+"verses": 533,
+"aliases": [
+"nyayas",
+"nyayas",
+"nyaya",
+"ns"
+]
+},
+{
+"id": "paramarthasara",
+"title": "परमार्थसारः",
+"author": "अभिनवगुप्तः",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+105
+]
+],
+"verses": 105,
+"aliases": [
+"parama",
+"parama"
+]
+},
+{
+"id": "paratrimshika",
+"title": "परात्रीशिका",
+"author": "—",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+36
+]
+],
+"verses": 36,
+"aliases": [
+"paratr",
+"paratr"
+]
+},
+{
+"id": "pashupatasutra",
+"title": "पाशुपतसूत्रम्",
+"author": "लकुलीशः",
+"darshana": "pashupata",
+"ddev": "पाशुपतम्",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+44
+],
+[
+"2",
+27
+],
+[
+"3",
+26
+],
+[
+"4",
+24
+],
+[
+"5",
+46
+]
+],
+"verses": 167,
+"aliases": [
+"pasupa",
+"pashup"
+]
+},
+{
+"id": "brahmasutra",
+"title": "ब्रह्मसूत्रम्",
+"author": "बादरायणः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः",
+"पादः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+32
+],
+[
+"1.2",
+33
+],
+[
+"1.3",
+44
+],
+[
+"1.4",
+29
+],
+[
+"2.1",
+36
+],
+[
+"2.2",
+42
+],
+[
+"2.3",
+52
+],
+[
+"2.4",
+19
+],
+[
+"3.1",
+27
+],
+[
+"3.2",
+40
+],
+[
+"3.3",
+64
+],
+[
+"3.4",
+51
+],
+[
+"4.1",
+19
+],
+[
+"4.2",
+20
+],
+[
+"4.3",
+15
+],
+[
+"4.4",
+22
+]
+],
+"verses": 545,
+"aliases": [
+"brahma",
+"brahma",
+"brahma",
+"bs",
+"vedantasutra"
+]
+},
+{
+"id": "bhagavadgita",
+"title": "भगवद्गीता",
+"author": "वेदव्यासः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [
+"अध्यायः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+47
+],
+[
+"2",
+72
+],
+[
+"3",
+43
+],
+[
+"4",
+42
+],
+[
+"5",
+29
+],
+[
+"6",
+47
+],
+[
+"7",
+30
+],
+[
+"8",
+28
+],
+[
+"9",
+34
+],
+[
+"10",
+42
+],
+[
+"11",
+55
+],
+[
+"12",
+20
+],
+[
+"13",
+34
+],
+[
+"14",
+27
+],
+[
+"15",
+20
+],
+[
+"16",
+24
+],
+[
+"17",
+28
+],
+[
+"18",
+78
+]
+],
+"verses": 700,
+"aliases": [
+"bhagav",
+"bhagav",
+"gita",
+"bhagavad",
+"bg"
+]
+},
+{
+"id": "mandukyakarika",
+"title": "माण्डूक्यकारिका",
+"author": "गौडपादः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [
+"प्रकरणम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+29
+],
+[
+"2",
+38
+],
+[
+"3",
+48
+],
+[
+"4",
+100
+]
+],
+"verses": 215,
+"aliases": [
+"manduk",
+"manduk",
+"gaudapada",
+"agamasastra"
+]
+},
+{
+"id": "mimamsasutra",
+"title": "मीमांसासूत्रम्",
+"author": "जैमिनिः",
+"darshana": "mimamsa",
+"ddev": "पूर्वमीमांसा",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः",
+"पादः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+32
+],
+[
+"1.2",
+53
+],
+[
+"1.3",
+35
+],
+[
+"1.4",
+30
+],
+[
+"2.1",
+49
+],
+[
+"2.2",
+29
+],
+[
+"2.3",
+29
+],
+[
+"2.4",
+32
+],
+[
+"3.1",
+27
+],
+[
+"3.2",
+43
+],
+[
+"3.3",
+46
+],
+[
+"3.4",
+51
+],
+[
+"3.5",
+53
+],
+[
+"3.6",
+46
+],
+[
+"3.7",
+51
+],
+[
+"3.8",
+44
+],
+[
+"4.1",
+48
+],
+[
+"4.2",
+30
+],
+[
+"4.3",
+41
+],
+[
+"4.4",
+41
+],
+[
+"5.1",
+33
+],
+[
+"5.2",
+23
+],
+[
+"5.3",
+44
+],
+[
+"5.4",
+26
+],
+[
+"6.1",
+52
+],
+[
+"6.2",
+31
+],
+[
+"6.3",
+41
+],
+[
+"6.4",
+47
+],
+[
+"6.5",
+56
+],
+[
+"6.6",
+39
+],
+[
+"6.7",
+40
+],
+[
+"6.8",
+42
+],
+[
+"7.1",
+23
+],
+[
+"7.2",
+21
+],
+[
+"7.3",
+36
+],
+[
+"7.4",
+20
+],
+[
+"8.1",
+43
+],
+[
+"8.2",
+32
+],
+[
+"8.3",
+36
+],
+[
+"8.4",
+27
+],
+[
+"9.1",
+58
+],
+[
+"9.2",
+60
+],
+[
+"9.3",
+43
+],
+[
+"9.4",
+60
+],
+[
+"10.1",
+58
+],
+[
+"10.2",
+73
+],
+[
+"10.3",
+75
+],
+[
+"10.4",
+59
+],
+[
+"10.5",
+88
+],
+[
+"10.6",
+79
+],
+[
+"10.7",
+73
+],
+[
+"10.8",
+70
+],
+[
+"11.1",
+70
+],
+[
+"11.2",
+68
+],
+[
+"11.3",
+55
+],
+[
+"11.4",
+56
+],
+[
+"12.1",
+44
+],
+[
+"12.2",
+38
+],
+[
+"12.3",
+32
+],
+[
+"12.4",
+40
+]
+],
+"verses": 2721,
+"aliases": [
+"mimams",
+"mimams",
+"mimamsa",
+"jaimini"
+]
+},
+{
+"id": "mulamadhyamakakarika",
+"title": "मूलमध्यमककारिका",
+"author": "नागार्जुनः",
+"darshana": "bauddha",
+"ddev": "बौद्धदर्शनम्",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [
+"प्रकरणम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+14
+],
+[
+"2",
+25
+],
+[
+"3",
+9
+],
+[
+"4",
+9
+],
+[
+"5",
+8
+],
+[
+"6",
+10
+],
+[
+"7",
+34
+],
+[
+"8",
+13
+],
+[
+"9",
+12
+],
+[
+"10",
+16
+],
+[
+"11",
+8
+],
+[
+"12",
+10
+],
+[
+"13",
+8
+],
+[
+"14",
+8
+],
+[
+"15",
+11
+],
+[
+"16",
+10
+],
+[
+"17",
+33
+],
+[
+"18",
+12
+],
+[
+"19",
+6
+],
+[
+"20",
+24
+],
+[
+"21",
+21
+],
+[
+"22",
+16
+],
+[
+"23",
+25
+],
+[
+"24",
+40
+],
+[
+"25",
+24
+],
+[
+"26",
+12
+],
+[
+"27",
+30
+]
+],
+"verses": 448,
+"aliases": [
+"mulama",
+"mulama",
+"mmk",
+"madhyamaka"
+]
+},
+{
+"id": "yuktishashtika",
+"title": "युक्तिषष्टिका",
+"author": "नागार्जुनः",
+"darshana": "bauddha",
+"ddev": "बौद्धदर्शनम्",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+59
+]
+],
+"verses": 59,
+"aliases": [
+"yuktis",
+"yuktis"
+]
+},
+{
+"id": "yogasutra",
+"title": "योगसूत्रम्",
+"author": "पतञ्जलिः",
+"darshana": "yoga",
+"ddev": "योगः",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"पादः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+51
+],
+[
+"2",
+55
+],
+[
+"3",
+55
+],
+[
+"4",
+34
+]
+],
+"verses": 195,
+"aliases": [
+"yogasu",
+"yogasu",
+"yoga",
+"ys"
+]
+},
+{
+"id": "vakyapadiya",
+"title": "वाक्यपदीयम्",
+"author": "भर्तृहरिः",
+"darshana": "vyakarana",
+"ddev": "व्याकरणम्",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [
+"काण्डः",
+"समुद्देशः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+154
+],
+[
+"2",
+487
+],
+[
+"3.1",
+106
+],
+[
+"3.2",
+18
+],
+[
+"3.3",
+88
+],
+[
+"3.4",
+3
+],
+[
+"3.5",
+9
+],
+[
+"3.6",
+28
+],
+[
+"3.7",
+166
+],
+[
+"3.8",
+62
+],
+[
+"3.9",
+111
+],
+[
+"3.10",
+9
+],
+[
+"3.11",
+32
+],
+[
+"3.12",
+27
+],
+[
+"3.13",
+31
+],
+[
+"3.14",
+622
+],
+[
+"3.14.1",
+1
+]
+],
+"verses": 1954,
+"aliases": [
+"vakyap",
+"vakyap",
+"vp",
+"bhartrhari"
+]
+},
+{
+"id": "vigrahavyavartani",
+"title": "विग्रहव्यावर्तनी",
+"author": "नागार्जुनः",
+"darshana": "bauddha",
+"ddev": "बौद्धदर्शनम्",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+71
+]
+],
+"verses": 71,
+"aliases": [
+"vigrah",
+"vigrah"
+]
+},
+{
+"id": "vijnanabhairava",
+"title": "विज्ञानभैरवः",
+"author": "—",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+162
+]
+],
+"verses": 162,
+"aliases": [
+"vijnan",
+"vijnan"
+]
+},
+{
+"id": "vivekacudamani",
+"title": "विवेकचूडामणिः",
+"author": "शङ्कराचार्यः",
+"darshana": "vedanta",
+"ddev": "वेदान्तः",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+578
+]
+],
+"verses": 578,
+"aliases": [
+"viveka",
+"viveka"
+]
+},
+{
+"id": "vaisheshikasutra",
+"title": "वैशेषिकसूत्रम्",
+"author": "कणादः",
+"darshana": "vaisheshika",
+"ddev": "वैशेषिकम्",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः",
+"आह्निकम्"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1.1",
+29
+],
+[
+"1.2",
+18
+],
+[
+"2.1",
+27
+],
+[
+"2.2",
+43
+],
+[
+"3.1",
+14
+],
+[
+"3.2",
+17
+],
+[
+"4.1",
+14
+],
+[
+"4.2",
+9
+],
+[
+"5.1",
+18
+],
+[
+"5.2",
+28
+],
+[
+"6.1",
+18
+],
+[
+"6.2",
+19
+],
+[
+"7.1",
+31
+],
+[
+"7.2",
+31
+],
+[
+"8",
+17
+],
+[
+"9",
+28
+],
+[
+"10",
+21
+]
+],
+"verses": 382,
+"aliases": [
+"vaises",
+"vaishe",
+"vaisesika",
+"vs"
+]
+},
+{
+"id": "shivasutra",
+"title": "शिवसूत्रम्",
+"author": "वसुगुप्तः",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"उन्मेषः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+20
+],
+[
+"2",
+10
+],
+[
+"3",
+45
+],
+[
+"3.19",
+1
+]
+],
+"verses": 76,
+"aliases": [
+"sivasu",
+"shivas",
+"sivasutra"
+]
+},
+{
+"id": "samkhyakarika",
+"title": "साङ्ख्यकारिका",
+"author": "ईश्वरकृष्णः",
+"darshana": "samkhya",
+"ddev": "साङ्ख्यम्",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+72
+]
+],
+"verses": 72,
+"aliases": [
+"sankhy",
+"samkhy",
+"sankhyakarika",
+"sk"
+]
+},
+{
+"id": "samkhyasutra",
+"title": "साङ्ख्यसूत्रम्",
+"author": "कपिलः",
+"darshana": "samkhya",
+"ddev": "साङ्ख्यम्",
+"kind": "sutra",
+"kdev": "सूत्राणि",
+"units": [
+"अध्यायः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+164
+],
+[
+"2",
+47
+],
+[
+"3",
+85
+],
+[
+"4",
+32
+],
+[
+"5",
+129
+],
+[
+"6",
+69
+]
+],
+"verses": 526,
+"aliases": [
+"sankhy",
+"samkhy",
+"sankhyasutra"
+]
+},
+{
+"id": "spandakarika",
+"title": "स्पन्दकारिका",
+"author": "वसुगुप्तः",
+"darshana": "pratyabhijna",
+"ddev": "प्रत्यभिज्ञा (काश्मीरशैवम्)",
+"kind": "karika",
+"kdev": "कारिकाः",
+"units": [
+"निःष्यन्दः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+25
+],
+[
+"2",
+7
+],
+[
+"3",
+19
+],
+[
+"4",
+2
+]
+],
+"verses": 53,
+"aliases": [
+"spanda",
+"spanda"
+]
+},
+{
+"id": "hathayogapradipika",
+"title": "हठयोगप्रदीपिका",
+"author": "स्वात्मारामः",
+"darshana": "yoga",
+"ddev": "योगः",
+"kind": "shloka",
+"kdev": "श्लोकाः",
+"units": [
+"उपदेशः"
+],
+"source": "GRETIL (gretil.sub.uni-goettingen.de)",
+"sargas": [
+[
+"1",
+70
+],
+[
+"2",
+78
+],
+[
+"3",
+130
+],
+[
+"4",
+114
+]
+],
+"verses": 392,
+"aliases": [
+"hathay",
+"hathay",
+"hyp",
+"hatha"
+]
+}
+],
+"authors": [
+[
+"अभिनवगुप्तः",
+[
+"paramarthasara"
+]
+],
+[
+"अष्टावक्रः",
+[
+"ashtavakragita"
+]
+],
+[
+"ईश्वरकृष्णः",
+[
+"samkhyakarika"
+]
+],
+[
+"उत्पलदेवः",
+[
+"ishvarapratyabhijnakarika"
+]
+],
+[
+"कणादः",
+[
+"vaisheshikasutra"
+]
+],
+[
+"कपिलः",
+[
+"samkhyasutra"
+]
+],
+[
+"गौडपादः",
+[
+"mandukyakarika"
+]
+],
+[
+"गौतमः",
+[
+"nyayasutra"
+]
+],
+[
+"जैमिनिः",
+[
+"mimamsasutra"
+]
+],
+[
+"नागार्जुनः",
+[
+"mulamadhyamakakarika",
+"yuktishashtika",
+"vigrahavyavartani"
+]
+],
+[
+"पतञ्जलिः",
+[
+"yogasutra"
+]
+],
+[
+"पाणिनिः",
+[
+"ashtadhyayi"
+]
+],
+[
+"बादरायणः",
+[
+"brahmasutra"
+]
+],
+[
+"भर्तृहरिः",
+[
+"vakyapadiya"
+]
+],
+[
+"लकुलीशः",
+[
+"pashupatasutra"
+]
+],
+[
+"वसुगुप्तः",
+[
+"shivasutra",
+"spandakarika"
+]
+],
+[
+"वेदव्यासः",
+[
+"bhagavadgita"
+]
+],
+[
+"शङ्कराचार्यः",
+[
+"upadeshasahasri",
+"vivekacudamani"
+]
+],
+[
+"स्वात्मारामः",
+[
+"hathayogapradipika"
+]
+],
+[
+"—",
+[
+"paratrimshika",
+"vijnanabhairava"
+]
+]
+],
+"darshanas": [
+[
+"न्यायः",
+[
+"nyayasutra"
+]
+],
+[
+"पाशुपतम्",
+[
+"pashupatasutra"
+]
+],
+[
+"पूर्वमीमांसा",
+[
+"mimamsasutra"
+]
+],
+[
+"प्रत्यभिज्ञा (काश्मीरशैवम्)",
+[
+"ishvarapratyabhijnakarika",
+"paramarthasara",
+"paratrimshika",
+"vijnanabhairava",
+"shivasutra",
+"spandakarika"
+]
+],
+[
+"बौद्धदर्शनम्",
+[
+"mulamadhyamakakarika",
+"yuktishashtika",
+"vigrahavyavartani"
+]
+],
+[
+"योगः",
+[
+"yogasutra",
+"hathayogapradipika"
+]
+],
+[
+"वेदान्तः",
+[
+"ashtavakragita",
+"upadeshasahasri",
+"brahmasutra",
+"bhagavadgita",
+"mandukyakarika",
+"vivekacudamani"
+]
+],
+[
+"वैशेषिकम्",
+[
+"vaisheshikasutra"
+]
+],
+[
+"व्याकरणम्",
+[
+"ashtadhyayi",
+"vakyapadiya"
+]
+],
+[
+"साङ्ख्यम्",
+[
+"samkhyakarika",
+"samkhyasutra"
+]
+]
+],
+"letters": [
+[
+"L00",
+"अ",
+3303
+],
+[
+"L01",
+"आ",
+815
+],
+[
+"L02",
+"इ",
+467
+],
+[
+"L03",
+"ई",
+49
+],
+[
+"L04",
+"उ",
+633
+],
+[
+"L05",
+"ऊ",
+46
+],
+[
+"L06",
+"ऋ",
+64
+],
+[
+"L07",
+"ॠ",
+2
+],
+[
+"L10",
+"ए",
+606
+],
+[
+"L11",
+"ऐ",
+27
+],
+[
+"L12",
+"ओ",
+26
+],
+[
+"L13",
+"औ",
+19
+],
+[
+"L14",
+"क",
+2233
+],
+[
+"L15",
+"ख",
+40
+],
+[
+"L16",
+"ग",
+589
+],
+[
+"L17",
+"घ",
+68
+],
+[
+"L18",
+"ङ",
+13
+],
+[
+"L19",
+"च",
+379
+],
+[
+"L20",
+"छ",
+116
+],
+[
+"L21",
+"ज",
+711
+],
+[
+"L22",
+"झ",
+13
+],
+[
+"L23",
+"ञ",
+6
+],
+[
+"L24",
+"ट",
+8
+],
+[
+"L25",
+"ठ",
+7
+],
+[
+"L26",
+"ड",
+7
+],
+[
+"L27",
+"ढ",
+4
+],
+[
+"L28",
+"ण",
+33
+],
+[
+"L29",
+"त",
+2906
+],
+[
+"L30",
+"थ",
+11
+],
+[
+"L31",
+"द",
+1153
+],
+[
+"L32",
+"ध",
+297
+],
+[
+"L33",
+"न",
+3057
+],
+[
+"L34",
+"प",
+2739
+],
+[
+"L35",
+"फ",
+93
+],
+[
+"L36",
+"ब",
+648
+],
+[
+"L37",
+"भ",
+923
+],
+[
+"L38",
+"म",
+1051
+],
+[
+"L39",
+"य",
+1661
+],
+[
+"L40",
+"र",
+395
+],
+[
+"L41",
+"ल",
+379
+],
+[
+"L42",
+"व",
+2266
+],
+[
+"L43",
+"श",
+1012
+],
+[
+"L44",
+"ष",
+85
+],
+[
+"L45",
+"स",
+4184
+],
+[
+"L46",
+"ह",
+307
+]
+],
+"mslug": {
+"अनुष्टुभ् (श्लोकः)": "anustubh",
+"उपजातिः": "upajati",
+"पृथ्वी": "prthvi",
+"शार्दूलविक्रीडितम्": "sardulavikridita",
+"वंशस्थम्": "vamsastha",
+"उपजातिः (वंशस्थ-इन्द्रवंशयोः)": "upajativamsastha",
+"स्रग्धरा": "sragdhara",
+"आर्या": "arya",
+"गीतिः": "giti",
+"उपगीतिः": "upagiti",
+"शालिनी": "salini",
+"इन्द्रवज्रा": "indravajra",
+"उपेन्द्रवज्रा": "upendravajra",
+"इन्द्रवंशा": "indravamsa",
+"मालिनी": "malini",
+"वसन्ततिलका": "vasantatilaka",
+"मन्दाक्रान्ता": "mandakranta",
+"शिखरिणी": "sikharini",
+"मत्तमयूरम्": "mattamayura",
+"रथोद्धता": "rathoddhata",
+"पुष्पिताग्रा": "puspitagra",
+"उद्गीतिः": "udgiti",
+"औपच्छन्दसिकम्": "aupacchandasika"
+},
+"kinds": [
+[
+"sutra",
+"सूत्राणि",
+9096
+],
+[
+"karika",
+"कारिकाः",
+3167
+],
+[
+"shloka",
+"श्लोकाः",
+2924
+]
+],
+"total": 15187
+}

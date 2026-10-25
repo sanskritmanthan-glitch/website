@@ -110,11 +110,14 @@ blockquote{margin:8px 0;padding:8px 14px;border-left:3px solid var(--gold);backg
 .sgl li:hover{background:var(--soft)}
 .sgl .n{color:var(--gold)}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;padding:18px 0 30px;font-family:var(--la)}
+nav.seg a{padding:4px 12px;font-size:.9rem;text-decoration:none;color:var(--ink)}
+nav.seg a[aria-current="page"]{background:var(--saffron);color:#fff}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <a class="brand" href="./">संस्कृतमन्थनम्</a>
+  <nav class="seg" aria-label="Index"><a href="shloka.html" aria-current="page">श्लोकाः</a><a href="sutra.html">सूत्राणि</a></nav>
   <div class="seg" id="script" role="group" aria-label="Script">
     <button data-s="dv" aria-pressed="true">देवनागरी</button><button data-s="te" aria-pressed="false">తెలుగు</button><button data-s="la" aria-pressed="false">IAST</button>
   </div>
@@ -340,6 +343,7 @@ async function search(){
 }
 const intro=()=>`${CAT.total.toLocaleString('en-IN')} verses · ${CAT.texts.length} texts · ${CAT.poets.length} poets · ${CAT.metres.length} metres — choose a letter, a text, a poet or a metre, or search`;
 /* ---------- side panels ---------- */
+function panelTo(box,el){const b=box.getBoundingClientRect(),r=el.getBoundingClientRect(),top=Math.max(b.top,0),bot=Math.min(b.bottom,innerHeight);if(r.top<top||r.bottom>bot)box.scrollTop+=r.top-top-Math.max(40,(bot-top)/3)}
 function grouped(items,nameOf,render){let last='',h='';for(const it of items){const L=initialOf(nameOf(it));if(L!==last){h+=`<div class="ldiv">${esc(show(L))}</div>`;last=L}h+=render(it)}return h}
 function sargaChips(t,cls=''){return multi(t)?`<div class="chips"><span class="lab">${esc(show(t.unit+'ाः'))} · chapters</span>${t.sargas.map(([s,n])=>`<button class="${cls}${SEL.id===t.id&&SEL.s===s?' on':''}" data-t="${t.id}" data-s="${s}" title="${n} verses">${chipN(s)}</button>`).join('')}</div>`:''}
 function drawTexts(){
@@ -357,7 +361,7 @@ function drawTexts(){
     OPEN.text=id; if(multi(t))openText(id);else openSarga(id,t.sargas[0][0])});
   box.querySelectorAll('.chips button[data-s]').forEach(b=>b.onclick=()=>b.dataset.v?openVerse(b.dataset.t,+b.dataset.s,+b.dataset.v):openSarga(b.dataset.t,+b.dataset.s));
   const act=box.querySelector('.vn button.on')||box.querySelector('.chips button.on')||box.querySelector('.it.on');
-  if(act)act.scrollIntoView({block:'nearest'});
+  if(act)panelTo(box,act);
 }
 function drawRight(){
   $$('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===TAB));
@@ -377,7 +381,7 @@ function drawRight(){
     box.querySelectorAll('.chips button[data-s]').forEach(b=>b.onclick=()=>{OPEN.ptext=b.dataset.t;openSarga(b.dataset.t,+b.dataset.s)});
   }
   const act=box.querySelector('.chips button.on')||[...box.querySelectorAll('.it.on')].pop();
-  if(act)act.scrollIntoView({block:'nearest'});
+  if(act)panelTo(box,act);
 }
 function syncNav(){
   if(SEL.id){OPEN.poet=T(SEL.id).poet;OPEN.ptext=SEL.id;SEL.poet=OPEN.poet}
@@ -406,6 +410,7 @@ async function route(){const h=decodeURIComponent(location.hash.slice(1));if(!h)
   let tm;$('#q').addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(search,250)});
   $('#ft').onchange=()=>$('#q').value?search():(location.hash.match(/^#L\d\d/)?route():$('#ft').value?openText($('#ft').value):null);
   $('#fm').onchange=()=>$('#q').value?search():(location.hash.match(/^#L\d\d/)?route():$('#fm').value?openMetre($('#fm').value):null);
+  window.addEventListener('hashchange',route);
   setScript(SCRIPT);
 })();
 </script>

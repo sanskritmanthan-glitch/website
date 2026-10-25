@@ -1,0 +1,26 @@
+# file (under GRETIL 1_sanskr/)	id	title	author	darshana	kind	units
+6_sastra/3_phil/vedanta/brahmsuu.htm	brahmasutra	ब्रह्मसूत्रम्	बादरायणः	vedanta	sutra	अध्यायः,पादः
+6_sastra/3_phil/yoga/patyog_u.htm	yogasutra	योगसूत्रम्	पतञ्जलिः	yoga	sutra	पादः
+6_sastra/3_phil/nyaya/gaunys_u.htm	nyayasutra	न्यायसूत्रम्	गौतमः	nyaya	sutra	अध्यायः,आह्निकम्	nojoin
+6_sastra/3_phil/vaisesik/vaissu1u.htm	vaisheshikasutra	वैशेषिकसूत्रम्	कणादः	vaisheshika	sutra	अध्यायः,आह्निकम्
+6_sastra/3_phil/mimamsa/jaimsutu.htm	mimamsasutra	मीमांसासूत्रम्	जैमिनिः	mimamsa	sutra	अध्यायः,पादः
+6_sastra/3_phil/samkhya/samkhsuu.htm	samkhyasutra	साङ्ख्यसूत्रम्	कपिलः	samkhya	sutra	अध्यायः
+6_sastra/1_gram/paninipu.htm	ashtadhyayi	अष्टाध्यायी	पाणिनिः	vyakarana	sutra	अध्यायः,पादः
+4_rellit/saiva/sivsutru.htm	shivasutra	शिवसूत्रम्	वसुगुप्तः	pratyabhijna	sutra	उन्मेषः
+4_rellit/saiva/pasupspu.htm	pashupatasutra	पाशुपतसूत्रम्	लकुलीशः	pashupata	sutra	अध्यायः
+6_sastra/3_phil/samkhya/iskar_u.htm	samkhyakarika	साङ्ख्यकारिका	ईश्वरकृष्णः	samkhya	karika	
+6_sastra/3_phil/vedanta/gaukarpu.htm	mandukyakarika	माण्डूक्यकारिका	गौडपादः	vedanta	karika	प्रकरणम्
+6_sastra/3_phil/buddh/nagmmk_u.htm	mulamadhyamakakarika	मूलमध्यमककारिका	नागार्जुनः	bauddha	karika	प्रकरणम्
+6_sastra/3_phil/buddh/nagvvy_u.htm	vigrahavyavartani	विग्रहव्यावर्तनी	नागार्जुनः	bauddha	karika	
+6_sastra/3_phil/buddh/nagyuksu.htm	yuktishashtika	युक्तिषष्टिका	नागार्जुनः	bauddha	karika	
+6_sastra/3_phil/saiva/spandkau.htm	spandakarika	स्पन्दकारिका	वसुगुप्तः	pratyabhijna	karika	निःष्यन्दः
+6_sastra/3_phil/saiva/utipk_au.htm	ishvarapratyabhijnakarika	ईश्वरप्रत्यभिज्ञाकारिका	उत्पलदेवः	pratyabhijna	karika	अधिकारः,आह्निकम्
+6_sastra/3_phil/saiva/parmartu.htm	paramarthasara	परमार्थसारः	अभिनवगुप्तः	pratyabhijna	karika	
+6_sastra/1_gram/vakyp1pu.htm	vakyapadiya	वाक्यपदीयम्	भर्तृहरिः	vyakarana	karika	काण्डः,समुद्देशः
+2_epic/mbh/ext/bhgce__u.htm	bhagavadgita	भगवद्गीता	वेदव्यासः	vedanta	shloka	अध्यायः
+4_rellit/vaisn/astavgpu.htm	ashtavakragita	अष्टावक्रगीता	अष्टावक्रः	vedanta	shloka	प्रकरणम्
+6_sastra/3_phil/vedanta/vivcud_u.htm	vivekacudamani	विवेकचूडामणिः	शङ्कराचार्यः	vedanta	shloka	
+6_sastra/3_phil/vedanta/samkupad_u.htm	upadeshasahasri	उपदेशसाहस्री	शङ्कराचार्यः	vedanta	shloka	प्रकरणम्
+6_sastra/3_phil/saiva/vijnbhau.htm	vijnanabhairava	विज्ञानभैरवः	—	pratyabhijna	shloka	
+6_sastra/3_phil/saiva/paratriu.htm	paratrimshika	परात्रीशिका	—	pratyabhijna	shloka	
+6_sastra/3_phil/yoga/hathyopu.htm	hathayogapradipika	हठयोगप्रदीपिका	स्वात्मारामः	yoga	shloka	उपदेशः

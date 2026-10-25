@@ -186,7 +186,7 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
 
 <header><div class="wrap">
   <a class="brand" href="#top" id="brand"></a>
-  <nav aria-label="Sections"><a href="#library" id="n0"></a><a href="#author" id="n1"></a><a href="#soon" id="n2"></a><a href="shloka.html" id="n3"></a>
+  <nav aria-label="Sections"><a href="#library" id="n0"></a><a href="#author" id="n1"></a><a href="#soon" id="n2"></a><a href="shloka.html" id="n3"></a><a href="sutra.html" id="n4"></a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-l="sa" class="dv">संस्कृतम्</button><button type="button" data-l="en" class="la">English</button><button type="button" data-l="hi" class="dv">हिन्दी</button><button type="button" data-l="te" class="te">తెలుగు</button>
     </div></nav>
@@ -249,7 +249,7 @@ function rows(list,c){const n=Math.min(c,fit(c));if(c===1)return[list];const out
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(render,150)});
 function render(){
   const u=UI[L];document.documentElement.lang=L;
-  $("#brand").textContent=u.brand;["n0","n1","n2"].forEach((id,i)=>$("#"+id).textContent=u.nav[i]);$("#n3").textContent={te:"శ్లోకాన్వేషణం",sa:"श्लोकान्वेषणम्",hi:"श्लोक-अन्वेषण",en:"Śloka Index"}[L];
+  $("#brand").textContent=u.brand;["n0","n1","n2"].forEach((id,i)=>$("#"+id).textContent=u.nav[i]);$("#n3").textContent={te:"శ్లోకాన్వేషణం",sa:"श्लोकान्वेषणम्",hi:"श्लोक-अन्वेषण",en:"Śloka Index"}[L];$("#n4").textContent={te:"సూత్రాన్వేషణం",sa:"सूत्रान्वेषणम्",hi:"सूत्र-अन्वेषण",en:"Sūtra Index"}[L];
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
   $("#hero").innerHTML=u.hero;$("#sub").textContent=u.sub;
   document.querySelectorAll("[data-dir]").forEach(e=>e.textContent=u.dirs[e.dataset.dir]);
