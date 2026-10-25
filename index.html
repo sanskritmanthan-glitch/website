@@ -137,6 +137,28 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
 .fw{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:center}.fw .share{margin-top:0}
 .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
 @media (max-width:760px){#q{flex-basis:100%;max-width:none}.d.e{right:9%}.d.w{left:9%}.compass .d small{font-size:.66rem}.hero{grid-template-columns:1fr;padding-block:24px 44px}.author,.dlg{grid-template-columns:1fr}.author img,.dlg .cv{max-width:180px}}
+
+/* ॐ glow, rays and chant */
+.compass .rays{position:absolute;inset:6%;border-radius:50%;pointer-events:none;z-index:0;opacity:.28;
+  background:repeating-conic-gradient(from 0deg,rgba(255,196,110,0) 0deg 7deg,rgba(255,196,110,.55) 7deg 9deg,rgba(255,196,110,0) 9deg 15deg);
+  -webkit-mask:radial-gradient(circle,#000 14%,rgba(0,0,0,.55) 34%,transparent 66%);mask:radial-gradient(circle,#000 14%,rgba(0,0,0,.55) 34%,transparent 66%);
+  animation:omspin 60s linear infinite}
+.compass .halo{position:absolute;inset:28%;border-radius:50%;pointer-events:none;z-index:0;opacity:.35;
+  background:radial-gradient(circle,rgba(255,206,120,.75) 0%,rgba(255,170,80,.28) 40%,transparent 70%)}
+.compass .om{z-index:1;cursor:pointer;transition:box-shadow .6s}
+.compass .om:focus-visible{outline:2px solid var(--saffron);outline-offset:3px}
+.compass .d{z-index:2}
+.compass.chant .rays{animation:omspin 60s linear infinite,raysup 15s ease-in-out forwards}
+.compass.chant .halo{animation:haloup 15s ease-in-out forwards}
+.compass.chant .om{animation:omglow 15s ease-in-out forwards}
+@keyframes omspin{to{transform:rotate(360deg)}}
+@keyframes raysup{0%{opacity:.1;transform:scale(.7)}12%{opacity:.85}30%{opacity:.6}45%{opacity:.9}62%{opacity:.6}78%{opacity:.85}100%{opacity:.28;transform:scale(1)}}
+@keyframes haloup{0%{opacity:0;transform:scale(.6)}15%{opacity:1;transform:scale(1.15)}33%{opacity:.6;transform:scale(1)}48%{opacity:1;transform:scale(1.15)}66%{opacity:.6;transform:scale(1)}82%{opacity:1;transform:scale(1.15)}100%{opacity:.35;transform:scale(1)}}
+@keyframes omglow{0%,100%{text-shadow:0 0 6px rgba(255,190,90,.35);box-shadow:0 0 0 rgba(255,180,80,0)}
+  15%,48%,82%{text-shadow:0 0 14px rgba(255,214,140,1),0 0 34px rgba(255,170,70,.85),0 0 60px rgba(255,150,60,.55);box-shadow:0 0 38px rgba(255,180,80,.55)}
+  33%,66%{text-shadow:0 0 8px rgba(255,200,120,.6),0 0 20px rgba(255,170,70,.4);box-shadow:0 0 18px rgba(255,180,80,.3)}}
+.compass .om{text-shadow:0 0 6px rgba(255,190,90,.35)}
+@media (prefers-reduced-motion:reduce){.compass .rays,.compass.chant .rays,.compass.chant .halo,.compass.chant .om{animation:none!important}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -156,7 +178,7 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
   <div><div class="lead">यथा पिण्डे तथा ब्रह्माण्डे</div><h1 id="hero"></h1><p id="sub"></p></div>
   <div class="compass">
     <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="var(--line)" stroke-width=".4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="38"/><line x1="50" y1="4" x2="50" y2="96"/><line x1="4" y1="50" x2="96" y2="50"/></g></svg>
-    <div class="om">ॐ</div>
+    <div class="halo" aria-hidden="true"></div><div class="rays" aria-hidden="true"></div><div class="om" role="button" tabindex="0" title="ॐ" aria-label="ॐ">ॐ</div>
     <button class="d n" type="button" data-id="spandanam"><img alt="స్పందనం" src="cv/pr-shiva.jpg"><small data-dir="n"></small></button>
     <button class="d e" type="button" data-id="chitkala"><img alt="చిత్కళ" src="cv/pr-lalita.jpg"><small data-dir="e"></small></button>
     <button class="d w" type="button" data-id="kshiramathanam"><img alt="క్షీరమథనం" src="cv/pr-lakshmi.jpg"><small data-dir="w"></small></button>
@@ -259,6 +281,39 @@ $("#dlg").addEventListener("click",e=>{if(e.target.id==="dlg")$("#dlg").close()}
 $("#cp").onclick=()=>{navigator.clipboard?.writeText($("#mail").textContent).then(()=>{$("#cp").textContent=UI[L].copied}).catch(()=>{const r=document.createRange();r.selectNodeContents($("#mail"));const s=getSelection();s.removeAllRanges();s.addRange(r)})};
 render();
 if(location.hash.startsWith("#b-"))setTimeout(()=>open(location.hash.slice(3)),60);
+
+/* ॐ chant: 15 s, synthesised (a-u-m), plays once per visit on the first tap/click/key, and again whenever ॐ is pressed */
+(function(){
+  const cp=document.querySelector('.compass'),om=document.querySelector('.compass .om');if(!cp||!om)return;
+  let AC=null,busy=false,tm;
+  function glow(){cp.classList.remove('chant');void cp.offsetWidth;cp.classList.add('chant');clearTimeout(tm);tm=setTimeout(()=>cp.classList.remove('chant'),15200)}
+  function chant(){
+    try{
+      AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
+      if(busy)return;busy=true;setTimeout(()=>busy=false,15000);
+      const c=AC,t0=c.currentTime+.05,f=136.1,out=c.createGain();out.gain.value=.22;
+      const dl=c.createDelay(),fb=c.createGain(),dlf=c.createBiquadFilter();dl.delayTime.value=.23;fb.gain.value=.32;dlf.type='lowpass';dlf.frequency.value=900;
+      out.connect(c.destination);out.connect(dl);dl.connect(dlf);dlf.connect(fb);fb.connect(dl);dlf.connect(c.destination);
+      for(let k=0;k<3;k++){
+        const s=t0+k*5,e=s+5.2,vg=c.createGain(),lp=c.createBiquadFilter(),fm=c.createBiquadFilter();
+        lp.type='lowpass';lp.Q.value=4;fm.type='peaking';fm.Q.value=3;fm.gain.value=9;
+        lp.frequency.setValueAtTime(1300,s);lp.frequency.linearRampToValueAtTime(1100,s+1.2);lp.frequency.linearRampToValueAtTime(560,s+2.1);lp.frequency.linearRampToValueAtTime(260,s+3.0);
+        fm.frequency.setValueAtTime(760,s);fm.frequency.linearRampToValueAtTime(720,s+1.2);fm.frequency.linearRampToValueAtTime(330,s+2.1);fm.frequency.linearRampToValueAtTime(240,s+3.0);
+        vg.gain.setValueAtTime(0,s);vg.gain.linearRampToValueAtTime(.9,s+.45);vg.gain.setValueAtTime(.9,s+2.4);vg.gain.linearRampToValueAtTime(.7,s+3.2);vg.gain.linearRampToValueAtTime(0,e);
+        lp.connect(fm);fm.connect(vg);vg.connect(out);
+        [[f,'sawtooth',.5],[f*1.003,'sawtooth',.35],[f/2,'sine',.6],[f*2,'triangle',.15]].forEach(([fr,ty,g])=>{
+          const o=c.createOscillator(),og=c.createGain();o.type=ty;o.frequency.value=fr;og.gain.value=g;o.connect(og);og.connect(lp);o.start(s);o.stop(e+.1)});
+      }
+    }catch(e){}
+    glow();
+  }
+  glow();
+  let played=false;try{played=sessionStorage.getItem('sm-om')==='1'}catch(e){}
+  const first=()=>{['pointerdown','keydown','touchstart'].forEach(ev=>removeEventListener(ev,first,true));if(played)return;played=true;try{sessionStorage.setItem('sm-om','1')}catch(e){}chant()};
+  if(!played)['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,first,true));
+  om.addEventListener('click',e=>{e.stopPropagation();played=true;try{sessionStorage.setItem('sm-om','1')}catch(_){}chant()});
+  om.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chant()}});
+})();
 </script>
 
 </body>
