@@ -60,3 +60,22 @@ poets = [[p, ids] for p, ids in sorted(poets.items(), key=lambda x: skey(x[0]))]
 json.dump(dict(texts=cat, poets=poets, letters=letters, metres=[[d['dev'], d['slug'], d['n']] for d in mlist],
                total=sum(c['verses'] for c in cat)), open(f'{OUT}/catalog.json', 'w'), ensure_ascii=False, indent=0)
 print(len(cat), 'texts', sum(c['verses'] for c in cat), 'verses', len(letters), 'letters', len(poets), 'poets', len(mlist), 'metres')
+# every metre the engine knows, for the metre finder (chandas.html)
+from skt import MET, ARDHA
+from metres import JATIM
+allm = []
+for n in ['anuṣṭubh', 'upajāti', 'upajāti (vaṃśastha)', 'udgatā'] + list(MET) + list(ARDHA) + list(JATIM):
+    if n in ('indravajrā', 'upendravajrā') or any(d['iast'] == n for d in allm): continue
+    d = minfo(n); d['slug'] = slug(n)
+    if n in MET and n not in ('upajāti',): d['match'] = {'any': [MET[n]]}
+    if n == 'upajāti': d['match'] = {'any': [MET['indravajrā'], MET['upendravajrā']]}
+    if n == 'upajāti (vaṃśastha)': d['match'] = {'any': [MET['vaṃśastha'], MET['indravaṃśā']]}
+    if n in ARDHA: d['match'] = {'odd': ARDHA[n][0], 'even': ARDHA[n][1]}
+    if n == 'udgatā': d['match'] = {'each': [p for p, _ in d['pads']]}
+    if n == 'anuṣṭubh': d['match'] = {'anu': 1}
+    if n in JATIM: d['match'] = {'mat': JATIM[n]}
+    allm.append(d)
+for n in ('indravajrā', 'upendravajrā'):
+    d = minfo(n); d['slug'] = slug(n); d['match'] = {'any': [MET[n]]}; allm.append(d)
+json.dump(allm, open(f'{OUT}/mfind.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+print(len(allm), 'metres in the finder')

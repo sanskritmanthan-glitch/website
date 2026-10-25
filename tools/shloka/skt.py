@@ -54,7 +54,9 @@ MET={ # sama-vṛtta pāda patterns (last syllable anceps)
 'mandākrāntā':'GGGGLLLLLGGLGGLGG','śikhariṇī':'LGGGGGLLLLLGGLLLG','hariṇī':'LLLLLGGGGGLGLLGLG',
 'śārdūlavikrīḍita':'GGGLLGLGLLLGGGLGGLG','sragdharā':'GGGGLGGLLLLLLGGLGGLGG','pramitākṣarā':'LLGLGLLLGLLG',
 'kusumitalatāvellitā':'GGGGGLLLLLGGLGGLGG','mattamayūra':'GGGGGLLGGLLGG',
-'rucirā':'LGLGLLLLGLGLG','aśvadhāṭī':'GGLGLLLGGGLGLLLGGGLGLLLG'}
+'rucirā':'LGLGLLLLGLGLG','aśvadhāṭī':'GGLGLLLGGGLGLLLGGGLGLLLG',
+'dodhaka':'GLLGLLGLLGG','pañcacāmara':'LGLGLGLGLGLGLGLG','mattebhavikrīḍita':'LLGGLLGLGLLLGGGLGGLG',
+'utpalamālā':'GLLGLGLLLGLLGLLGLGLG','campakamālā':'LLLLGLGLLLGLLGLLGLGLG','vaiśvadevī':'GGGGGGLGGLGG','tāmarasa':'LLLLGLLGLLGG','kalahaṃsa':'LLGLGLLLGLLGG'}
 ARDHA={'viyoginī':('LLGLLGLGLG','LLGGLLGLGLG'),'aupacchandasika':('LLGLLGLGLGG','LLGGLLGLGLGG'),
        'puṣpitāgrā':('LLLLLLGLGLGG','LLLLGLLGLGLGG'),'vegavatī':('LLGLLGLLGGG','GLLGLLGLLGG')}
 def eq(p,q): return len(p)==len(q) and p[:-1]==q[:-1]
