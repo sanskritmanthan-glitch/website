@@ -1,0 +1,509 @@
+{
+ "series": [
+  {
+   "id": "pranava",
+   "name": "ప్రణవచతుర్దిశ",
+   "color": "#7a3b2a",
+   "about": "ఓంకారం చుట్టూ నాలుగు దిక్కులు: నాలుగు సహస్రనామాలను నాలుగు పురుషార్థాల జీవనసోపానాలుగా చదివే తెలుగు వచనకావ్యాలు."
+  },
+  {
+   "id": "geya",
+   "name": "గేయమహాపురాణమాల",
+   "color": "#1e5a4f",
+   "about": "అష్టాదశ మహాపురాణాలు, రామాయణ మహాభారతాలు పాడుకోదగిన పద్యాల్లో. సంస్కృతంలో, తెలుగులో వేర్వేరు సంపుటాలు."
+  },
+  {
+   "id": "stotra",
+   "name": "స్తోత్రమాల",
+   "color": "#8a2340",
+   "about": "నూతన ఛందస్సుల్లో, నక్షత్ర-లహరీ రూపాల్లో రచించిన సంస్కృత స్తోత్రాలు."
+  },
+  {
+   "id": "dasha",
+   "name": "దశదీపిక",
+   "color": "#5b4a1a",
+   "about": "పది తెలుగు వచనకావ్యాలు: తత్త్వం, మనోవిజ్ఞానం, విలువలు, వ్యంగ్యం, ప్రేమ, సంగీతం."
+  },
+  {
+   "id": "kosha",
+   "name": "కోశాలు",
+   "color": "#33405e",
+   "about": "పదాల చివరి అక్షరాల నుండి వెతికే సంస్కృత ప్రతిలోమ శబ్దకోశం, పద్యరచనకూ పరిశోధనకూ."
+  }
+ ],
+ "books": [
+  {
+   "id": "chitkala",
+   "title": "చిత్కళ",
+   "en": "Chitkala Lalita",
+   "lang": "te",
+   "series": "pranava",
+   "img": "lalita",
+   "form": "చైతన్యోదయ కావ్యం · 108 సోపానాలు",
+   "blurb": "నువ్వు జపించే నామాల్లో నీ జీవితపు పటం దాగి ఉంటే? చైతన్యపు అగ్నిగుండంలో పుట్టిన శక్తి, రాగాన్ని పాశంగా, క్రోధాన్ని అంకుశంగా, మనస్సును చెరకువిల్లుగా చేతబట్టి నిలిచింది. ఆమె అహంకారపు అసురుని దహించిన యుద్ధం నీలోనే జరుగుతోంది. మూలం నుండి శిరస్సు వరకు ఆమె ఎక్కిన మెట్లు నీ మనస్సు ఎక్కవలసిన మెట్లు. ఉదయం, సంఘర్షణ, ఆరోహణం, విస్తారం, ఐక్యం: నూట ఎనిమిది సోపానాల్లో భావం రసంగా, కామం సౌందర్యంగా శుద్ధమయ్యే చైతన్యోదయ కావ్యం."
+  },
+  {
+   "id": "narayanam",
+   "title": "నరాయణం",
+   "en": "Narayanam Vishnu",
+   "lang": "te",
+   "series": "pranava",
+   "img": "vishnu",
+   "form": "నరుని అయనం · 108 సోపానాలు",
+   "blurb": "నాలుక మీద నామం నర్తిస్తే జపం. నడకలో నామం నడిస్తే జీవితం. తరతరాలుగా మన ఇళ్ళలో ప్రతిధ్వనిస్తున్న నామాలను దూరపు దైవానికి పంపే స్తుతులుగా కాక, మనిషి మనస్సు ఎక్కవలసిన మెట్లుగా చదివే కావ్యమిది. సమగ్రత, విస్తారం, త్యాగం, కాలజయం, సృజనం, ధారణం: ప్రతి నామమూ ఒక జీవనపాఠం. ధర్మ, అర్థ, కామ, మోక్ష పాదాలుగా సాగే నూట ఎనిమిది సోపానాల నరుని అయనం. ఒక్క దీర్ఘం దూరాన్ని నడకతో దాటే ప్రయాణం."
+  },
+  {
+   "id": "kshiramathanam",
+   "title": "క్షీరమథనం",
+   "en": "Kshiramathanam Lakshmi",
+   "lang": "te",
+   "series": "pranava",
+   "img": "lakshmi",
+   "form": "జీవనమథన కావ్యం · 108 సోపానాలు",
+   "blurb": "మొదట విషం, తర్వాత అమృతం, ఆ తర్వాతే శ్రీ. సంపద గురించి మాట్లాడటానికి సంకోచిస్తాం, కానీ మన పూర్వులు దాన్ని దేవతగా ఆరాధించి వేయి నామాలు అల్లారు. ఆ నామాలలో ధనమూ ఉంది, విద్యా ఉంది, కీర్తీ ఉంది, ధైర్యమూ ఉంది, చివరకు ముక్తీ ఉంది. మథనం, ఉద్భవం, వరణం, పాలనం, శ్రీవత్సం: శ్రమ నుండి అంతస్సంపద వరకు నూట ఎనిమిది సోపానాల జీవనమథన కావ్యం. సంపదను నడిపించడం నేర్పే నడక."
+  },
+  {
+   "id": "spandanam",
+   "title": "స్పందనం",
+   "en": "Spandanam Shiva",
+   "lang": "te",
+   "series": "pranava",
+   "img": "shiva",
+   "form": "నిశ్చలత్వపు నాదకావ్యం · 108 సోపానాలు",
+   "blurb": "నిశ్చలత్వం స్పందించినప్పుడు సృష్టి, స్పందనం నిశ్చలమైనప్పుడు ముక్తి. హిమశిఖరంపై ఒక మౌనం ఉంది, సంగీతమంతా విశ్రమించే మౌనం. స్థిరత్వమూ భయంకరత్వమూ, శ్మశానమూ శృంగారమూ, భిక్షువూ విశ్వేశ్వరుడూ ఒకే స్వరూపంలో ఇమిడిన ఆ మౌనాన్ని వర్ణించే వేయి నామాలను మనిషి లోపలి మోక్షమార్గపు మెట్లుగా చదివే కావ్యమిది. న, మ, శి, వా, య: పంచాక్షరపు ఐదు అక్షరాల వెంట నూట ఎనిమిది సోపానాల నిశ్చలత్వపు నాదకావ్యం."
+  },
+  {
+   "id": "geya-brahma-sa",
+   "title": "गेयब्रह्मपुराणम्",
+   "en": "Geya Brahma Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-brahma-te",
+   "title": "గేయ బ్రహ్మపురాణం",
+   "en": "Geya Brahma Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-padma-sa",
+   "title": "गेयपद्मपुराणम्",
+   "en": "Geya Padma Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-padma-te",
+   "title": "గేయ పద్మపురాణం",
+   "en": "Geya Padma Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-vishnu-sa",
+   "title": "गेयविष्णुपुराणम्",
+   "en": "Geya Vishnu Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-vishnu-te",
+   "title": "గేయ విష్ణుపురాణం",
+   "en": "Geya Vishnu Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-shiva-sa",
+   "title": "गेयशिवपुराणम्",
+   "en": "Geya Shiva Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-shiva-te",
+   "title": "గేయ శివపురాణం",
+   "en": "Geya Shiva Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-bhagavata-sa",
+   "title": "गेयभागवतपुराणम्",
+   "en": "Geya Bhagavata Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-bhagavata-te",
+   "title": "గేయ భాగవతపురాణం",
+   "en": "Geya Bhagavata Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-narada-sa",
+   "title": "गेयनारदपुराणम्",
+   "en": "Geya Narada Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-narada-te",
+   "title": "గేయ నారదపురాణం",
+   "en": "Geya Narada Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-markandeya-sa",
+   "title": "गेयमार्कण्डेयपुराणम्",
+   "en": "Geya Markandeya Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-markandeya-te",
+   "title": "గేయ మార్కండేయపురాణం",
+   "en": "Geya Markandeya Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-agni-sa",
+   "title": "गेयअग्निपुराणम्",
+   "en": "Geya Agni Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-agni-te",
+   "title": "గేయ అగ్నిపురాణం",
+   "en": "Geya Agni Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-bhavishya-sa",
+   "title": "गेयभविष्यपुराणम्",
+   "en": "Geya Bhavishya Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-bhavishya-te",
+   "title": "గేయ భవిష్యపురాణం",
+   "en": "Geya Bhavishya Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-brahmavaivarta-sa",
+   "title": "गेयब्रह्मवैवर्तपुराणम्",
+   "en": "Geya Brahmavaivarta Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-brahmavaivarta-te",
+   "title": "గేయ బ్రహ్మవైవర్తపురాణం",
+   "en": "Geya Brahmavaivarta Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-linga-sa",
+   "title": "गेयलिङ्गपुराणम्",
+   "en": "Geya Linga Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-linga-te",
+   "title": "గేయ లింగపురాణం",
+   "en": "Geya Linga Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-varaha-sa",
+   "title": "गेयवराहपुराणम्",
+   "en": "Geya Varaha Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-varaha-te",
+   "title": "గేయ వరాహపురాణం",
+   "en": "Geya Varaha Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-skanda-sa",
+   "title": "गेयस्कन्दपुराणम्",
+   "en": "Geya Skanda Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-skanda-te",
+   "title": "గేయ స్కందపురాణం",
+   "en": "Geya Skanda Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-vamana-sa",
+   "title": "गेयवामनपुराणम्",
+   "en": "Geya Vamana Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-vamana-te",
+   "title": "గేయ వామనపురాణం",
+   "en": "Geya Vamana Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-kurma-sa",
+   "title": "गेयकूर्मपुराणम्",
+   "en": "Geya Kurma Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-kurma-te",
+   "title": "గేయ కూర్మపురాణం",
+   "en": "Geya Kurma Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-matsya-sa",
+   "title": "गेयमत्स्यपुराणम्",
+   "en": "Geya Matsya Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-matsya-te",
+   "title": "గేయ మత్స్యపురాణం",
+   "en": "Geya Matsya Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-garuda-sa",
+   "title": "गेयगरुडपुराणम्",
+   "en": "Geya Garuda Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-garuda-te",
+   "title": "గేయ గరుడపురాణం",
+   "en": "Geya Garuda Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-brahmanda-sa",
+   "title": "गेयब्रह्माण्डपुराणम्",
+   "en": "Geya Brahmanda Purana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-brahmanda-te",
+   "title": "గేయ బ్రహ్మాండపురాణం",
+   "en": "Geya Brahmanda Purana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ పురాణం"
+  },
+  {
+   "id": "geya-ramayana-sa",
+   "title": "गेयरामायणम्",
+   "en": "Geya Ramayana Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ ఇతిహాసం"
+  },
+  {
+   "id": "geya-ramayana-te",
+   "title": "గేయ రామాయణం",
+   "en": "Geya Ramayana Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ ఇతిహాసం"
+  },
+  {
+   "id": "geya-mahabharata-sa",
+   "title": "गेयमहाभारतम्",
+   "en": "Geya Mahabharata Sanskrit",
+   "lang": "sa",
+   "series": "geya",
+   "form": "గేయ ఇతిహాసం"
+  },
+  {
+   "id": "geya-mahabharata-te",
+   "title": "గేయ మహాభారతం",
+   "en": "Geya Mahabharata Telugu",
+   "lang": "te",
+   "series": "geya",
+   "form": "గేయ ఇతిహాసం"
+  },
+  {
+   "id": "navadurga",
+   "title": "श्रीनवदुर्गालहरीमाला",
+   "en": "Navadurga Lahari Mala",
+   "lang": "sa",
+   "series": "stotra",
+   "form": "స్తోత్రకావ్యం"
+  },
+  {
+   "id": "ashvadhati",
+   "title": "अश्वधाटीनक्षत्रमाला",
+   "en": "Ashvadhati Nakshatra Mala",
+   "lang": "sa",
+   "series": "stotra",
+   "form": "స్తోత్రమాల"
+  },
+  {
+   "id": "dashadipika",
+   "title": "దశదీపిక",
+   "en": "Dashadipika",
+   "lang": "te",
+   "series": "dasha",
+   "form": "పది వచనకావ్యాల సంపుటం",
+   "blurb": "ప్రతీపచక్రం, ఫలశ్రుతి, దృక్పథం, వర్ణాతీతం, స్వరైక్యం, ప్రణయమిథునం, అంతర్మంథనం, ప్రాణధార, మృగదర్పణం, స్వదూతం: పది తెలుగు వచనకావ్యాలు ఒకే సంపుటంలో."
+  },
+  {
+   "id": "pratipachakram",
+   "title": "ప్రతీపచక్రం",
+   "en": "Pratipachakram",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "phalashruti",
+   "title": "ఫలశ్రుతి",
+   "en": "Phalashruti",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "drikpatham",
+   "title": "దృక్పథం",
+   "en": "Drikpatham",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "varnatitam",
+   "title": "వర్ణాతీతం",
+   "en": "Varnatitam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "swaraikyam",
+   "title": "స్వరైక్యం",
+   "en": "Swaraikyam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "pranayamithunam",
+   "title": "ప్రణయమిథునం",
+   "en": "Pranayamithunam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "antarmanthanam",
+   "title": "అంతర్మంథనం",
+   "en": "Antarmanthanam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "pranadhara",
+   "title": "ప్రాణధార",
+   "en": "Pranadhara",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "mrigadarpanam",
+   "title": "మృగదర్పణం",
+   "en": "Mrigadarpanam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "svadutam",
+   "title": "స్వదూతం",
+   "en": "Svadutam",
+   "lang": "te",
+   "series": "dasha",
+   "form": "వచనకావ్యం"
+  },
+  {
+   "id": "pratiloma",
+   "title": "प्रतिलोमशब्दकोशः",
+   "en": "Pratiloma Shabdakosha reverse dictionary",
+   "lang": "sa",
+   "series": "kosha",
+   "form": "బహుసంపుట కోశం"
+  }
+ ]
+}
