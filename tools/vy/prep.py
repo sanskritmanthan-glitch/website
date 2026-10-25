@@ -44,16 +44,29 @@ for di, e in enumerate(entries):
                     if pr == Prayoga.Kartari and len(set(p.text for p in ps)) > 1:
                         # ubhayapadī: find each form's pada from its tiṅ ending
                         for p in vl.derive(Pada.Tinanta(**args)):
-                            atm = any(t in ATM for st in p.history for t in st.result)
+                            tin_ = [st.result[-1] for st in p.history if st.code == '3.4.78']
+                            atm = bool(tin_) and tin_[0] in ATM
                             add(p.text, f't{di}.{li}.{pi}.{pu * 3 + va}.{1 if atm else 0}'); n += 1
                     else:
                         for p in ps: add(p.text, f't{di}.{li}.{pi}.{pu * 3 + va}'); n += 1
     if di % 300 == 0: print(di, n, file=sys.stderr)
+# sanādi roots (causative, desiderative, intensive) in the commonest lakāras
+for di, e in enumerate(entries):
+    for sn, SN in (('Ric', Sanadi.Ric), ('san', Sanadi.san), ('yaN', Sanadi.yaN)):
+        try: dd = e.dhatu.with_sanadi([SN])
+        except Exception: continue
+        for li in (0, 3, 6):
+            for pu in range(3):
+                for va in range(3):
+                    try: ps = v.derive(Pada.Tinanta(dhatu=dd, prayoga=Prayoga.Kartari, lakara=LAK[li], purusha=PUR[pu], vacana=VAC[va]))
+                    except Exception: continue
+                    for p in ps: add(p.text, f't{di}.{li}.0.{pu * 3 + va}..{sn}'); n += 1
+print('with sanādi', n, file=sys.stderr)
 # kṛdantas
 KRT = ['kta', 'ktavatu', 'ktvA', 'tumun', 'tavya', 'anIyar', 'yat', 'Ryat', 'Satf', 'SAnac', 'Rvul', 'tfc', 'lyuw', 'GaY', 'ktin']
 for di, e in enumerate(entries):
     for k in KRT:
-        try: ps = v.derive(Krdanta(dhatu=e.dhatu, krt=getattr(Krt, k)))
+        try: ps = v.derive(Pratipadika.krdanta(e.dhatu, getattr(Krt, k)))
         except Exception: continue
         for p in ps: add(p.text, f'k{di}.{k}'); n += 1
 print('verbal forms', n, file=sys.stderr)

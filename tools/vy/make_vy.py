@@ -57,6 +57,16 @@ CSS = """
 .mc .back{background:linear-gradient(135deg,#e0a43a,#b4531f);color:#fff;font-size:1.8rem}.mc .face{background:var(--paper);border:2px solid var(--line);transform:rotateY(180deg)}.mc .face.form{font-size:1.2rem;color:var(--saffron)}
 .mc.up .back{transform:rotateY(180deg)}.mc.up .face{transform:rotateY(0)}.mc.got .face{border-color:#2f7d32;background:rgba(47,125,50,.1)}
 .load{text-align:center;color:var(--muted);padding:60px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px}.tiles a{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 14px;text-decoration:none;color:var(--ink)}
+.tiles a:hover{border-color:var(--saffron)}.tiles b{display:block;font-weight:500;font-size:1.15rem;color:var(--saffron)}.tiles small{font-family:var(--la);color:var(--muted)}
+.sec2{font-size:1.3rem;font-weight:500;color:var(--gold);border-bottom:1px solid var(--line);margin:26px 0 8px;padding-bottom:4px}.sec2 small{font-family:var(--la);font-size:.8rem;color:var(--muted)}
+.unit h3{margin:16px 0 6px;font-weight:500}.unit h3 small{font-family:var(--la);color:var(--muted);font-size:.8rem}.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.lessons a{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px 12px;text-decoration:none;color:var(--ink)}
+.lessons a:hover{border-color:var(--saffron)}.lessons a.done{border-color:#2f7d32}.lessons .no,.lesson .no{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);font:600 .85rem var(--la)}
+.lessons b{font-weight:500;display:block}.lessons small{font-family:var(--la);color:var(--muted);font-size:.8rem;line-height:1.3;display:block}.lessons .ck{color:#2f7d32;font-size:1.2rem}
+.lesson{max-width:980px}.lesson h1 .no{width:40px;height:40px;font-size:1rem;vertical-align:middle;background:var(--saffron);color:#fff}.lb{font-family:var(--la);font-size:1.02rem;line-height:1.75}.lb b{font-family:var(--dv);font-weight:600}
+.lb table{font-family:var(--dv)}.sut{border-left:3px solid var(--gold);padding-left:12px}.pn{display:flex;justify-content:space-between;margin:20px 0 40px}.pn a{color:var(--saffron);text-decoration:none}
+.big2{font-size:1.4rem;margin:6px 0}.big2 span{margin-right:8px}.tool{border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
 @media (max-width:600px){.prompt .big{font-size:1.5rem}.opt{font-size:1.05rem;padding:12px 6px}.qcard{padding:16px 12px}.mc{height:80px}}
 """
 def page(name, title, en, desc, body, script):
@@ -89,6 +99,11 @@ def nav():
             p = p.replace('</style>', 'nav.seg a{padding:4px 12px;font-size:.9rem;text-decoration:none;color:var(--ink)}\nnav.seg a[aria-current="page"]{background:var(--saffron);color:#fff}\nnav.seg{flex-wrap:wrap;border-radius:14px}\n</style>', 1)
         open(f'{WEB}/{f}', 'w').write(p)
 if __name__ == '__main__':
+    for nm, t, en, desc, mod in [('vyakarana.html', 'व्याकरणम्', 'Sanskrit Grammar', 'Learn and search Sanskrit grammar: analyse any word form, a 24-lesson course from sounds to sentences, and Pāṇini’s derivation of every form, sūtra by sūtra.', 'learn'),
+        ('dhatu.html', 'धातुरूपाणि', 'Verb Forms', 'All 2,229 roots of the Pāṇinian Dhātupāṭha in every lakāra, person and number, active and passive, with upasargas, causatives, desideratives and intensives, and the derivation of each form.', 'dhatu'),
+        ('shabda.html', 'शब्दरूपाणि', 'Noun Forms', 'Decline any Sanskrit noun, pronoun or numeral in all three genders, with model paradigms and the sūtra-by-sūtra derivation of every form.', 'shabda'),
+        ('pratyaya.html', 'प्रत्ययाः · उपसर्गाः', 'Suffixes and Prefixes', 'Sanskrit kṛt, taddhita, strī and sanādi suffixes, the tiṅ and sup endings and the twenty-two upasargas, with anubandhas, sūtras and live examples.', 'pratyaya')]:
+        page(nm, t, en, desc, '', f"import {{ start }} from './vy/{mod}.js';\nstart();")
     page('krida.html', 'क्रीडाङ्गणम्', 'Sanskrit Grammar Games', 'Learn Sanskrit grammar by playing: verb and noun forms, sandhi, metres, antyākṣarī, Sudoku of verb endings, crosswords and memory cards — every answer checked by Pāṇini’s rules, with levels from slow to fast and tokens to earn.',
          '', "import { route } from './vy/games.js';\nwindow.addEventListener('hashchange', route); route();")
     nav(); print('grammar pages written')

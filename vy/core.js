@@ -120,3 +120,29 @@ export function award(n){const w=wallet();w.tokens+=n;w.total+=n;saveWallet(w);r
 export const rand=n=>Math.floor(Math.random()*n);
 export const pick=a=>a[rand(a.length)];
 export const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rand(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* ---------------- more of the engine ---------------- */
+export function tinP(di, la, pr, pu, va, pada, opt = {}) { return tin(di, la, pr, pu, va, { ...opt, pada }) }
+export function tad(stem, t) { try { return V.deriveTaddhitantas({ pratipadika: { basic: stem }, taddhita: t }) } catch (e) { return [] } }
+export function supKrt(di, k, lg, vi, va, opt = {}) {
+  try { return V.deriveSubantas({ pratipadika: { krdanta: { dhatu: dhatuArgs(di, opt), krt: k, unadi: null, lakara: null, prayoga: null } }, linga: LIN[lg], vibhakti: VIB[vi], vacana: VAC[va] }) } catch (e) { return [] }
+}
+export const byCode = code => DH.findIndex(e => e[0] === code);
+// decode a reverse-index reference
+export function decode(ref) {
+  const t = ref[0], p = ref.slice(1).split('.');
+  if (t === 't') return { kind: 'tin', di: +p[0], la: +p[1], pr: +p[2], pu: Math.floor(+p[3] / 3), va: +p[3] % 3, pada: p[4] === undefined || p[4] === '' ? null : +p[4], san: p[5] || '' };
+  if (t === 'k') return { kind: 'krt', di: +p[0], krt: p[1] };
+  if (t === 's') return { kind: 'sup', stem: p[0], g: p[1], vi: Math.floor(+p[2] / 3), va: +p[2] % 3 };
+}
+// upasarga spellings as they appear before a verb (after sandhi)
+export const UPV = { pra: ['pra'], parA: ['parA'], apa: ['apa'], sam: ['sam', 'saM', 'saY', 'san', 'saR'], anu: ['anu', 'anv'], ava: ['ava'], nis: ['niH', 'nir', 'niz', 'niS', 'nis'], dus: ['duH', 'dur', 'duz', 'duS', 'dus'],
+  vi: ['vi', 'vy'], AN: ['A'], ni: ['ni', 'ny'], aDi: ['aDi', 'aDy'], api: ['api', 'apy'], ati: ['ati', 'aty'], su: ['su', 'sv'], ud: ['ud', 'ut', 'uc', 'uj', 'ul', 'un', 'uq'], aBi: ['aBi', 'aBy'], prati: ['prati', 'praty'], pari: ['pari', 'pary'], upa: ['upa'] };
+export const UPD = { pra: 'प्र', parA: 'परा', apa: 'अप', sam: 'सम्', anu: 'अनु', ava: 'अव', nis: 'निस्', dus: 'दुस्', vi: 'वि', AN: 'आङ्', ni: 'नि', aDi: 'अधि', api: 'अपि', ati: 'अति', su: 'सु', ud: 'उद्', aBi: 'अभि', prati: 'प्रति', pari: 'परि', upa: 'उप' };
+export const KRTL = [
+  ['kta', 'क्त', 'past passive participle', '3.2.102'], ['ktavatu', 'क्तवतु', 'past active participle', '3.2.102'], ['Satf', 'शतृ', 'present participle (P)', '3.2.124'], ['SAnac', 'शानच्', 'present participle (Ā)', '3.2.124'],
+  ['ktvA', 'क्त्वा', 'having done (gerund)', '3.4.21'], ['tumun', 'तुमुन्', 'to do (infinitive)', '3.3.10'], ['tavya', 'तव्य', 'should be done', '3.1.96'], ['anIyar', 'अनीयर्', 'should be done', '3.1.96'],
+  ['yat', 'यत्', 'to be done', '3.1.97'], ['Ryat', 'ण्यत्', 'to be done', '3.1.124'], ['kyap', 'क्यप्', 'to be done', '3.1.106'], ['Rvul', 'ण्वुल्', 'doer (-aka)', '3.1.133'], ['tfc', 'तृच्', 'doer (-tṛ)', '3.1.133'],
+  ['lyuw', 'ल्युट्', 'action noun (-ana)', '3.3.115'], ['GaY', 'घञ्', 'action noun', '3.3.18'], ['ktin', 'क्तिन्', 'feminine action noun (-ti)', '3.3.94'], ['ac', 'अच्', 'agent (pacādi)', '3.1.134'], ['ka', 'क', 'agent', '3.1.135'],
+  ['Rini', 'णिनि', 'habitual agent', '3.2.78'], ['kvip', 'क्विप्', 'agent (zero suffix)', '3.2.76'], ['kvasu', 'क्वसु', 'perfect participle (P)', '3.2.107'], ['kAnac', 'कानच्', 'perfect participle (Ā)', '3.2.106'], ['Ramul', 'णमुल्', 'repeated action', '3.4.22'],
+];

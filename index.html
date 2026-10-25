@@ -186,7 +186,7 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
 
 <header><div class="wrap">
   <a class="brand" href="#top" id="brand"></a>
-  <nav aria-label="Sections"><a href="#library" id="n0"></a><a href="shloka.html" id="n3"></a><a href="sutra.html" id="n4"></a><a href="mantra.html" id="n5"></a><a href="granthalaya.html" id="n6"></a><a href="shastra.html" id="n7"></a><a href="krida.html" id="n8"></a>
+  <nav aria-label="Sections"><a href="#library" id="n0"></a><a href="shloka.html" id="n3"></a><a href="sutra.html" id="n4"></a><a href="mantra.html" id="n5"></a><a href="granthalaya.html" id="n6"></a><a href="shastra.html" id="n7"></a><a href="vyakarana.html" id="n9"></a><a href="krida.html" id="n8"></a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-l="sa" class="dv">संस्कृतम्</button><button type="button" data-l="en" class="la">English</button><button type="button" data-l="hi" class="dv">हिन्दी</button><button type="button" data-l="te" class="te">తెలుగు</button>
     </div></nav>
@@ -249,7 +249,7 @@ function rows(list,c){const n=Math.min(c,fit(c));if(c===1)return[list];const out
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(render,150)});
 function render(){
   const u=UI[L];document.documentElement.lang=L;
-  $("#brand").textContent=u.brand;$("#n0").textContent=u.nav[0];$("#n3").textContent={te:"శ్లోకాన్వేషణం",sa:"श्लोकान्वेषणम्",hi:"श्लोक-अन्वेषण",en:"Śloka Index"}[L];$("#n4").textContent={te:"సూత్రాన్వేషణం",sa:"सूत्रान्वेषणम्",hi:"सूत्र-अन्वेषण",en:"Sūtra Index"}[L];$("#n5").textContent={te:"మంత్రాన్వేషణం",sa:"मन्त्रान्वेषणम्",hi:"मन्त्र-अन्वेषण",en:"Mantra Index"}[L];$("#n6").textContent={te:"గ్రంథాన్వేషణం",sa:"ग्रन्थान्वेषणम्",hi:"ग्रन्थ-अन्वेषण",en:"Text Library"}[L];$("#n7").textContent={te:"శాస్త్రాలు",sa:"शास्त्राणि",hi:"शास्त्र",en:"Śāstras"}[L];$("#n8").textContent={te:"క్రీడాంగణం",sa:"क्रीडाङ्गणम्",hi:"क्रीडाङ्गण",en:"Play & Learn"}[L];
+  $("#brand").textContent=u.brand;$("#n0").textContent=u.nav[0];$("#n3").textContent={te:"శ్లోకాన్వేషణం",sa:"श्लोकान्वेषणम्",hi:"श्लोक-अन्वेषण",en:"Śloka Index"}[L];$("#n4").textContent={te:"సూత్రాన్వేషణం",sa:"सूत्रान्वेषणम्",hi:"सूत्र-अन्वेषण",en:"Sūtra Index"}[L];$("#n5").textContent={te:"మంత్రాన్వేషణం",sa:"मन्त्रान्वेषणम्",hi:"मन्त्र-अन्वेषण",en:"Mantra Index"}[L];$("#n6").textContent={te:"గ్రంథాన్వేషణం",sa:"ग्रन्थान्वेषणम्",hi:"ग्रन्थ-अन्वेषण",en:"Text Library"}[L];$("#n7").textContent={te:"శాస్త్రాలు",sa:"शास्त्राणि",hi:"शास्त्र",en:"Śāstras"}[L];$("#n8").textContent={te:"క్రీడాంగణం",sa:"क्रीडाङ्गणम्",hi:"क्रीडाङ्गण",en:"Play & Learn"}[L];$("#n9").textContent={te:"వ్యాకరణం",sa:"व्याकरणम्",hi:"व्याकरण",en:"Grammar"}[L];
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
   $("#hero").innerHTML=u.hero;$("#sub").textContent=u.sub;
   document.querySelectorAll("[data-dir]").forEach(e=>e.textContent=u.dirs[e.dataset.dir]);
