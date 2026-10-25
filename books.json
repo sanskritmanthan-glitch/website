@@ -1,59 +1,104 @@
 {
  "shelves": [
   {
-   "id": "new",
-   "color": "#b4531f",
+   "id": "new-sa",
+   "color": "#9c3b16",
    "name": {
     "te": [
-     "కొత్తగా వచ్చినవి · ప్రణవచతుర్దిశ",
-     "ఓంకారం చుట్టూ నాలుగు దిక్కులు: నాలుగు సహస్రనామాలను నాలుగు పురుషార్థాల జీవనసోపానాలుగా చదివే తెలుగు వచనకావ్యాలు."
+     "కొత్తగా వచ్చినవి · ప్రణవచతుర్దిశ · సంస్కృతం",
+     "ఓంకారం చుట్టూ నాలుగు దిక్కులు: నాలుగు సహస్రనామాలను జీవనసోపానాలుగా చదివే సంస్కృత ముక్తచ్ఛందః కావ్యాలు."
     ],
     "sa": [
-     "नूतनाः ग्रन्थाः · प्रणवचतुर्दिशा",
-     "ओङ्कारं परितः चतस्रः दिशः: सहस्रनामचतुष्टयं पुरुषार्थचतुष्टयस्य जीवनसोपानरूपेण पठत् तेलुगुवचनकाव्यचतुष्टयम्।"
+     "नूतनाः ग्रन्थाः · प्रणवचतुर्दिशा · संस्कृतम्",
+     "ओङ्कारं परितश्चतस्रो दिशः — सहस्रनामचतुष्टयं जीवनसोपानरूपेण पठन्ति चत्वारि संस्कृतमुक्तच्छन्दःकाव्यानि।"
     ],
     "hi": [
-     "नई पुस्तकें · प्रणवचतुर्दिशा",
-     "ओंकार के चारों ओर चार दिशाएँ: चार सहस्रनामों को चार पुरुषार्थों के जीवन-सोपानों के रूप में पढ़ने वाले तेलुगु वचन-काव्य।"
+     "नई पुस्तकें · प्रणवचतुर्दिशा · संस्कृत",
+     "ओंकार के चारों ओर चार दिशाएँ: चार सहस्रनामों को जीवन-सोपानों के रूप में पढ़ने वाले संस्कृत मुक्तछन्द काव्य।"
     ],
     "en": [
-     "New arrivals · Four Directions of Om",
-     "Four Telugu free-verse books that read four Sahasranāmas as stages of life across the four aims: kāma, dharma, artha and mokṣa."
-    ]
-   },
-   "cols": 4,
-   "ids": [
-    "chitkala",
-    "narayanam",
-    "kshiramathanam",
-    "spandanam"
-   ],
-   "hide": false
-  },
-  {
-   "id": "pranava",
-   "color": "#7a3b2a",
-   "name": {
-    "te": [
-     "ప్రణవచతుర్దిశ",
-     "ఓంకారం చుట్టూ నాలుగు దిక్కులు: నాలుగు సహస్రనామాలను నాలుగు పురుషార్థాల జీవనసోపానాలుగా చదివే తెలుగు వచనకావ్యాలు."
-    ],
-    "sa": [
-     "प्रणवचतुर्दिशा",
-     "ओङ्कारं परितः चतस्रः दिशः: सहस्रनामचतुष्टयं पुरुषार्थचतुष्टयस्य जीवनसोपानरूपेण पठत् तेलुगुवचनकाव्यचतुष्टयम्।"
-    ],
-    "hi": [
-     "प्रणवचतुर्दिशा",
-     "ओंकार के चारों ओर चार दिशाएँ: चार सहस्रनामों को चार पुरुषार्थों के जीवन-सोपानों के रूप में पढ़ने वाले तेलुगु वचन-काव्य।"
-    ],
-    "en": [
-     "Praṇava-caturdiśā · Four Directions of Om",
-     "Four Telugu free-verse books that read four Sahasranāmas as stages of life across the four aims: kāma, dharma, artha and mokṣa."
+     "New arrivals · Four Directions of Om · Sanskrit",
+     "Four Sanskrit free-verse kāvyas that read four Sahasranāmas as stages of life across kāma, dharma, artha and mokṣa."
     ]
    },
    "cols": 4,
    "ids": null,
-   "hide": true
+   "hide": false
+  },
+  {
+   "id": "new-te",
+   "color": "#b4531f",
+   "name": {
+    "te": [
+     "కొత్తగా వచ్చినవి · ప్రణవచతుర్దిశ · తెలుగు",
+     "అవే నాలుగు గ్రంథాలు, మూల తెలుగు వచనకావ్యాలుగా."
+    ],
+    "sa": [
+     "नूतनाः ग्रन्थाः · प्रणवचतुर्दिशा · तेलुगु",
+     "त एव चत्वारो ग्रन्थाः, मूलतेलुगुवचनकाव्यरूपेण।"
+    ],
+    "hi": [
+     "नई पुस्तकें · प्रणवचतुर्दिशा · तेलुगु",
+     "वही चार ग्रन्थ, मूल तेलुगु वचन-काव्य के रूप में।"
+    ],
+    "en": [
+     "New arrivals · Four Directions of Om · Telugu",
+     "The same four books in their original Telugu free verse."
+    ]
+   },
+   "cols": 4,
+   "ids": null,
+   "hide": false
+  },
+  {
+   "id": "vk-sa",
+   "color": "#5b3a6e",
+   "name": {
+    "te": [
+     "వచనకావ్యాలు · దశదీపిక · సంస్కృతం",
+     "పది కావ్యాలు, మూడు సంపుటాలు, సమగ్ర దశదీపిక: సంస్కృత ముక్తచ్ఛందస్సులో."
+    ],
+    "sa": [
+     "मुक्तच्छन्दःकाव्यानि · दशदीपिका · संस्कृतम्",
+     "दश काव्यानि, त्रयः खण्डाः, समग्रा दशदीपिका च — संस्कृतमुक्तच्छन्दसि।"
+    ],
+    "hi": [
+     "मुक्तछन्द काव्य · दशदीपिका · संस्कृत",
+     "दस काव्य, तीन खण्ड और सम्पूर्ण दशदीपिका, संस्कृत मुक्तछन्द में।"
+    ],
+    "en": [
+     "Free-verse kāvyas · Daśadīpikā · Sanskrit",
+     "Ten works, their three volumes and the complete Daśadīpikā, in Sanskrit free verse."
+    ]
+   },
+   "cols": 4,
+   "ids": null,
+   "hide": false
+  },
+  {
+   "id": "vk-te",
+   "color": "#5b4a1a",
+   "name": {
+    "te": [
+     "వచనకావ్యాలు · దశదీపిక · తెలుగు",
+     "అవే పది కావ్యాలు, మూడు సంపుటాలు, సమగ్ర దశదీపిక: మూల తెలుగులో."
+    ],
+    "sa": [
+     "वचनकाव्यानि · दशदीपिका · तेलुगु",
+     "तान्येव दश काव्यानि, त्रयः खण्डाः, समग्रा दशदीपिका च — मूलतेलुगुभाषायाम्।"
+    ],
+    "hi": [
+     "वचन-काव्य · दशदीपिका · तेलुगु",
+     "वही दस काव्य, तीन खण्ड और सम्पूर्ण दशदीपिका, मूल तेलुगु में।"
+    ],
+    "en": [
+     "Vacana-kāvyas · Daśadīpikā · Telugu",
+     "The same ten works, three volumes and complete Daśadīpikā in the original Telugu."
+    ]
+   },
+   "cols": 4,
+   "ids": null,
+   "hide": false
   },
   {
    "id": "geya-sa",
@@ -76,7 +121,7 @@
      "All eighteen Mahāpurāṇas retold in singable Sanskrit verse."
     ]
    },
-   "cols": 6,
+   "cols": 4,
    "ids": null,
    "hide": false
   },
@@ -101,7 +146,7 @@
      "All eighteen Mahāpurāṇas retold in singable Telugu verse."
     ]
    },
-   "cols": 6,
+   "cols": 4,
    "ids": null,
    "hide": false
   },
@@ -151,7 +196,7 @@
      "Ten Sanskrit volumes comparing India's knowledge traditions with Western educational psychology."
     ]
    },
-   "cols": 5,
+   "cols": 4,
    "ids": null,
    "hide": false
   },
@@ -176,7 +221,7 @@
      "Three English books on the Indian philosophy, psychology and governance of education, each in comparative perspective."
     ]
    },
-   "cols": 3,
+   "cols": 4,
    "ids": null,
    "hide": false
   },
@@ -185,45 +230,20 @@
    "color": "#8a2340",
    "name": {
     "te": [
-     "సంస్కృత కావ్యాలు · స్తోత్రాలు",
-     "దార్శనిక సందేశమహాకావ్యం, నూతన ఛందస్సుల్లో నక్షత్ర-లహరీ రూపాల్లో రచించిన స్తోత్రాలు."
+     "స్తోత్రకావ్యాలు",
+     "నూతన ఛందస్సుల్లో నక్షత్ర, లహరీ రూపాల్లో రచించిన సంస్కృత స్తోత్రాలు."
     ],
     "sa": [
-     "संस्कृतकाव्यानि स्तोत्राणि च",
-     "दार्शनिकं सन्देशमहाकाव्यं, नूतनच्छन्दस्सु नक्षत्र-लहरी-रूपेषु स्तोत्राणि च।"
+     "स्तोत्रकाव्यानि",
+     "नूतनच्छन्दस्सु नक्षत्र-लहरी-रूपेषु संस्कृतस्तोत्राणि।"
     ],
     "hi": [
-     "संस्कृत काव्य एवं स्तोत्र",
-     "दार्शनिक सन्देश-महाकाव्य, और नए छन्दों में नक्षत्र-लहरी रूपों के स्तोत्र।"
+     "स्तोत्र-काव्य",
+     "नए छन्दों में नक्षत्र और लहरी रूपों के संस्कृत स्तोत्र।"
     ],
     "en": [
-     "Sanskrit Kāvya & Stotras",
-     "A philosophical messenger-epic, and hymns in new metres in nakṣatra and laharī forms."
-    ]
-   },
-   "cols": 3,
-   "ids": null,
-   "hide": false
-  },
-  {
-   "id": "dasha",
-   "color": "#5b4a1a",
-   "name": {
-    "te": [
-     "తెలుగు వచనకావ్యాలు · దశదీపిక",
-     "పది తెలుగు వచనకావ్యాలు, వాటి మూడు సంపుటాలు, సమగ్ర సంపుటం దశదీపిక."
-    ],
-    "sa": [
-     "दशदीपिका · तेलुगुकाव्यानि",
-     "दश तेलुगुवचनकाव्यानि: तत्त्वं, मनोविज्ञानं, मूल्यानि, व्यङ्ग्यं, प्रेम, सङ्गीतं च।"
-    ],
-    "hi": [
-     "दशदीपिका · तेलुगु काव्य",
-     "दस तेलुगु वचन-काव्य: दर्शन, मनोविज्ञान, मूल्य, व्यंग्य, प्रेम और संगीत।"
-    ],
-    "en": [
-     "Daśadīpikā · Telugu poetry",
-     "Ten Telugu free-verse works on philosophy, psychology, values, satire, love and music."
+     "Stotra-kāvyas",
+     "Sanskrit hymns in new metres, in nakṣatra and laharī forms."
     ]
    },
    "cols": 4,
@@ -251,19 +271,59 @@
      "Sanskrit and Telugu reverse dictionaries, arranged by word endings, for poets and researchers."
     ]
    },
-   "cols": 1,
+   "cols": 4,
    "ids": null,
    "hide": false
   }
  ],
  "books": [
   {
+   "id": "skt-lalita",
+   "title": "चित्कला",
+   "sub": "चैतन्योदयकाव्यम् · अष्टोत्तरशतसोपानानि",
+   "full": "चित्कला",
+   "lang": "sa",
+   "shelf": "new-sa",
+   "cover": "skt-pr-lalita",
+   "play": null
+  },
+  {
+   "id": "skt-vishnu",
+   "title": "नरायणम्",
+   "sub": "नरस्यायनम् · अष्टोत्तरशतसोपानानि",
+   "full": "नरायणम्",
+   "lang": "sa",
+   "shelf": "new-sa",
+   "cover": "skt-pr-vishnu",
+   "play": null
+  },
+  {
+   "id": "skt-lakshmi",
+   "title": "क्षीरमथनम्",
+   "sub": "जीवनमथनकाव्यम् · अष्टोत्तरशतसोपानानि",
+   "full": "क्षीरमथनम्",
+   "lang": "sa",
+   "shelf": "new-sa",
+   "cover": "skt-pr-lakshmi",
+   "play": null
+  },
+  {
+   "id": "skt-shiva",
+   "title": "स्पन्दनम्",
+   "sub": "निश्चलत्वस्य नादकाव्यम् · अष्टोत्तरशतसोपानानि",
+   "full": "स्पन्दनम्",
+   "lang": "sa",
+   "shelf": "new-sa",
+   "cover": "skt-pr-shiva",
+   "play": null
+  },
+  {
    "id": "chitkala",
    "title": "చిత్కళ",
    "sub": "చైతన్యోదయ కావ్యం · 108 సోపానాలు",
    "full": "చిత్కళ",
    "lang": "te",
-   "shelf": "pranava",
+   "shelf": "new-te",
    "cover": "pr-lalita",
    "play": null,
    "blurbAny": "నువ్వు జపించే నామాల్లో నీ జీవితపు పటం దాగి ఉంటే? చైతన్యపు అగ్నిగుండంలో పుట్టిన శక్తి, రాగాన్ని పాశంగా, క్రోధాన్ని అంకుశంగా, మనస్సును చెరకువిల్లుగా చేతబట్టి నిలిచింది. ఆమె అహంకారపు అసురుని దహించిన యుద్ధం నీలోనే జరుగుతోంది. మూలం నుండి శిరస్సు వరకు ఆమె ఎక్కిన మెట్లు నీ మనస్సు ఎక్కవలసిన మెట్లు. ఉదయం, సంఘర్షణ, ఆరోహణం, విస్తారం, ఐక్యం: నూట ఎనిమిది సోపానాల్లో భావం రసంగా, కామం సౌందర్యంగా శుద్ధమయ్యే చైతన్యోదయ కావ్యం."
@@ -274,7 +334,7 @@
    "sub": "నరుని అయనం · 108 సోపానాలు",
    "full": "నరాయణం",
    "lang": "te",
-   "shelf": "pranava",
+   "shelf": "new-te",
    "cover": "pr-vishnu",
    "play": null,
    "blurbAny": "నాలుక మీద నామం నర్తిస్తే జపం. నడకలో నామం నడిస్తే జీవితం. తరతరాలుగా మన ఇళ్ళలో ప్రతిధ్వనిస్తున్న నామాలను దూరపు దైవానికి పంపే స్తుతులుగా కాక, మనిషి మనస్సు ఎక్కవలసిన మెట్లుగా చదివే కావ్యమిది. సమగ్రత, విస్తారం, త్యాగం, కాలజయం, సృజనం, ధారణం: ప్రతి నామమూ ఒక జీవనపాఠం. ధర్మ, అర్థ, కామ, మోక్ష పాదాలుగా సాగే నూట ఎనిమిది సోపానాల నరుని అయనం. ఒక్క దీర్ఘం దూరాన్ని నడకతో దాటే ప్రయాణం."
@@ -285,7 +345,7 @@
    "sub": "జీవనమథన కావ్యం · 108 సోపానాలు",
    "full": "క్షీరమథనం",
    "lang": "te",
-   "shelf": "pranava",
+   "shelf": "new-te",
    "cover": "pr-lakshmi",
    "play": null,
    "blurbAny": "మొదట విషం, తర్వాత అమృతం, ఆ తర్వాతే శ్రీ. సంపద గురించి మాట్లాడటానికి సంకోచిస్తాం, కానీ మన పూర్వులు దాన్ని దేవతగా ఆరాధించి వేయి నామాలు అల్లారు. ఆ నామాలలో ధనమూ ఉంది, విద్యా ఉంది, కీర్తీ ఉంది, ధైర్యమూ ఉంది, చివరకు ముక్తీ ఉంది. మథనం, ఉద్భవం, వరణం, పాలనం, శ్రీవత్సం: శ్రమ నుండి అంతస్సంపద వరకు నూట ఎనిమిది సోపానాల జీవనమథన కావ్యం. సంపదను నడిపించడం నేర్పే నడక."
@@ -296,10 +356,305 @@
    "sub": "నిశ్చలత్వపు నాదకావ్యం · 108 సోపానాలు",
    "full": "స్పందనం",
    "lang": "te",
-   "shelf": "pranava",
+   "shelf": "new-te",
    "cover": "pr-shiva",
    "play": null,
    "blurbAny": "నిశ్చలత్వం స్పందించినప్పుడు సృష్టి, స్పందనం నిశ్చలమైనప్పుడు ముక్తి. హిమశిఖరంపై ఒక మౌనం ఉంది, సంగీతమంతా విశ్రమించే మౌనం. స్థిరత్వమూ భయంకరత్వమూ, శ్మశానమూ శృంగారమూ, భిక్షువూ విశ్వేశ్వరుడూ ఒకే స్వరూపంలో ఇమిడిన ఆ మౌనాన్ని వర్ణించే వేయి నామాలను మనిషి లోపలి మోక్షమార్గపు మెట్లుగా చదివే కావ్యమిది. న, మ, శి, వా, య: పంచాక్షరపు ఐదు అక్షరాల వెంట నూట ఎనిమిది సోపానాల నిశ్చలత్వపు నాదకావ్యం."
+  },
+  {
+   "id": "skt-mrigadarpanam",
+   "title": "मृगदर्पणम्",
+   "sub": "हास्यदर्पणे अद्यतनः समाजः",
+   "full": "मृगदर्पणम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Mrigadarpanam",
+   "play": null
+  },
+  {
+   "id": "skt-phalashrutih",
+   "title": "फलश्रुतिः",
+   "sub": "एको मातामहः · एको दौहित्रः · फलपाठाः",
+   "full": "फलश्रुतिः",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Phalashrutih",
+   "play": null
+  },
+  {
+   "id": "skt-varnatitam",
+   "title": "वर्णातीतम्",
+   "sub": "वर्णानदृष्टवत्योर्दृशोः प्रकाशः",
+   "full": "वर्णातीतम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Varnatitam",
+   "play": null
+  },
+  {
+   "id": "skt-pranadhara",
+   "title": "प्राणधारा",
+   "sub": "जीवनचक्रदार्शनिकं काव्यम्",
+   "full": "प्राणधारा",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Pranadhara",
+   "play": null
+  },
+  {
+   "id": "skt-pranayamithunam",
+   "title": "प्रणयमिथुनम्",
+   "sub": "जननाज्ज्योतिर्लयपर्यन्तम्",
+   "full": "प्रणयमिथुनम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Pranayamithunam",
+   "play": null
+  },
+  {
+   "id": "skt-pratipachakram",
+   "title": "प्रतीपचक्रम्",
+   "sub": "द्वादशराशिषु विलोमगामि मानसम्",
+   "full": "प्रतीपचक्रम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Pratipachakram",
+   "play": null
+  },
+  {
+   "id": "skt-antarmanthanam",
+   "title": "अन्तर्मन्थनम्",
+   "sub": "दार्शनिकः कवितासङ्ग्रहः",
+   "full": "अन्तर्मन्थनम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Antarmanthanam",
+   "play": null
+  },
+  {
+   "id": "skt-drkpatham",
+   "title": "दृक्पथम्",
+   "sub": "दृष्टेः पदचारः",
+   "full": "दृक्पथम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Drkpatham",
+   "play": null
+  },
+  {
+   "id": "skt-svaraikyam",
+   "title": "स्वरैक्यम्",
+   "sub": "सप्तद्वीपा वसुन्धरा · सप्तस्वरयुता जीवनधारा",
+   "full": "स्वरैक्यम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Svaraikyam",
+   "play": null
+  },
+  {
+   "id": "DasdEgAAQBAJ",
+   "full": "Svadutam: स्वदूतम् (दार्शनिकं सन्देशमहाकाव्यम्)",
+   "play": "https://play.google.com/store/books/details?id=DasdEgAAQBAJ",
+   "cover": "DasdEgAAQBAJ",
+   "en": "Svadutam: स्वदूतम् (दार्शनिकं सन्देशमहाकाव्यम्)",
+   "title": "स्वदूतम्",
+   "sub": "Svadutam",
+   "lang": "sa",
+   "shelf": "vk-sa"
+  },
+  {
+   "id": "skt-lokadarpanam",
+   "title": "लोकदर्पणम्",
+   "sub": "प्रथमः खण्डः · मृगदर्पणम् · फलश्रुतिः · वर्णातीतम्",
+   "full": "लोकदर्पणम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Lokadarpanam",
+   "play": null
+  },
+  {
+   "id": "skt-pranavartanam",
+   "title": "प्राणावर्तनम्",
+   "sub": "द्वितीयः खण्डः · प्राणधारा · प्रणयमिथुनम् · प्रतीपचक्रम्",
+   "full": "प्राणावर्तनम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Pranavartanam",
+   "play": null
+  },
+  {
+   "id": "skt-antardarshanam",
+   "title": "अन्तर्दर्शनम्",
+   "sub": "तृतीयः खण्डः · अन्तर्मन्थनम् · दृक्पथम् · स्वरैक्यम्",
+   "full": "अन्तर्दर्शनम्",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Antardarshanam",
+   "play": null
+  },
+  {
+   "id": "skt-dashadipika",
+   "title": "दशदीपिका",
+   "sub": "दश दीपाः · दश मार्गाः · एकं ज्योतिः",
+   "full": "दशदीपिका",
+   "lang": "sa",
+   "shelf": "vk-sa",
+   "cover": "skt-Dashadipika",
+   "play": null
+  },
+  {
+   "id": "4DseEgAAQBAJ",
+   "full": "Mriga Darpanam (మృగదర్పణం): నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
+   "play": "https://play.google.com/store/books/details?id=4DseEgAAQBAJ",
+   "cover": "4DseEgAAQBAJ",
+   "en": "Mriga Darpanam (మృగదర్పణం): నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
+   "title": "మృగదర్పణం",
+   "sub": "నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "wswfEgAAQBAJ",
+   "full": "ఫలశ్రుతి (Phalashruti): ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
+   "play": "https://play.google.com/store/books/details?id=wswfEgAAQBAJ",
+   "cover": "wswfEgAAQBAJ",
+   "en": "ఫలశ్రుతి (Phalashruti): ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
+   "title": "ఫలశ్రుతి",
+   "sub": "ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "TN8fEgAAQBAJ",
+   "full": "వర్ణాతీతం (Varnatitam): రంగులు చూడని కళ్ళు చూపిన వెలుగు",
+   "play": "https://play.google.com/store/books/details?id=TN8fEgAAQBAJ",
+   "cover": "TN8fEgAAQBAJ",
+   "en": "వర్ణాతీతం (Varnatitam): రంగులు చూడని కళ్ళు చూపిన వెలుగు",
+   "title": "వర్ణాతీతం",
+   "sub": "రంగులు చూడని కళ్ళు చూపిన వెలుగు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "sQweEgAAQBAJ",
+   "full": "ప్రాణధార (Pranadhara): జీవనచక్ర దార్శనిక కావ్యం",
+   "play": "https://play.google.com/store/books/details?id=sQweEgAAQBAJ",
+   "cover": "sQweEgAAQBAJ",
+   "en": "ప్రాణధార (Pranadhara): జీవనచక్ర దార్శనిక కావ్యం",
+   "title": "ప్రాణధార",
+   "sub": "జీవనచక్ర దార్శనిక కావ్యం",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "ducfEgAAQBAJ",
+   "full": "ప్రణయమిథునం (Pranayamithunam): జననం నుండి జ్యోతిర్లయం వరకు",
+   "play": "https://play.google.com/store/books/details?id=ducfEgAAQBAJ",
+   "cover": "ducfEgAAQBAJ",
+   "en": "ప్రణయమిథునం (Pranayamithunam): జననం నుండి జ్యోతిర్లయం వరకు",
+   "title": "ప్రణయమిథునం",
+   "sub": "జననం నుండి జ్యోతిర్లయం వరకు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "4scfEgAAQBAJ",
+   "full": "ప్రతీపచక్రం (Pratipachakram): ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
+   "play": "https://play.google.com/store/books/details?id=4scfEgAAQBAJ",
+   "cover": "4scfEgAAQBAJ",
+   "en": "ప్రతీపచక్రం (Pratipachakram): ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
+   "title": "ప్రతీపచక్రం",
+   "sub": "ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "అ-తర-మ-థన-Antarmanthanam-",
+   "full": "అంతర్మంథనం (Antarmanthanam): దార్శనిక కవితా సంపుటి",
+   "play": null,
+   "cover": "te-antarmanthanam",
+   "en": "అంతర్మంథనం (Antarmanthanam): దార్శనిక కవితా సంపుటి",
+   "title": "అంతర్మంథనం",
+   "sub": "దార్శనిక కవితా సంపుటి",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "b9kfEgAAQBAJ",
+   "full": "దృక్పథం: చూపు నడిచిన దారి",
+   "play": "https://play.google.com/store/books/details?id=b9kfEgAAQBAJ",
+   "cover": "b9kfEgAAQBAJ",
+   "en": "దృక్పథం: చూపు నడిచిన దారి",
+   "title": "దృక్పథం",
+   "sub": "చూపు నడిచిన దారి",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "NOcfEgAAQBAJ",
+   "full": "స్వరైక్యం (Swaraikyam): సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
+   "play": "https://play.google.com/store/books/details?id=NOcfEgAAQBAJ",
+   "cover": "NOcfEgAAQBAJ",
+   "en": "స్వరైక్యం (Swaraikyam): సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
+   "title": "స్వరైక్యం",
+   "sub": "సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "svadutam-telugu",
+   "title": "స్వదూతం",
+   "sub": "దశసర్గల దార్శనిక సందేశ కావ్యం",
+   "full": "స్వదూతం: దశసర్గల దార్శనిక సందేశ కావ్యం",
+   "en": "Svadutam (Telugu): a philosophical sandesha-kavya in ten sargas",
+   "lang": "te",
+   "shelf": "vk-te",
+   "cover": "te-svadutam",
+   "play": null
+  },
+  {
+   "id": "8zggEgAAQBAJ",
+   "full": "లోకదర్పణం (Lokadarpanam): మూడు సామాజిక వచనకావ్యాలు",
+   "play": "https://play.google.com/store/books/details?id=8zggEgAAQBAJ",
+   "cover": "8zggEgAAQBAJ",
+   "en": "లోకదర్పణం (Lokadarpanam): మూడు సామాజిక వచనకావ్యాలు",
+   "title": "లోకదర్పణం",
+   "sub": "మూడు సామాజిక వచనకావ్యాలు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "MTggEgAAQBAJ",
+   "full": "ప్రాణావర్తనం (Pranavartanam): మూడు జీవనచక్ర వచనకావ్యాలు",
+   "play": "https://play.google.com/store/books/details?id=MTggEgAAQBAJ",
+   "cover": "MTggEgAAQBAJ",
+   "en": "ప్రాణావర్తనం (Pranavartanam): మూడు జీవనచక్ర వచనకావ్యాలు",
+   "title": "ప్రాణావర్తనం",
+   "sub": "మూడు జీవనచక్ర వచనకావ్యాలు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "అ-తర-దర-శన-Antardarshanam-",
+   "full": "అంతర్దర్శనం (Antardarshanam): మూడు తాత్త్విక వచనకావ్యాలు",
+   "play": null,
+   "cover": "te-antardarshanam",
+   "en": "అంతర్దర్శనం (Antardarshanam): మూడు తాత్త్విక వచనకావ్యాలు",
+   "title": "అంతర్దర్శనం",
+   "sub": "మూడు తాత్త్విక వచనకావ్యాలు",
+   "lang": "te",
+   "shelf": "vk-te"
+  },
+  {
+   "id": "దశద-ప-క-Dashadipika-",
+   "full": "దశదీపిక (Dashadipika): పది దీపాలు · పది దారులు · ఒకే వెలుగు",
+   "play": null,
+   "cover": "te-dashadipika",
+   "en": "దశదీపిక (Dashadipika): పది దీపాలు · పది దారులు · ఒకే వెలుగు",
+   "title": "దశదీపిక",
+   "sub": "పది దీపాలు · పది దారులు · ఒకే వెలుగు",
+   "lang": "te",
+   "shelf": "vk-te"
   },
   {
    "id": "ucwdEgAAQBAJ",
@@ -895,17 +1250,6 @@
    "shelf": "edu-en"
   },
   {
-   "id": "DasdEgAAQBAJ",
-   "full": "Svadutam: स्वदूतम् (दार्शनिकं सन्देशमहाकाव्यम्)",
-   "play": "https://play.google.com/store/books/details?id=DasdEgAAQBAJ",
-   "cover": "DasdEgAAQBAJ",
-   "en": "Svadutam: स्वदूतम् (दार्शनिकं सन्देशमहाकाव्यम्)",
-   "title": "स्वदूतम्",
-   "sub": "Svadutam",
-   "lang": "sa",
-   "shelf": "stotra"
-  },
-  {
    "id": "RfUZEgAAQBAJ",
    "full": "Śrī Navadurgā Laharī Mālā: श्रीनवदुर्गालहरीमाला",
    "play": "https://play.google.com/store/books/details?id=RfUZEgAAQBAJ",
@@ -926,160 +1270,6 @@
    "sub": "Aśvadhāṭī Nakṣatramālā",
    "lang": "sa",
    "shelf": "stotra"
-  },
-  {
-   "id": "దశద-ప-క-Dashadipika-",
-   "full": "దశదీపిక (Dashadipika): పది దీపాలు · పది దారులు · ఒకే వెలుగు",
-   "play": null,
-   "cover": "te-dashadipika",
-   "en": "దశదీపిక (Dashadipika): పది దీపాలు · పది దారులు · ఒకే వెలుగు",
-   "title": "దశదీపిక",
-   "sub": "పది దీపాలు · పది దారులు · ఒకే వెలుగు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "8zggEgAAQBAJ",
-   "full": "లోకదర్పణం (Lokadarpanam): మూడు సామాజిక వచనకావ్యాలు",
-   "play": "https://play.google.com/store/books/details?id=8zggEgAAQBAJ",
-   "cover": "8zggEgAAQBAJ",
-   "en": "లోకదర్పణం (Lokadarpanam): మూడు సామాజిక వచనకావ్యాలు",
-   "title": "లోకదర్పణం",
-   "sub": "మూడు సామాజిక వచనకావ్యాలు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "MTggEgAAQBAJ",
-   "full": "ప్రాణావర్తనం (Pranavartanam): మూడు జీవనచక్ర వచనకావ్యాలు",
-   "play": "https://play.google.com/store/books/details?id=MTggEgAAQBAJ",
-   "cover": "MTggEgAAQBAJ",
-   "en": "ప్రాణావర్తనం (Pranavartanam): మూడు జీవనచక్ర వచనకావ్యాలు",
-   "title": "ప్రాణావర్తనం",
-   "sub": "మూడు జీవనచక్ర వచనకావ్యాలు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "అ-తర-దర-శన-Antardarshanam-",
-   "full": "అంతర్దర్శనం (Antardarshanam): మూడు తాత్త్విక వచనకావ్యాలు",
-   "play": null,
-   "cover": "te-antardarshanam",
-   "en": "అంతర్దర్శనం (Antardarshanam): మూడు తాత్త్విక వచనకావ్యాలు",
-   "title": "అంతర్దర్శనం",
-   "sub": "మూడు తాత్త్విక వచనకావ్యాలు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "ducfEgAAQBAJ",
-   "full": "ప్రణయమిథునం (Pranayamithunam): జననం నుండి జ్యోతిర్లయం వరకు",
-   "play": "https://play.google.com/store/books/details?id=ducfEgAAQBAJ",
-   "cover": "ducfEgAAQBAJ",
-   "en": "ప్రణయమిథునం (Pranayamithunam): జననం నుండి జ్యోతిర్లయం వరకు",
-   "title": "ప్రణయమిథునం",
-   "sub": "జననం నుండి జ్యోతిర్లయం వరకు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "NOcfEgAAQBAJ",
-   "full": "స్వరైక్యం (Swaraikyam): సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
-   "play": "https://play.google.com/store/books/details?id=NOcfEgAAQBAJ",
-   "cover": "NOcfEgAAQBAJ",
-   "en": "స్వరైక్యం (Swaraikyam): సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
-   "title": "స్వరైక్యం",
-   "sub": "సప్తద్వీపా వసుంధరా · సప్తస్వరయుతా జీవనధారా",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "TN8fEgAAQBAJ",
-   "full": "వర్ణాతీతం (Varnatitam): రంగులు చూడని కళ్ళు చూపిన వెలుగు",
-   "play": "https://play.google.com/store/books/details?id=TN8fEgAAQBAJ",
-   "cover": "TN8fEgAAQBAJ",
-   "en": "వర్ణాతీతం (Varnatitam): రంగులు చూడని కళ్ళు చూపిన వెలుగు",
-   "title": "వర్ణాతీతం",
-   "sub": "రంగులు చూడని కళ్ళు చూపిన వెలుగు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "b9kfEgAAQBAJ",
-   "full": "దృక్పథం: చూపు నడిచిన దారి",
-   "play": "https://play.google.com/store/books/details?id=b9kfEgAAQBAJ",
-   "cover": "b9kfEgAAQBAJ",
-   "en": "దృక్పథం: చూపు నడిచిన దారి",
-   "title": "దృక్పథం",
-   "sub": "చూపు నడిచిన దారి",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "wswfEgAAQBAJ",
-   "full": "ఫలశ్రుతి (Phalashruti): ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
-   "play": "https://play.google.com/store/books/details?id=wswfEgAAQBAJ",
-   "cover": "wswfEgAAQBAJ",
-   "en": "ఫలశ్రుతి (Phalashruti): ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
-   "title": "ఫలశ్రుతి",
-   "sub": "ఒక తోట · ఒక తాతయ్య · ఒక మనవడు · పదహారు పండ్ల పాఠాలు",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "4scfEgAAQBAJ",
-   "full": "ప్రతీపచక్రం (Pratipachakram): ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
-   "play": "https://play.google.com/store/books/details?id=4scfEgAAQBAJ",
-   "cover": "4scfEgAAQBAJ",
-   "en": "ప్రతీపచక్రం (Pratipachakram): ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
-   "title": "ప్రతీపచక్రం",
-   "sub": "ద్వాదశరాశులలో విలోమగమనం చేసిన మానసం",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "sQweEgAAQBAJ",
-   "full": "ప్రాణధార (Pranadhara): జీవనచక్ర దార్శనిక కావ్యం",
-   "play": "https://play.google.com/store/books/details?id=sQweEgAAQBAJ",
-   "cover": "sQweEgAAQBAJ",
-   "en": "ప్రాణధార (Pranadhara): జీవనచక్ర దార్శనిక కావ్యం",
-   "title": "ప్రాణధార",
-   "sub": "జీవనచక్ర దార్శనిక కావ్యం",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "4DseEgAAQBAJ",
-   "full": "Mriga Darpanam (మృగదర్పణం): నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
-   "play": "https://play.google.com/store/books/details?id=4DseEgAAQBAJ",
-   "cover": "4DseEgAAQBAJ",
-   "en": "Mriga Darpanam (మృగదర్పణం): నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
-   "title": "మృగదర్పణం",
-   "sub": "నవ్వుల అద్దంలో నేటి సమాజం (Today’s Society in the Mirror of Laughter)",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "అ-తర-మ-థన-Antarmanthanam-",
-   "full": "అంతర్మంథనం (Antarmanthanam): దార్శనిక కవితా సంపుటి",
-   "play": null,
-   "cover": "te-antarmanthanam",
-   "en": "అంతర్మంథనం (Antarmanthanam): దార్శనిక కవితా సంపుటి",
-   "title": "అంతర్మంథనం",
-   "sub": "దార్శనిక కవితా సంపుటి",
-   "lang": "te",
-   "shelf": "dasha"
-  },
-  {
-   "id": "svadutam-telugu",
-   "title": "స్వదూతం",
-   "sub": "దశసర్గల దార్శనిక సందేశ కావ్యం",
-   "full": "స్వదూతం: దశసర్గల దార్శనిక సందేశ కావ్యం",
-   "en": "Svadutam (Telugu): a philosophical sandesha-kavya in ten sargas",
-   "lang": "te",
-   "shelf": "dasha",
-   "cover": "te-svadutam",
-   "play": null
   },
   {
    "id": "HiQeEgAAQBAJ",
