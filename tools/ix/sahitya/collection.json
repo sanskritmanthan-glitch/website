@@ -1,0 +1,166 @@
+{
+ "dir": "kv",
+ "page": "sahitya.html",
+ "xref": true,
+ "groups": [
+  [
+   "नाट्यशास्त्रम्",
+   [
+    "natyashastra",
+    "dasharupaka",
+    "natakacandrika"
+   ]
+  ],
+  [
+   "अलङ्कारशास्त्रम्",
+   [
+    "bhamaha",
+    "kavyadarsha",
+    "vamana",
+    "udbhata",
+    "dhvanyaloka",
+    "kavyaprakasha",
+    "candraloka",
+    "prataparudriya",
+    "rasarnavasudhakara",
+    "sahityadarpana"
+   ]
+  ],
+  [
+   "छन्दःशास्त्रम्",
+   [
+    "vrittaratnakara"
+   ]
+  ]
+ ],
+ "works": {
+  "natyashastra": {
+   "title": "नाट्यशास्त्रम्",
+   "abbr": "ना॰शा॰",
+   "note": "भरतमुनिः",
+   "alias": [
+    "natyashastra",
+    "natyasastra",
+    "bhn",
+    "bharata"
+   ]
+  },
+  "dasharupaka": {
+   "title": "दशरूपकम्",
+   "abbr": "द॰रू॰",
+   "note": "धनञ्जयः",
+   "alias": [
+    "dasharupaka",
+    "dasarupaka"
+   ]
+  },
+  "natakacandrika": {
+   "title": "नाटकचन्द्रिका",
+   "abbr": "ना॰च॰",
+   "note": "रूपगोस्वामी",
+   "alias": [
+    "natakacandrika"
+   ]
+  },
+  "bhamaha": {
+   "title": "काव्यालङ्कारः",
+   "abbr": "भा॰का॰",
+   "note": "भामहः",
+   "alias": [
+    "bhamaha",
+    "kavyalankara"
+   ]
+  },
+  "kavyadarsha": {
+   "title": "काव्यादर्शः",
+   "abbr": "का॰द॰",
+   "note": "दण्डी",
+   "alias": [
+    "kavyadarsha",
+    "kavyadarsa",
+    "dandin"
+   ]
+  },
+  "vamana": {
+   "title": "काव्यालङ्कारसूत्राणि",
+   "abbr": "वा॰का॰",
+   "note": "वामनः",
+   "alias": [
+    "vamana",
+    "kavyalankarasutra"
+   ]
+  },
+  "udbhata": {
+   "title": "काव्यालङ्कारसारसंग्रहः",
+   "abbr": "उ॰का॰",
+   "note": "उद्भटः",
+   "alias": [
+    "udbhata"
+   ]
+  },
+  "dhvanyaloka": {
+   "title": "ध्वन्यालोकः",
+   "abbr": "ध्व॰",
+   "note": "आनन्दवर्धनः",
+   "alias": [
+    "dhvanyaloka",
+    "dhv"
+   ]
+  },
+  "kavyaprakasha": {
+   "title": "काव्यप्रकाशः",
+   "abbr": "का॰प्र॰",
+   "note": "मम्मटः",
+   "alias": [
+    "kavyaprakasha",
+    "kavyaprakasa",
+    "mammata"
+   ]
+  },
+  "candraloka": {
+   "title": "चन्द्रालोकः",
+   "abbr": "च॰लो॰",
+   "note": "जयदेवः (पीयूषवर्षः)",
+   "alias": [
+    "candraloka",
+    "chandraloka"
+   ]
+  },
+  "prataparudriya": {
+   "title": "प्रतापरुद्रीयम्",
+   "abbr": "प्र॰रु॰",
+   "note": "विद्यानाथः",
+   "alias": [
+    "prataparudriya"
+   ]
+  },
+  "rasarnavasudhakara": {
+   "title": "रसार्णवसुधाकरः",
+   "abbr": "र॰सु॰",
+   "note": "सिंहभूपालः",
+   "alias": [
+    "rasarnavasudhakara"
+   ]
+  },
+  "sahityadarpana": {
+   "title": "साहित्यदर्पणः",
+   "abbr": "सा॰द॰",
+   "note": "विश्वनाथः",
+   "alias": [
+    "sahityadarpana",
+    "sd"
+   ]
+  },
+  "vrittaratnakara": {
+   "title": "वृत्तरत्नाकरः",
+   "abbr": "वृ॰र॰",
+   "note": "केदारभट्टः",
+   "alias": [
+    "vrittaratnakara",
+    "vrttaratnakara"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

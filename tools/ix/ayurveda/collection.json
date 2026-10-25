@@ -1,0 +1,98 @@
+{
+ "dir": "ay",
+ "page": "ayurveda.html",
+ "xref": true,
+ "groups": [
+  [
+   "संहिताः",
+   [
+    "caraka",
+    "ashtangahridaya"
+   ]
+  ],
+  [
+   "निघण्टवः · द्रव्यगुणम्",
+   [
+    "rajanighantu",
+    "ashtanganighantu",
+    "bhavaprakasha",
+    "annapanavidhi"
+   ]
+  ],
+  [
+   "योगग्रन्थाः",
+   [
+    "yogashataka"
+   ]
+  ]
+ ],
+ "works": {
+  "caraka": {
+   "title": "चरकसंहिता",
+   "abbr": "च॰सं॰",
+   "note": "अग्निवेशः · चरकः",
+   "alias": [
+    "caraka",
+    "charaka",
+    "car"
+   ]
+  },
+  "ashtangahridaya": {
+   "title": "अष्टाङ्गहृदयम्",
+   "abbr": "अ॰हृ॰",
+   "note": "वाग्भटः",
+   "alias": [
+    "ah",
+    "ashtangahridaya",
+    "astangahrdaya",
+    "vagbhata"
+   ]
+  },
+  "bhavaprakasha": {
+   "title": "भावप्रकाशः",
+   "abbr": "भा॰प्र॰",
+   "note": "भावमिश्रः",
+   "alias": [
+    "bhavaprakasha",
+    "bhpr"
+   ]
+  },
+  "rajanighantu": {
+   "title": "राजनिघण्टुः",
+   "abbr": "रा॰नि॰",
+   "note": "नरहरिः",
+   "alias": [
+    "rajanighantu",
+    "rajni"
+   ]
+  },
+  "ashtanganighantu": {
+   "title": "अष्टाङ्गनिघण्टुः",
+   "abbr": "अ॰नि॰",
+   "note": "वाहटः",
+   "alias": [
+    "ashtanganighantu",
+    "vanigh"
+   ]
+  },
+  "annapanavidhi": {
+   "title": "अन्नपानविधिः",
+   "abbr": "अ॰पा॰",
+   "note": "सुषेणः",
+   "alias": [
+    "annapanavidhi"
+   ]
+  },
+  "yogashataka": {
+   "title": "योगशतकम्",
+   "abbr": "यो॰श॰",
+   "note": "",
+   "alias": [
+    "yogashataka",
+    "yogasataka"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

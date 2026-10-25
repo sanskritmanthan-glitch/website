@@ -1,0 +1,158 @@
+{
+ "dir": "jy",
+ "page": "jyotisha.html",
+ "xref": true,
+ "groups": [
+  [
+   "गणितम्",
+   [
+    "shulba",
+    "aryabhatiya",
+    "brahmasphuta",
+    "lilavati",
+    "bijaganita"
+   ]
+  ],
+  [
+   "सिद्धान्तः",
+   [
+    "vedangajyotisha",
+    "suryasiddhanta"
+   ]
+  ],
+  [
+   "संहिता · होरा · यात्रा",
+   [
+    "brihatsamhita",
+    "brihajjataka",
+    "brihadyogayatra",
+    "yogayatra",
+    "tikkanikayatra",
+    "vivahapatala"
+   ]
+  ]
+ ],
+ "works": {
+  "shulba": {
+   "title": "आपस्तम्बशुल्बसूत्रम्",
+   "abbr": "आ॰शु॰",
+   "note": "आपस्तम्बः",
+   "alias": [
+    "shulba",
+    "sulba",
+    "apsulba"
+   ]
+  },
+  "aryabhatiya": {
+   "title": "आर्यभटीयम्",
+   "abbr": "आ॰भ॰",
+   "note": "आर्यभटः",
+   "alias": [
+    "aryabhatiya",
+    "ab"
+   ]
+  },
+  "brahmasphuta": {
+   "title": "ब्राह्मस्फुटसिद्धान्तः",
+   "abbr": "ब्रा॰स्फु॰",
+   "note": "ब्रह्मगुप्तः",
+   "alias": [
+    "brahmasphuta",
+    "bss"
+   ]
+  },
+  "lilavati": {
+   "title": "लीलावती",
+   "abbr": "ली॰",
+   "note": "भास्कराचार्यः",
+   "alias": [
+    "lilavati",
+    "lil"
+   ]
+  },
+  "bijaganita": {
+   "title": "बीजगणितम्",
+   "abbr": "बी॰ग॰",
+   "note": "भास्कराचार्यः",
+   "alias": [
+    "bijaganita",
+    "bg"
+   ]
+  },
+  "vedangajyotisha": {
+   "title": "वेदाङ्गज्योतिषम्",
+   "abbr": "वे॰ज्यो॰",
+   "note": "लगधः",
+   "alias": [
+    "vedangajyotisha",
+    "vj"
+   ]
+  },
+  "suryasiddhanta": {
+   "title": "सूर्यसिद्धान्तः",
+   "abbr": "सू॰सि॰",
+   "note": "",
+   "alias": [
+    "suryasiddhanta",
+    "ss"
+   ]
+  },
+  "brihatsamhita": {
+   "title": "बृहत्संहिता",
+   "abbr": "बृ॰सं॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "brihatsamhita",
+    "brhatsamhita",
+    "bs"
+   ]
+  },
+  "brihajjataka": {
+   "title": "बृहज्जातकम्",
+   "abbr": "बृ॰जा॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "brihajjataka",
+    "bj"
+   ]
+  },
+  "brihadyogayatra": {
+   "title": "बृहद्योगयात्रा",
+   "abbr": "बृ॰यो॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "brihadyogayatra",
+    "by"
+   ]
+  },
+  "yogayatra": {
+   "title": "योगयात्रा",
+   "abbr": "यो॰या॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "yogayatra",
+    "yy"
+   ]
+  },
+  "tikkanikayatra": {
+   "title": "टिक्कनिकायात्रा",
+   "abbr": "टि॰या॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "tikkanikayatra",
+    "ty"
+   ]
+  },
+  "vivahapatala": {
+   "title": "विवाहपटलम्",
+   "abbr": "वि॰प॰",
+   "note": "वराहमिहिरः",
+   "alias": [
+    "vivahapatala",
+    "vp"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

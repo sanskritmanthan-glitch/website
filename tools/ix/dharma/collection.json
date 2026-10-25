@@ -1,0 +1,258 @@
+{
+ "dir": "dh",
+ "page": "dharma.html",
+ "xref": true,
+ "groups": [
+  [
+   "धर्मसूत्राणि",
+   [
+    "apastamba",
+    "baudhayana",
+    "gautama",
+    "vasishtha",
+    "vaikhanasa"
+   ]
+  ],
+  [
+   "स्मृतयः",
+   [
+    "manu",
+    "yajnavalkya",
+    "narada",
+    "parashara",
+    "vishnu",
+    "katyayana",
+    "brihaspati",
+    "angirasa",
+    "yama"
+   ]
+  ],
+  [
+   "गृह्यसूत्राणि",
+   [
+    "ashvalayanagrhya",
+    "shankhayanagrhya",
+    "manavagrhya",
+    "varahagrhya",
+    "kaushika"
+   ]
+  ],
+  [
+   "श्रौतसूत्राणि",
+   [
+    "ashvalayanashrauta",
+    "shankhayanashrauta"
+   ]
+  ]
+ ],
+ "works": {
+  "apastamba": {
+   "title": "आपस्तम्बधर्मसूत्रम्",
+   "abbr": "आप॰ध॰",
+   "note": "आपस्तम्बः",
+   "alias": [
+    "apastamba",
+    "apdh",
+    "apastambadharmasutra"
+   ]
+  },
+  "baudhayana": {
+   "title": "बौधायनधर्मसूत्रम्",
+   "abbr": "बौ॰ध॰",
+   "note": "बौधायनः",
+   "alias": [
+    "baudhayana",
+    "baudh",
+    "bdh"
+   ]
+  },
+  "gautama": {
+   "title": "गौतमधर्मसूत्रम्",
+   "abbr": "गौ॰ध॰",
+   "note": "गौतमः",
+   "alias": [
+    "gautama",
+    "gdh"
+   ]
+  },
+  "vasishtha": {
+   "title": "वसिष्ठधर्मसूत्रम्",
+   "abbr": "व॰ध॰",
+   "note": "वसिष्ठः",
+   "alias": [
+    "vasishtha",
+    "vasistha",
+    "vadh"
+   ]
+  },
+  "vaikhanasa": {
+   "title": "वैखानसधर्मसूत्रम्",
+   "abbr": "वै॰ध॰",
+   "note": "विखनाः",
+   "alias": [
+    "vaikhanasa"
+   ]
+  },
+  "manu": {
+   "title": "मनुस्मृतिः",
+   "abbr": "मनु॰",
+   "note": "मनुः",
+   "alias": [
+    "manu",
+    "manusmrti",
+    "mn",
+    "ms"
+   ]
+  },
+  "yajnavalkya": {
+   "title": "याज्ञवल्क्यस्मृतिः",
+   "abbr": "या॰",
+   "note": "याज्ञवल्क्यः",
+   "alias": [
+    "yajnavalkya",
+    "yajn",
+    "yaj",
+    "yj"
+   ]
+  },
+  "narada": {
+   "title": "नारदस्मृतिः",
+   "abbr": "ना॰स्मृ॰",
+   "note": "नारदः",
+   "alias": [
+    "narada",
+    "naradasmrti",
+    "nar"
+   ]
+  },
+  "parashara": {
+   "title": "पराशरस्मृतिः",
+   "abbr": "प॰स्मृ॰",
+   "note": "पराशरः",
+   "alias": [
+    "parashara",
+    "parasara",
+    "par"
+   ]
+  },
+  "vishnu": {
+   "title": "विष्णुस्मृतिः",
+   "abbr": "वि॰स्मृ॰",
+   "note": "",
+   "alias": [
+    "vishnusmrti",
+    "visnusmrti",
+    "vishnu",
+    "visnu",
+    "vi"
+   ]
+  },
+  "katyayana": {
+   "title": "कात्यायनस्मृतिः",
+   "abbr": "का॰स्मृ॰",
+   "note": "कात्यायनः",
+   "alias": [
+    "katyayana",
+    "katy"
+   ]
+  },
+  "brihaspati": {
+   "title": "बृहस्पतिस्मृतिः",
+   "abbr": "बृ॰स्मृ॰",
+   "note": "बृहस्पतिः",
+   "alias": [
+    "brihaspati",
+    "brhaspati",
+    "brh"
+   ]
+  },
+  "angirasa": {
+   "title": "आङ्गिरसस्मृतिः",
+   "abbr": "आङ्गि॰",
+   "note": "अङ्गिराः",
+   "alias": [
+    "angirasa",
+    "angiras",
+    "ang"
+   ]
+  },
+  "yama": {
+   "title": "यमस्मृतयः",
+   "abbr": "यम॰",
+   "note": "यमः",
+   "alias": [
+    "yama",
+    "yamasmrti"
+   ]
+  },
+  "ashvalayanagrhya": {
+   "title": "आश्वलायनगृह्यसूत्रम्",
+   "abbr": "आश्व॰गृ॰",
+   "note": "आश्वलायनः",
+   "alias": [
+    "asvgs",
+    "ashvalayanagrhya",
+    "ags"
+   ]
+  },
+  "shankhayanagrhya": {
+   "title": "शाङ्खायनगृह्यसूत्रम्",
+   "abbr": "शा॰गृ॰",
+   "note": "शाङ्खायनः",
+   "alias": [
+    "sgs",
+    "shankhayanagrhya",
+    "sankhayanagrhya"
+   ]
+  },
+  "manavagrhya": {
+   "title": "मानवगृह्यसूत्रम्",
+   "abbr": "मा॰गृ॰",
+   "note": "",
+   "alias": [
+    "mgs",
+    "manavagrhya"
+   ]
+  },
+  "varahagrhya": {
+   "title": "वाराहगृह्यसूत्रम्",
+   "abbr": "वा॰गृ॰",
+   "note": "",
+   "alias": [
+    "vgs",
+    "varahagrhya"
+   ]
+  },
+  "kaushika": {
+   "title": "कौशिकसूत्रम्",
+   "abbr": "कौ॰सू॰",
+   "note": "कौशिकः",
+   "alias": [
+    "kaus",
+    "kausika",
+    "kaushika"
+   ]
+  },
+  "ashvalayanashrauta": {
+   "title": "आश्वलायनश्रौतसूत्रम्",
+   "abbr": "आश्व॰श्रौ॰",
+   "note": "आश्वलायनः",
+   "alias": [
+    "asvss",
+    "ashvalayanashrauta",
+    "ass"
+   ]
+  },
+  "shankhayanashrauta": {
+   "title": "शाङ्खायनश्रौतसूत्रम्",
+   "abbr": "शा॰श्रौ॰",
+   "note": "शाङ्खायनः",
+   "alias": [
+    "sss",
+    "shankhayanashrauta"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

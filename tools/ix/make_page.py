@@ -4,7 +4,32 @@ HERE = os.path.dirname(os.path.abspath(__file__)); WEB = os.path.join(HERE, '..'
 # two separate families of pages, each with its own menu
 NAV_A = [('shloka.html', 'श्लोकाः'), ('sutra.html', 'सूत्राणि'), ('mantra.html', 'मन्त्राः'), ('chandas.html', 'छन्दः')]
 NAV_B = [('granthalaya.html', 'ग्रन्थालयः'), ('itihasa.html', 'इतिहासपुराणम्'), ('subhashita.html', 'सुभाषितम्'), ('kosha.html', 'कोशः'), ('shastra.html', 'शास्त्राणि')]
+NAV_C = [('granthalaya.html', '‹ ग्रन्थालयः'), ('shastra.html', 'शास्त्राणि'), ('dharma.html', 'धर्मशास्त्रम्'), ('artha.html', 'अर्थकामौ'), ('ayurveda.html', 'आयुर्वेदः'),
+         ('rasa.html', 'रसशास्त्रम्'), ('jyotisha.html', 'गणितज्योतिषम्'), ('sahitya.html', 'नाट्यालङ्कारौ')]
+SH = lambda d, title, en, sub, ph, hint, desc, foot: dict(dir=d, unitWord='entries', title=title, en=en, tabs=[('works', 'ग्रन्थाः A–Z'), ('metres', 'छन्दांसि')],
+                                                       sub=sub, ph=ph, hint=hint, desc=desc, foot=foot)
+GF = 'Texts from GRETIL (Göttingen Register of Electronic Texts in Indian Languages), shown for study and reference; numbering follows each source edition. Prose sūtras are indexed whole; verses by pāda.'
 PAGES = {
+ 'dharma': SH('dh', 'धर्मशास्त्रान्वेषणम्', 'Dharmaśāstra Index', 'Dharmaśāstra Index · the dharmasūtras, smṛtis and gṛhya–śrauta sūtras · every sūtra and every pāda in varṇamālā order',
+   'अहिंसा सत्यमस्तेयं · manu 2.6 · apastamba 1.1.1.1 · yajnavalkya 1.1', 'Type any part of a sūtra or verse in Devanagari, Telugu or Roman, or a reference: manu 2.6 (adhyāya.śloka), yajnavalkya 2.123, apastamba 1.1.1.1, gautama 2.45.',
+   'Alphabetical index and search of the Dharmaśāstra: Āpastamba, Baudhāyana, Gautama, Vasiṣṭha and Vaikhānasa dharmasūtras; Manu, Yājñavalkya, Nārada, Parāśara, Viṣṇu, Kātyāyana, Bṛhaspati, Āṅgirasa and Yama smṛtis; gṛhya and śrauta sūtras.',
+   GF + ' The analytic editions of the dharmasūtras are shown with sandhi restored.'),
+ 'artha': SH('ak', 'अर्थकामशास्त्रान्वेषणम्', 'Artha- and Kāma-śāstra Index', 'Arthaśāstra and Kāmaśāstra Index · Kauṭilya’s Arthaśāstra by adhikaraṇa, Vātsyāyana’s Kāmasūtra and later kāmaśāstra texts',
+   'विद्याविनीतो राजा · kautilya 1.5.1 · kamasutra 1.1.1', 'Type any part of a sūtra or verse, or a reference: kautilya 1.5.1 (adhikaraṇa.adhyāya.sūtra), kamasutra 1.2.1.',
+   'Alphabetical index and search of Kauṭilya’s Arthaśāstra (all 15 adhikaraṇas), Vātsyāyana’s Kāmasūtra, Pañcasāyaka and Smaradīpikā.', GF),
+ 'ayurveda': SH('ay', 'आयुर्वेदान्वेषणम्', 'Āyurveda Index', 'Āyurveda Index · Caraka, Aṣṭāṅgahṛdaya, Rājanighaṇṭu and other texts of Indian medicine, every pāda in varṇamālā order',
+   'हिताहितं सुखं दुःखम् · caraka 1.1.41 · ah 1.1', 'Type any part of a verse — a herb, a disease, a principle — in Devanagari, Telugu or Roman, or a reference: caraka 1.1.41 (sthāna.adhyāya.verse), ah 1.1 (adhyāya.verse).',
+   'Alphabetical index and search of Āyurveda texts: Carakasaṃhitā (selected adhyāyas), Aṣṭāṅgahṛdaya Sūtrasthāna, Rājanighaṇṭu, Aṣṭāṅganighaṇṭu, Bhāvaprakāśa, Annapānavidhi, Yogaśataka.', GF),
+ 'rasa': SH('rs', 'रसशास्त्रान्वेषणम्', 'Rasaśāstra Index', 'Rasaśāstra Index · Indian alchemy and iatrochemistry: Rasārṇava, Rasahṛdaya, Rasaratnasamuccaya, Ānandakanda and more',
+   'पारदः · abhraka · rasarnava 1.1', 'Type any part of a verse — a mineral, a process (śodhana, māraṇa, jāraṇa) — in Devanagari, Telugu or Roman, or a reference such as rasarnava 8.47.',
+   'Alphabetical index and search of the Rasaśāstra (Indian alchemy): Rasārṇava, Rasahṛdayatantra, Rasendracūḍāmaṇi, Rasaratnākara, Ānandakanda, Rasaratnasamuccaya, Rasaprakāśasudhākara, Rasendracintāmaṇi, Rasamañjarī, Rasasaṃketakalikā.', GF),
+ 'jyotisha': SH('jy', 'गणितज्योतिषान्वेषणम्', 'Gaṇita–Jyotiṣa Index', 'Gaṇita–Jyotiṣa Index · mathematics and astronomy from the Śulbasūtra to Bhāskara, and Varāhamihira’s saṃhitā, horā and yātrā texts',
+   'वृत्तक्षेत्रे परिधिगुणित · lilavati 199 · aryabhatiya 2.10 · bs 52.1', 'Type any part of a verse or sūtra, or a reference: aryabhatiya 2.10, lilavati 199, bs 52.1 (Bṛhatsaṃhitā adhyāya.verse), suryasiddhanta 1.1.',
+   'Alphabetical index and search of Indian mathematics and astronomy: Āpastamba Śulbasūtra, Āryabhaṭīya, Brāhmasphuṭasiddhānta, Līlāvatī, Bījagaṇita, Vedāṅgajyotiṣa, Sūryasiddhānta, Bṛhatsaṃhitā, Bṛhajjātaka and the yātrā texts.',
+   GF + ' The analytic editions (Āryabhaṭīya, Brāhmasphuṭasiddhānta, Līlāvatī, Bījagaṇita, Bṛhatsaṃhitā) are shown with sandhi restored.'),
+ 'sahitya': SH('kv', 'नाट्यालङ्कारान्वेषणम्', 'Nāṭya–Alaṅkāra Index', 'Nāṭya and Alaṅkāra Index · Bharata’s Nāṭyaśāstra, the dramaturgy texts, the classics of Sanskrit poetics and the Vṛttaratnākara',
+   'विभावानुभावव्यभिचारि · natyashastra 6.31 · kavyadarsha 1.10', 'Type any part of a kārikā or verse, or a reference: natyashastra 6.31, kavyadarsha 2.1, sahityadarpana 1.3.',
+   'Alphabetical index and search of Nāṭyaśāstra, Daśarūpaka, Nāṭakacandrikā and the alaṅkāraśāstra: Bhāmaha, Daṇḍin, Vāmana, Udbhaṭa, Ānandavardhana, Mammaṭa, Jayadeva, Vidyānātha, Siṃhabhūpāla, Viśvanātha; and Kedārabhaṭṭa’s Vṛttaratnākara.', GF),
  'mantra': dict(dir='mn', unitWord='mantras', title='मन्त्रान्वेषणम्', en='Mantra Index', tabs=[('works', 'ग्रन्थाः A–Z'), ('metres', 'छन्दांसि')],
    sub='Mantra Index of the Vedas and Upaniṣads · every pāda of Ṛgveda, Atharvaveda and Sāmaveda, every mantra of the principal Upaniṣads, in varṇamālā order',
    ph='अग्निमीळे पुरोहितं · asato ma · ऋग्वेद 10.129.1 · katha 1.2.23 · isha 1',
@@ -71,9 +96,10 @@ def engine():
     tr = s[s.index("const V={'अ'"):s.index('/* ---------- scansion')]
     open(f'{WEB}/ix.js', 'w').write(open(f'{HERE}/ix_engine.js').read().replace('/*TRANSLIT*/', tr))
 def nav():
-    for NAV in (NAV_A, NAV_B):
+    for NAV in (NAV_A, NAV_B, NAV_C):
         live = [(f, l) for f, l in NAV if os.path.exists(f'{WEB}/{f}')]
-        for f, _ in live:
+        for f, lab in live:
+            if lab.startswith('‹'): continue          # a link up to the parent family, not a page of this one
             p = open(f'{WEB}/{f}').read()
             links = ''.join(f'<a href="{g}"{" aria-current=\"page\"" if g == f else ""}>{l}</a>' for g, l in live)
             p = re.sub(r'<nav class="seg" aria-label="Index">.*?</nav>', f'<nav class="seg" aria-label="Index">{links}</nav>', p, count=1, flags=re.S)

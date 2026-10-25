@@ -1,0 +1,118 @@
+{
+ "dir": "rs",
+ "page": "rasa.html",
+ "xref": true,
+ "groups": [
+  [
+   "रसशास्त्रम्",
+   [
+    "rasarnava",
+    "rasahridaya",
+    "rasendracudamani",
+    "rasaratnakara",
+    "anandakanda",
+    "rasaratnasamuccaya",
+    "rasaprakashasudhakara",
+    "rasendracintamani",
+    "rasamanjari",
+    "rasasanketakalika"
+   ]
+  ]
+ ],
+ "works": {
+  "rasarnava": {
+   "title": "रसार्णवः",
+   "abbr": "र॰र्ण॰",
+   "note": "",
+   "alias": [
+    "rasarnava",
+    "ras"
+   ]
+  },
+  "rasahridaya": {
+   "title": "रसहृदयतन्त्रम्",
+   "abbr": "र॰हृ॰",
+   "note": "गोविन्दभगवत्पादः",
+   "alias": [
+    "rasahridaya",
+    "grht"
+   ]
+  },
+  "rasendracudamani": {
+   "title": "रसेन्द्रचूडामणिः",
+   "abbr": "र॰चू॰",
+   "note": "सोमदेवः",
+   "alias": [
+    "rasendracudamani",
+    "rcum"
+   ]
+  },
+  "rasaratnakara": {
+   "title": "रसरत्नाकरः",
+   "abbr": "र॰र॰",
+   "note": "नित्यनाथसिद्धः",
+   "alias": [
+    "rasaratnakara",
+    "rra"
+   ]
+  },
+  "anandakanda": {
+   "title": "आनन्दकन्दः",
+   "abbr": "आ॰क॰",
+   "note": "",
+   "alias": [
+    "anandakanda",
+    "ak"
+   ]
+  },
+  "rasaratnasamuccaya": {
+   "title": "रसरत्नसमुच्चयः",
+   "abbr": "र॰र॰स॰",
+   "note": "वाग्भटः",
+   "alias": [
+    "rasaratnasamuccaya",
+    "rrs",
+    "vrrs"
+   ]
+  },
+  "rasaprakashasudhakara": {
+   "title": "रसप्रकाशसुधाकरः",
+   "abbr": "र॰प्र॰सु॰",
+   "note": "यशोधरः",
+   "alias": [
+    "rasaprakashasudhakara",
+    "rps",
+    "yrps"
+   ]
+  },
+  "rasendracintamani": {
+   "title": "रसेन्द्रचिन्तामणिः",
+   "abbr": "र॰चि॰",
+   "note": "ढुण्ढुकनाथः",
+   "alias": [
+    "rasendracintamani",
+    "rcint"
+   ]
+  },
+  "rasamanjari": {
+   "title": "रसमञ्जरी",
+   "abbr": "र॰म॰",
+   "note": "शालिनाथः",
+   "alias": [
+    "rasamanjari",
+    "rmanj"
+   ]
+  },
+  "rasasanketakalika": {
+   "title": "रससंकेतकलिका",
+   "abbr": "र॰सं॰क॰",
+   "note": "चामुण्डः",
+   "alias": [
+    "rasasanketakalika",
+    "rsk"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

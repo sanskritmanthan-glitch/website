@@ -1,0 +1,63 @@
+{
+ "dir": "ak",
+ "page": "artha.html",
+ "xref": true,
+ "groups": [
+  [
+   "अर्थशास्त्रम्",
+   [
+    "kautilya"
+   ]
+  ],
+  [
+   "कामशास्त्रम्",
+   [
+    "kamasutra",
+    "pancasayaka",
+    "smaradipika"
+   ]
+  ]
+ ],
+ "works": {
+  "kautilya": {
+   "title": "कौटिलीयम् अर्थशास्त्रम्",
+   "abbr": "कौ॰अ॰",
+   "note": "कौटिल्यः",
+   "alias": [
+    "kautilya",
+    "arthashastra",
+    "arthasastra",
+    "kas",
+    "kaz"
+   ]
+  },
+  "kamasutra": {
+   "title": "कामसूत्रम्",
+   "abbr": "का॰सू॰",
+   "note": "वात्स्यायनः",
+   "alias": [
+    "kamasutra",
+    "ks",
+    "vatsyayana"
+   ]
+  },
+  "pancasayaka": {
+   "title": "पञ्चसायकः",
+   "abbr": "प॰सा॰",
+   "note": "ज्योतिरीश्वरः",
+   "alias": [
+    "pancasayaka"
+   ]
+  },
+  "smaradipika": {
+   "title": "स्मरदीपिका",
+   "abbr": "स्म॰दी॰",
+   "note": "मीननाथः",
+   "alias": [
+    "smaradipika"
+   ]
+  }
+ },
+ "small": true,
+ "slp": true
+}

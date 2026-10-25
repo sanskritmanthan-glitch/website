@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="sa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>शास्त्राणि · Śāstra Indexes · Sanskrit Manthan</title>
+<meta name="description" content="Alphabetical indexes and search of the śāstras of Indian knowledge systems: Dharmaśāstra, Arthaśāstra, Āyurveda, Rasaśāstra, Gaṇita–Jyotiṣa, Nāṭya and Alaṅkāra, with pages prepared for Vāstu–Śilpa, Saṅgīta and other disciplines.">
+<link rel="icon" href="cv/author.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Telugu&family=Noto+Serif+Telugu:wght@400;600&family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#f6f1e7;--ink:#2b2118;--muted:#6f6152;--line:#ddd2bf;--card:#fffaf1;--saffron:#b4531f;--gold:#a07a2c;--hl:#f6dcae;--soft:#efe5d2;
+ --dv:"Tiro Devanagari Sanskrit","Noto Serif Devanagari",serif;--te:"Tiro Telugu","Noto Serif Telugu",serif;--la:"Spectral",Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;--gold:#d2ad62;--hl:#5a3d1c;--soft:#2a221a;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;--gold:#d2ad62;--hl:#5a3d1c;--soft:#2a221a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 var(--dv)}
+body.s-te .v,body.s-te .pd,body.s-te .nm{font-family:var(--te)}body.s-la .v,body.s-la .pd,body.s-la .nm{font-family:var(--la)}
+button{font:inherit;color:inherit}
+.wrap{max-width:1440px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;gap:10px 16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:10px}
+.brand{font-family:var(--dv);font-weight:600;font-size:1.5rem;text-decoration:none;background:linear-gradient(100deg,#8a3a12,#b4531f 30%,#e0a43a 50%,#b4531f 70%,#8a3a12);-webkit-background-clip:text;background-clip:text;color:transparent}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:none;font-size:.85rem;padding:4px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+h1{font-weight:400;font-size:clamp(1.7rem,4vw,2.4rem);margin:22px 0 2px}
+.sub{color:var(--muted);margin:0 0 14px;font-family:var(--la)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#q{flex:1 1 380px;font:inherit;font-size:1.05rem;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+select{font:inherit;font-size:.9rem;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);max-width:100%}
+.hint{color:var(--muted);font-size:.82rem;font-family:var(--la);margin:6px 0 8px}
+.alpha{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0 4px}
+.alpha button{font-size:1.05rem;min-width:38px;padding:2px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer}
+.alpha button[aria-pressed="true"]{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.grid{display:grid;grid-template-columns:270px minmax(0,1fr) 270px;gap:20px;margin:14px 0 40px}
+@media (max-width:1080px){.grid{grid-template-columns:1fr}.grid>main{order:3}}
+/* side panels */
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--card);align-self:start;position:sticky;top:64px;height:calc(100vh - 80px);display:flex;flex-direction:column;overflow:hidden}
+.panel>.ph{all:unset;box-sizing:border-box;cursor:default;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:600;color:var(--saffron);display:flex;justify-content:space-between;align-items:center;font-family:var(--dv)}
+.panel>.ph small{color:var(--muted);font-weight:400;font-family:var(--la)}
+.panel .tg{display:none}
+.pbody{overflow:auto;padding:4px 10px 12px;flex:1;min-height:0}
+@media (max-width:1080px){.panel{position:static;height:auto;max-height:70vh}.panel>.ph{cursor:pointer}.panel .tg{display:inline}.panel.shut .pbody,.panel.shut .tabs{display:none}.panel.shut>.ph{border-bottom:0}}
+.tabs{display:flex;gap:4px;padding:8px 10px 0}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:8px 8px 0 0;padding:4px 6px;cursor:pointer;font-size:.9rem}
+.tabs button[aria-selected="true"]{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.ldiv{font-size:.8rem;color:var(--gold);border-bottom:1px solid var(--line);margin:10px 0 2px;padding-bottom:1px;letter-spacing:.02em}
+.it{border-radius:8px;margin:1px 0}
+.it>button.ttl{display:block;width:100%;text-align:left;border:0;background:none;cursor:pointer;padding:5px 8px;border-radius:8px;line-height:1.35}
+.it>button.ttl:hover{background:var(--soft)}
+.it.on>button.ttl{background:var(--hl);box-shadow:inset 3px 0 0 var(--saffron)}
+.it .nm{font-size:1.02rem}
+.it small{display:block;color:var(--muted);font-size:.74rem;font-family:var(--la)}
+.it small .dv{font-family:var(--dv)}
+.sub2{margin:2px 0 6px 10px;padding-left:8px;border-left:2px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0}
+.chips button{font-size:.78rem;min-width:28px;border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:0 5px;cursor:pointer;line-height:1.7}
+.chips button:hover{border-color:var(--saffron)}
+.chips button.on{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.chips .lab{font-size:.72rem;color:var(--muted);width:100%;font-family:var(--la)}
+.vn button{min-width:26px;font-size:.72rem}
+main{min-width:0}
+.info{color:var(--muted);font-size:.9rem;margin:2px 0 10px;font-family:var(--la)}
+.res{list-style:none;margin:0;padding:0}
+.res li{display:flex;gap:12px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding:7px 2px;cursor:pointer}
+.res li:hover{background:var(--card)}
+.res .pd{font-size:1.08rem}
+.res .rf{color:var(--muted);font-size:.8rem;white-space:nowrap;text-align:right}
+.more{margin:12px 0;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 14px;cursor:pointer}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 22px;margin:0 0 16px}
+.card .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;margin-bottom:10px}
+.card h2{font-weight:400;font-size:1.6rem;margin:0}
+.card h3{font-weight:600;font-size:1rem;color:var(--saffron);margin:16px 0 6px}
+.v{font-size:1.25rem;line-height:1.9}
+.v .l2{padding-left:1.6em}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.nav button,.nav a{font-size:.85rem;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:4px 12px;cursor:pointer;text-decoration:none;color:var(--ink)}
+.nav button:disabled{opacity:.4;cursor:default}
+.sarga .vs{display:grid;grid-template-columns:3.2em 1fr;gap:4px 10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.sarga .n{color:var(--gold);text-align:right;font-size:.9rem;padding-top:.35em;cursor:pointer}
+.sarga .v{font-size:1.1rem}
+.mt{color:var(--muted);font-size:.78rem}
+a.ml,button.ml{color:var(--saffron);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+.vs.on{background:var(--hl);border-radius:8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:1px 10px;background:var(--paper)}
+blockquote{margin:8px 0;padding:8px 14px;border-left:3px solid var(--gold);background:var(--soft);border-radius:0 8px 8px 0;font-size:1.1rem}
+.note{font-family:var(--la);color:var(--muted);font-size:.9rem}
+/* scansion */
+.scan{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.9em 0;margin:6px 0 1.9em}
+.scan .g{display:inline-flex;gap:1px;padding:0 4px 2px;border-bottom:2px solid var(--line);margin-right:4px;position:relative}
+.scan .g[data-g]::after{content:attr(data-g);position:absolute;left:0;right:0;bottom:-1.6em;text-align:center;font-size:.85rem;color:var(--gold)}
+.scan .y{width:2px;align-self:stretch;background:var(--saffron);margin:0 6px 0 2px;border-radius:2px}
+.sy{display:inline-flex;flex-direction:column;align-items:center;min-width:1.6em}
+.sy b{font-weight:400;font-family:var(--la);color:var(--saffron);font-size:1rem;line-height:1}
+.sy span{font-size:1.05rem}
+.sy.x b{color:var(--muted)}
+.scanrow{margin-bottom:18px}
+.scanrow .pl{font-size:.75rem;color:var(--muted);font-family:var(--la)}
+.key{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:4px;font-size:.85rem}
+.key div{border:1px solid var(--line);border-radius:8px;padding:2px 8px;background:var(--paper)}
+.key b{color:var(--saffron);font-weight:400;font-family:var(--la);letter-spacing:.1em}
+.mat{display:flex;gap:6px;flex-wrap:wrap}
+.mat div{border:1px solid var(--line);border-radius:8px;padding:2px 12px;background:var(--paper);text-align:center}
+.mat div b{display:block;color:var(--saffron);font-size:1.2rem}
+.sgl{list-style:none;margin:0;padding:0}
+.sgl li{display:grid;grid-template-columns:5.5em 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding:6px 2px;cursor:pointer}
+.sgl li:hover{background:var(--soft)}
+.sgl .n{color:var(--gold)}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;padding:18px 0 30px;font-family:var(--la)}
+nav.seg a{padding:4px 12px;font-size:.9rem;text-decoration:none;color:var(--ink)}
+nav.seg a[aria-current="page"]{background:var(--saffron);color:#fff}
+nav.seg{flex-wrap:wrap;border-radius:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0 40px}
+.cd{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px 20px;text-decoration:none;color:var(--ink);display:block;transition:transform .15s,border-color .15s}
+a.cd:hover{border-color:var(--saffron);transform:translateY(-2px)}
+.cd h2{font-weight:400;font-size:1.45rem;margin:0 0 2px}.cd .en{font-family:var(--la);color:var(--muted);font-size:.9rem}
+.cd p{font-family:var(--la);font-size:.92rem;color:var(--ink);margin:10px 0 8px;line-height:1.55}
+.cd .ct{font-size:.85rem;color:var(--saffron)}.cd.wait{opacity:.8;border-style:dashed}.cd.wait .ct{color:var(--muted)}
+.sec{font-size:1.1rem;color:var(--gold);margin:26px 0 0;border-bottom:1px solid var(--line);padding-bottom:4px}
+.cd ul{font-family:var(--la);font-size:.85rem;margin:6px 0 8px 1.1em;padding:0;color:var(--muted)}.cd ul a{color:var(--saffron)}.cd .ok{color:var(--gold);font-size:.85rem;font-family:var(--la)}</style>
+</head>
+<body><header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a><nav class="seg" aria-label="Index"><a href="granthalaya.html">‹ ग्रन्थालयः</a><a href="shastra.html" aria-current="page">शास्त्राणि</a><a href="dharma.html">धर्मशास्त्रम्</a><a href="artha.html">अर्थकामौ</a><a href="ayurveda.html">आयुर्वेदः</a><a href="rasa.html">रसशास्त्रम्</a><a href="jyotisha.html">गणितज्योतिषम्</a><a href="sahitya.html">नाट्यालङ्कारौ</a></nav>
+<div class="seg" id="script" role="group" aria-label="Script" style="visibility:hidden"></div></div></header><div class="wrap"><h1>शास्त्राणि</h1><p class="sub">Śāstra Indexes · the technical literature of Indian knowledge systems — one searchable alphabetical index for each discipline, every sūtra and every pāda</p><h2 class="sec">अन्वेषणयोग्याः · searchable now</h2><div class="cards"><a class="cd" href="dharma.html"><h2>धर्मशास्त्रम्</h2><div class="en">Dharmaśāstra</div><p>Dharmasūtras of Āpastamba, Baudhāyana, Gautama, Vasiṣṭha and Vaikhānasa; the smṛtis of Manu, Yājñavalkya, Nārada, Parāśara, Viṣṇu, Kātyāyana, Bṛhaspati, Āṅgirasa and Yama; gṛhya and śrauta sūtras.</p><div class="ct">29,919 entries · 21 texts ›</div></a><a class="cd" href="artha.html"><h2>अर्थशास्त्रम् · कामशास्त्रम्</h2><div class="en">Arthaśāstra · Kāmaśāstra</div><p>Kauṭilya’s Arthaśāstra in its fifteen adhikaraṇas; Vātsyāyana’s Kāmasūtra, Pañcasāyaka and Smaradīpikā.</p><div class="ct">6,816 entries · 4 texts ›</div></a><a class="cd" href="ayurveda.html"><h2>आयुर्वेदः</h2><div class="en">Āyurveda</div><p>Carakasaṃhitā (selected adhyāyas), Aṣṭāṅgahṛdaya Sūtrasthāna, the nighaṇṭus (Rājanighaṇṭu, Aṣṭāṅganighaṇṭu), Bhāvaprakāśa, Annapānavidhi, Yogaśataka.</p><div class="ct">12,962 entries · 7 texts ›</div></a><a class="cd" href="rasa.html"><h2>रसशास्त्रम्</h2><div class="en">Rasaśāstra · Indian alchemy and chemistry</div><p>Rasārṇava, Rasahṛdayatantra, Rasendracūḍāmaṇi, Rasaratnākara, Ānandakanda, Rasaratnasamuccaya and other texts on mercury, minerals and metals.</p><div class="ct">17,052 entries · 10 texts ›</div></a><a class="cd" href="jyotisha.html"><h2>गणितम् · ज्योतिषम्</h2><div class="en">Gaṇita · Jyotiṣa</div><p>Śulbasūtra, Āryabhaṭīya, Brāhmasphuṭasiddhānta, Līlāvatī, Bījagaṇita, Vedāṅgajyotiṣa, Sūryasiddhānta, and Varāhamihira’s Bṛhatsaṃhitā, Bṛhajjātaka and yātrā texts.</p><div class="ct">5,316 entries · 13 texts ›</div></a><a class="cd" href="sahitya.html"><h2>नाट्यशास्त्रम् · अलङ्कारशास्त्रम्</h2><div class="en">Nāṭya · Alaṅkāra · Chandas</div><p>Bharata’s Nāṭyaśāstra, Daśarūpaka, Nāṭakacandrikā; Bhāmaha, Daṇḍin, Vāmana, Udbhaṭa, Ānandavardhana, Mammaṭa, Jayadeva, Viśvanātha; Vṛttaratnākara.</p><div class="ct">9,405 entries · 14 texts ›</div></a><a class="cd" href="sutra.html"><h2>दर्शनानि · व्याकरणम् · योगः</h2><div class="en">Darśana · Vyākaraṇa · Yoga</div><p>The sūtras and kārikās of the darśanas, Pāṇini’s Aṣṭādhyāyī, Vākyapadīya, Yogasūtra and Haṭhayogapradīpikā are in the Sūtra Index.</p><div class="ct">सूत्राणि ›</div></a><a class="cd" href="mantra.html"><h2>वेदः · उपनिषदः</h2><div class="en">Veda · Upaniṣad</div><p>Ṛgveda, Atharvaveda, Sāmaveda and the principal Upaniṣads, pāda by pāda, in the Mantra Index; metres in the Chandas finder.</p><div class="ct">मन्त्राः ›</div></a></div><h2 class="sec">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</h2><p class="hint">These pages are prepared; their texts are not yet available in a clean digital form. Texts will be added as they are provided — where a related portion already exists elsewhere on the site, it is linked.</p><div class="cards"><div class="cd wait"><h2>वास्तुशास्त्रम् · शिल्पशास्त्रम्</h2><div class="en">Vāstu · Śilpa · Architecture and sculpture</div><p><b>Texts wanted:</b> Mayamata, Mānasāra, Samarāṅgaṇasūtradhāra, Aparājitapṛcchā, Viśvakarmaprakāśa, Kāśyapaśilpa, Śilparatna, Vāstuvidyā.</p><div class="ok">Already on the site:</div><ul><li><a href="jyotisha.html#brihatsamhita/52">Bṛhatsaṃhitā 52 · vāstuvidyā</a></li><li><a href="jyotisha.html#brihatsamhita/55">Bṛhatsaṃhitā 55 · prāsādalakṣaṇa</a></li><li><a href="jyotisha.html#brihatsamhita/57">Bṛhatsaṃhitā 57 · pratimālakṣaṇa</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>सङ्गीतशास्त्रम्</h2><div class="en">Saṅgīta · Music</div><p><b>Texts wanted:</b> Saṅgītaratnākara, Bṛhaddeśī, Dattilam, Saṅgītamakaranda, Saṅgītadarpaṇa, Svaramelakalānidhi, Caturdaṇḍīprakāśikā.</p><div class="ok">Already on the site:</div><ul><li><a href="sahitya.html#natyashastra/28">Nāṭyaśāstra 28 · ātodya</a></li><li><a href="sahitya.html#natyashastra/29">Nāṭyaśāstra 29 · jāti</a></li><li><a href="sahitya.html#natyashastra/33">Nāṭyaśāstra 33 · gāna</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>कृषिशास्त्रम् · वृक्षायुर्वेदः</h2><div class="en">Kṛṣi · Vṛkṣāyurveda · Agriculture and plant science</div><p><b>Texts wanted:</b> Kṛṣiparāśara, Vṛkṣāyurveda (Surapāla), Upavanavinoda, Kāśyapīyakṛṣisūkti.</p><div class="ok">Already on the site:</div><ul><li><a href="jyotisha.html#brihatsamhita/54">Bṛhatsaṃhitā 54 · vṛkṣāyurveda</a></li><li><a href="jyotisha.html#brihatsamhita/53">Bṛhatsaṃhitā 53 · dakārgala (finding water)</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>रत्नशास्त्रम्</h2><div class="en">Ratnaśāstra · Gemmology</div><p><b>Texts wanted:</b> Ratnaparīkṣā (Buddhabhaṭṭa), Agastimata, Navaratnaparīkṣā, Ratnasaṅgraha.</p><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>धनुर्वेदः · नीतिशास्त्रम्</h2><div class="en">Dhanurveda · Nīti · Polity and warfare</div><p><b>Texts wanted:</b> Dhanurveda (Vasiṣṭha), Kāmandakīya Nītisāra, Śukranīti, Nītivākyāmṛta, Yuktikalpataru.</p><div class="ok">Already on the site:</div><ul><li><a href="artha.html">Kauṭilya’s Arthaśāstra</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>पाकशास्त्रम् · पशु-हस्त्यश्वायुर्वेदः</h2><div class="en">Pāka · Mṛga-, Hasti- and Aśva-āyurveda</div><p><b>Texts wanted:</b> Kṣemakutūhala, Bhojanakutūhala, Pākadarpaṇa; Hastyāyurveda (Pālakāpya), Aśvaśāstra (Nakula), Mṛgapakṣiśāstra.</p><div class="ok">Already on the site:</div><ul><li><a href="ayurveda.html#annapanavidhi">Annapānavidhi</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>शिक्षा · निरुक्तम्</h2><div class="en">Śikṣā · Nirukta · Phonetics and etymology</div><p><b>Texts wanted:</b> Pāṇinīya Śikṣā, Yājñavalkya Śikṣā, Ṛgveda Prātiśākhya, Yāska’s Nirukta, Nighaṇṭu.</p><div class="ok">Already on the site:</div><ul><li><a href="kosha.html">Kośa search</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div><div class="cd wait"><h2>आगमः · तन्त्रम्</h2><div class="en">Āgama · Tantra</div><p><b>Texts wanted:</b> Śaiva and Vaiṣṇava āgamas, Pāñcarātra saṃhitās, Tantrāloka, Śāradātilaka, Prapañcasāra.</p><div class="ok">Already on the site:</div><ul><li><a href="sutra.html">Śivasūtra, Spandakārikā, Pratyabhijñā in the Sūtra Index</a></li></ul><div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div></div></div><footer><div class="wrap">Texts from GRETIL (Göttingen) — shown for study and reference. To contribute a text for one of the awaited disciplines, write to the author through <a href="./">sanskritmanthan.in</a>.</div></footer></body></html>
