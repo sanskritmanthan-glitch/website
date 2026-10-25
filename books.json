@@ -236,19 +236,19 @@
    "name": {
     "te": [
      "కోశాలు",
-     "పదాల చివరి అక్షరాల నుండి వెతికే సంస్కృత ప్రతిలోమ శబ్దకోశం."
+     "పదాల చివరి అక్షరాల నుండి వెతికే సంస్కృత, తెలుగు ప్రతిలోమ కోశాలు."
     ],
     "sa": [
      "कोशाः",
-     "पदानाम् अन्त्याक्षरात् अन्वेषणीयः संस्कृतप्रतिलोमशब्दकोशः।"
+     "पदानाम् अन्त्याक्षरात् अन्वेषणीयौ संस्कृत-तेलुगु-प्रतिलोमकोशौ।"
     ],
     "hi": [
      "कोश",
-     "शब्दों के अन्तिम अक्षरों से खोजा जाने वाला संस्कृत प्रतिलोम शब्दकोश।"
+     "शब्दों के अन्तिम अक्षरों से खोजे जाने वाले संस्कृत और तेलुगु प्रतिलोम शब्दकोश।"
     ],
     "en": [
      "Lexicons",
-     "A Sanskrit reverse dictionary, arranged by word endings, for poets and researchers."
+     "Sanskrit and Telugu reverse dictionaries, arranged by word endings, for poets and researchers."
     ]
    },
    "cols": 1,
@@ -1080,6 +1080,17 @@
    "sub": "A Reverse Dictionary of Sanskrit",
    "lang": "sa",
    "shelf": "kosha"
+  },
+  {
+   "id": "vyutkrama-telugu-kosha",
+   "title": "వ్యుత్క్రమ-తెలుగు-కోశము",
+   "sub": "A Reverse Dictionary of Telugu",
+   "full": "వ్యుత్క్రమ-తెలుగు-కోశము: A Reverse Dictionary of Telugu",
+   "en": "Vyutkrama Telugu Kosha: A Reverse Dictionary of Telugu",
+   "lang": "te",
+   "shelf": "kosha",
+   "cover": "te-kosha",
+   "play": null
   }
  ]
 }
