@@ -1071,6 +1071,17 @@
    "shelf": "dasha"
   },
   {
+   "id": "svadutam-telugu",
+   "title": "స్వదూతం",
+   "sub": "దశసర్గల దార్శనిక సందేశ కావ్యం",
+   "full": "స్వదూతం: దశసర్గల దార్శనిక సందేశ కావ్యం",
+   "en": "Svadutam (Telugu): a philosophical sandesha-kavya in ten sargas",
+   "lang": "te",
+   "shelf": "dasha",
+   "cover": "te-svadutam",
+   "play": null
+  },
+  {
    "id": "HiQeEgAAQBAJ",
    "full": "प्रतिलोमसंस्कृतकोशः (Pratiloma Samskrita Koshah): A Reverse Dictionary of Sanskrit",
    "play": "https://play.google.com/store/books/details?id=HiQeEgAAQBAJ",
