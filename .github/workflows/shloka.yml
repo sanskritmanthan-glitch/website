@@ -1,0 +1,30 @@
+name: Śloka index
+on:
+  push:
+    paths: ['incoming/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install indic_transliteration python-docx pymupdf
+      - name: Ingest new texts and rebuild the index
+        run: |
+          shopt -s nullglob
+          mkdir -p incoming/done
+          for f in incoming/*.docx incoming/*.pdf incoming/*.txt incoming/*.htm incoming/*.html; do
+            b=$(basename "$f"); n="${b%.*}"
+            IFS='|' read -r id title poet genre <<< "${n//__/|}"
+            (cd tools/shloka && python3 ingest.py "../../$f" --id "$id" --title "$title" --poet "$poet" --genre "${genre:-kavya}")
+            git mv "$f" "incoming/done/$b" 2>/dev/null || mv "$f" "incoming/done/$b"
+          done
+          (cd tools/shloka && python3 build.py ../../sl)
+      - run: |
+          git config user.name "sanskritmanthan-bot"
+          git config user.email "sanskritmanthan@users.noreply.github.com"
+          git add -A && git commit -m "Śloka index: add texts" && git push || echo "nothing to commit"
