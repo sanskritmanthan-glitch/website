@@ -5,20 +5,20 @@
    "color": "#b4531f",
    "name": {
     "te": [
-     "కొత్తగా వచ్చినవి",
-     "ఇటీవల ప్రచురించిన, త్వరలో రాబోతున్న గ్రంథాలు."
+     "కొత్తగా వచ్చినవి · ప్రణవచతుర్దిశ",
+     "ఓంకారం చుట్టూ నాలుగు దిక్కులు: నాలుగు సహస్రనామాలను నాలుగు పురుషార్థాల జీవనసోపానాలుగా చదివే తెలుగు వచనకావ్యాలు."
     ],
     "sa": [
-     "नूतनाः ग्रन्थाः",
-     "अद्यतनप्रकाशिताः शीघ्रम् आगामिनश्च ग्रन्थाः।"
+     "नूतनाः ग्रन्थाः · प्रणवचतुर्दिशा",
+     "ओङ्कारं परितः चतस्रः दिशः: सहस्रनामचतुष्टयं पुरुषार्थचतुष्टयस्य जीवनसोपानरूपेण पठत् तेलुगुवचनकाव्यचतुष्टयम्।"
     ],
     "hi": [
-     "नई पुस्तकें",
-     "हाल में प्रकाशित और जल्द आने वाले ग्रन्थ।"
+     "नई पुस्तकें · प्रणवचतुर्दिशा",
+     "ओंकार के चारों ओर चार दिशाएँ: चार सहस्रनामों को चार पुरुषार्थों के जीवन-सोपानों के रूप में पढ़ने वाले तेलुगु वचन-काव्य।"
     ],
     "en": [
-     "New arrivals",
-     "Recently published and forthcoming books."
+     "New arrivals · Four Directions of Om",
+     "Four Telugu free-verse books that read four Sahasranāmas as stages of life across the four aims: kāma, dharma, artha and mokṣa."
     ]
    },
    "cols": 4,
@@ -26,12 +26,9 @@
     "chitkala",
     "narayanam",
     "kshiramathanam",
-    "spandanam",
-    "దశద-ప-క-Dashadipika-",
-    "8zggEgAAQBAJ",
-    "MTggEgAAQBAJ",
-    "అ-తర-దర-శన-Antardarshanam-"
-   ]
+    "spandanam"
+   ],
+   "hide": false
   },
   {
    "id": "pranava",
@@ -55,7 +52,8 @@
     ]
    },
    "cols": 4,
-   "ids": null
+   "ids": null,
+   "hide": true
   },
   {
    "id": "geya-sa",
@@ -79,7 +77,8 @@
     ]
    },
    "cols": 6,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "geya-te",
@@ -103,7 +102,8 @@
     ]
    },
    "cols": 6,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "itihasa",
@@ -127,7 +127,8 @@
     ]
    },
    "cols": 4,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "edu-sa",
@@ -151,7 +152,8 @@
     ]
    },
    "cols": 5,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "edu-en",
@@ -175,7 +177,8 @@
     ]
    },
    "cols": 3,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "stotra",
@@ -199,7 +202,8 @@
     ]
    },
    "cols": 3,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "dasha",
@@ -223,7 +227,8 @@
     ]
    },
    "cols": 4,
-   "ids": null
+   "ids": null,
+   "hide": false
   },
   {
    "id": "kosha",
@@ -247,7 +252,8 @@
     ]
    },
    "cols": 1,
-   "ids": null
+   "ids": null,
+   "hide": false
   }
  ],
  "books": [
