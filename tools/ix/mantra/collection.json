@@ -1,0 +1,13 @@
+{"dir": "mn", "small": true,
+ "groups": [["संहिताः", ["rgveda", "atharvaveda", "samaveda"]],
+            ["उपनिषदः", ["isha", "kena", "katha", "prashna", "mundaka", "mandukya", "taittiriya", "aitareya", "chandogya", "brihadaranyaka", "shvetashvatara", "kaivalya", "brahmabindu", "nadabindu", "garbha", "atharvashiras"]]],
+ "works": {
+  "rgveda": {"title": "ऋग्वेदसंहिता", "abbr": "ऋग्वेद", "note": "शाकलशाखा", "alias": ["rv", "rig", "rgveda", "rk"], "bunit": "मण्डलम्"},
+  "atharvaveda": {"title": "अथर्ववेदसंहिता", "abbr": "अथर्व", "note": "शौनकशाखा", "alias": ["av", "atharva"], "bunit": "काण्डम्"},
+  "samaveda": {"title": "सामवेदसंहिता", "abbr": "साम", "note": "कौथुमशाखा", "alias": ["sv", "sama"], "bunit": "आर्चिकः"},
+  "isha": {"alias": ["isa", "isha", "isavasya"]}, "kena": {"alias": ["kena"]}, "katha": {"alias": ["katha", "kathopanisad"]},
+  "prashna": {"alias": ["prasna", "prashna"]}, "mundaka": {"alias": ["mundaka"]}, "mandukya": {"alias": ["mandukya"]},
+  "taittiriya": {"alias": ["taittiriya", "tait"]}, "aitareya": {"alias": ["aitareya"]}, "chandogya": {"alias": ["chandogya", "chand", "chu"]},
+  "brihadaranyaka": {"alias": ["brhadaranyaka", "brihad", "bau", "brh"]}, "shvetashvatara": {"alias": ["svetasvatara", "shvet", "svet"]},
+  "kaivalya": {"alias": ["kaivalya"]}, "brahmabindu": {"alias": ["brahmabindu"]}, "nadabindu": {"alias": ["nadabindu"]}, "garbha": {"alias": ["garbha"]},
+  "atharvashiras": {"alias": ["atharvasiras", "siras"]}}}

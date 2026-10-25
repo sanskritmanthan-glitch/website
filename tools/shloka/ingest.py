@@ -66,9 +66,9 @@ def gretil(s):
             if n: out.append((n[0],n[1],parts_of(grp[vid])))
         return out
     out=[]; last=0
-    MARK=re.compile(r'//\s*([^/\n]*?\d[^/\n]*?)\s*//|\|\|\s*([A-Za-z_]*\*?[\d][\w.*-]*)\s*(?:\|\|)?')
+    MARK=re.compile(r'//\s*([^/\n]*?\d[^/\n]*?)\s*//|//\s*([A-Za-z]+_[\d.,]+)\s*$|\|\|\s*([A-Za-z_]*\*?[\d][\w.,*-]*)\s*(?:\|\|)?',re.M)
     for m in MARK.finditer(s):
-        vid=(m.group(1) or m.group(2)).strip(); body=s[last:m.start()]; last=m.end()
+        vid=(m.group(1) or m.group(2) or m.group(3)).strip(); body=s[last:m.start()]; last=m.end()
         if '*' in vid and not re.search(r'_\*\d+$',vid): continue
         n=numid(vid)
         if not n: continue

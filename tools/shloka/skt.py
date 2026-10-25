@@ -31,6 +31,17 @@ def sylls(slp):
         out.append((i,'G' if heavy else 'L'))
     return out
 def pattern(slp): return ''.join(w for _,w in sylls(slp))
+STOPS='kKgGcCjJwWqQtTdDpPbB'
+def init_ok(cl):
+    """can this consonant cluster begin a Sanskrit word?"""
+    if len(cl)==1: return True
+    if cl in ('kz','jY','kzm','kzy','kzv','jy','Sc','Sm'): return True
+    if len(cl)==2 and cl[1] in 'ryvl' and cl[0] in STOPS+'SzsmnhN': return cl[0]!=cl[1]
+    if len(cl)==2 and cl[0] in 'sSz' and cl[1] in STOPS+'mn': return True
+    if len(cl)==2 and cl[0] in STOPS and cl[1] in 'mn' and cl[0] in 'tdDGgjB': return True
+    if len(cl)==3 and cl[0] in 'sz' and cl[1] in STOPS and cl[2] in 'ryv': return True
+    if len(cl)==3 and cl[0] in STOPS and cl[1] in 'mn' and cl[2] in 'y': return True
+    return False
 def split_at(slp,k):
     """split string so that the second part starts with syllable k (0-based); prefer a word space in the preceding cluster"""
     idx=[i for i,ch in enumerate(slp) if ch in V]
@@ -41,8 +52,16 @@ def split_at(slp,k):
     if sp>=0: cut=prev+1+sp
     else:
         cons=[p for p in range(prev+1,cur) if slp[p] in C]
-        # the whole consonant cluster begins the next pāda (nikaṣa | grāva), as in printed editions
-        cut = cons[0] if cons else cur
+        # the next pāda starts with the longest end of the cluster that can begin a word (nikaṣa | grāva, āsīd | gahanam);
+        # a doubled nasal stays with the word it ends (śarmann | ambhaḥ)
+        cut = cur
+        if cons:
+            cl=''.join(slp[p] for p in cons)
+            if len(cl)>=2 and cl[0]==cl[1] and cl[0] in 'NRn' and len(cl)==2: cut = cur
+            else:
+                cut = cons[-1]
+                for j in range(len(cons)):
+                    if init_ok(cl[j:]): cut = cons[j]; break
         if slp[prev+1:cut] and all(c in 'MH' for c in slp[prev+1:cut]) : pass
     a,b=slp[:cut].strip(),slp[cut:].strip()
     return a,b

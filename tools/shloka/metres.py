@@ -75,7 +75,13 @@ JATIM = {'āryā': (12, 18, 12, 15), 'gīti': (12, 18, 12, 18), 'upagīti': (12,
 UDGATA = ['LLGLGLLLGL', 'LLLLLGLGLG', 'GLLLLLLGLLG', 'LLGLGLLLGLGLG']
 
 
+VEDIC = {'v:gāyatrī': ('गायत्री', 3, 8), 'v:anuṣṭubh': ('अनुष्टुभ्', 4, 8), 'v:triṣṭubh': ('त्रिष्टुभ्', 4, 11), 'v:jagatī': ('जगती', 4, 12),
+         'v:uṣṇih': ('उष्णिक्', 3, '8 + 8 + 12'), 'v:bṛhatī': ('बृहती', 4, '8 + 8 + 12 + 8'), 'v:satobṛhatī': ('सतोबृहती', 4, '12 + 8 + 12 + 8'),
+         'v:paṅkti': ('पङ्क्तिः', 5, 8), 'v:virāj': ('विराट्', 3, '11 / 12'), 'v:dvipadā': ('द्विपदा', 2, '8 / 11')}
 def info(name):
+    if name in VEDIC:
+        dev, n, syl = VEDIC[name]
+        return dict(iast=name[2:], dev=dev, lak='', yati=[], kind='वैदिकं छन्दः', sub=f'{n} पादाः', note=f'Vedic metre: {n} pādas of {syl} syllables; syllable count, not quantity, defines it.', vsyl=str(syl))
     dev, lak, yati, note = INFO.get(name, (name, '', [], ''))
     d = dict(iast=name, dev=dev, lak=lak, note=note, yati=yati)
     if name == 'anuṣṭubh':
