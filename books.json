@@ -1,6 +1,39 @@
 {
  "shelves": [
   {
+   "id": "new",
+   "color": "#b4531f",
+   "name": {
+    "te": [
+     "కొత్తగా వచ్చినవి",
+     "ఇటీవల ప్రచురించిన, త్వరలో రాబోతున్న గ్రంథాలు."
+    ],
+    "sa": [
+     "नूतनाः ग्रन्थाः",
+     "अद्यतनप्रकाशिताः शीघ्रम् आगामिनश्च ग्रन्थाः।"
+    ],
+    "hi": [
+     "नई पुस्तकें",
+     "हाल में प्रकाशित और जल्द आने वाले ग्रन्थ।"
+    ],
+    "en": [
+     "New arrivals",
+     "Recently published and forthcoming books."
+    ]
+   },
+   "cols": 4,
+   "ids": [
+    "chitkala",
+    "narayanam",
+    "kshiramathanam",
+    "spandanam",
+    "దశద-ప-క-Dashadipika-",
+    "8zggEgAAQBAJ",
+    "MTggEgAAQBAJ",
+    "అ-తర-దర-శన-Antardarshanam-"
+   ]
+  },
+  {
    "id": "pranava",
    "color": "#7a3b2a",
    "name": {
@@ -20,7 +53,9 @@
      "Praṇava-caturdiśā · Four Directions of Om",
      "Four Telugu free-verse books that read four Sahasranāmas as stages of life across the four aims: kāma, dharma, artha and mokṣa."
     ]
-   }
+   },
+   "cols": 4,
+   "ids": null
   },
   {
    "id": "geya-sa",
@@ -42,7 +77,9 @@
      "Sung Mahāpurāṇas · Sanskrit",
      "All eighteen Mahāpurāṇas retold in singable Sanskrit verse."
     ]
-   }
+   },
+   "cols": 6,
+   "ids": null
   },
   {
    "id": "geya-te",
@@ -64,7 +101,9 @@
      "Sung Mahāpurāṇas · Telugu",
      "All eighteen Mahāpurāṇas retold in singable Telugu verse."
     ]
-   }
+   },
+   "cols": 6,
+   "ids": null
   },
   {
    "id": "itihasa",
@@ -86,7 +125,9 @@
      "The Itihāsas",
      "The Rāmāyaṇa and the Mahābhārata in singable verse, in Sanskrit and in Telugu."
     ]
-   }
+   },
+   "cols": 4,
+   "ids": null
   },
   {
    "id": "edu-sa",
@@ -108,7 +149,9 @@
      "Indian Knowledge Systems & Educational Psychology",
      "Ten Sanskrit volumes comparing India's knowledge traditions with Western educational psychology."
     ]
-   }
+   },
+   "cols": 5,
+   "ids": null
   },
   {
    "id": "edu-en",
@@ -130,7 +173,9 @@
      "Darśana · Sādhana · Nīti",
      "Three English books on the Indian philosophy, psychology and governance of education, each in comparative perspective."
     ]
-   }
+   },
+   "cols": 3,
+   "ids": null
   },
   {
    "id": "stotra",
@@ -152,7 +197,9 @@
      "Sanskrit Kāvya & Stotras",
      "A philosophical messenger-epic, and hymns in new metres in nakṣatra and laharī forms."
     ]
-   }
+   },
+   "cols": 3,
+   "ids": null
   },
   {
    "id": "dasha",
@@ -174,7 +221,9 @@
      "Daśadīpikā · Telugu poetry",
      "Ten Telugu free-verse works on philosophy, psychology, values, satire, love and music."
     ]
-   }
+   },
+   "cols": 4,
+   "ids": null
   },
   {
    "id": "kosha",
@@ -196,7 +245,9 @@
      "Lexicons",
      "A Sanskrit reverse dictionary, arranged by word endings, for poets and researchers."
     ]
-   }
+   },
+   "cols": 1,
+   "ids": null
   }
  ],
  "books": [
