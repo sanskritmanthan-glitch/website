@@ -41,8 +41,8 @@ def split_at(slp,k):
     if sp>=0: cut=prev+1+sp
     else:
         cons=[p for p in range(prev+1,cur) if slp[p] in C]
-        # one consonant goes with the next syllable; extra consonants stay (keeps clusters readable)
-        cut = cons[-1] if cons else cur
+        # the whole consonant cluster begins the next pāda (nikaṣa | grāva), as in printed editions
+        cut = cons[0] if cons else cur
         if slp[prev+1:cut] and all(c in 'MH' for c in slp[prev+1:cut]) : pass
     a,b=slp[:cut].strip(),slp[cut:].strip()
     return a,b
@@ -53,7 +53,7 @@ MET={ # sama-vṛtta pāda patterns (last syllable anceps)
 'praharṣiṇī':'GGGLLLLGLGLGG','mañjubhāṣiṇī':'LLGLGLLLGLGLG','mālinī':'LLLLLLGGGLGGLGG','pṛthvī':'LGLLLGLGLLLGLGGLG',
 'mandākrāntā':'GGGGLLLLLGGLGGLGG','śikhariṇī':'LGGGGGLLLLLGGLLLG','hariṇī':'LLLLLGGGGGLGLLGLG',
 'śārdūlavikrīḍita':'GGGLLGLGLLLGGGLGGLG','sragdharā':'GGGGLGGLLLLLLGGLGGLGG','pramitākṣarā':'LLGLGLLLGLLG',
-'kusumitalatāvellitā':'GGGGGLLLLLGGLGGLGG','mattamayūra':'GGGGLGGLLGGLLG'.ljust(13,'G')[:13],
+'kusumitalatāvellitā':'GGGGGLLLLLGGLGGLGG','mattamayūra':'GGGGGLLGGLLGG',
 'rucirā':'LGLGLLLLGLGLG','aśvadhāṭī':'GGLGLLLGGGLGLLLGGGLGLLLG'}
 ARDHA={'viyoginī':('LLGLLGLGLG','LLGGLLGLGLG'),'aupacchandasika':('LLGLLGLGLGG','LLGGLLGLGLGG'),
        'puṣpitāgrā':('LLLLLLGLGLGG','LLLLGLLGLGLGG'),'vegavatī':('LLGLLGLLGGG','GLLGLLGLLGG')}
@@ -82,9 +82,58 @@ def verse_metre(pats):
         top,c=Counter(fs).most_common(1)[0]
         if c>=3: return top
     # mātrā āryā check: 12/18/12/15 mātrās
-    mat=[sum(2 if w=='G' else 1 for w in p) for p in pats]
-    if len(mat)==4 and mat[0] in(12,) and mat[2]==12 and mat[1] in(17,18) and mat[3] in(14,15): return 'āryā'
+    return jati(pats)
+def matras(pat): return [2 if w=='G' else 1 for w in pat]
+JATI={(12,18,12,15):'āryā',(12,18,12,18):'gīti',(12,15,12,15):'upagīti',(12,15,12,18):'udgīti',(12,20,12,20):'āryāgīti'}
+def verse_pats(slps):
+    """syllable weights of each pāda, computed across pāda junctions (a cluster that opens the next pāda makes the preceding vowel heavy)"""
+    lens=[len(pattern(x)) for x in slps]; full=pattern(''.join(slps)); out=[]; i=0
+    for n in lens: out.append(full[i:i+n]); i+=n
+    return out
+def jati(pats):
+    if len(pats)!=4: return ''
+    m=[sum(matras(p)) for p in pats]
+    for (a,b,c,d),n in JATI.items():
+        # last syllable of each half is anceps (may count one mātrā short)
+        if m[0]==a and m[2]==c and b-1<=m[1]<=b and d-1<=m[3]<=d: return n
+    for (a,b,c,d),n in JATI.items():   # pāda junction falling inside a word: judge by the half-verse totals
+        if m[0] in (a-1,a,a+1) and m[2] in (c-1,c,c+1) and a+b-1<=m[0]+m[1]<=a+b and c+d-1<=m[2]+m[3]<=c+d: return n
     return ''
+def split_arya(slp):
+    pat=pattern(slp); tot=sum(matras(pat))
+    if tot<25 or tot>33: return None
+    c=0
+    for i,x in enumerate(matras(pat)):
+        c+=x
+        if c==12: return list(split_at(slp,i+1))
+        if c>12: return None
+    return None
+def resplit(slp):
+    """a whole verse whose line breaks are not at pāda ends: try every known metre"""
+    pat=pattern(slp); n=len(pat)
+    cands=[(q,q) for q in MET.values()]+list(ARDHA.values())+[('GGGGGGGG','GGGGGGGG')]
+    for o,e in cands:
+        if n==2*(len(o)+len(e)):
+            k=[len(o),len(e),len(o)]; parts=[]; rest=slp
+            for x in k:
+                a,b=split_at(rest,x); parts.append(a); rest=b
+            parts.append(rest)
+            if verse_metre(verse_pats(parts)): return parts
+    # āryā family: 12 mātrās, then to the half (30 or 27), then 12
+    m=matras(pat); c=0; cuts=[]
+    targets=[12]
+    for i,x in enumerate(m):
+        c+=x
+        if len(cuts)==0 and c==12: cuts.append(i+1)
+        elif len(cuts)==1 and c in (29,30,27,26) and i+1<n and (c in (30,27)) : cuts.append(i+1)
+        elif len(cuts)==2 and c-sum(m[:cuts[1]])==12: cuts.append(i+1); break
+    if len(cuts)==3:
+        parts=[]; rest=slp; prev=0
+        for x in cuts:
+            a,b=split_at(rest,x-prev); parts.append(a); rest=b; prev=x
+        parts.append(rest)
+        if jati(verse_pats(parts)): return parts
+    return None
 def split_half(slp):
     """split a half-verse (2 pādas) into two pādas, choosing the split that fits a known metre"""
     pat=pattern(slp); n=len(pat)
@@ -93,9 +142,12 @@ def split_half(slp):
         k=len(o)
         if len(o)==8 and n==16: return list(split_at(slp,8))
         if n==len(o)+len(e) and eq(pat[:k],o) and eq(pat[k:],e): return list(split_at(slp,k))
+    a=split_arya(slp)
+    if a and n not in (22,23,24,25,26): return a
     for o,e in cands:   # tolerate one wrong syllable
         k=len(o)
         if n==len(o)+len(e) and sum(a!=b for a,b in zip(pat[:k-1],o[:-1]))<=1: return list(split_at(slp,k))
+    if a: return a
     if n>=14: return list(split_at(slp,(n+1)//2))
     return [slp]
 # ordering
