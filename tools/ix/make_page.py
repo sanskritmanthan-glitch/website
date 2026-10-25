@@ -83,5 +83,49 @@ def nav():
                 p = p.replace('</style>', 'nav.seg{flex-wrap:wrap;border-radius:14px}\n</style>', 1)
             open(f'{WEB}/{f}', 'w').write(p)
 if __name__ == '__main__':
-    for n in sys.argv[1:]: build(n)
+    for n in sys.argv[1:]:
+        if n in PAGES: build(n)
     engine(); nav(); print('pages written')
+def kosha_page():
+    s = open(f'{WEB}/shloka.html').read(); ch = open(f'{WEB}/chandas.html').read()
+    head = s[:s.index('</head>')]
+    head = re.sub(r'<title>.*?</title>', '<title>कोशान्वेषणम् · Kośa · Dictionary Search · Sanskrit Manthan</title>', head)
+    head = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Sanskrit dictionary search: synonyms from the Amarakośa, Abhidhānaratnamālā and Vaijayantī with gender and source verse; Monier-Williams meanings; words by ending (reverse dictionary); and the Pāṇinian Dhātupāṭha with meanings and upasargas.">', head)
+    head = head.replace('</style>', """.narrow{max-width:1100px}
+.modes{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.modes button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 14px;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.syn{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:2px 10px;cursor:pointer;font-size:1.05rem}
+.chip small{font-size:.7rem;color:var(--muted);margin-left:4px;font-family:var(--la)}.chip.on{border-color:var(--saffron);background:var(--hl)}
+.syn.sm .tag{font-size:.8rem}.v.src{font-size:1.05rem;margin-top:6px}
+.res.mw li{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:14px;cursor:default}.res.mw .gl{font-family:var(--la);font-size:.92rem;color:var(--ink)}
+.ends{display:flex;flex-wrap:wrap;gap:4px}.ends .chip{font-size:.98rem}
+.dh{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}.card.dk{margin:0}.card.dk h2{font-size:1.4rem}
+#mdesc{font-family:var(--la);color:var(--muted);font-size:.85rem;margin:0 0 8px}
+</style>""")
+    tr = s[s.index("const V={'अ'"):s.index('/* ---------- scansion')]
+    i2 = ch[ch.index('const IV='):ch.index('/* ---------- matching')]
+    js = open(f'{HERE}/kosha_engine.js').read().replace('/*TRANSLIT*/', tr).replace('/*I2D*/', i2)
+    body = '''<body>
+<header><div class="wrap">
+  <a class="brand" href="./">संस्कृतमन्थनम्</a>
+  <nav class="seg" aria-label="Index"></nav>
+  <div class="seg" id="script" role="group" aria-label="Script">
+    <button data-s="dv" aria-pressed="true">देवनागरी</button><button data-s="te" aria-pressed="false">తెలుగు</button><button data-s="la" aria-pressed="false">IAST</button>
+  </div>
+</div></header>
+<div class="wrap narrow">
+  <h1>कोशान्वेषणम्</h1>
+  <p class="sub">Kośa · Dictionary Search — synonyms, meanings, words by ending, and the roots of the Dhātupāṭha</p>
+  <div class="modes" id="modes"><button data-m="paryaya">पर्यायाः · synonyms</button><button data-m="artha">शब्दार्थः · meaning</button><button data-m="anta">अन्त्यानुक्रमः · by ending</button><button data-m="dhatu">धातवः · roots</button><button data-m="browse">कोशग्रन्थाः · read the kośas</button></div>
+  <p id="mdesc"></p>
+  <div class="bar"><input id="q" type="search" autocomplete="off" aria-label="Search"><select id="gana" hidden></select><select id="kb" hidden></select><select id="ks" hidden></select></div>
+  <p class="hint" id="stats"></p>
+  <p class="info" id="info"></p><div id="out"></div>
+</div>
+<footer><div class="wrap">Data: Amarakośa, Abhidhānaratnamālā, Vaijayantī and the Dhātupāṭha from the ashtadhyayi.com data (github.com/ashtadhyayi-com/data); Monier-Williams from the Cologne Digital Sanskrit Dictionaries (sanskrit-lexicon). Meanings are shortened; see the full dictionaries for detail. · <a href="./">sanskritmanthan.in</a></div></footer>
+<script>''' + js + '''</script>
+</body>
+</html>
+'''
+    open(f'{WEB}/kosha.html', 'w').write(head + '</head>\n' + body)
+if __name__ == '__main__' and 'kosha' in sys.argv: kosha_page(); nav()

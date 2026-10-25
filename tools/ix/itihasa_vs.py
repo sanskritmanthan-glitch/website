@@ -70,3 +70,12 @@ if want('devibhagavata'):
     for k in range(1, 13):
         sub = [f for f in fs if (ch(f) or '').startswith(f'{k}.')]
         if sub: book('devibhagavata', f'dbh{k:02d}', f'स्कन्धः {k}', ['अध्यायः'], sub, k, chapter=lambda f: (ch(f) or '').split('.', 1)[-1] or None)
+SKANDA = ['माहेश्वरखण्डः', 'वैष्णवखण्डः', 'ब्रह्मखण्डः', 'काशीखण्डः', 'अवन्तीखण्डः', 'नागरखण्डः', 'प्रभासखण्डः', 'अम्बिकाखण्डः', 'हिमवत्खण्डः']
+if want('skanda'):
+    for d in sorted(glob.glob(f'{P}/skanda-purANam/sarva-prastutiH/[0-9][0-9]_*')):
+        k = int(os.path.basename(d)[:2]); fs = glob.glob(f'{d}/**/*.md', recursive=True)
+        def ch(f, d=d):
+            rel = os.path.relpath(f, d).split(os.sep); n = [int(re.match(r'\d+', x).group()) for x in rel if re.match(r'\d+', x)]
+            return '.'.join(map(str, n)) if n else None
+        nested = any(os.sep in os.path.relpath(f, d) for f in fs)
+        book('skanda', f'skanda{k}', SKANDA[k - 1], ['भागः', 'अध्यायः'] if nested else ['अध्यायः'], fs, k, chapter=ch)
