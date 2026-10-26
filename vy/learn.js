@@ -89,7 +89,7 @@ function hub() {
    <div id="sr"></div>
    <div class="tiles"><a href="dhatu.html"><b>${D('धातुरूपाणि')}</b><small>2,229 roots · every form</small></a><a href="shabda.html"><b>${D('शब्दरूपाणि')}</b><small>any noun · three genders</small></a>
    <a href="pratyaya.html"><b>${D('प्रत्ययाः · उपसर्गाः')}</b><small>kṛt · taddhita · strī · prefixes</small></a><a href="#tools"><b>${D('साधनानि')}</b><small>sandhi · pratyāhāra · sūtra</small></a>
-   <a href="krida.html"><b>${D('क्रीडाङ्गणम्')}</b><small>learn by playing</small></a><a href="sutra.html#ashtadhyayi"><b>${D('अष्टाध्यायी')}</b><small>all 3,981 sūtras</small></a></div>
+   <a href="krida.html"><b>${D('क्रीडाङ्गणम्')}</b><small>learn by playing</small></a><a href="sutranveshanam.html#ashtadhyayi"><b>${D('अष्टाध्यायी')}</b><small>all 3,981 sūtras</small></a></div>
    <h2 class="sec2">पाठ्यक्रमः · the course <small>${n}/${LESSONS.length} done</small></h2>
    ${UNITS.map(([u, ue], ui) => `<div class="unit"><h3>${D(u)} <small>${ue}</small></h3><div class="lessons">${LESSONS.filter(l => l.u === ui).map(l => { const i = LESSONS.indexOf(l);
      return `<a href="#l/${l.id}" class="${d[l.id] ? 'done' : ''}"><span class="no">${i + 1}</span><span><b>${D(l.t)}</b><small>${l.en}</small></span>${d[l.id] ? '<span class="ck">✓</span>' : ''}</a>` }).join('')}</div></div>`).join('')}`;

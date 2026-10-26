@@ -32,7 +32,7 @@ def gretil_url(path):
 
 PAGES = [
     ('shloka.html', 'श्लोकान्वेषणम् · Śloka Index', [f'{HERE}/shloka/gretil_texts.tsv']),
-    ('sutra.html', 'सूत्रान्वेषणम् · Sūtra Index', [f'{HERE}/shloka/sutra_texts.tsv']),
+    ('sutranveshanam.html', 'सूत्रान्वेषणम् · Sūtra Index', [f'{HERE}/shloka/sutra_texts.tsv']),
     ('mantra.html', 'मन्त्रान्वेषणम् · Mantra Index', [f'{HERE}/ix/mantra_ingest.py']),
     ('itihasa.html', 'इतिहासपुराणम् · Itihāsa–Purāṇa', [f'{HERE}/ix/itihasa_ingest.py']),
     ('subhashita.html', 'सुभाषितम् · Subhāṣita', [f'{HERE}/ix/subhashita_ingest.py']),

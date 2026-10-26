@@ -2,7 +2,7 @@
 import re, sys, json, os
 HERE = os.path.dirname(os.path.abspath(__file__)); WEB = os.path.join(HERE, '..', '..')
 # two separate families of pages, each with its own menu
-NAV_A = [('shloka.html', 'श्लोकाः'), ('sutra.html', 'सूत्राणि'), ('mantra.html', 'मन्त्राः'), ('chandas.html', 'छन्दः')]
+NAV_A = [('shloka.html', 'श्लोकाः'), ('sutranveshanam.html', 'सूत्राणि'), ('mantra.html', 'मन्त्राः'), ('chandas.html', 'छन्दः')]
 NAV_B = [('granthalaya.html', 'ग्रन्थालयः'), ('itihasa.html', 'इतिहासपुराणम्'), ('subhashita.html', 'सुभाषितम्'), ('kosha.html', 'कोशः'), ('shastra.html', 'शास्त्राणि')]
 NAV_C = [('granthalaya.html', '‹ ग्रन्थालयः'), ('shastra.html', 'शास्त्राणि'), ('dharma.html', 'धर्मशास्त्रम्'), ('artha.html', 'अर्थकामौ'), ('ayurveda.html', 'आयुर्वेदः'),
          ('rasa.html', 'रसशास्त्रम्'), ('jyotisha.html', 'गणितज्योतिषम्'), ('sahitya.html', 'नाट्यालङ्कारौ')]

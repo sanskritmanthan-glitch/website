@@ -1,4 +1,4 @@
-"""Build the website data for the sūtra–kārikā index (sutra.html) from sutra_corpus/*.json → su/"""
+"""Build the website data for the sūtra–kārikā index (sutranveshanam.html) from sutra_corpus/*.json → su/"""
 import json, glob, os, sys, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from skt import *
