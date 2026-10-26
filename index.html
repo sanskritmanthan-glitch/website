@@ -265,7 +265,9 @@ function render(){
     const pool=s.ids?s.ids.map(i=>BOOKS.find(b=>b.id===i)).filter(Boolean):BOOKS.filter(b=>b.shelf===s.id);
     const list=pool.filter(b=>(LF==="all"||b.lang===LF)&&(!q||norm(b.title+" "+(b.full||"")+" "+(b.sub||"")+" "+s.name[L][0]).includes(q)));
     if(!list.length)continue;list.forEach(b=>seen.add(b.id));
-    toc.push(`<a href="#sh-${s.id}">${esc(s.name[L][0])}</a>`);
+    const TS={rudra:{en:"Arrivals · Rudrāntaram",te:"రుద్రాంతరం",sa:"रुद्रान्तरम्",hi:"रुद्रान्तरम्"},"edu-sa":{en:"Educational Psychology",te:"విద్యామనోవిజ్ఞాన గ్రంథమాల",sa:"शिक्षामनोविज्ञानग्रन्थमाला",hi:"शिक्षा मनोविज्ञान ग्रन्थमाला"}};
+    const tn=(TS[s.id]&&TS[s.id][L])||s.name[L][0].replace(/\s*·\s*(Sanskrit|Telugu|English|संस्कृतम्|संस्कृत|तेलुगु|आङ्ग्लम्|अंग्रेज़ी|సంస్కృతం|తెలుగు|ఆంగ్లం)$/,"");
+    toc.push(`<a href="#sh-${s.id}">${esc(tn)}</a>`);
     html.push(`<div class="shelf" id="sh-${s.id}" style="--sc:${s.color}"><div class="shelf-head"><span class="bar"></span><h3>${esc(s.name[L][0])}</h3><span class="n">${list.length}</span><p>${esc(s.name[L][1])}</p></div>
       <div class="row">${list.map(b=>`<button class="book" type="button" data-id="${b.id}"><div class="cv">${cover(b)}</div><span class="bt ${scr(b.title)}">${esc(b.title)}</span><span class="bm">${b.vol?esc(VOL[L])+" "+b.vol+" · ":""}${esc(u.langs[b.lang])}</span></button>`).join("")}</div></div>`);
   }
