@@ -45,7 +45,7 @@ def shastra():
         ('jyotisha.html', 'jy', 'गणितम् · ज्योतिषम्', 'Gaṇita · Jyotiṣa', 'Śulbasūtra, Āryabhaṭīya, Brāhmasphuṭasiddhānta, Līlāvatī, Bījagaṇita, Vedāṅgajyotiṣa, Sūryasiddhānta, and Varāhamihira’s Bṛhatsaṃhitā, Bṛhajjātaka and yātrā texts.'),
         ('sahitya.html', 'kv', 'नाट्यशास्त्रम् · अलङ्कारशास्त्रम्', 'Nāṭya · Alaṅkāra · Chandas', 'Bharata’s Nāṭyaśāstra, Daśarūpaka, Nāṭakacandrikā; Bhāmaha, Daṇḍin, Vāmana, Udbhaṭa, Ānandavardhana, Mammaṭa, Jayadeva, Viśvanātha; Vṛttaratnākara.')]:
         h += card(href, dev, en, desc, d)
-    h += '''<a class="cd" href="sutranveshanam.html"><h2>दर्शनानि · व्याकरणम् · योगः</h2><div class="en">Darśana · Vyākaraṇa · Yoga</div><p>The sūtras and kārikās of the darśanas, Pāṇini’s Aṣṭādhyāyī, Vākyapadīya, Yogasūtra and Haṭhayogapradīpikā are in the Sūtra Index.</p><div class="ct">सूत्राणि ›</div></a>'''
+    h += '''<a class="cd" href="sutra.html"><h2>दर्शनानि · व्याकरणम् · योगः</h2><div class="en">Darśana · Vyākaraṇa · Yoga</div><p>The sūtras and kārikās of the darśanas, Pāṇini’s Aṣṭādhyāyī, Vākyapadīya, Yogasūtra and Haṭhayogapradīpikā are in the Sūtra Index.</p><div class="ct">सूत्राणि ›</div></a>'''
     h += '''<a class="cd" href="mantra.html"><h2>वेदः · उपनिषदः</h2><div class="en">Veda · Upaniṣad</div><p>Ṛgveda, Atharvaveda, Sāmaveda and the principal Upaniṣads, pāda by pāda, in the Mantra Index; metres in the Chandas finder.</p><div class="ct">मन्त्राः ›</div></a>'''
     h += '</div><h2 class="sec">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</h2><p class="hint">These pages are prepared; their texts are not yet available in a clean digital form. Texts will be added as they are provided — where a related portion already exists elsewhere on the site, it is linked.</p><div class="cards">'
     for dev, en, want, have in [
@@ -61,7 +61,7 @@ def shastra():
         ('पाकशास्त्रम् · पशु-हस्त्यश्वायुर्वेदः', 'Pāka · Mṛga-, Hasti- and Aśva-āyurveda', 'Kṣemakutūhala, Bhojanakutūhala, Pākadarpaṇa; Hastyāyurveda (Pālakāpya), Aśvaśāstra (Nakula), Mṛgapakṣiśāstra',
          [('ayurveda.html#annapanavidhi', 'Annapānavidhi')]),
         ('शिक्षा · निरुक्तम्', 'Śikṣā · Nirukta · Phonetics and etymology', 'Pāṇinīya Śikṣā, Yājñavalkya Śikṣā, Ṛgveda Prātiśākhya, Yāska’s Nirukta, Nighaṇṭu', [('kosha.html', 'Kośa search')]),
-        ('आगमः · तन्त्रम्', 'Āgama · Tantra', 'Śaiva and Vaiṣṇava āgamas, Pāñcarātra saṃhitās, Tantrāloka, Śāradātilaka, Prapañcasāra', [('sutranveshanam.html', 'Śivasūtra, Spandakārikā, Pratyabhijñā in the Sūtra Index')]),
+        ('आगमः · तन्त्रम्', 'Āgama · Tantra', 'Śaiva and Vaiṣṇava āgamas, Pāñcarātra saṃhitās, Tantrāloka, Śāradātilaka, Prapañcasāra', [('sutra.html', 'Śivasūtra, Spandakārikā, Pratyabhijñā in the Sūtra Index')]),
     ]:
         links = ''.join(f'<li><a href="{u}">{t}</a></li>' for u, t in have if t)
         h += f'<div class="cd wait"><h2>{dev}</h2><div class="en">{en}</div><p><b>Texts wanted:</b> {want}.</p>' + (f'<div class="ok">Already on the site:</div><ul>{links}</ul>' if links else '') + '<div class="ct">ग्रन्थाः प्रतीक्ष्यन्ते · texts awaited</div></div>'

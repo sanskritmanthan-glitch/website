@@ -27,7 +27,7 @@ XR = {}
 def xkey(v): return (v['k'][0] + '|' + v['k'][1]) if len(v.get('k', [])) >= 2 and len(v['k'][0]) > 6 else None
 if cfg.get('xref'):
     SH = os.path.join(HERE, '..', 'shloka')
-    for page, pat in (('shloka.html', f'{SH}/corpus/*.json'), ('sutranveshanam.html', f'{SH}/sutra_corpus/*.json'), ('itihasa.html', f'{HERE}/itihasa/corpus/*.json'), (cfg['page'], f'{HERE}/{C}/corpus/*.json')):
+    for page, pat in (('shloka.html', f'{SH}/corpus/*.json'), ('sutra.html', f'{SH}/sutra_corpus/*.json'), ('itihasa.html', f'{HERE}/itihasa/corpus/*.json'), (cfg['page'], f'{HERE}/{C}/corpus/*.json')):
         for f in glob.glob(pat):
             d = json.load(open(f)); title = d['title']
             if page == 'itihasa.html':

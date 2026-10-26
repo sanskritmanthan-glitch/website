@@ -78,7 +78,7 @@ export function dhatuPlain(up){let s=up.replace(/[\\^]/g,'').replace(/^(qu|wu|Yi
   if(idit){const m=s.match(/([kKgGcCjJwWqQtTdDpPbB])$/);if(m)s=s.slice(0,-1)+(NAS[m[1]]||'M')+m[1]}
   return s2d(s)}
 export async function sutraText(source,code){const s=await getJSON(BASE+'sutras.json');return s[`${source}:${code}`]||''}
-export const sutraHref=(source,code)=>source==='ashtadhyayi'&&/^\d\.\d\.\d+$/.test(code)?`sutranveshanam.html#ashtadhyayi/${code.split('.').slice(0,2).join('.')}/${code.split('.')[2]}`:null;
+export const sutraHref=(source,code)=>source==='ashtadhyayi'&&/^\d\.\d\.\d+$/.test(code)?`sutra.html#ashtadhyayi/${code.split('.').slice(0,2).join('.')}/${code.split('.')[2]}`:null;
 export const SRCD={ashtadhyayi:'',varttika:'वार्तिकम्',dhatupatha:'धातुपाठः',kashika:'काशिका',linganushasanam:'लिङ्गानुशासनम्',kaumudi:'कौमुदी',unadi:'उणादिः',phit:'फिट्',anyatra:''};
 
 /* ---------------- the engine ---------------- */
