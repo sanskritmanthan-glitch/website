@@ -111,7 +111,7 @@ section{padding-block:30px}
 .prow .ph.te{border-left:1px dashed var(--line);padding-left:18px}
 .phd{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;margin:2px 0 4px;font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--saffron);text-transform:uppercase}
 .phd .te{padding-left:18px}.shelf .anc{position:relative;top:-90px;display:block}
-.iks{padding-block:8px 30px}.iks h2{font-size:1.7rem;margin:0 0 6px}.iks>p{color:var(--muted);max-width:72ch;margin:0 0 18px}
+.iks{padding-block:44px 30px}.iks h2{font-size:1.7rem;margin:0 0 6px}.iks>p{color:var(--muted);max-width:72ch;margin:0 0 18px}
 .ikc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .ikc a{display:block;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--saffron);border-radius:6px;padding:14px 16px;text-decoration:none;color:var(--ink);transition:transform .2s}
 .ikc a:hover{transform:translateY(-3px)}.ikc b{display:block;font-size:1.05rem;margin-bottom:6px;color:var(--saffron)}.ikc span{font-size:.9rem;color:var(--muted);line-height:1.6}
@@ -209,7 +209,7 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
 
 <main id="top">
 <div class="wrap"><div class="hero">
-  <div><div class="lead">यथा पिण्डे तथा ब्रह्माण्डे</div><h1 id="hero"></h1><p id="sub"></p></div>
+  <div><div class="lead">यथा पिण्डे तथा ब्रह्माण्डे</div><h1 id="hero"></h1></div>
   <div class="compass">
     <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="var(--line)" stroke-width=".4"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="38"/><line x1="50" y1="4" x2="50" y2="96"/><line x1="4" y1="50" x2="96" y2="50"/></g></svg>
     <div class="halo" aria-hidden="true"></div><div class="rays" aria-hidden="true"></div><div class="om" role="button" tabindex="0" title="ॐ" aria-label="ॐ">ॐ</div>
@@ -220,7 +220,7 @@ dialog::backdrop{background:rgba(20,14,8,.55)}
   <div class="cl" aria-live="polite"><span class="lte">తెలుగు</span><span class="lsa">संस्कृतम्</span></div></div>
 </div></div>
 
-<section class="iks"><div class="wrap"><h2 id="ikh"></h2><p id="ikp"></p><div class="ikc" id="ikc"></div></div></section>
+<section class="iks"><div class="wrap"><div class="ikc" id="ikc"></div></div></section>
 <section id="library"><div class="wrap">
   <div class="sec-head"><h2 id="lib"></h2><p id="libsub"></p></div>
   <div class="tools"><input id="q" type="search" aria-label="Search"><div id="lf" role="group" aria-label="Book language" style="display:flex;gap:6px;flex-wrap:wrap"></div><span class="count" id="count"></span></div>
@@ -267,9 +267,9 @@ function render(){
   const u=UI[L];document.documentElement.lang=L;
   $("#brand").textContent=u.brand;$("#tagl").textContent=u.tagline;$("#tagl").className="tagl "+scr(u.tagline);$("#n0").textContent=u.nav[0];$("#n3").textContent={te:"శ్లోకాన్వేషణం",sa:"श्लोकान्वेषणम्",hi:"श्लोक-अन्वेषण",en:"Śloka Index"}[L];$("#n4").textContent={te:"సూత్రాన్వేషణం",sa:"सूत्रान्वेषणम्",hi:"सूत्र-अन्वेषण",en:"Sūtra Index"}[L];$("#n5").textContent={te:"మంత్రాన్వేషణం",sa:"मन्त्रान्वेषणम्",hi:"मन्त्र-अन्वेषण",en:"Mantra Index"}[L];$("#n6").textContent={te:"గ్రంథాన్వేషణం",sa:"ग्रन्थान्वेषणम्",hi:"ग्रन्थ-अन्वेषण",en:"Text Library"}[L];$("#n7").textContent={te:"శాస్త్రాలు",sa:"शास्त्राणि",hi:"शास्त्र",en:"Śāstras"}[L];$("#n8").textContent={te:"క్రీడాంగణం",sa:"क्रीडाङ्गणम्",hi:"क्रीडाङ्गण",en:"Play & Learn"}[L];$("#n9").textContent={te:"వ్యాకరణం",sa:"व्याकरणम्",hi:"व्याकरण",en:"Grammar"}[L];
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
-  $("#hero").innerHTML=u.hero;$("#sub").textContent=u.sub;
+  $("#hero").innerHTML=u.hero;
   document.querySelectorAll("[data-dir]").forEach(e=>e.textContent=u.dirs[e.dataset.dir]);
-  $("#ikh").textContent=u.iks.h;$("#ikp").textContent=u.iks.p;$("#ikc").innerHTML=u.iks.cards.map(([t,d,h])=>`<a href="${h}"><b>${esc(t)}</b><span>${esc(d)}</span></a>`).join("");$("#lib").textContent=u.lib;$("#libsub").textContent=u.libsub;$("#q").placeholder=u.search;
+  $("#ikc").innerHTML=u.iks.cards.map(([t,d,h])=>`<a href="${h}"><b>${esc(t)}</b><span>${esc(d)}</span></a>`).join("");$("#lib").textContent=u.lib;$("#libsub").textContent=u.libsub;$("#q").placeholder=u.search;
   $("#lf").innerHTML=[["all",u.all],["sa",u.langs.sa],["te",u.langs.te],["en",u.langs.en],["hi",u.langs.hi]].map(([v,t])=>`<button class="chip" type="button" data-v="${v}" aria-pressed="${LF===v}">${esc(t)}</button>`).join("");
   const q=norm(Q);let seen=new Set(),toc=[],html=[];
   const TS={shk:{en:"Śāstra-kāvyas",te:"శాస్త్రకావ్యాలు",sa:"शास्त्रकाव्यानि",hi:"शास्त्र-काव्य"},vyak:{en:"Vyākaraṇa-kāvyas",te:"వ్యాకరణకావ్యాలు",sa:"व्याकरणकाव्यानि",hi:"व्याकरण-काव्य"},natya:{en:"Nāṭya-kāvyas",te:"నాట్యకావ్యాలు",sa:"नाट्यकाव्यानि",hi:"नाट्य-काव्य"},misc:{en:"Gaganakusumāni",te:"గగనకుసుమాలు",sa:"गगनकुसुमानि",hi:"गगनकुसुमानि"},shiksha:{en:"Bhāratīya Śikṣāśāstra-Sarvasvam",te:"భారతీయశిక్షాశాస్త్రసర్వస్వమ్",sa:"भारतीयशिक्षाशास्त्रसर्वस्वम्",hi:"भारतीयशिक्षाशास्त्रसर्वस्वम"},rudra:{en:"Rudrāntaram",te:"రుద్రాంతరం",sa:"रुद्रान्तरम्",hi:"रुद्रान्तरम्"},"edu-sa":{en:"Educational Psychology",te:"విద్యామనోవిజ్ఞాన గ్రంథమాల",sa:"शिक्षामनोविज्ञानग्रन्थमाला",hi:"शिक्षा मनोविज्ञान ग्रन्थमाला"}};
