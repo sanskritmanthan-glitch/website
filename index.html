@@ -291,8 +291,9 @@ function render(){
       if(Lb.length&&Rb.length){
         [...Lb,...Rb].forEach(b=>seen.add(b.id));
         toc.push(`<a href="#sh-${s.id}">${esc(tname(s))}</a>`); if(ts)toc.push(`<a href="#sh-${ts.id}">${esc(tname(ts))}</a>`);
-        const k=kHalf(),n=Math.max(Math.ceil(Lb.length/k),Math.ceil(Rb.length/k));let rw="";
-        for(let i=0;i<n;i++)rw+=`<div class="prow" style="--k:${k}"><div class="ph">${Lb.slice(i*k,i*k+k).map(bk).join("")}</div><div class="ph te">${Rb.slice(i*k,i*k+k).map(bk).join("")}</div></div>`;
+        const k=kHalf(),LEAD={vyak:1},lead=(LEAD[s.id]&&k>1)?LEAD[s.id]:0,cuts=[];
+        {let i=0;if(lead){cuts.push([0,lead]);i=lead}const m=Math.max(Lb.length,Rb.length);for(;i<m;i+=k)cuts.push([i,i+k])}
+        let rw="";for(const [a,z] of cuts)rw+=`<div class="prow" style="--k:${k}"><div class="ph">${Lb.slice(a,z).map(bk).join("")}</div><div class="ph te">${Rb.slice(a,z).map(bk).join("")}</div></div>`;
         html.push(`<div class="shelf pair" id="sh-${s.id}" style="--sc:${s.color}">${ts?`<span class="anc" id="sh-${ts.id}"></span>`:""}${head(s,ts?strip(s.name[L][0]):s.name[L][0],Lb.length+Rb.length)}<div class="phd" style="--k:${k}"><span>${esc(u.pairl.sa)}</span><span class="te">${esc(u.pairl.te)}</span></div>${rw}</div>`);
         continue;
       }
