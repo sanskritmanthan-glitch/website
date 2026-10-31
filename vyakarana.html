@@ -181,7 +181,7 @@ nav.seg{flex-wrap:wrap;border-radius:14px}
 .big2{font-size:1.4rem;margin:6px 0}.big2 span{margin-right:8px}.tool{border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
 @media (max-width:600px){.prompt .big{font-size:1.5rem}.opt{font-size:1.05rem;padding:12px 6px}.qcard{padding:16px 12px}.mc{height:80px}}
 </style>
-</head>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
 <body class="s-dv"><header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a><nav class="seg" aria-label="Index"><a href="vyakarana.html" aria-current="page">व्याकरणम्</a><a href="krida.html">क्रीडाङ्गणम्</a><a href="dhatu.html">धातुरूपाणि</a><a href="shabda.html">शब्दरूपाणि</a><a href="pratyaya.html">प्रत्ययाः · उपसर्गाः</a></nav>
 <div class="seg" id="script" role="group" aria-label="Script"><button data-s="dv">देवनागरी</button><button data-s="te">తెలుగు</button><button data-s="la">IAST</button></div></div></header>
 <div class="wrap"><main id="app"><div class="load">…</div></main></div>
@@ -193,6 +193,6 @@ start();
 const sb=[...document.querySelectorAll('#script button')];const mark=()=>sb.forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===C.SCRIPT));
 document.body.className='s-'+C.SCRIPT;mark();sb.forEach(b=>b.onclick=()=>{C.setScript(b.dataset.s);mark();window.dispatchEvent(new HashChangeEvent('hashchange'))});
 </script>
-<script src="/sri.js?v=5" defer></script>
+<script src="/sri.js?v=6" defer></script>
 </body>
 </html>

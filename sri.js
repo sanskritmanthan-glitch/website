@@ -114,29 +114,35 @@ const now=()=>new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'
 const scroll=()=>{log.scrollTop=log.scrollHeight};
 const SS={g(k){try{return sessionStorage.getItem('sri-'+k)}catch(e){return null}},s(k,v){try{sessionStorage.setItem('sri-'+k,v)}catch(e){}}};
 function save(){while(log.children.length>60)log.removeChild(log.firstChild);SS.s('log',log.innerHTML);SS.s('open',box.hidden?'0':'1')}
-function add(html,who='b'){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html+`<span class="tm">${now()}</span>`;log.appendChild(d);scroll();save();return d}
+function add(html,who='b'){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html+`<span class="tm">${now()}</span>`;log.appendChild(d);scroll();save();
+  d.querySelectorAll('[data-aud]').forEach(async el=>{const u=await audioFor(el.dataset.aud);if(!u){el.remove();return}el.outerHTML=`<button type="button" class="lk big" data-play="${esc(u)}">▶ ${AUTHV[LANG]||AUTHV.en}</button>`;if(SPEAK&&who==='b'){stopSpeak();playRec(u)}});return d}
+/* the author's own recordings (audio.json: key → file); shown wherever a recording exists */
+const AUTHV={sa:'लेखकस्य स्वरेण',te:'రచయిత స్వరంలో',hi:'लेखक की आवाज़ में',en:"In the author's voice"};
+let AUD=null,REC=null;async function audioFor(k){if(!AUD){try{AUD=await (await fetch(ROOT+'audio.json')).json()}catch(e){AUD={}}}return AUD[k]?ROOT+AUD[k]:null}
+function playRec(u){try{if(REC){REC.pause()}REC=new Audio(u);REC.onplay=()=>box.classList.add('sri-talk');REC.onended=REC.onpause=()=>box.classList.remove('sri-talk');REC.play()}catch(e){}}
+log.addEventListener('click',e=>{const b=e.target.closest('[data-play]');if(b){stopSpeak();playRec(b.dataset.play)}});
 log.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)handle(b.dataset.say,b.textContent)});
 function typing(){const d=document.createElement('div');d.className='m b typing';d.innerHTML='<span></span><span></span><span></span>';log.appendChild(d);scroll();return d}
 const chips=a=>`<div class="chips">${a.map(([l,s])=>`<button type="button" data-say="${esc(s)}">${l}</button>`).join('')}</div>`;
 let LANG=LS.g('lang','');
 const T={
- sa:{menu:[['📚 ग्रन्थाः','show me books'],['🔎 श्लोकान्वेषणम्','how to find a shloka'],['📜 सूत्रम् १.१.१','1.1.1'],['🕉 अद्यतनः गीताश्लोकः','verse of the day'],['📖 शब्दार्थः','meaning of dharma'],['🔤 लिप्यन्तरणम्','convert रामः'],['🧮 शब्दरूपाणि','forms of राम'],['ℹ️ परिचयः क्रयणं च','how to buy'],['🎮 क्रीडाः','games'],['📘 व्याकरणपाठाः','lessons'],['📖 पठनम्','read gita'],['🔊 पाठकः','sr:help'],['🌐 भाषा','language']],
+ sa:{menu:[['🎴 शुभकामनापत्रम्','greeting card'],['📜 अद्यतनः श्लोकः',"today's shloka"],['📲 अनुप्रयोगः','install app'],['📚 ग्रन्थाः','show me books'],['🔎 श्लोकान्वेषणम्','how to find a shloka'],['📜 सूत्रम् १.१.१','1.1.1'],['🕉 अद्यतनः गीताश्लोकः','verse of the day'],['📖 शब्दार्थः','meaning of dharma'],['🔤 लिप्यन्तरणम्','convert रामः'],['🧮 शब्दरूपाणि','forms of राम'],['ℹ️ परिचयः क्रयणं च','how to buy'],['🎮 क्रीडाः','games'],['📘 व्याकरणपाठाः','lessons'],['📖 पठनम्','read gita'],['🔊 पाठकः','sr:help'],['🌐 भाषा','language']],
    ok:'उत्तमम्! अहं बोधिनी। कथं भवतः साहाय्यं करवाणि?',ask:'किं करवाणि?',thx:'🙏 स्वागतम्! अन्यत् किमपि पृच्छतु।',nf:'क्षम्यताम्, तत् ग्रन्थालये न लब्धम्। श्लोकस्य आदिपदानि ग्रन्थविषयं वा लिखतु, अथवा एतेषु चिनोतु —',voice:'hi-IN'},
- te:{menu:[['📚 పుస్తకాలు','show me books'],['🔎 శ్లోకం వెతకండి','how to find a shloka'],['📜 సూత్రం 1.1.1','1.1.1'],['🕉 నేటి గీతా శ్లోకం','verse of the day'],['📖 పదార్థం','meaning of dharma'],['🔤 లిపి మార్పిడి','convert రామః'],['🧮 పద రూపాలు','forms of राम'],['ℹ️ పరిచయం · కొనుగోలు','how to buy'],['🎮 ఆటలు','games'],['📘 వ్యాకరణ పాఠాలు','lessons'],['📖 శ్లోక పఠనం','read gita'],['🔊 స్క్రీన్ రీడర్','sr:help'],['🌐 భాష','language']],
+ te:{menu:[['🎴 శుభాకాంక్షల కార్డు','greeting card'],['📜 నేటి శ్లోకం',"today's shloka"],['📲 యాప్‌గా పెట్టుకోండి','install app'],['📚 పుస్తకాలు','show me books'],['🔎 శ్లోకం వెతకండి','how to find a shloka'],['📜 సూత్రం 1.1.1','1.1.1'],['🕉 నేటి గీతా శ్లోకం','verse of the day'],['📖 పదార్థం','meaning of dharma'],['🔤 లిపి మార్పిడి','convert రామః'],['🧮 పద రూపాలు','forms of राम'],['ℹ️ పరిచయం · కొనుగోలు','how to buy'],['🎮 ఆటలు','games'],['📘 వ్యాకరణ పాఠాలు','lessons'],['📖 శ్లోక పఠనం','read gita'],['🔊 స్క్రీన్ రీడర్','sr:help'],['🌐 భాష','language']],
    ok:'సరే! నేను బోధిని. మీకు ఎలా సహాయం చేయగలను?',ask:'మీకు ఏమి కావాలి?',thx:'🙏 సంతోషం! ఇంకేమైనా అడగండి.',nf:'క్షమించండి, అది దొరకలేదు. శ్లోకం మొదటి పదాలు లేదా పుస్తక విషయం టైప్ చేయండి, లేదా వీటిలో ఎంచుకోండి —',voice:'te-IN'},
- hi:{menu:[['📚 पुस्तकें','show me books'],['🔎 श्लोक खोजें','how to find a shloka'],['📜 सूत्र 1.1.1','1.1.1'],['🕉 आज का गीता श्लोक','verse of the day'],['📖 शब्द का अर्थ','meaning of dharma'],['🔤 लिपि परिवर्तन','convert रामः'],['🧮 शब्द रूप','forms of राम'],['ℹ️ परिचय और खरीद','how to buy'],['🎮 खेल','games'],['📘 व्याकरण पाठ','lessons'],['📖 श्लोक पाठ','read gita'],['🔊 स्क्रीन रीडर','sr:help'],['🌐 भाषा','language']],
+ hi:{menu:[['🎴 शुभकामना कार्ड','greeting card'],['📜 आज का श्लोक',"today's shloka"],['📲 ऐप इंस्टॉल करें','install app'],['📚 पुस्तकें','show me books'],['🔎 श्लोक खोजें','how to find a shloka'],['📜 सूत्र 1.1.1','1.1.1'],['🕉 आज का गीता श्लोक','verse of the day'],['📖 शब्द का अर्थ','meaning of dharma'],['🔤 लिपि परिवर्तन','convert रामः'],['🧮 शब्द रूप','forms of राम'],['ℹ️ परिचय और खरीद','how to buy'],['🎮 खेल','games'],['📘 व्याकरण पाठ','lessons'],['📖 श्लोक पाठ','read gita'],['🔊 स्क्रीन रीडर','sr:help'],['🌐 भाषा','language']],
    ok:'बहुत अच्छा! मैं बोधिनी हूँ। मैं आपकी कैसे सहायता कर सकती हूँ?',ask:'आपको क्या चाहिए?',thx:'🙏 स्वागत है! और कुछ पूछिए।',nf:'क्षमा करें, यह नहीं मिला। श्लोक के आरंभिक शब्द या पुस्तक का विषय लिखें, या इनमें से चुनें —',voice:'hi-IN'},
- en:{menu:[['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy'],['🎮 Games','games'],['📘 Grammar lessons','lessons'],['📖 Read aloud','read gita'],['🔊 Screen reader','sr:help'],['🌐 Language','language']],
+ en:{menu:[['🎴 Greeting card','greeting card'],["📜 Today's śloka","today's shloka"],['📲 Install app','install app'],['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy'],['🎮 Games','games'],['📘 Grammar lessons','lessons'],['📖 Read aloud','read gita'],['🔊 Screen reader','sr:help'],['🌐 Language','language']],
    ok:'Wonderful! I am Bodhinī. How can I assist you?',ask:'What would you like?',thx:'🙏 You are welcome! Ask me anything else.',nf:"Sorry, I couldn't find that. Try the opening words of a verse, a book topic (e.g. Purāṇa, grammar, Telugu), or one of these —",voice:'en-IN'}};
 const L_=()=>T[LANG]||T.en;
-const LANGQ=`Which language do you prefer?<br>भवतः प्रियभाषा का? · మీకు ఏ భాష ఇష్టం? · आपको कौन-सी भाषा पसंद है?`+'<div class="chips"><button type="button" data-say="lang:sa">संस्कृतम्</button><button type="button" data-say="lang:te">తెలుగు</button><button type="button" data-say="lang:hi">हिन्दी</button><button type="button" data-say="lang:en">English</button></div>';
+let LANGQ=`Which language do you prefer?<br>भवतः प्रियभाषा का? · మీకు ఏ భాష ఇష్టం? · आपको कौन-सी भाषा पसंद है?`+'<div class="chips"><button type="button" data-say="lang:sa">संस्कृतम्</button><button type="button" data-say="lang:te">తెలుగు</button><button type="button" data-say="lang:hi">हिन्दी</button><button type="button" data-say="lang:en">English</button></div>';
 function open(){box.hidden=false;fab.hidden=true;tip.hidden=true;LS.s('tip','0');if(!log.children.length)hello();save();scroll();setTimeout(()=>inp.focus(),50)}
 function close(){box.hidden=true;fab.hidden=false;stopSpeak();save()}
 fab.onclick=open;tip.onclick=open;$('.x',box).onclick=close;$('.home',box).onclick=()=>reply(menuMsg());
 const WEL=`<b>नमस्ते! 🙏</b> Welcome to <b>संस्कृतमन्थनम् · Sanskrit Manthan</b> — <i>भारतीयज्ञानपरम्पराकार्यशाला</i>, a workshop of Indian Knowledge Systems.<br>I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding”.`;
 function hello(){if(!LANG)reply(WEL+'<br><br>'+LANGQ,'Namaste! Welcome to Sanskrit Manthan, a workshop of Indian Knowledge Systems. I am Bodhini. Which language do you prefer?');
   else reply(WEL+'<br><br>'+L_().ok+chips(L_().menu),'Namaste! Welcome to Sanskrit Manthan. '+L_().ok)}
-function setLang(l){LANG=l;LS.s('lang',l);mlS.value=T[l].voice;LS.s('ml',mlS.value);return [L_().ok+chips(L_().menu),L_().ok]}
+function setLang(l){LANG=l;LS.s('lang',l);if(![...mlS.options].some(o=>o.value===T[l].voice)){const o=document.createElement('option');o.value=T[l].voice;o.textContent=l;mlS.appendChild(o)}mlS.value=T[l].voice;LS.s('ml',mlS.value);return [L_().ok+chips(L_().menu),L_().ok]}
 const menuMsg=()=>L_().ask+chips(L_().menu);
 /* carry the conversation across pages (this browser tab only) */
 {const old=SS.g('log');if(old){log.innerHTML=old;if(SS.g('open')==='1'){box.hidden=false;fab.hidden=true;tip.hidden=true;setTimeout(scroll,0)}}}
@@ -155,7 +161,12 @@ function say(text,force,max){if((!SPEAK&&!force)||!synth||!text)return;stopSpeak
   // split into runs by script so Telugu, Devanagari and English each get a fitting voice
   const parts=text.replace(/\s+/g,' ').slice(0,600).match(/[ఀ-౿][ఀ-౿\s,.।॥!?0-9-]*|[ऀ-ॿ][ऀ-ॿ\s,.!?0-9-]*|[^ऀ-ॿఀ-౿]+/g)||[];
   parts.forEach(p=>sayPart(p))}
-function sayPart(text){(text.match(/[ఀ-౿][ఀ-౿\s,.।॥!?0-9-]*|[ऀ-ॿ][ऀ-ॿ\s,.!?0-9-]*|[^ऀ-ॿఀ-౿]+/g)||[]).forEach(p=>{p=p.trim();if(!p||!/[\p{L}]/u.test(p))return;const lang=/[ఀ-౿]/.test(p)?'te-IN':/[ऀ-ॿ]/.test(p)?'hi-IN':'en-IN';
+const SCR=[[0x0900,0x097F,()=>LANG==='mr'?'mr-IN':LANG==='ne'?'ne-NP':'hi-IN'],[0x0980,0x09FF,()=>'bn-IN'],[0x0A00,0x0A7F,()=>'pa-IN'],[0x0A80,0x0AFF,()=>'gu-IN'],[0x0B00,0x0B7F,()=>'or-IN'],[0x0B80,0x0BFF,()=>'ta-IN'],
+ [0x0C00,0x0C7F,()=>'te-IN'],[0x0C80,0x0CFF,()=>'kn-IN'],[0x0D00,0x0D7F,()=>'ml-IN'],[0x0600,0x06FF,()=>'ur-IN']];
+const scriptOf=ch=>{const n=ch.codePointAt(0);const r=SCR.find(([a,b])=>n>=a&&n<=b);return r?r[2]():null};
+function sayPart(text){// split into runs of one script, each read with a fitting voice
+  const runs=[];let cur='',lang='en-IN';for(const ch of text){const l=/[\p{L}\p{M}]/u.test(ch)?(scriptOf(ch)||'en-IN'):null;if(l&&l!==lang&&cur.trim()){runs.push([cur,lang]);cur=''}if(l)lang=l;cur+=ch}if(cur.trim())runs.push([cur,lang]);
+  runs.forEach(([p,lang])=>{p=p.trim();if(!p||!/[\p{L}]/u.test(p))return;
     const u=new SpeechSynthesisUtterance(p);u.lang=lang;const v=pickVoice(lang);if(v)u.voice=v;u.rate=.95;
     u.onstart=()=>box.classList.add('sri-talk');u.onend=()=>{if(!synth.speaking)box.classList.remove('sri-talk')};synth.speak(u)})}
 if(synth)synth.onvoiceschanged=()=>synth.getVoices();
@@ -200,10 +211,22 @@ const has=(s,...w)=>w.some(x=>s.includes(x));
 async function answer(q){q=speechNorm(digits(q));const raw=q,lo=raw.toLowerCase(),L=loose(raw);let m0;
   if(!raw||/^(hi|hello|hey|namaste|namaskar|namaskaram|menu|help|start|\?)\W*$/i.test(raw)||/^(नमस्ते|नमस्कारः?|నమస్తే|నమస్కారం)/.test(raw))return [menuMsg(),L_().ask];
   {const r=readCmd(raw);if(r){if(READ&&READ.auto)setTimeout(autoNext,0);return r}}
-  m0=raw.match(/^lang:(sa|te|hi|en)$/);if(m0)return setLang(m0[1]);
+  m0=raw.match(/^lang:([a-z]{2,3})$/);if(m0&&T[m0[1]])return setLang(m0[1]);
   if(/^(language|lang|भाषा|భాష)$/i.test(raw))return [LANGQ,'Which language do you prefer?'];
   if(/^(thank|thanks|dhanyavad|धन्यवाद|ధన్యవాద)/i.test(raw))return [L_().thx+chips(L_().menu)];
   if(has(lo,'how to find a shloka','find shloka','find a shloka','search shloka'))return [`Just type the <b>opening words</b> of any verse — in Devanagari, Telugu or Roman, e.g. <i>धर्मक्षेत्रे कुरुक्षेत्रे</i>, <i>yada yada hi</i>, <i>వాగర్థావివ</i>.<br>Or a reference like <i>gita 2.47</i>, <i>megha 1</i>, <i>raghu 1.1</i>, <i>yogasutra 1.2</i>, or a Pāṇini sūtra number <i>1.1.1</i>.`+chips([['धर्मक्षेत्रे','धर्मक्षेत्रे कुरुक्षेत्रे'],['gita 2.47','gita 2.47'],['yogasutra 1.2','yogasutra 1.2'],['vagarthaviva','vagarthaviva']])];
+  // learn by heart, worksheets, certificate
+  {const m=raw.match(/^(?:memori[sz]e|learn by heart|by heart|kanthapatha|kanthapath|कण्ठपाठः?|कंठस्थ|కంఠస్థం)\s*(.*)$/i);if(m){const r=m[1].trim();return [`🧠 <b>कण्ठपाठः · Learn by heart</b>${r?' — '+esc(r):''}: listen, hide words step by step, then recite to check yourself.`,'Learn by heart',ROOT+'kanthapatha.html'+(r?'?t='+encodeURIComponent(r):'')]}}
+  if(/\b(worksheets?|exercise sheet|practice sheet|printable)\b|अभ्यासपत्र|వర్క్‌షీట్/i.test(raw))return [`📝 <b>अभ्यासपत्रम् · Worksheets</b> — printable sandhi, noun-form and verb-form exercises with an answer key, new every time.`+chips([['Sandhi','open worksheet sandhi'],['Noun forms','open worksheet shabda'],['Verb forms','open worksheet dhatu']]),'Printable worksheets',ROOT+'worksheet.html'+((raw.match(/sandhi|shabda|dhatu/i)||[''])[0]?'?k='+raw.match(/sandhi|shabda|dhatu/i)[0].toLowerCase():'')];
+  if(/\b(certificate|pramanapatra)\b|प्रमाणपत्र|సర్టిఫికేట్|ధ్రువపత్రం/i.test(raw))return [`🎓 <b>Certificate</b> — finish the 23 grammar lessons and earn 12 stars in the games, then download your Vyākaraṇa-praveśa certificate.`,'Certificate',ROOT+'certificate.html'];
+  // app, offline, greetings, today, articles
+  if(/^(install|install app|app|add to home ?screen|ఇన్‌స్టాల్|इंस्टॉल)\b/i.test(raw))return await installMsg();
+  if(/^(offline|use offline|save offline|download for offline)$/i.test(raw))return await offlineMsg();
+  {const m=raw.match(/^save:(\w+)$/);if(m){const r=await saveBundle(m[1]);if(r)return r}}
+  if(/^articles list$/i.test(raw)){const A=await once('articles.json').catch(()=>[]);return ['📰 Articles:'+A.map(a=>`<div><a class="lk" href="${ROOT}a/${a.slug}">${esc(a.title)}</a> <span class="ref">${a.date}</span></div>`).join(''),'',ROOT+'articles']}
+  if(/today'?s (shloka|sloka|verse)|shloka of the day|daily shloka|अद्यतनः श्लोकः|आज का श्लोक|నేటి శ్లోకం/i.test(raw))return await todayMsg();
+  {const r=await greetIntent(raw,lo);if(r)return r}
+  {const r=await articleIntent(raw,lo);if(r)return r}
   // screen reader
   if(/^(screen ?reader|read selected|read selection|read (the )?selected text|read this|read it|selection|पठ्यताम्|चयनित पढ़ो|ఎంచుకున్నది చదువు|screenreader)$/i.test(raw)||raw==='sr:help'){
     if(raw!=='sr:help'&&LASTSEL){readText(LASTSEL);return [`🔊 “${esc(LASTSEL.slice(0,120))}${LASTSEL.length>120?'…':''}”`,'']}
@@ -276,7 +299,7 @@ function lessonMsg(l){const i=LEARN.lessons.indexOf(l),nx=LEARN.lessons[i+1];
   const ch=[];if(l.play)ch.push(['🎮 Practise',`how to play ${(GAMES.find(g=>l.play.startsWith(g.id))||GAMES[0]).en}`]);if(nx)ch.push([`Next: ${nx.t}`,`teach ${nx.id}`]);ch.push(['All lessons','grammar lessons']);
   return [`📘 <b>${l.t}</b> · ${esc(l.en)}<div class="lesson">${l.b}</div>`+sut+chips(ch),l.en+'. '+l.b.replace(/<table[\s\S]*?<\/table>/g,'').replace(/<[^>]+>/g,' ').slice(0,500),ROOT+'vyakarana.html#l/'+l.id]}
 async function lessonsList(){LEARN=LEARN||await once('sri-learn.json');
-  return [`📘 <b>व्याकरणपाठाः · Grammar lessons</b> — ${LEARN.lessons.length} short lessons, each with its sūtras and a game to practise:`+LEARN.units.map((u,ui)=>`<div class="ref"><b>${u[0]}</b> · ${u[1]}</div>`+chips(LEARN.lessons.filter(l=>l.u===ui).map(l=>[l.t,'teach '+l.id]))).join(''),'Here are the grammar lessons. Which one shall I teach?']}
+  return [`📘 <b>व्याकरणपाठाः · Grammar lessons</b> — ${LEARN.lessons.length} short lessons, each with its sūtras and a game to practise:`+LEARN.units.map((u,ui)=>`<div class="ref"><b>${u[0]}</b> · ${u[1]}</div>`+chips(LEARN.lessons.filter(l=>l.u===ui).map(l=>[l.t,'teach '+l.id]))).join('')+chips([['📝 Worksheets','worksheet'],['🎓 Certificate','certificate'],['🧠 Learn a śloka by heart','memorize gita 2.47']]),'Here are the grammar lessons. Which one shall I teach?']}
 async function learnIntent(raw,lo){let m;
   if(/^(games?|grammar games?|krida|क्रीडा|ఆటలు|game rules|rules of (the )?games?|how to play)\??$/i.test(raw))return gamesList();
   if((m=raw.match(/^(?:how (?:to|do i) play|rules of|rules for|game)\s+(.+?)(?:\s+game)?\??$/i))||(m=raw.match(/^(.+?)\s+(?:game rules|rules|game)\??$/i))){const k=fz(m[1].replace(/^(explain|the|play)\s+/i,''));const g=GAMES.find(g=>fz(g.en)===k||fz(g.t)===k||g.id===k||g.k.split(' ').some(w=>w.length>=4&&fz(w)===k)||fz(g.en).includes(k)&&k.length>=4);if(g)return gameMsg(g)}
@@ -296,7 +319,7 @@ const RD={sa:['पूर्वम्','अग्रिमम्','पुनः',
 function readShow(){const R=READ,e=R.v[R.i];if(!e){READ=null;return ['✅ End of the text. 🙏']}const lab=RD[LANG]||RD.en;
   const lines=e[2];return [`📖 <b>${esc(R.title)} ${esc(e[0])}.${e[1]}</b> <span class="ref">(${R.i+1}/${R.v.length})</span><div class="v">${lines.map((x,i)=>esc(x)+(i%2&&i!==lines.length-1?' ।':'')).join('<br>')} ॥</div>`+
     `<div class="chips"><button type="button" data-say="read:prev">⏮ ${lab[0]}</button><button type="button" data-say="read:next">⏭ ${lab[1]}</button><button type="button" data-say="read:again">🔁 ${lab[2]}</button><button type="button" data-say="read:auto">▶ ${lab[3]}</button><button type="button" data-say="read:stop">⏹ ${lab[4]}</button></div>`+
-    `<a class="lk" href="${ROOT}${R.page}#${R.id}/${encodeURIComponent(e[0])}/${e[1]}">Open on the page →</a>`,lines.join(' ')]}
+    `<span data-aud="${R.d}/${R.id}/${e[0]}/${e[1]}"></span><a class="lk" href="${ROOT}${R.page}#${R.id}/${encodeURIComponent(e[0])}/${e[1]}">Open on the page →</a>`,lines.join(' ')]}
 function readCmd(raw){if(!READ)return null;const l=raw.toLowerCase().trim();
   if(/^(read:next|next|next verse|aage|आगे|अगला|अग्रिमम्|తరువాత|తర్వాత)$/.test(l)){READ.i++;return readShow()}
   if(/^(read:prev|previous|back|prev|पिछला|पूर्वम्|ముందుది|వెనుక)$/.test(l)){READ.i=Math.max(0,READ.i-1);return readShow()}
@@ -330,7 +353,7 @@ const IXP={mn:'mantra.html',sb:'subhashita.html',ip:'itihasa.html',dh:'dharma.ht
 const PAGES=[['kosha.html','kosha kosa dictionary nighantu lexicon amarakosha कोश कोशः శబ్దకోశం నిఘంటువు शब्दकोश'],['vyakarana.html','grammar vyakarana व्याकरणम् వ్యాకరణం'],['krida.html','games game krida क्रीडा ఆటలు'],
  ['shabda.html','shabdarupa shabda noun forms declension शब्दरूपाणि శబ్దరూపాలు'],['dhatu.html','dhaturupa dhatu verb forms conjugation धातुरूपाणि ధాతురూపాలు'],['chandas.html','chandas metre meter छन्दः ఛందస్సు'],['pratyaya.html','pratyaya suffix prefix upasarga प्रत्ययाः'],
  ['shloka.html','shloka index sloka index kavya index श्लोकान्वेषणम्'],['sutra.html','sutra index sutras सूत्रान्वेषणम्'],['mantra.html','mantra veda vedas upanishad मन्त्राः'],['subhashita.html','subhashita सुभाषितम्'],['itihasa.html','itihasa purana index itihasa purana इतिहासपुराणम्'],
- ['shastra.html','shastra shastras शास्त्राणि'],['granthalaya.html','library granthalaya text library ग्रन्थालयः గ్రంథాలయం'],['books.html','all books books list catalogue catalog author books पुस्तकें పుస్తకాలు'],['index.html','home homepage main page मुखपृष्ठम्'],['sources.html','sources licences license'],
+ ['shastra.html','shastra shastras शास्त्राणि'],['granthalaya.html','library granthalaya text library ग्रन्थालयः గ్రంథాలయం'],['books.html','all books books list catalogue catalog author books पुस्तकें పుస్తకాలు'],['greetings.html','greetings greeting cards shubhakamana शुभकामनाः'],['articles.html','articles blog लेखाः'],['kanthapatha.html','kanthapatha memorise memorize कण्ठपाठः'],['worksheet.html','worksheet worksheets अभ्यासपत्रम्'],['certificate.html','certificate प्रमाणपत्रम्'],['index.html','home homepage main page मुखपृष्ठम्'],['sources.html','sources licences license'],
  ['ayurveda.html','ayurveda आयुर्वेदः'],['dharma.html','dharmashastra dharma shastra'],['artha.html','arthashastra kamasutra'],['jyotisha.html','jyotisha astronomy ganita'],['rasa.html','rasashastra alchemy'],['sahitya.html','alankara sahitya natya poetics']];
 const fz=s=>loose(s).replace(/([aiu])\1/g,'$1').replace(/ee/g,'i').replace(/oo/g,'u').replace(/([kgcjtdpb])h/g,'$1').replace(/w/g,'v').replace(/m$/,'');
 async function byName(q){const k=fz(q);if(k.length<3)return null;const pageWord=/\b(page|index|tool)\b|पृष्ठ|పేజీ/i.test(q);
@@ -395,7 +418,7 @@ function detail(b,focus){const tw=twin(b),dt=b.dt?new Date(b.dt).toLocaleDateStr
   const extra=[dt?`📅 Published ${dt}`:'',`🔎 Free sample: open it on Google Play and tap “Free sample”`+(b.a?` · <a href="https://archive.org/details/sanskritmanthan-${esc(b.u)}-sample" target="_blank" rel="noopener">sample on archive.org</a>`:''),
     `💰 Price: shown on Google Play in your own currency${b.pr?` (${esc(b.pr)})`:''}.`].filter(Boolean).map(x=>`<div class="ref">${x}</div>`).join('');
   const ch=[];if(tw)ch.push([`${LNAME[tw.l]} edition`,`details of ${plain(tw)}`]);ch.push(['More like this',`more like ${plain(b)}`]);
-  return [(focus==='buy'?`🛒 <b>${esc(plain(b))}</b> — tap below to buy on Google Play:`:'')+card(b)+extra+chips(ch),plain(b)+(b.n?`, ${b.n} pages`:''),undefined]}
+  return [(focus==='buy'?`🛒 <b>${esc(plain(b))}</b> — tap below to buy on Google Play:`:'')+card(b)+extra+`<span data-aud="book:${b.u}"></span>`+chips(ch),plain(b)+(b.n?`, ${b.n} pages`:''),undefined]}
 async function bookIntent(raw,lo){let m;
   const one=async(name,focus)=>{const r=await findBooks(name);if(!r.length)return null;if(r.length===2&&twin(r[0])===r[1]&&LANG!=='en'){const want=LANG==='te'?'tel':'san';const one1=r.find(b=>b.l===want);if(one1)r.splice(0,2,one1)}
     if(r.length===1)return focus==='share'?shareMsg(r[0]):focus==='sample'?sampleMsg(r[0]):detail(r[0],focus);
@@ -445,11 +468,11 @@ async function reference(name,nums){const k=loose(name),k0=name.trim().toLowerCa
     const tx=await once(`${ds.d}/t/${t.id}.json`);const e=tx.v.find(x=>String(x[0])===s&&+x[1]===v);
     if(!e)return [`${esc(t.title)} ${esc(s)}.${v} — I couldn't find that verse number. <a class="lk" href="${ROOT}${ds.page}#${t.id}">Open ${esc(t.title)} →</a>`];
     const lines=e[2];return [`<b>${esc(t.title)} ${esc(s)}.${v}</b><div class="v">${lines.map((x,i)=>esc(x)+(i%2&&i!==lines.length-1?' ।':'')).join('<br>')} ॥</div>`+(e[3]?`<div class="ref">छन्दः: ${esc(e[3])}</div>`:'')+
-      chips([['Next verse',`${name} ${s}.${v+1}`]]),lines.join(' '),`${ROOT}${ds.page}#${t.id}/${encodeURIComponent(s)}/${v}`]}
+      `<span data-aud="${ds.d}/${t.id}/${s}/${v}"></span>`+chips([['Next verse',`${name} ${s}.${v+1}`]]),lines.join(' '),`${ROOT}${ds.page}#${t.id}/${encodeURIComponent(s)}/${v}`]}
   return null}
 const FAV=['2.47','2.20','2.14','2.62','2.63','3.21','3.35','4.7','4.8','4.38','6.5','6.6','9.22','9.26','12.13','12.14','18.66','18.78','2.48','2.50','3.19','5.18','6.17','6.35','7.19','10.20','11.32','13.28','15.7','16.21','17.20'];
 async function gitaDay(){const tx=await once('su/t/bhagavadgita.json');const [a,b]=FAV[new Date().getDate()-1].split('.');const e=tx.v.find(x=>x[0]===a&&+x[1]===+b)||tx.v[0];
-  return [`🕉 <b>भगवद्गीता ${e[0]}.${e[1]}</b> — today's verse<div class="v">${e[2].map((x,i)=>esc(x)+(i%2&&i!==e[2].length-1?' ।':'')).join('<br>')} ॥</div>`+chips([['Next verse',`gita ${e[0]}.${e[1]+1}`],['☰ Menu','menu']]),e[2].join(' '),`${ROOT}sutra.html#bhagavadgita/${e[0]}/${e[1]}`]}
+  return [`🕉 <b>भगवद्गीता ${e[0]}.${e[1]}</b> — today's verse<div class="v">${e[2].map((x,i)=>esc(x)+(i%2&&i!==e[2].length-1?' ।':'')).join('<br>')} ॥</div><span data-aud="su/bhagavadgita/${e[0]}/${e[1]}"></span>`+chips([['Next verse',`gita ${e[0]}.${e[1]+1}`],['☰ Menu','menu']]),e[2].join(' '),`${ROOT}sutra.html#bhagavadgita/${e[0]}/${e[1]}`]}
 
 /* ---------- Pāṇini ---------- */
 async function panini(a,p,n){const S=await once('vy/sutras.json');const k=`ashtadhyayi:${a}.${p}.${+n}`;const s=S[k];
@@ -478,6 +501,51 @@ async function dhatu(w){const D=(await once('vy/dhatus.json')).dhatus;const q=to
   const hits=D.filter(e=>plain(e[1])===q||plain(e[1])===q+'a').slice(0,6);
   if(!hits.length)return [`I didn't find the root <b>${esc(toDev(w))}</b>. <a class="lk" href="${ROOT}dhatu.html">Browse all dhātus →</a>`];
   return [`Verb root <b>${esc(toDev(w))}</b>:`+hits.map(e=>`<div><a class="lk" href="${ROOT}dhatu.html#${e[0]}">${esc(s2d(e[1].replace(/[\\^]/g,'')))} · ${esc(s2d(e[4]))} · gaṇa ${e[2]+1} →</a></div>`).join('')+`<div class="ref">Each link shows every lakāra, with derivation.</div>`]}
+
+/* ---------- app: install, offline bundles, visitor ping ---------- */
+let PROMPT=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();PROMPT=e});
+if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+{const iso=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);try{if(localStorage.getItem('sm-vday')!==iso&&location.protocol==='https:'){fetch('/api/visits',{method:'POST'}).then(r=>{if(r.ok)localStorage.setItem('sm-vday',iso)}).catch(()=>{})}}catch(e){}}
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+async function installMsg(){if(standalone())return ['✅ You are already using the Sanskrit Manthan app.'+chips([['📥 Use offline','offline']])];
+  if(PROMPT){PROMPT.prompt();const r=await PROMPT.userChoice.catch(()=>({}));PROMPT=null;return [r&&r.outcome==='accepted'?'✅ Installed! Find “Sanskrit Manthan” on your home screen.':'OK — you can install any time from this menu.']}
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  return [ios?'📲 On iPhone/iPad: tap the <b>Share</b> button (□↑) in Safari, then <b>“Add to Home Screen”</b>.':'📲 In Chrome: open the <b>⋮ menu</b> and choose <b>“Install app”</b> or <b>“Add to Home screen”</b>. Sanskrit Manthan then opens like an app, with its own icon.','How to install the app']}
+async function offlineMsg(){const B=await once('offline.json');
+  return [`📥 <b>Use offline</b> — save parts of the library on this device. Pages you have opened are kept automatically.`+B.map(b=>`<div class="ref">${esc(b.n)} · ${b.mb} MB</div>`).join('')+
+    chips(B.filter(b=>b.id!=='itihasa').map(b=>[`📥 ${b.n.split(/[,(]/)[0]} (${b.mb} MB)`,'save:'+b.id]).concat([[`📥 Itihāsa–Purāṇa (${B.find(b=>b.id==='itihasa').mb} MB)`,'save:itihasa']])),'Choose what to save for offline use.']}
+async function saveBundle(id){const B=(await once('offline.json')).find(b=>b.id===id);if(!B)return null;
+  if(!('serviceWorker' in navigator)||!navigator.serviceWorker.controller)return ['Offline saving needs the site to be opened once over the internet in Chrome, Edge or Safari. Please reload the page and try again.'];
+  const msg=add(`⏳ Saving <b>${esc(B.n)}</b> — 0 / ${B.f.length}`,'b');
+  const on=e=>{const d=e.data||{};if(d.type!=='bundle-progress'||d.name!==id)return;msg.innerHTML=(d.done<d.total?`⏳ Saving <b>${esc(B.n)}</b> — ${d.done} / ${d.total}`:`✅ <b>${esc(B.n)}</b> is saved for offline use.`)+`<span class="tm">${now()}</span>`;if(d.done>=d.total)navigator.serviceWorker.removeEventListener('message',on);save()};
+  navigator.serviceWorker.addEventListener('message',on);navigator.serviceWorker.controller.postMessage({type:'bundle',name:id,urls:B.f});return ['Saving in the background — you can keep using the site.','']}
+/* ---------- greetings, today's śloka, articles ---------- */
+let GD=null;async function greetData(){if(GD)return GD;GD=await once('g/slokas.json');try{const t=await once('g/tr.json');for(const s of GD.slokas){const x=(t.occ||{})[s.occ];if(x)s.tr=Object.assign({},x,s.tr)}}catch(e){}return GD}
+const GLANG={assamese:'as',bengali:'bn',bangla:'bn',bodo:'brx',dogri:'doi',english:'en',gujarati:'gu',hindi:'hi',kannada:'kn',kashmiri:'ks',konkani:'gom',maithili:'mai',malayalam:'ml',manipuri:'mni',meitei:'mni',marathi:'mr',nepali:'ne',odia:'or',oriya:'or',punjabi:'pa',sanskrit:'sa',santali:'sat',sindhi:'sd',tamil:'ta',telugu:'te',urdu:'ur'};
+async function greetIntent(raw,lo){if(!/greeting|greet|wish|card|शुभकामना|शुभाशय|శుభాకాంక్ష|కార్డు|कार्ड/i.test(raw))return null;const D=await greetData();
+  const w=fz(raw);const OAL={deepavali:'diwali deepavali dipawali deepawali दीपावली दिवाली దీపావళి',birthday:'birthday janmadin जन्मदिन పుట్టినరోజు జన్మదిన',newyear:'newyear ugadi yugadi gudi नववर्ष उगादि ఉగాది',sankranti:'sankranti pongal lohri bihu संक्रान्ति సంక్రాంతి',
+ wedding:'wedding marriage anniversary vivah विवाह పెళ్ళి వివాహ',guru:'guru teacher purnima गुरु గురు',ganesha:'ganesha ganesh ganapati vinayaka गणेश వినాయక',navaratri:'navaratri dasara dussehra dasera vijayadashami durga दशहरा దసరా',
+ raksha:'raksha rakhi rakshabandhan राखी రాఖీ',holi:'holi होली హోళీ',success:'success exam exams examination परीक्षा పరీక్ష',general:'blessing general blessings आशीर्वाद ఆశీర్వాద'};
+  const o=D.occasions.find(o=>(OAL[o.id]||o.id).split(' ').some(k=>fz(k).length>=3&&w.includes(fz(k))))||null;
+  let gl=LANG==='sa'?'sa':LANG||'en';for(const [k,v] of Object.entries(GLANG))if(lo.includes(k))gl=v;
+  if(!o)return ['🎴 <b>Greeting cards</b> — choose an occasion:'+chips(D.occasions.map(o=>[`${o.icon} ${o.name}`,`${o.id} greeting`]))+`<a class="lk" href="${ROOT}greetings.html">Open the card maker →</a>`,'Choose an occasion for the greeting card.'];
+  const s=D.slokas.find(s=>s.occ===o.id),t=s.tr[gl]||s.tr.en;
+  return [`🎴 <b>${esc(o.sa)}</b> · ${esc(t.g)}<div class="v">${s.sl.split(/[।॥]/).map(x=>x.trim()).filter(Boolean).map(esc).join(' ।<br>')} ॥</div><div class="ref">${esc(t.m)}</div><span data-aud="greet:${o.id}"></span>`,t.g+'. '+s.sl+' '+t.m,`${ROOT}greetings.html?o=${o.id}&lang=${gl}`]}
+async function todayMsg(){const D=await greetData();const iso=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10),day=Math.floor((Date.now()-new Date(2026,0,1))/864e5);
+  const s=D.slokas.find(x=>x.date===iso)||D.slokas[day%D.slokas.length],t=s.tr[LANG]||s.tr.en;
+  return [`📜 <b>Today's śloka</b><div class="v">${s.sl.split(/[।॥]/).map(x=>x.trim()).filter(Boolean).map(esc).join(' ।<br>')} ॥</div><div class="ref">${esc(t.m)}</div>`+chips([['🎴 Make a card',`${s.occ} greeting`],["📰 Today's article",'article'],['🕉 Gītā verse','verse of the day']]),s.sl+' '+t.m]}
+async function articleIntent(raw,lo){if(!/\b(articles?|blog|lekha)\b|लेख|వ్యాసం|వ్యాసాలు/i.test(raw))return null;let A=[];try{A=await once('articles.json')}catch(e){}
+  if(!A.length)return ['No articles yet — the first one is coming soon. 🙏'];const q=raw.replace(/\b(today'?s|latest|new|read|the|articles?|on|about|show|me|open)\b|लेख[ाः]*|వ్యాసం|వ్యాసాలు|आज का|నేటి/gi,' ').trim();
+  let hit=A[0];if(q.length>=3){const k=loose(q);const f=A.find(a=>loose(a.title+' '+a.t).includes(k));if(f)hit=f;else return [`I found no article on “${esc(q)}”. Latest:`+A.slice(0,5).map(a=>`<div><a class="lk" href="${ROOT}a/${a.slug}">${esc(a.title)}</a> <span class="ref">${a.date}</span></div>`).join('')]}
+  const read=/\bread\b|पढ़|చదువు|पठ/i.test(raw);if(read){say(hit.t,true,6000)}
+  return [`📰 <b>${esc(hit.title)}</b> <span class="ref">${hit.date}</span><div class="ref">${esc(hit.excerpt)}</div>`+chips([['🔊 Read it to me',`read article ${hit.title.split(/[—\-]/)[0].trim()}`],['📰 All articles','articles list']]),read?'':hit.title,`${ROOT}a/${hit.slug}`]}
+
+/* ---------- more Indian languages for Bodhinī's own words (generated by tools/sri_langs.py) ---------- */
+const XL=/*XL*/{}/*XL*/;
+for(const [k,v] of Object.entries(XL)){T[k]={menu:T.en.menu.map((m,i)=>[m[0].split(' ')[0]+' '+v.menu[i],m[1]]),ok:v.ok,ask:v.ask,thx:'🙏 '+v.thx,nf:v.nf,voice:k==='ur'?'ur-IN':k+'-IN'};
+  RD[k]=v.rd;UI.buy[k]='🛒 '+v.buy;UI.det[k]=v.det;UI.sh[k]='📲 '+v.sh;UI.pg[k]=v.pg;OPENING[k]=v.opening;OPENW[k]=v.openw;SRH[k]='🔊 '+v.srh;SELB[k]='🔊 '+v.selb;
+  LANGQ=LANGQ.replace('</div>',`<button type="button" data-say="lang:${k}">${v.name}</button></div>`)}
+if(LANG&&T[LANG]){mlS.value=LS.g('ml',T[LANG].voice);if(![...mlS.options].some(o=>o.value===mlS.value)){const o=document.createElement('option');o.value=T[LANG].voice;o.textContent=LANG;mlS.appendChild(o);mlS.value=T[LANG].voice}}
 
 /* ---------- arriving with ?q= : fill the page's own search box ---------- */
 const pq=new URLSearchParams(location.search).get('q');

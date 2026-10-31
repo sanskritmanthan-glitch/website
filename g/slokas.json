@@ -1,0 +1,246 @@
+{
+ "occasions": [
+  {
+   "id": "general",
+   "name": "General blessing",
+   "icon": "🙏",
+   "sa": "शुभाशिषः",
+   "design": "royal"
+  },
+  {
+   "id": "deepavali",
+   "name": "Dīpāvalī",
+   "icon": "🪔",
+   "sa": "शुभदीपावली",
+   "design": "diya"
+  },
+  {
+   "id": "birthday",
+   "name": "Birthday",
+   "icon": "🎂",
+   "sa": "जन्मदिनशुभाशयाः",
+   "design": "pastel"
+  },
+  {
+   "id": "newyear",
+   "name": "New Year / Ugādi / Yugādi",
+   "icon": "🌅",
+   "sa": "नववर्षशुभाशयाः",
+   "design": "sunrise"
+  },
+  {
+   "id": "sankranti",
+   "name": "Makara Saṅkrānti / Pongal / Lohri",
+   "icon": "🪁",
+   "sa": "मकरसङ्क्रान्तिशुभाशयाः",
+   "design": "sunrise"
+  },
+  {
+   "id": "wedding",
+   "name": "Wedding / Anniversary",
+   "icon": "💞",
+   "sa": "दाम्पत्यशुभाशयाः",
+   "design": "rangoli"
+  },
+  {
+   "id": "guru",
+   "name": "Guru Pūrṇimā / Teachers' Day",
+   "icon": "📿",
+   "sa": "गुरुपूर्णिमाशुभाशयाः",
+   "design": "palmleaf"
+  },
+  {
+   "id": "ganesha",
+   "name": "Gaṇeśa Caturthī",
+   "icon": "🐘",
+   "sa": "गणेशचतुर्थीशुभाशयाः",
+   "design": "toran"
+  },
+  {
+   "id": "navaratri",
+   "name": "Navarātri / Vijayadaśamī",
+   "icon": "🔱",
+   "sa": "विजयदशमीशुभाशयाः",
+   "design": "rangoli"
+  },
+  {
+   "id": "raksha",
+   "name": "Rakṣā-bandhan",
+   "icon": "🧵",
+   "sa": "रक्षाबन्धनशुभाशयाः",
+   "design": "lotus"
+  },
+  {
+   "id": "holi",
+   "name": "Holī",
+   "icon": "🎨",
+   "sa": "होलिकोत्सवशुभाशयाः",
+   "design": "peacock"
+  },
+  {
+   "id": "success",
+   "name": "Success / Examinations",
+   "icon": "🏆",
+   "sa": "विजयी भव",
+   "design": "mandala"
+  }
+ ],
+ "slokas": [
+  {
+   "id": "general-1",
+   "occ": "general",
+   "sl": "मङ्गलं भवतु प्रीत्या सुखं शान्तिश्च सर्वदा । आयुरारोग्यमैश्वर्यं विद्या कीर्तिश्च वर्धताम् ॥",
+   "tr": {
+    "en": {
+     "m": "May auspiciousness come to you with love, and happiness and peace always; may long life, health, prosperity, learning and good name keep growing.",
+     "g": "Best wishes"
+    }
+   },
+   "date": "2026-10-31",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "deepavali-1",
+   "occ": "deepavali",
+   "sl": "दीपावल्याः प्रकाशेन तमो नश्यतु जीवने । लक्ष्मीर्वसतु ते गेहे ज्ञानदीपो विराजताम् ॥",
+   "tr": {
+    "en": {
+     "m": "By the light of Dīpāvalī may darkness vanish from your life; may Lakṣmī dwell in your home, and may the lamp of knowledge shine bright.",
+     "g": "Happy Diwali"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "birthday-1",
+   "occ": "birthday",
+   "sl": "शतायुर्भव सौख्येन शुभे ते जन्मवासरे । ईश्वरस्य कृपादृष्ट्या पूर्णाः सन्तु मनोरथाः ॥",
+   "tr": {
+    "en": {
+     "m": "On your auspicious birthday, may you live a hundred years in happiness; by the gracious glance of God, may all your wishes be fulfilled.",
+     "g": "Happy Birthday"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "newyear-1",
+   "occ": "newyear",
+   "sl": "नववर्षमिदं भूयात् सर्वेषां सुखदायकम् । नवोत्साहो नवाशा च जीवने ते प्रवर्धताम् ॥",
+   "tr": {
+    "en": {
+     "m": "May this New Year bring happiness to everyone; may new enthusiasm and new hope grow in your life.",
+     "g": "Happy New Year"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "sankranti-1",
+   "occ": "sankranti",
+   "sl": "उत्तरायणसूर्यस्य किरणाः पावनाः शुभाः । दिशन्तु ते समृद्धिं च माधुर्यं च तिलैः सह ॥",
+   "tr": {
+    "en": {
+     "m": "May the pure and auspicious rays of the northward-turning Sun bring you prosperity, and sweetness together with sesame.",
+     "g": "Happy Makar Sankranti"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "wedding-1",
+   "occ": "wedding",
+   "sl": "दम्पत्योः प्रेमबन्धोऽयं दृढो भवतु नित्यशः । उमामहेश्वरौ यद्वत् तथा सौख्येन जीवतम् ॥",
+   "tr": {
+    "en": {
+     "m": "May this bond of love between husband and wife grow ever stronger; like Umā and Maheśvara, may you two live together in happiness.",
+     "g": "Happy Wedding Anniversary"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "guru-1",
+   "occ": "guru",
+   "sl": "गुरोः कृपाप्रकाशेन नश्यत्यज्ञानसन्ततिः । पूर्णिमायां गुरुं नत्वा विद्यां प्राप्नुहि शाश्वतीम् ॥",
+   "tr": {
+    "en": {
+     "m": "By the light of the Guru's grace the darkness of ignorance is destroyed; bowing to the Guru on this full-moon day, may you gain lasting knowledge.",
+     "g": "Happy Guru Purnima"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "ganesha-1",
+   "occ": "ganesha",
+   "sl": "गणनाथः सदा तुभ्यं ददातु सिद्धिमुत्तमाम् । चतुर्थ्यां मोदकैः प्रीतो विघ्नान् हरतु सर्वदा ॥",
+   "tr": {
+    "en": {
+     "m": "May Gaṇapati always grant you the highest success; pleased with modakas on Caturthī, may he remove all your obstacles forever.",
+     "g": "Happy Ganesh Chaturthi"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "navaratri-1",
+   "occ": "navaratri",
+   "sl": "नवरात्रेषु या देवी नवरूपैः प्रपूजिता । सा ददातु जयं शक्तिं विजयादशमीदिने ॥",
+   "tr": {
+    "en": {
+     "m": "May the Goddess, worshipped in her nine forms during Navarātri, grant you victory and strength on the day of Vijayadaśamī.",
+     "g": "Happy Dussehra"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "raksha-1",
+   "occ": "raksha",
+   "sl": "रक्षासूत्रमिदं बद्धं भगिन्या प्रेमपूर्वकम् । रक्षतु भ्रातरं नित्यं स्नेहबन्धश्च वर्धताम् ॥",
+   "tr": {
+    "en": {
+     "m": "This sacred thread is tied by a sister with love; may it protect the brother always, and may the bond of affection keep growing.",
+     "g": "Happy Raksha Bandhan"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "holi-1",
+   "occ": "holi",
+   "sl": "होलिकायाः शुभे पर्वे जीवनं वर्णरञ्जितम् । द्वेषं दहतु होलाग्निः प्रेम्णा भवतु सङ्गमः ॥",
+   "tr": {
+    "en": {
+     "m": "On the auspicious festival of Holī, may life be bright with colours; may the Holī fire burn away hatred, and may all meet together in love.",
+     "g": "Happy Holi"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  },
+  {
+   "id": "success-1",
+   "occ": "success",
+   "sl": "परीक्षासु च कार्येषु विजयस्ते भवेत्सदा । श्रमेण धैर्ययुक्तेन सिद्धिस्त्वामनुगच्छतु ॥",
+   "tr": {
+    "en": {
+     "m": "In examinations and in every task, may victory always be yours; through hard work joined with patience, may success follow you.",
+     "g": "All the best"
+    }
+   },
+   "date": "",
+   "by": "संस्कृतमन्थनम्"
+  }
+ ]
+}

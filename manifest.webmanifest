@@ -1,0 +1,24 @@
+{
+ "name": "संस्कृतमन्थनम् · Sanskrit Manthan",
+ "short_name": "Sanskrit Manthan",
+ "description": "भारतीयज्ञानपरम्पराकार्यशाला — Sanskrit books, śloka and sūtra search, kośa, grammar, games and greeting cards.",
+ "id": "/",
+ "start_url": "/?source=app",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#f6f1e7",
+ "theme_color": "#b4531f",
+ "lang": "sa",
+ "icons": [
+  {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+  {"src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+ ],
+ "shortcuts": [
+  {"name": "शुभकामनाः · Greetings", "url": "/greetings", "icons": [{"src": "/icon-192.png", "sizes": "192x192"}]},
+  {"name": "श्लोकान्वेषणम् · Śloka search", "url": "/shloka", "icons": [{"src": "/icon-192.png", "sizes": "192x192"}]},
+  {"name": "व्याकरणम् · Grammar", "url": "/vyakarana", "icons": [{"src": "/icon-192.png", "sizes": "192x192"}]},
+  {"name": "ग्रन्थाः · Books", "url": "/books", "icons": [{"src": "/icon-192.png", "sizes": "192x192"}]}
+ ]
+}

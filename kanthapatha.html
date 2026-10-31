@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sa">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>कण्ठपाठः · Learn a Śloka by Heart · Sanskrit Manthan</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Sanskrit Manthan"><meta property="og:title" content="कण्ठपाठः · Learn a Śloka by Heart · Sanskrit Manthan"><meta property="og:description" content="Memorise any Sanskrit śloka step by step: listen, hide words level by level, and recite into the microphone to check yourself."><meta property="og:url" content="https://sanskritmanthan.in/kanthapatha"><meta property="og:image" content="https://sanskritmanthan.in/og.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://sanskritmanthan.in/kanthapatha">
+<meta name="description" content="Memorise any Sanskrit śloka step by step: listen, hide words level by level, and recite into the microphone to check yourself.">
+<link rel="canonical" href="https://sanskritmanthan.in/kanthapatha"><link rel="icon" href="cv/author.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#f6f1e7;--ink:#2b2118;--muted:#6f6152;--line:#ddd2bf;--card:#fffaf1;--saffron:#b4531f}
+@media (prefers-color-scheme:dark){:root{--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Tiro Devanagari Sanskrit","Noto Serif Devanagari",serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}header{border-bottom:1px solid var(--line)}header .wrap{padding:10px 16px}.brand{font-weight:600;font-size:1.5rem;color:var(--saffron);text-decoration:none}
+h1{font-weight:400;margin:20px 0 0}.sub{color:var(--muted);font-family:Spectral,serif;margin:0 0 12px}
+.pick{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pick input{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);flex:1;min-width:220px}
+.btn{border:0;border-radius:22px;padding:8px 16px;font:600 15px Spectral,serif;cursor:pointer;background:var(--saffron);color:#fff}.btn.o{background:none;border:1px solid var(--saffron);color:var(--saffron)}.btn.on{background:#c62828}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0}
+.ref{color:var(--muted);font-family:Spectral,serif;font-size:.95rem}
+.vs{font-size:clamp(1.3rem,3.6vw,1.8rem);line-height:2.1;margin:10px 0}.vs .ln{display:block}.vs .ln.l2{padding-left:1.4em}
+.w{display:inline-block;margin:0 .18em;border-radius:6px;padding:0 .1em;line-height:1.45;cursor:default}.w.h{color:transparent;background:var(--line);min-width:2.2em;cursor:pointer;text-shadow:none}.w.f{cursor:pointer}.w.ok{background:#cdeccf;color:#145a22}
+.lv{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.lv button{border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:4px 12px;cursor:pointer;font:14px Spectral,serif;color:var(--ink)}.lv button[aria-pressed=true]{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.score{font:600 16px Spectral,serif;margin-top:8px}.heard{color:var(--muted);font-size:.95rem;margin-top:4px}
+</style>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+<body>
+<header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a></div></header>
+<div class="wrap">
+<h1>कण्ठपाठः · Learn by heart</h1>
+<p class="sub">Choose a verse, listen, then hide the words step by step until you can say it all. Recite into the microphone to check yourself (Sanskrit recognition is approximate — use it as practice).</p>
+<div class="pick"><input id="ref" placeholder="gita 2.47 · raghu 1.1 · megha 1.5 · yogasutra 1.2"><button class="btn" id="load">Open</button></div>
+<div class="card" id="card"><p class="ref">Loading…</p></div>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const V={'अ':'a','आ':'a','इ':'i','ई':'i','उ':'u','ऊ':'u','ऋ':'r','ए':'e','ऐ':'ai','ओ':'o','औ':'au'},M={'ा':'a','ि':'i','ी':'i','ु':'u','ू':'u','ृ':'r','े':'e','ै':'ai','ो':'o','ौ':'au'};
+const K={'क':'k','ख':'k','ग':'g','घ':'g','ङ':'n','च':'c','छ':'c','ज':'j','झ':'j','ञ':'n','ट':'t','ठ':'t','ड':'d','ढ':'d','ण':'n','त':'t','थ':'t','द':'d','ध':'d','न':'n','प':'p','फ':'p','ब':'b','भ':'b','म':'m','य':'y','र':'r','ल':'l','व':'v','श':'s','ष':'s','स':'s','ह':'h'};
+function lz(s){let o='';for(let i=0;i<s.length;i++){const c=s[i],n=s[i+1];if(K[c]){o+=K[c];if(n==='्'){i++}else if(M[n]){o+=M[n];i++}else o+='a'}else if(V[c])o+=V[c];else if(c==='ं')o+='m';else if(/[a-z]/i.test(c))o+=c.toLowerCase()}
+  return o.replace(/[^a-z]/g,'').replace(/sh/g,'s').replace(/w/g,'v').replace(/(.)\1/g,'$1')}
+const lev=(a,b)=>{const d=Array.from({length:a.length+1},(_,i)=>[i]);for(let j=1;j<=b.length;j++)d[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]};
+let CAT={},TX={},CUR=null,LV=0,HID=new Set(),OKW=new Set();
+const DS=[['su','sutra.html'],['sl','shloka.html']];
+const ALIAS=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z]/g,'').replace(/sh/g,'s');
+async function cat(d){return CAT[d]||(CAT[d]=await (await fetch(d+'/catalog.json')).json())}
+async function text(d,id){const k=d+id;return TX[k]||(TX[k]=await (await fetch(`${d}/t/${id}.json`)).json())}
+async function open(d,id,s,v){const t=await text(d,id),c=await cat(d),meta=c.texts.find(x=>x.id===id);let i=t.v.findIndex(x=>String(x[0])===String(s)&&+x[1]===+v);if(i<0)i=0;
+  CUR={d,id,t,i,title:meta?meta.title:id,page:DS.find(x=>x[0]===d)[1]};LV=0;show();history.replaceState(null,'',`?t=${d}/${id}/${t.v[i][0]}/${t.v[i][1]}`)}
+async function fromRef(q){q=q.trim();const m=q.match(/^(.+?)\s*(\d+(?:\s*[.:,]\s*\d+)*)$/);if(!m)return false;const k=ALIAS(m[1]),n=m[2].split(/\s*[.:,]\s*/);
+  for(const [d] of DS){const c=await cat(d);const t=c.texts.find(w=>w.aliases.some(a=>a===k||(k.length>=3&&(a.startsWith(k)||k.startsWith(a)))));if(!t)continue;
+    const v=n[n.length-1],s=t.sargas.length===1?t.sargas[0][0]:n.slice(0,-1).join('.')||n[0];await open(d,t.id,s,n.length>1||t.sargas.length===1?v:1);return true}return false}
+function words(){return CUR.t.v[CUR.i][2].map(l=>l.split(/\s+/).filter(Boolean))}
+function setLevel(l){LV=l;HID=new Set();const W=words().flat();W.forEach((w,k)=>{if(l===4||(l===1&&k%4===3)||(l===2&&k%2===1))HID.add(k)});OKW=new Set();show()}
+function show(){const e=CUR.t.v[CUR.i],W=words();let k=0,done=JSON.parse(localStorage.getItem('sm-kantha')||'{}');const key=`${CUR.d}/${CUR.id}/${e[0]}/${e[1]}`;
+  $('#card').innerHTML=`<div class="ref">${esc(CUR.title)} ${esc(e[0])}.${e[1]} ${done[key]?' · ✅ learnt':''}${e[3]?' · '+esc(e[3]):''}</div>
+  <div class="lv">${['पूर्णम् · Full','¼ hidden','½ hidden','आद्याक्षराणि · First letters','सर्वम् · All hidden'].map((t,i)=>`<button type="button" data-l="${i}" aria-pressed="${i===LV}">${t}</button>`).join('')}</div>
+  <div class="vs">${W.map((ln,li)=>`<span class="ln ${li%2?'l2':''}">${ln.map(w=>{const i=k++;const cls=OKW.has(i)?'ok':HID.has(i)?'h':LV===3?'f':'';const shown=LV===3&&!OKW.has(i)?esc([...w][0])+'…':esc(w);
+    return `<span class="w ${cls}" data-k="${i}" data-w="${esc(w)}">${cls==='h'?esc(w):shown}</span>`}).join('')}${(W.length===2?li===0:li%2===1&&li!==W.length-1)?' ।':li===W.length-1?' ॥':''}</span>`).join('')}</div>
+  <div class="acts"><button class="btn o" id="ls">🔊 Listen</button><button class="btn o" id="ll">🔊 Line by line</button><button class="btn" id="rc">🎤 Recite</button><button class="btn o" id="pv">‹ Previous</button><button class="btn o" id="nx">Next ›</button><button class="btn o" id="lt">✅ I know it</button></div>
+  <div class="score" id="sc"></div><div class="heard" id="hd"></div><p class="ref"><a href="${CUR.page}#${CUR.id}/${encodeURIComponent(e[0])}/${e[1]}" style="color:var(--saffron)">Open in the index →</a></p>`;
+  $$('.lv button').forEach(b=>b.onclick=()=>setLevel(+b.dataset.l));
+  $$('.w.h,.w.f').forEach(s=>s.onclick=()=>{s.classList.remove('h','f');s.textContent=s.dataset.w});
+  $('#ls').onclick=()=>speak([e[2].join(' ')]);$('#ll').onclick=()=>speak(e[2]);$('#rc').onclick=recite;
+  $('#pv').onclick=()=>{if(CUR.i>0){CUR.i--;setLevel(0)}};$('#nx').onclick=()=>{if(CUR.i<CUR.t.v.length-1){CUR.i++;setLevel(0)}};
+  $('#lt').onclick=()=>{done[key]=1;localStorage.setItem('sm-kantha',JSON.stringify(done));show()}}
+function speak(parts){try{speechSynthesis.cancel();parts.forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='hi-IN';u.rate=.8;const v=speechSynthesis.getVoices().find(v=>v.lang==='hi-IN');if(v)u.voice=v;speechSynthesis.speak(u)})}catch(e){}}
+let rec=null;function recite(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#sc').textContent='Your browser has no speech recognition — try Chrome.';return}
+  if(rec){rec.stop();return}rec=new SR();rec.lang='hi-IN';rec.continuous=true;rec.interimResults=true;$('#rc').classList.add('on');$('#rc').textContent='⏹ Stop';let heard='';
+  rec.onresult=ev=>{heard=[...ev.results].map(r=>r[0].transcript).join(' ');$('#hd').textContent='Heard: '+heard;mark(heard)};
+  rec.onend=()=>{rec=null;const b=$('#rc');if(b){b.classList.remove('on');b.textContent='🎤 Recite'}};rec.start()}
+function mark(heard){const H=lz(heard),W=words().flat();let ok=0;W.forEach((w,i)=>{const x=lz(w);if(!x)return;let hit=H.includes(x);if(!hit&&x.length>=5){for(let j=0;j+x.length<=H.length+1&&!hit;j++)if(lev(x,H.slice(j,j+x.length))<=Math.floor(x.length/5))hit=true}if(hit){OKW.add(i);ok++}});
+  $$('.w').forEach(s=>{if(OKW.has(+s.dataset.k)){s.classList.remove('h','f');s.classList.add('ok');s.textContent=s.dataset.w}});const p=Math.round(100*ok/W.length);$('#sc').textContent=`${p}% recognised${p>=90?' — उत्तमम्! 🎉':''}`}
+$('#load').onclick=async()=>{if(!await fromRef($('#ref').value))$('#card').innerHTML='<p class="ref">Not found. Try “gita 2.47”, “raghu 1.1”, “megha 1.5”.</p>'};
+$('#ref').onkeydown=e=>{if(e.key==='Enter')$('#load').click()};
+(async()=>{const p=new URLSearchParams(location.search).get('t');if(p){const [d,id,s,v]=p.split('/');if(DS.some(x=>x[0]===d))return open(d,id,s,v)}if(p&&await fromRef(p))return;await open('su','bhagavadgita','2',47)})();
+</script>
+<script src="/sri.js?v=6" defer></script>
+</body>
+</html>

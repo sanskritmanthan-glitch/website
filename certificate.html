@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="sa">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>प्रमाणपत्रम् · Vyākaraṇa-praveśa Certificate · Sanskrit Manthan</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Sanskrit Manthan"><meta property="og:title" content="प्रमाणपत्रम् · Vyākaraṇa-praveśa Certificate · Sanskrit Manthan"><meta property="og:description" content="Complete the 23 Sanskrit grammar lessons and the practice games on Sanskrit Manthan, then download your Vyākaraṇa-praveśa self-study certificate."><meta property="og:url" content="https://sanskritmanthan.in/certificate"><meta property="og:image" content="https://sanskritmanthan.in/og.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://sanskritmanthan.in/certificate">
+<meta name="description" content="Complete the 23 Sanskrit grammar lessons and the practice games on Sanskrit Manthan, then download your Vyākaraṇa-praveśa self-study certificate.">
+<link rel="canonical" href="https://sanskritmanthan.in/certificate"><link rel="icon" href="cv/author.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Devanagari:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#f6f1e7;--ink:#2b2118;--muted:#6f6152;--line:#ddd2bf;--card:#fffaf1;--saffron:#b4531f}
+@media (prefers-color-scheme:dark){:root{--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Tiro Devanagari Sanskrit","Noto Serif Devanagari",serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}header{border-bottom:1px solid var(--line)}header .wrap{padding:10px 16px}.brand{font-weight:600;font-size:1.5rem;color:var(--saffron);text-decoration:none}
+h1{font-weight:400;margin:20px 0 0}.sub{color:var(--muted);font-family:Spectral,serif}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin:4px 0 10px}.bar i{display:block;height:100%;background:var(--saffron)}
+.row{display:flex;justify-content:space-between;font-family:Spectral,serif}.ok{color:#1a7f37}.btn{border:0;border-radius:22px;padding:10px 18px;font:600 15px Spectral,serif;cursor:pointer;background:var(--saffron);color:#fff;text-decoration:none;display:inline-block}
+.btn.o{background:none;border:1px solid var(--saffron);color:var(--saffron)}input{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;width:min(100%,360px)}
+#cv{width:100%;height:auto;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.2);margin-top:14px}
+.lst{columns:2;font-size:.92rem;margin:6px 0 0;padding-left:18px}.lst li.d{color:#1a7f37}
+</style>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+<body>
+<header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a></div></header>
+<div class="wrap">
+<h1>प्रमाणपत्रम् · Certificate</h1>
+<p class="sub">Vyākaraṇa-praveśa — a self-study certificate for finishing the grammar course on this site: all <b>23 lessons</b> (tap “पठितम् · done” at the end of each lesson) and at least <b>12 stars</b> in the grammar games. Progress is kept in this browser.</p>
+<div class="prog" id="prog"></div>
+<div id="gen" hidden><p><label>Your name as it should appear: <input id="nm" maxlength="48" placeholder="e.g. Devnath Mantha"></label></p>
+<button class="btn" id="mk">🎓 Make certificate</button> <button class="btn o" id="dl" hidden>⬇ Download JPEG</button> <button class="btn o" id="pr" hidden>🖨 Print / PDF</button>
+<canvas id="cv" width="1600" height="1130" hidden></canvas></div>
+<p class="sub" style="font-size:.85rem">This is a personal learning certificate from the Sanskrit Manthan website, not an academic qualification.</p>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const NEED_STARS=12;
+(async()=>{const L=(await (await fetch('sri-learn.json')).json()).lessons;let done={},w={levels:{}};try{done=JSON.parse(localStorage.getItem('sm-lessons'))||{}}catch(e){}try{w=JSON.parse(localStorage.getItem('sm-wallet'))||w}catch(e){}
+  const nd=L.filter(l=>done[l.id]).length,stars=Object.values(w.levels||{}).reduce((a,g)=>a+Object.values(g.stars||{}).reduce((x,y)=>x+y,0),0);
+  const ok=nd>=L.length&&stars>=NEED_STARS;
+  $('#prog').innerHTML=`<div class="row"><span>📘 Lessons</span><span class="${nd>=L.length?'ok':''}">${nd} / ${L.length}</span></div><div class="bar"><i style="width:${100*nd/L.length}%"></i></div>
+   <div class="row"><span>⭐ Game stars</span><span class="${stars>=NEED_STARS?'ok':''}">${Math.min(stars,NEED_STARS)} / ${NEED_STARS}</span></div><div class="bar"><i style="width:${100*Math.min(stars,NEED_STARS)/NEED_STARS}%"></i></div>
+   ${ok?'<p class="ok">✅ Congratulations — you have completed the course!</p>':`<p>Still to do: ${nd<L.length?`<a href="vyakarana.html">${L.length-nd} lesson(s)</a>`:''}${nd<L.length&&stars<NEED_STARS?' and ':''}${stars<NEED_STARS?`<a href="krida.html">${NEED_STARS-stars} more star(s) in the games</a>`:''}.</p>`}
+   <ol class="lst">${L.map(l=>`<li class="${done[l.id]?'d':''}">${done[l.id]?'✓ ':''}<a href="vyakarana.html#l/${l.id}" style="color:inherit">${l.t}</a></li>`).join('')}</ol>`;
+  if(ok)$('#gen').hidden=false})();
+function code(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619)}return 'SM-'+(h>>>0).toString(36).toUpperCase()}
+async function make(){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();return}await document.fonts.load('60px "Tiro Devanagari Sanskrit"');await document.fonts.load('italic 40px Spectral');
+  const c=$('#cv').getContext('2d'),W=1600,H=1130;$('#cv').hidden=false;
+  const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#fffaf0');g.addColorStop(1,'#f6e7c8');c.fillStyle=g;c.fillRect(0,0,W,H);
+  const gd=c.createLinearGradient(0,0,W,0);gd.addColorStop(0,'#a8781f');gd.addColorStop(.5,'#e8c46a');gd.addColorStop(1,'#a8781f');c.strokeStyle=gd;c.lineWidth=14;c.strokeRect(30,30,W-60,H-60);c.lineWidth=2;c.strokeStyle='#7a2e0e';c.strokeRect(56,56,W-112,H-112);
+  c.globalAlpha=.06;c.fillStyle='#b4531f';c.font='620px "Tiro Devanagari Sanskrit"';c.textAlign='center';c.fillText('ॐ',W/2,H*.78);c.globalAlpha=1;
+  const T=(t,y,f,col='#2b2118')=>{c.font=f;c.fillStyle=col;c.fillText(t,W/2,y)};
+  T('संस्कृतमन्थनम्',150,'64px "Tiro Devanagari Sanskrit"','#b4531f');T('भारतीयज्ञानपरम्पराकार्यशाला · sanskritmanthan.in',200,'italic 28px Spectral','#6f6152');
+  T('व्याकरणप्रवेशः — प्रमाणपत्रम्',300,'72px "Tiro Devanagari Sanskrit"','#7a2e0e');T('Certificate of Completion · Vyākaraṇa-praveśa',352,'italic 34px Spectral','#6f6152');
+  T('इदं प्रमाण्यते यत्',440,'38px "Tiro Devanagari Sanskrit"');T('This is to certify that',484,'italic 30px Spectral','#6f6152');
+  let fs=86;c.font=`${fs}px "Tiro Devanagari Sanskrit", Spectral`;while(c.measureText(nm).width>W-300&&fs>40){fs-=4;c.font=`${fs}px "Tiro Devanagari Sanskrit", Spectral`}T(nm,600,c.font,'#b4531f');
+  c.strokeStyle='#a8781f';c.lineWidth=2;c.beginPath();c.moveTo(W/2-360,630);c.lineTo(W/2+360,630);c.stroke();
+  T('संस्कृतव्याकरणस्य त्रयोविंशतिपाठान् अभ्यासक्रीडाश्च सम्यक् समापितवान्/समापितवती ।',710,'36px "Tiro Devanagari Sanskrit"');
+  T('has completed the 23 lessons of Pāṇinian Sanskrit grammar and the practice games',760,'italic 30px Spectral','#3b2a1a');T('on the Sanskrit Manthan website.',800,'italic 30px Spectral','#3b2a1a');
+  T('॥ विद्या ददाति विनयम् ॥',880,'40px "Tiro Devanagari Sanskrit"','#7a2e0e');
+  const dt=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),cd=code(nm+'|'+new Date().toISOString().slice(0,10));
+  c.textAlign='left';c.font='26px Spectral';c.fillStyle='#3b2a1a';c.fillText('Date: '+dt,120,1000);c.textAlign='right';c.fillText('Certificate no. '+cd,W-120,1000);c.textAlign='center';
+  c.font='italic 22px Spectral';c.fillStyle='#6f6152';c.fillText('A self-study certificate from sanskritmanthan.in',W/2,1050);
+  $('#dl').hidden=false;$('#pr').hidden=false}
+$('#mk').onclick=make;
+$('#dl').onclick=()=>$('#cv').toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sanskrit-manthan-certificate.jpg';a.click()},'image/jpeg',.93);
+$('#pr').onclick=()=>{const w=open('');w.document.write(`<title>Certificate</title><style>@page{size:A4 landscape;margin:0}body{margin:0}img{width:100%}</style><img src="${$('#cv').toDataURL('image/jpeg',.95)}" onload="print()">`);w.document.close()};
+</script>
+<script src="/sri.js?v=6" defer></script>
+</body>
+</html>

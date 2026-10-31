@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="sa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>शुभकामनाः · Sanskrit Greeting Cards · Sanskrit Manthan</title>
+<meta name="description" content="Make a Sanskrit greeting card with an original śloka, its meaning in your Indian language, your photo and names — Dīpāvalī, birthday, New Year, Saṅkrānti…">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Sanskrit Manthan"><meta property="og:title" content="शुभकामनाः · Sanskrit Greeting Cards"><meta property="og:description" content="Original Sanskrit ślokas with meanings in 22 Indian languages — add your photo, download and share.">
+<meta property="og:image" content="https://sanskritmanthan.in/og.jpg"><link rel="canonical" href="https://sanskritmanthan.in/greetings">
+<link rel="icon" href="cv/author.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Telugu:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#f6f1e7;--ink:#2b2118;--muted:#6f6152;--line:#ddd2bf;--card:#fffaf1;--saffron:#b4531f;--gold:#a07a2c;--hl:#f6dcae;--soft:#efe5d2;
+ --dv:"Tiro Devanagari Sanskrit","Noto Serif Devanagari",serif;--la:"Spectral",Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;--gold:#d2ad62;--hl:#5a3d1c;--soft:#2a221a;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;--gold:#d2ad62;--hl:#5a3d1c;--soft:#2a221a;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--dv)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-block:10px;flex-wrap:wrap}
+.brand{font-weight:600;font-size:1.5rem;text-decoration:none;background:linear-gradient(100deg,#8a3a12,#b4531f 30%,#e0a43a 50%,#b4531f 70%,#8a3a12);-webkit-background-clip:text;background-clip:text;color:transparent}
+header nav a{color:var(--muted);text-decoration:none;font-family:var(--la);font-size:.9rem;margin-left:12px}
+h1{font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);margin:22px 0 0}
+.sub{color:var(--muted);font-family:var(--la);margin:2px 0 18px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:28px;align-items:start;margin-bottom:50px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.prev{order:-1}}
+.step{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.step h2{font-size:1rem;margin:0 0 8px;color:var(--saffron);font-family:var(--la);font-weight:600}
+.step h2 b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--saffron);color:#fff;font-size:.8rem;margin-right:6px}
+.occ{display:flex;flex-wrap:wrap;gap:6px}
+.occ button,.des button{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:5px 12px;cursor:pointer;font:inherit;font-size:.92rem;color:var(--ink)}
+.occ button[aria-pressed=true],.des button[aria-pressed=true]{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.sls{display:flex;flex-direction:column;gap:6px;max-height:260px;overflow:auto}
+.sls label{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:8px 10px;cursor:pointer;background:var(--paper)}
+.sls label:has(input:checked){border-color:var(--saffron);background:var(--hl)}
+.sls .t{font-size:1rem;line-height:1.5}.sls small{display:block;color:var(--muted);font-family:var(--la);font-size:.78rem}
+select,input[type=text]{font:inherit;font-size:.95rem;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.des{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.des button{border-radius:10px;padding:0;height:56px;overflow:hidden;position:relative}
+.des button canvas{width:100%;height:100%;display:block}
+.des button span{position:absolute;inset:auto 0 0 0;font:11px/1.6 var(--la);background:rgba(0,0,0,.45);color:#fff}
+.des button[aria-pressed=true]{outline:3px solid var(--saffron);outline-offset:1px}
+.ph{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:24px;padding:10px 18px;font:600 1rem var(--la);cursor:pointer;background:var(--saffron);color:#fff;text-decoration:none}
+.btn.g{background:#1a7f37}.btn.o{background:none;color:var(--saffron);border:1px solid var(--saffron)}
+.prev{position:sticky;top:70px}
+#cv{width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(60,30,10,.25);background:#ddd}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.note{color:var(--muted);font-family:var(--la);font-size:.82rem;margin-top:8px}
+.rev{color:#a15c00;font-family:var(--la);font-size:.8rem}
+.sz{display:flex;gap:6px;margin-top:6px}
+input[type=range]{width:100%}
+</style>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+<body>
+<header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a><nav><a href="books.html">Books</a><a href="shloka.html">Śloka</a><a href="vyakarana.html">Grammar</a></nav></div></header>
+<div class="wrap">
+<h1>शुभकामनाः · Greeting cards</h1>
+<p class="sub">An original Sanskrit śloka for every occasion, its meaning in your own language, your photo and names — made on your phone, downloaded as a picture. Your photo never leaves your device.</p>
+<div class="grid">
+<div>
+ <div class="step"><h2><b>1</b>Occasion · अवसरः</h2><div class="occ" id="occ"></div></div>
+ <div class="step"><h2><b>2</b>Śloka · श्लोकः</h2><div class="sls" id="sls"></div></div>
+ <div class="step"><h2><b>3</b>Meaning in your language · भाषा</h2><select id="lang"></select><div class="rev" id="rev"></div></div>
+ <div class="step"><h2><b>4</b>Photo (optional) · चित्रम्</h2>
+  <div class="ph"><label class="btn o">📷 Choose photo<input id="photo" type="file" accept="image/*" hidden></label><button class="btn o" id="nophoto" type="button" hidden>✕ Remove</button></div>
+  <div id="zoomr" hidden><small class="note">Zoom</small><input id="zoom" type="range" min="1" max="3" step=".05" value="1"><small class="note">Move ↔ ↕</small><div class="row"><input id="px" type="range" min="-1" max="1" step=".02" value="0"><input id="py" type="range" min="-1" max="1" step=".02" value="0"></div></div></div>
+ <div class="step"><h2><b>5</b>Names · नामानि</h2><div class="row"><input type="text" id="to" placeholder="To (e.g. Dear Amma)" maxlength="40"><input type="text" id="from" placeholder="From (your name)" maxlength="40"></div></div>
+ <div class="step"><h2><b>6</b>Design · रूपम्</h2><div class="des" id="des"></div>
+  <div class="sz"><button class="btn o" type="button" data-sz="sq" aria-pressed="true">◻ Square (post)</button><button class="btn o" type="button" data-sz="st">▯ Tall (status)</button></div></div>
+</div>
+<div class="prev">
+ <canvas id="cv" width="1080" height="1080"></canvas>
+ <div class="acts"><button class="btn" id="dl" type="button">⬇ Download JPEG</button><button class="btn g" id="share" type="button" hidden>📲 Share</button></div>
+ <p class="note">Ślokas are original compositions of Sanskrit Manthan. Meanings in some languages are being reviewed by native speakers; corrections welcome at sanskritmanthan@gmail.com.</p>
+</div>
+</div>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const LANGS=[['as','অসমীয়া','Assamese','NSB'],['bn','বাংলা','Bengali','NSB'],['brx','बड़ो','Bodo','DV'],['doi','डोगरी','Dogri','DV'],['en','English','English','LA'],['gu','ગુજરાતી','Gujarati','GU'],['hi','हिन्दी','Hindi','DV'],
+ ['kn','ಕನ್ನಡ','Kannada','KN'],['ks','کٲشُر','Kashmiri','AR'],['gom','कोंकणी','Konkani','DV'],['mai','मैथिली','Maithili','DV'],['ml','മലയാളം','Malayalam','ML'],['mni','ꯃꯩꯇꯩꯂꯣꯟ','Manipuri','MM'],['mr','मराठी','Marathi','DV'],
+ ['ne','नेपाली','Nepali','DV'],['or','ଓଡ଼ିଆ','Odia','OR'],['pa','ਪੰਜਾਬੀ','Punjabi','PA'],['sa','संस्कृतम्','Sanskrit','DV'],['sat','ᱥᱟᱱᱛᱟᱲᱤ','Santali','OL'],['sd','سنڌي','Sindhi','AR'],['ta','தமிழ்','Tamil','TA'],['te','తెలుగు','Telugu','TE'],['ur','اردو','Urdu','UR']];
+const FONTS={DV:'Noto Serif Devanagari',LA:'Spectral',NSB:'Noto Serif Bengali',GU:'Noto Serif Gujarati',KN:'Noto Serif Kannada',AR:'Noto Naskh Arabic',ML:'Noto Serif Malayalam',MM:'Noto Sans Meetei Mayek',
+ OR:'Noto Sans Oriya',PA:'Noto Sans Gurmukhi',OL:'Noto Sans Ol Chiki',TA:'Noto Serif Tamil',TE:'Noto Serif Telugu',UR:'Noto Nastaliq Urdu'};
+const RTL=new Set(['ks','sd','ur']);
+const loaded=new Set(['Noto Serif Devanagari','Spectral','Noto Serif Telugu']);
+async function needFont(f){if(!loaded.has(f)){loaded.add(f);const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+f.replace(/ /g,'+')+':wght@400;600&display=swap';document.head.appendChild(l);
+  await new Promise(r=>{l.onload=r;l.onerror=r;setTimeout(r,4000)})}try{await document.fonts.load(`40px "${f}"`);await document.fonts.load(`600 40px "${f}"`)}catch(e){}}
+let D=null,ST={occ:null,sl:null,lang:'hi',design:'royal',sz:'sq',img:null,zoom:1,px:0,py:0};
+try{const s=JSON.parse(localStorage.getItem('sm-greet')||'{}');if(s.lang)ST.lang=s.lang}catch(e){}
+if(!localStorage.getItem('sm-greet')){const nl=(navigator.language||'').slice(0,2);if(LANGS.some(l=>l[0]===nl))ST.lang=nl}
+/* ---------- designs: each draws a background and returns its colours ---------- */
+const TAU=Math.PI*2;
+function gold(c,W,H){const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#b8862f');g.addColorStop(.5,'#f3d27a');g.addColorStop(1,'#b8862f');return g}
+function frame(c,W,H,col,inset=26){c.strokeStyle=col;c.lineWidth=6;c.strokeRect(inset,inset,W-2*inset,H-2*inset);c.lineWidth=1.5;c.strokeRect(inset+14,inset+14,W-2*inset-28,H-2*inset-28)}
+function corners(c,W,H,col){c.fillStyle=col;for(const [x,y,r] of [[60,60,0],[W-60,60,1],[W-60,H-60,2],[60,H-60,3]]){c.save();c.translate(x,y);c.rotate(r*Math.PI/2);c.beginPath();
+  for(let i=0;i<5;i++){c.moveTo(0,0);c.quadraticCurveTo(10+i*9,4,30+i*12,-2+ i*3);c.quadraticCurveTo(10+i*9,10,0,0)}c.fill();c.beginPath();c.arc(0,0,7,0,TAU);c.fill();c.restore()}}
+function diya(c,x,y,s){c.save();c.translate(x,y);c.scale(s,s);const fg=c.createRadialGradient(0,-26,2,0,-22,40);fg.addColorStop(0,'rgba(255,220,120,.9)');fg.addColorStop(1,'rgba(255,160,40,0)');c.fillStyle=fg;c.beginPath();c.arc(0,-24,40,0,TAU);c.fill();
+  c.fillStyle='#ffd166';c.beginPath();c.moveTo(0,-48);c.bezierCurveTo(12,-30,10,-16,0,-12);c.bezierCurveTo(-10,-16,-12,-30,0,-48);c.fill();c.fillStyle='#fff3c4';c.beginPath();c.ellipse(0,-22,3.5,8,0,0,TAU);c.fill();
+  c.fillStyle='#c4541c';c.beginPath();c.moveTo(-34,-8);c.quadraticCurveTo(0,30,34,-8);c.quadraticCurveTo(0,0,-34,-8);c.fill();c.fillStyle='#8a2f0b';c.beginPath();c.ellipse(0,-6,34,6,0,0,TAU);c.fill();c.restore()}
+function lotus(c,x,y,s,col){c.save();c.translate(x,y);c.scale(s,s);for(const [a,l,cl] of [[-1.1,60,col[0]],[1.1,60,col[0]],[-.55,70,col[1]],[.55,70,col[1]],[0,78,col[2]]]){c.save();c.rotate(a);c.fillStyle=cl;c.beginPath();c.moveTo(0,0);c.bezierCurveTo(-22,-l*.4,-14,-l*.9,0,-l);c.bezierCurveTo(14,-l*.9,22,-l*.4,0,0);c.fill();c.restore()}c.restore()}
+function feather(c,x,y,s,rot){c.save();c.translate(x,y);c.rotate(rot);c.scale(s,s);c.strokeStyle='rgba(120,200,120,.55)';c.lineWidth=1;for(let i=-40;i<=40;i+=4){c.beginPath();c.moveTo(0,90);c.quadraticCurveTo(i*.5,30,i,-30);c.stroke()}
+  for(const [r,cl] of [[34,'#1d6b45'],[25,'#2bb3a8'],[17,'#1c4fa1'],[9,'#0b1f4d']]){c.fillStyle=cl;c.beginPath();c.ellipse(0,-20,r*.8,r,0,0,TAU);c.fill()}c.restore()}
+function mandala(c,x,y,R,col,n=16){c.save();c.translate(x,y);c.strokeStyle=col;for(let k=0;k<4;k++){const r=R*(1-k*.22);c.lineWidth=2;c.beginPath();c.arc(0,0,r,0,TAU);c.stroke();
+  for(let i=0;i<n;i++){c.save();c.rotate(i*TAU/n+k*.1);c.beginPath();c.moveTo(0,-r*.78);c.quadraticCurveTo(r*.14,-r*.9,0,-r);c.quadraticCurveTo(-r*.14,-r*.9,0,-r*.78);c.stroke();c.restore()}}c.restore()}
+const DESIGNS={
+ royal:{n:'Royal',bg(c,W,H){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#5a0f1f');g.addColorStop(1,'#2a0610');c.fillStyle=g;c.fillRect(0,0,W,H);mandala(c,W/2,H*.42,W*.42,'rgba(243,210,122,.10)',24);frame(c,W,H,gold(c,W,H));corners(c,W,H,'#e6bf63')},fg:'#fbeacb',ac:'#f3d27a',mu:'#e9cfa0'},
+ diya:{n:'Dīpa',bg(c,W,H){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0b1236');g.addColorStop(1,'#1d1450');c.fillStyle=g;c.fillRect(0,0,W,H);
+   c.fillStyle='rgba(255,230,160,.8)';for(let i=0;i<90;i++){const x=(i*397%W),y=(i*211%(H*.55));c.globalAlpha=.25+((i*13)%10)/14;c.beginPath();c.arc(x,y,1+(i%3)*.7,0,TAU);c.fill()}c.globalAlpha=1;
+   for(let i=0;i<7;i++)diya(c,W*(.12+i*.127),H-70,1.15);frame(c,W,H,'#e0a83c')},fg:'#fdf0d2',ac:'#ffcf5a',mu:'#e7d7ae'},
+ rangoli:{n:'Rangoli',bg(c,W,H){c.fillStyle='#7a1730';c.fillRect(0,0,W,H);const cols=['rgba(255,200,60,.35)','rgba(255,255,255,.18)','rgba(255,120,140,.3)'];
+   for(const [x,y,R] of [[0,0,W*.42],[W,0,W*.42],[0,H,W*.42],[W,H,W*.42]])cols.forEach((cl,i)=>mandala(c,x,y,R*(1-i*.12),cl,20));frame(c,W,H,'#ffcf5a')},fg:'#fff4e0',ac:'#ffd36b',mu:'#f7d6c4'},
+ lotus:{n:'Padma',bg(c,W,H){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#e7f6f2');g.addColorStop(1,'#7cc3b8');c.fillStyle=g;c.fillRect(0,0,W,H);c.strokeStyle='rgba(255,255,255,.5)';c.lineWidth=2;
+   for(let i=0;i<6;i++){c.beginPath();c.ellipse(W/2,H-60+i*6,W*.2+i*70,14+i*5,0,0,TAU);c.stroke()}for(const [x,s] of [[W*.14,1.1],[W*.5,1.5],[W*.86,1.1]])lotus(c,x,H-62,s,['#f6a6c1','#ef7fa6','#e35d8f']);frame(c,W,H,'#2e7d6f')},fg:'#173b36',ac:'#a8326a',mu:'#2b5e57'},
+ toran:{n:'Toraṇa',bg(c,W,H){c.fillStyle='#fff6e6';c.fillRect(0,0,W,H);c.strokeStyle='#8a5a1c';c.lineWidth=3;c.beginPath();c.moveTo(30,40);c.lineTo(W-30,40);c.stroke();
+   for(let i=0;i<14;i++){const x=55+i*(W-110)/13;c.save();c.translate(x,44);c.fillStyle=i%2?'#2f7a2c':'#3f9a39';c.beginPath();c.moveTo(0,0);c.bezierCurveTo(16,30,10,70,0,92);c.bezierCurveTo(-10,70,-16,30,0,0);c.fill();c.strokeStyle='rgba(255,255,255,.4)';c.lineWidth=1;c.beginPath();c.moveTo(0,4);c.lineTo(0,86);c.stroke();
+     c.fillStyle=i%2?'#f39c12':'#f1c40f';c.beginPath();c.arc(i%2?18:-18,22,9,0,TAU);c.fill();c.restore()}frame(c,W,H,'#c0782a',18)},fg:'#3a2412',ac:'#b4531f',mu:'#6b4a2a'},
+ palmleaf:{n:'Tāḷapatra',bg(c,W,H){c.fillStyle='#e9d3a1';c.fillRect(0,0,W,H);for(let y=0;y<H;y+=6){c.fillStyle=`rgba(120,80,30,${.03+((y*7)%11)/300})`;c.fillRect(0,y,W,2)}
+   c.fillStyle='rgba(90,55,20,.75)';for(const x of [W*.08,W*.92]){c.beginPath();c.arc(x,H/2,12,0,TAU);c.fill()}c.strokeStyle='#7a4f22';c.lineWidth=4;c.strokeRect(22,22,W-44,H-44);c.setLineDash([4,8]);c.lineWidth=1.5;c.strokeRect(38,38,W-76,H-76);c.setLineDash([])},fg:'#3b2410',ac:'#7a2e0e',mu:'#5c3d1d'},
+ sunrise:{n:'Udaya',bg(c,W,H){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#ffe9b8');g.addColorStop(.6,'#ffb36b');g.addColorStop(1,'#f06c3b');c.fillStyle=g;c.fillRect(0,0,W,H);
+   c.save();c.translate(W/2,H*1.02);for(let i=0;i<36;i++){c.rotate(TAU/36);c.fillStyle=i%2?'rgba(255,255,255,.13)':'rgba(255,220,150,.10)';c.beginPath();c.moveTo(0,0);c.lineTo(-40,-H*1.2);c.lineTo(40,-H*1.2);c.fill()}c.restore();
+   const s=c.createRadialGradient(W/2,H,10,W/2,H,W*.3);s.addColorStop(0,'#fff6d0');s.addColorStop(1,'rgba(255,200,90,0)');c.fillStyle=s;c.beginPath();c.arc(W/2,H,W*.3,0,TAU);c.fill();frame(c,W,H,'#b4531f')},fg:'#3a1a08',ac:'#9c2a00',mu:'#5e3015'},
+ peacock:{n:'Mayūra',bg(c,W,H){const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#08403a');g.addColorStop(1,'#0e2a4d');c.fillStyle=g;c.fillRect(0,0,W,H);
+   for(const [x,y,r] of [[70,140,-.6],[W-70,140,.6],[70,H-110,-2.5],[W-70,H-110,2.5],[W/2,H-40,3.14]])feather(c,x,y,1.3,r);frame(c,W,H,'#3fd0b6')},fg:'#e8fbf6',ac:'#7ff0d6',mu:'#bfe6dc'},
+ pastel:{n:'Utsava',bg(c,W,H){const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#ffe3ef');g.addColorStop(1,'#e6e0ff');c.fillStyle=g;c.fillRect(0,0,W,H);const cl=['#ff8fb1','#ffd166','#8ecae6','#b5e48c','#cdb4db'];
+   for(let i=0;i<70;i++){c.fillStyle=cl[i%5];c.save();c.translate((i*331)%W,(i*577)%H);c.rotate(i);c.fillRect(-5,-2,10,4);c.restore()}
+   for(const [x,y,cc] of [[90,180,'#ff8fb1'],[150,120,'#8ecae6'],[W-90,170,'#ffd166'],[W-150,110,'#cdb4db']]){c.strokeStyle='#999';c.lineWidth=1.5;c.beginPath();c.moveTo(x,y+48);c.quadraticCurveTo(x+10,y+110,x-4,y+170);c.stroke();c.fillStyle=cc;c.beginPath();c.ellipse(x,y,36,46,0,0,TAU);c.fill()}frame(c,W,H,'#c77dff')},fg:'#3a2050',ac:'#c2185b',mu:'#5d4a6e'},
+ mandala:{n:'Maṇḍala',bg(c,W,H){c.fillStyle='#fffaf0';c.fillRect(0,0,W,H);mandala(c,W/2,H*.42,W*.46,'rgba(180,83,31,.13)',24);mandala(c,W/2,H*.42,W*.3,'rgba(160,122,44,.18)',16);frame(c,W,H,gold(c,W,H));corners(c,W,H,'#b8862f')},fg:'#2b2118',ac:'#b4531f',mu:'#6f6152'}};
+/* ---------- drawing the card ---------- */
+const cv=$('#cv'),cx=cv.getContext('2d');
+function wrap(c,text,maxW){const words=text.split(/\s+/),lines=[];let cur='';for(const w of words){const t=cur?cur+' '+w:w;if(c.measureText(t).width>maxW&&cur){lines.push(cur);cur=w}else cur=t}if(cur)lines.push(cur);return lines}
+function fitText(c,text,font,size,maxW,maxH,lh=1.35,min=18){let s=size,L;for(;s>=min;s-=1){c.font=font.replace('S',s);L=wrap(c,text,maxW);if(L.length*s*lh<=maxH)break}return {s,L}}
+const padas=sl=>{const h=sl.split(/[।॥]/).map(x=>x.trim()).filter(Boolean);return h.length>=2?h.slice(0,2):[sl]};
+function splitHalf(h){const w=h.split(' ');if(w.length<2)return [h];let best=1,bd=1e9;for(let i=1;i<w.length;i++){const a=w.slice(0,i).join(' ').length,b=w.slice(i).join(' ').length;if(Math.abs(a-b)<bd){bd=Math.abs(a-b);best=i}}return [w.slice(0,best).join(' '),w.slice(best).join(' ')]}
+function draw(){const W=1080,H=ST.sz==='st'?1920:1080;cv.width=W;cv.height=H;const c=cx,d=DESIGNS[ST.design],o=occ(),s=sl();if(!o||!s)return;
+  d.bg(c,W,H);c.textAlign='center';c.textBaseline='alphabetic';const L=LANGS.find(l=>l[0]===ST.lang),font=FONTS[L[3]],tr=(s.tr[ST.lang]||s.tr.en),isEn=!s.tr[ST.lang];
+  const tall=H>1200;let y=tall?230:118;const M=tall?120:110;
+  if($('#to').value.trim()){c.fillStyle=d.mu;c.font=`italic 34px "Spectral", "${font}", serif`;c.fillText('✦ '+$('#to').value.trim()+' ✦',W/2,y);y+=tall?70:56}else y+=tall?20:0;
+  c.fillStyle=d.ac;let gs=tall?92:80;c.font=`${gs}px "Tiro Devanagari Sanskrit"`;while(c.measureText(o.sa).width>W-2*M&&gs>40){gs-=4;c.font=`${gs}px "Tiro Devanagari Sanskrit"`}c.fillText(o.sa,W/2,y+gs*.4);y+=gs*.4+(tall?70:50);
+  // local greeting
+  c.direction=RTL.has(ST.lang)?'rtl':'ltr';c.fillStyle=d.fg;c.font=`600 ${tall?44:38}px "${font}"`;c.fillText(tr.g,W/2,y);c.direction='ltr';y+=tall?50:34;
+  // photo or emblem
+  const R=tall?230:118,cyp=y+R+(tall?20:6);
+  if(ST.img){c.save();c.beginPath();c.arc(W/2,cyp,R,0,TAU);c.closePath();c.clip();const im=ST.img,sc=Math.max(2*R/im.width,2*R/im.height)*ST.zoom,iw=im.width*sc,ih=im.height*sc;
+    c.drawImage(im,W/2-iw/2-ST.px*(iw/2-R),cyp-ih/2-ST.py*(ih/2-R),iw,ih);c.restore();c.strokeStyle=d.ac;c.lineWidth=8;c.beginPath();c.arc(W/2,cyp,R+6,0,TAU);c.stroke();c.lineWidth=2;c.beginPath();c.arc(W/2,cyp,R+16,0,TAU);c.stroke()}
+  else{c.globalAlpha=.9;c.fillStyle=d.ac;c.font=`${R*1.25}px "Tiro Devanagari Sanskrit"`;c.fillText(o.icon==='🙏'?'ॐ':'ॐ',W/2,cyp+R*.42);c.globalAlpha=1}
+  y=cyp+R+(tall?90:62);
+  // śloka
+  const lines=padas(s.sl).flatMap(splitHalf);let fs=tall?56:46;c.font=`${fs}px "Tiro Devanagari Sanskrit"`;while(lines.some(l=>c.measureText(l).width>W-2*M)&&fs>26){fs-=2;c.font=`${fs}px "Tiro Devanagari Sanskrit"`}
+  c.fillStyle=d.fg;lines.forEach((l,i)=>{c.fillText(l+(i===1?' ।':i===3?' ॥':''),W/2,y);y+=fs*1.32});y+=tall?40:14;
+  // meaning
+  const bottomReserve=tall?190:118;const maxH=H-bottomReserve-y;c.fillStyle=d.mu;c.direction=RTL.has(ST.lang)?'rtl':'ltr';
+  const f=fitText(c,tr.m,`S px "${font}"`.replace('S px','Spx'),tall?42:33,W-2*M-20,maxH,RTL.has(ST.lang)?1.7:1.38,18);c.font=`${f.s}px "${font}"`;
+  f.L.forEach(l=>{y+=f.s*(RTL.has(ST.lang)?1.7:1.38)*.8;c.fillText(l,W/2,y);y+=f.s*(RTL.has(ST.lang)?1.7:1.38)*.2});c.direction='ltr';
+  // from + footer
+  const fr=$('#from').value.trim();if(fr){c.fillStyle=d.ac;c.font=`600 34px "Spectral", "${font}", serif`;c.fillText('— '+fr,W/2,H-(tall?120:84))}
+  c.fillStyle=d.mu;c.globalAlpha=.85;c.font='22px "Spectral"';c.fillText('संस्कृतमन्थनम् · sanskritmanthan.in',W/2,H-(tall?62:48));c.globalAlpha=1;
+  $('#rev').textContent=isEn?'This meaning is not yet available in '+L[2]+' — showing English.':(D.review||[]).includes(ST.lang)?'Meaning in '+L[2]+' is awaiting native-speaker review.':'';
+  save()}
+const occ=()=>D.occasions.find(o=>o.id===ST.occ),sl=()=>D.slokas.find(s=>s.id===ST.sl);
+function save(){try{localStorage.setItem('sm-greet',JSON.stringify({lang:ST.lang}))}catch(e){}}
+/* ---------- UI ---------- */
+function drawOcc(){$('#occ').innerHTML=D.occasions.map(o=>`<button type="button" data-o="${o.id}" aria-pressed="${o.id===ST.occ}">${o.icon} ${o.name}</button>`).join('')+`<button type="button" data-o="*" aria-pressed="${ST.occ==='*'}">📜 All ślokas (daily archive)</button>`;
+  $$('#occ button').forEach(b=>b.onclick=()=>pickOcc(b.dataset.o))}
+function pickOcc(id){if(id!=='*'){ST.occ=id;ST.design=occ().design}else ST.occ='*';drawOcc();drawSl();drawDes();refresh()}
+function drawSl(){const list=ST.occ==='*'?D.slokas:D.slokas.filter(s=>s.occ===ST.occ);if(!list.some(s=>s.id===ST.sl))ST.sl=list[0]&&list[0].id;if(ST.occ==='*'){const s=sl();ST._occ=s.occ}
+  $('#sls').innerHTML=list.map(s=>{const o=D.occasions.find(x=>x.id===s.occ);return `<label><input type="radio" name="sl" value="${s.id}" ${s.id===ST.sl?'checked':''}><span><span class="t">${s.sl.replace(/ । /,' ।<br>')}</span><small>${o.icon} ${o.name}${s.date?' · '+s.date:''}</small></span></label>`}).join('');
+  $$('#sls input').forEach(i=>i.onchange=()=>{ST.sl=i.value;refresh()})}
+function drawDes(){$('#des').innerHTML=Object.entries(DESIGNS).map(([k,d])=>`<button type="button" data-d="${k}" aria-pressed="${k===ST.design}" title="${d.n}"><canvas width="160" height="90"></canvas><span>${d.n}</span></button>`).join('');
+  $$('#des button').forEach(b=>{const c=b.querySelector('canvas').getContext('2d');c.save();c.scale(160/1080,90/608);DESIGNS[b.dataset.d].bg(c,1080,608);c.restore();b.onclick=()=>{ST.design=b.dataset.d;drawDes();refresh()}})}
+let busy=0;async function refresh(){const o=ST.occ==='*'?D.occasions.find(x=>x.id===(sl()||{}).occ):occ();const keep=ST.occ;if(ST.occ==='*'){ST.occ=o.id}
+  const L=LANGS.find(l=>l[0]===ST.lang);const my=++busy;await Promise.all([needFont(FONTS[L[3]]),needFont('Tiro Devanagari Sanskrit')]);if(my!==busy){ST.occ=keep;return}draw();ST.occ=keep}
+$('#lang').innerHTML=LANGS.map(l=>`<option value="${l[0]}">${l[1]} · ${l[2]}</option>`).join('');
+$('#lang').onchange=e=>{ST.lang=e.target.value;refresh()};
+$('#photo').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();im.onload=()=>{ST.img=im;ST.zoom=1;ST.px=ST.py=0;$('#zoom').value=1;$('#px').value=0;$('#py').value=0;$('#zoomr').hidden=false;$('#nophoto').hidden=false;draw()};im.src=URL.createObjectURL(f)};
+$('#nophoto').onclick=()=>{ST.img=null;$('#zoomr').hidden=true;$('#nophoto').hidden=true;$('#photo').value='';draw()};
+for(const k of ['zoom','px','py'])$('#'+k).oninput=e=>{ST[k]=+e.target.value;draw()};
+for(const k of ['to','from'])$('#'+k).oninput=()=>draw();
+$$('[data-sz]').forEach(b=>b.onclick=()=>{ST.sz=b.dataset.sz;$$('[data-sz]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+const fname=()=>`sanskrit-greeting-${ST.occ==='*'?'shloka':ST.occ}.jpg`;
+$('#dl').onclick=()=>cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fname();a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/jpeg',.92);
+if(navigator.canShare){$('#share').hidden=false;$('#share').onclick=()=>cv.toBlob(async b=>{const f=new File([b],fname(),{type:'image/jpeg'});
+  if(navigator.canShare({files:[f]}))try{await navigator.share({files:[f],text:'🙏 sanskritmanthan.in/greetings'})}catch(e){}else $('#dl').click()},'image/jpeg',.92)}
+(async()=>{D=await (await fetch('g/slokas.json')).json();try{const t=await (await fetch('g/tr.json')).json();D.review=t.review||[];for(const s of D.slokas){const x=t.occ&&t.occ[s.occ];if(x&&s.id.endsWith('-1'))Object.assign(s.tr,x,{en:s.tr.en})}}catch(e){}
+  const p=new URLSearchParams(location.search);ST.occ=p.get('o')&&D.occasions.some(o=>o.id===p.get('o'))?p.get('o'):'deepavali';if(p.get('lang'))ST.lang=p.get('lang');ST.design=occ().design;
+  if(p.get('s')&&D.slokas.some(s=>s.id===p.get('s'))){ST.sl=p.get('s');ST.occ=D.slokas.find(s=>s.id===ST.sl).occ}
+  $('#lang').value=ST.lang;drawOcc();drawSl();drawDes();refresh()})();
+</script>
+<script src="/sri.js?v=6" defer></script>
+</body>
+</html>
