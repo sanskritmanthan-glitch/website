@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="sa">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install the App · Sanskrit Manthan</title>
+<meta name="description" content="Install Sanskrit Manthan as an app on Android, iPhone or a computer — its own icon, full screen, and ślokas, grammar and the dictionary even without internet.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Sanskrit Manthan"><meta property="og:title" content="Install the Sanskrit Manthan App"><meta property="og:description" content="Free — on Android, iPhone or a computer, with offline reading."><meta property="og:url" content="https://sanskritmanthan.in/app"><meta property="og:image" content="https://sanskritmanthan.in/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sanskritmanthan.in/app"><link rel="icon" href="cv/author.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#f6f1e7;--ink:#2b2118;--muted:#6f6152;--line:#ddd2bf;--card:#fffaf1;--saffron:#b4531f}
+@media (prefers-color-scheme:dark){:root{--paper:#17130f;--ink:#efe5d4;--muted:#b3a591;--line:#3a3128;--card:#211b15;--saffron:#e08a55;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Spectral,"Tiro Devanagari Sanskrit",serif}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}header{border-bottom:1px solid var(--line)}header .wrap{padding:10px 16px}.brand{font:600 1.5rem "Tiro Devanagari Sanskrit",serif;color:var(--saffron);text-decoration:none}
+h1{font-weight:400;margin:22px 0 4px}.sub{color:var(--muted);margin:0 0 16px}
+.hero{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.ic{width:72px;height:72px;border-radius:18px;flex:none}
+.btn{border:0;border-radius:24px;padding:11px 22px;font:600 16px Spectral,serif;cursor:pointer;background:var(--saffron);color:#fff}
+.ok{color:#1a7f37;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}.c h2{font-size:1.1rem;margin:0 0 6px;font-weight:600}.c ol{margin:0;padding-left:20px}.c.me{border:2px solid var(--saffron)}
+.why li{margin:3px 0}kbd{border:1px solid var(--line);border-radius:5px;padding:0 5px;background:var(--paper);font:inherit}
+</style>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+<body>
+<header><div class="wrap"><a class="brand" href="./">संस्कृतमन्थनम्</a></div></header>
+<div class="wrap">
+<h1>📲 Install the app</h1>
+<p class="sub">Free. No app store and no sign-up. It takes about 10 seconds.</p>
+<div class="hero"><img class="ic" src="icon-192.png" alt=""><div><b>Sanskrit Manthan</b><br><span id="st" class="sub">Checking your device…</span><br><button class="btn" id="inst" hidden>📲 Install now</button></div></div>
+<div class="grid" id="steps">
+ <div class="c" data-os="android"><h2>🤖 Android phone (Chrome)</h2><ol><li>Open <b>sanskritmanthan.in</b> in Chrome</li><li>Tap <kbd>⋮</kbd> (top right)</li><li>Tap <b>Install app</b> or <b>Add to Home screen</b></li><li>Tap <b>Install</b> — the <b>सं</b> icon appears on your home screen</li></ol></div>
+ <div class="c" data-os="ios"><h2>🍎 iPhone / iPad (Safari)</h2><ol><li>Open <b>sanskritmanthan.in</b> in <b>Safari</b></li><li>Tap the <b>Share</b> button <kbd>□↑</kbd> at the bottom</li><li>Scroll and tap <b>Add to Home Screen</b></li><li>Tap <b>Add</b></li></ol></div>
+ <div class="c" data-os="pc"><h2>💻 Computer (Chrome / Edge)</h2><ol><li>Open <b>sanskritmanthan.in</b></li><li>Click the install icon <kbd>⊕</kbd> at the right end of the address bar</li><li>Or use the menu: Chrome <kbd>⋮</kbd> → <b>Cast, save and share → Install page as app</b>; Edge <kbd>⋯</kbd> → <b>Apps → Install this site as an app</b></li><li>Click <b>Install</b></li></ol></div>
+</div>
+<div class="c why"><h2>Why install?</h2><ul>
+<li>Opens in one tap from its own icon, full screen</li>
+<li><b>Works without internet</b>: after installing, ask Bodhinī <b>“offline”</b> and save grammar, ślokas, the dictionary and the śāstra texts to your phone</li>
+<li>Always up to date: new ślokas, articles and books appear by themselves</li>
+<li>Very small, and nothing is collected about you</li></ul></div>
+<p class="sub" style="margin-top:14px">Using Firefox or another browser? Open the site in Chrome, Edge or Safari to install it. You can also ask Bodhinī (the lady icon) <b>“install app”</b> at any time.</p>
+</div>
+<script>
+(()=>{const ua=navigator.userAgent,ios=/iphone|ipad|ipod/i.test(ua)||(/macintosh/i.test(ua)&&navigator.maxTouchPoints>1),and=/android/i.test(ua),os=ios?'ios':and?'android':'pc';
+ const st=document.getElementById('st'),b=document.getElementById('inst');
+ document.querySelectorAll('[data-os]').forEach(c=>{if(c.dataset.os===os){c.classList.add('me');c.parentNode.prepend(c)}});
+ const done=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+ if(done()){st.innerHTML='<span class="ok">✅ You are using the app already.</span> Ask Bodhinī “offline” to save texts for reading without internet.';return}
+ st.textContent=ios?'On iPhone/iPad, follow the Safari steps below.':'Tap the button, or follow the steps below.';
+ const show=()=>{if(window.__smPrompt){b.hidden=false;st.textContent='Your device is ready — tap to install.'}};show();addEventListener('sm-installable',show);
+ b.onclick=async()=>{const p=window.__smPrompt;if(!p)return;p.prompt();const r=await p.userChoice.catch(()=>({}));window.__smPrompt=null;b.hidden=true;st.innerHTML=r&&r.outcome==='accepted'?'<span class="ok">✅ Installed! Find “Sanskrit Manthan” on your home screen.</span>':'You can install any time from this page.'};
+ addEventListener('appinstalled',()=>{b.hidden=true;st.innerHTML='<span class="ok">✅ Installed! Find “Sanskrit Manthan” on your home screen.</span>'})})();
+</script>
+<script src="/sri.js?v=11" defer></script>
+</body>
+</html>

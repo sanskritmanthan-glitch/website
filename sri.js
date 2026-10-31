@@ -508,14 +508,26 @@ async function dhatu(w){const D=(await once('vy/dhatus.json')).dhatus;const q=to
   return [`Verb root <b>${esc(toDev(w))}</b>:`+hits.map(e=>`<div><a class="lk" href="${ROOT}dhatu.html#${e[0]}">${esc(s2d(e[1].replace(/[\\^]/g,'')))} · ${esc(s2d(e[4]))} · gaṇa ${e[2]+1} →</a></div>`).join('')+`<div class="ref">Each link shows every lakāra, with derivation.</div>`]}
 
 /* ---------- app: install, offline bundles, visitor ping ---------- */
-let PROMPT=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();PROMPT=e});
+let PROMPT=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();PROMPT=window.__smPrompt=e;dispatchEvent(new Event('sm-installable'));instPill()});
+/* a small "Install app" pill so readers discover the app (Chrome/Edge: one-tap install; iPhone: opens the how-to page) */
+function instPill(){try{if(document.getElementById('sm-inst')||matchMedia('(display-mode: standalone)').matches||navigator.standalone||/\/app(\.html)?$/.test(location.pathname))return;
+  const no=+localStorage.getItem('sm-noinst')||0;if(Date.now()-no<12*864e5)return}catch(e){return}
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);if(!PROMPT&&!ios)return;
+  setTimeout(()=>{if(document.getElementById('sm-inst'))return;const d=document.createElement('div');d.id='sm-inst';
+    d.innerHTML='<button type="button" class="go">📲 Install app</button><button type="button" class="x" aria-label="Not now">✕</button>';
+    d.style.cssText='position:fixed;left:14px;bottom:18px;z-index:9997;display:flex;align-items:center;background:#b4531f;color:#fff;border-radius:24px;box-shadow:0 4px 14px rgba(0,0,0,.25);font:600 15px system-ui,sans-serif';
+    for(const b of d.querySelectorAll('button'))b.style.cssText='background:none;border:0;color:#fff;font:inherit;cursor:pointer;padding:10px 14px'+(b.className==='x'?';padding-left:4px;opacity:.8':'');
+    d.querySelector('.go').onclick=async()=>{if(PROMPT){PROMPT.prompt();const r=await PROMPT.userChoice.catch(()=>({}));PROMPT=window.__smPrompt=null;d.remove();if(r&&r.outcome!=='accepted')try{localStorage.setItem('sm-noinst',Date.now())}catch(e){}}else location.href='/app'};
+    d.querySelector('.x').onclick=()=>{d.remove();try{localStorage.setItem('sm-noinst',Date.now())}catch(e){}};document.body.appendChild(d)},4000)}
+addEventListener('load',()=>{if(/iphone|ipad|ipod/i.test(navigator.userAgent))instPill()});
+addEventListener('appinstalled',()=>{const d=document.getElementById('sm-inst');if(d)d.remove()});
 if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 {const iso=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);try{if(localStorage.getItem('sm-vday')!==iso&&location.protocol==='https:'){fetch('/api/visits',{method:'POST'}).then(r=>{if(r.ok)localStorage.setItem('sm-vday',iso)}).catch(()=>{})}}catch(e){}}
 const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
 async function installMsg(){if(standalone())return ['✅ You are already using the Sanskrit Manthan app.'+chips([['📥 Use offline','offline']])];
   if(PROMPT){PROMPT.prompt();const r=await PROMPT.userChoice.catch(()=>({}));PROMPT=null;return [r&&r.outcome==='accepted'?'✅ Installed! Find “Sanskrit Manthan” on your home screen.':'OK — you can install any time from this menu.']}
   const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  return [ios?'📲 On iPhone/iPad: tap the <b>Share</b> button (□↑) in Safari, then <b>“Add to Home Screen”</b>.':'📲 In Chrome: open the <b>⋮ menu</b> and choose <b>“Install app”</b> or <b>“Add to Home screen”</b>. Sanskrit Manthan then opens like an app, with its own icon.','How to install the app']}
+  return [(ios?'📲 On iPhone/iPad: tap the <b>Share</b> button (□↑) in Safari, then <b>“Add to Home Screen”</b>.':'📲 In Chrome: open the <b>⋮ menu</b> and choose <b>“Install app”</b> or <b>“Add to Home screen”</b>. Sanskrit Manthan then opens like an app, with its own icon.')+` <a class="lk" href="${ROOT}app">Step-by-step guide →</a>`,'How to install the app']}
 async function offlineMsg(){const B=await once('offline.json');
   return [`📥 <b>Use offline</b> — save parts of the library on this device. Pages you have opened are kept automatically.`+B.map(b=>`<div class="ref">${esc(b.n)} · ${b.mb} MB</div>`).join('')+
     chips(B.filter(b=>b.id!=='itihasa').map(b=>[`📥 ${b.n.split(/[,(]/)[0]} (${b.mb} MB)`,'save:'+b.id]).concat([[`📥 Itihāsa–Purāṇa (${B.find(b=>b.id==='itihasa').mb} MB)`,'save:itihasa']])),'Choose what to save for offline use.']}
