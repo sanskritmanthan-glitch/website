@@ -1,5 +1,5 @@
 /* Sanskrit Manthan service worker — works offline with what you have opened, and with bundles saved from Bodhinī's menu. */
-const V='sm-v3', CORE=['/','/index.html','/books.html','/shloka.html','/sutra.html','/kosha.html','/vyakarana.html','/krida.html','/greetings.html','/offline.html',
+const V='sm-v4', CORE=['/','/index.html','/books.html','/shloka.html','/sutra.html','/kosha.html','/vyakarana.html','/krida.html','/greetings.html','/offline.html',
  '/sri.js','/sri-books.json','/sri-learn.json','/ix.js','/g/slokas.json','/manifest.webmanifest','/icon-192.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V&&!k.startsWith('sm-data')).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

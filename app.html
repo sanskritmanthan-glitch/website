@@ -58,6 +58,6 @@ h1{font-weight:400;margin:22px 0 4px}.sub{color:var(--muted);margin:0 0 16px}
  b.onclick=async()=>{const p=window.__smPrompt;if(!p)return;p.prompt();const r=await p.userChoice.catch(()=>({}));window.__smPrompt=null;b.hidden=true;st.innerHTML=r&&r.outcome==='accepted'?'<span class="ok">✅ Installed! Find “Sanskrit Manthan” on your home screen.</span>':'You can install any time from this page.'};
  addEventListener('appinstalled',()=>{b.hidden=true;st.innerHTML='<span class="ok">✅ Installed! Find “Sanskrit Manthan” on your home screen.</span>'})})();
 </script>
-<script src="/sri.js?v=12" defer></script>
+<script src="/sri.js?v=13" defer></script>
 </body>
 </html>

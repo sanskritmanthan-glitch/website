@@ -3,7 +3,7 @@ import {nakshatra,NAK,NAKE,PADA,RASHI} from './moon.js';
 export {NAK,NAKE,PADA,RASHI,nakshatra};
 const BASE=new URL('.',import.meta.url).href;
 let N=null,PARTS=null;
-export async function load(){if(N)return N;N=await (await fetch(BASE+'names.json')).json();PARTS=new Map();
+export async function load(){if(N)return N;N=await (await fetch(BASE+'names.json?v=2')).json();PARTS=new Map();
   for(const x of N){x.k=fz(x.d);x.kr=fz(x.r);x.s=first(x.d);for(const [p,m] of x.p||[]){const k=skel(fz(p));if(k.length>=2&&!PARTS.has(k))PARTS.set(k,[p,m])}}return N}
 /* --- normalising any script / spelling to a loose Roman key --- */
 const V={'अ':'a','आ':'a','इ':'i','ई':'i','उ':'u','ऊ':'u','ऋ':'ri','ए':'e','ऐ':'ai','ओ':'o','औ':'au'},M={'ा':'a','ि':'i','ी':'i','ु':'u','ू':'u','ृ':'ri','े':'e','ै':'ai','ो':'o','ौ':'au'};
@@ -37,18 +37,25 @@ export async function bySyllables(syls,g){await load();const ok=x=>!g||g==='all'
 const VOW=new Set(Object.keys(V));
 export const consOf=s=>VOW.has([...s][0])?'V':[...s][0];
 const startsC=(x,c)=>c==='V'?VOW.has(x.d[0]):x.d[0]===c;
+export const REL={'क':['ख'],'ख':['क'],'ग':['घ'],'घ':['ग'],'ङ':['ग','क'],'च':['छ'],'छ':['च'],'ज':['झ'],'झ':['ज'],'ञ':['ज','य'],'ट':['ठ'],'ठ':['ट'],'ड':['ढ'],'ढ':['ड'],'ण':['न'],'त':['थ'],'थ':['त'],'द':['ध'],'ध':['द'],'न':['ण'],'प':['फ'],'फ':['प'],'ब':['भ','व'],'भ':['ब'],'व':['ब'],'श':['स','ष'],'ष':['श'],'स':['श'],'य':['ज'],'ल':['र'],'र':['ल']};
 export const BARA=c=>c==='V'?'अ आ इ ई उ ऊ ए ओ':[c,...'ा ि ी ु ू े ै ो ौ'.split(' ').map(m=>c+m)].join(' ');
 export async function starGroups(n,p,g,extra=[]){await load();const ok=x=>!g||g==='all'||x.g===g||x.g==='u';const P=PADA[n],seen=new Set();
   const take=f=>N.filter(x=>ok(x)&&!seen.has(x.d)&&f(x)).map(x=>(seen.add(x.d),x));
   const own=[...new Set((p>=0?[P[p]]:P).concat(extra))],G=[{k:'own',syl:own,list:take(x=>own.some(s=>sylMatch(x,s)))}];
   const oth=P.filter(s=>!own.includes(s));if(oth.length)G.push({k:'pada',syl:oth,list:take(x=>oth.some(s=>sylMatch(x,s)))});
   const c1=[...new Set(own.map(consOf))];G.push({k:'cons',syl:c1,list:take(x=>c1.some(c=>startsC(x,c)))});
+  const c1r=[...new Set(c1.flatMap(c=>REL[c]||[]))].filter(c=>!c1.includes(c));if(c1r.length)G.push({k:'rel',syl:c1r,from:c1,list:take(x=>c1r.some(c=>startsC(x,c)))});
   const c2=[...new Set(P.map(consOf))].filter(c=>!c1.includes(c));if(c2.length)G.push({k:'cons2',syl:c2,list:take(x=>c2.some(c=>startsC(x,c)))});
   return G}
 /* names whose first consonant sound matches a Roman syllable like "da", "du", "sh" (any vowel) */
 const RC={k:'क',kh:'ख',g:'ग',gh:'घ',c:'च',ch:'चछ',chh:'छ',j:'ज',jh:'झ',t:'तट',th:'थठ',d:'दड',dh:'धढ',n:'नण',p:'प',ph:'फ',f:'फ',b:'ब',bh:'भ',m:'म',y:'य',r:'रऋ',l:'ल',v:'व',w:'व',s:'सश',sh:'शष',h:'ह',ksh:'क्ष',x:'क्ष',gy:'ज्ञ',jn:'ज्ञ',tr:'त्र',sr:'श्र',shr:'श्र'};
 export async function byRomanCons(q,g){await load();const c=q.toLowerCase().replace(/[^a-z]/g,'').replace(/[aeiou]+$/,'');const key=Object.keys(RC).filter(k=>c===k)[0];if(!key)return [];
   const set=RC[key];const multi=set.includes('्')?[set]:[...set];return N.filter(x=>(!g||g==='all'||x.g===g||x.g==='u')&&multi.some(ch=>x.d.startsWith(ch)))}
+/* IAST for display */
+const IV={'अ':'a','आ':'ā','इ':'i','ई':'ī','उ':'u','ऊ':'ū','ऋ':'ṛ','ॠ':'ṝ','ऌ':'ḷ','ए':'e','ऐ':'ai','ओ':'o','औ':'au'},IM={'ा':'ā','ि':'i','ी':'ī','ु':'u','ू':'ū','ृ':'ṛ','ॄ':'ṝ','े':'e','ै':'ai','ो':'o','ौ':'au'};
+const IC={'क':'k','ख':'kh','ग':'g','घ':'gh','ङ':'ṅ','च':'c','छ':'ch','ज':'j','झ':'jh','ञ':'ñ','ट':'ṭ','ठ':'ṭh','ड':'ḍ','ढ':'ḍh','ण':'ṇ','त':'t','थ':'th','द':'d','ध':'dh','न':'n','प':'p','फ':'ph','ब':'b','भ':'bh','म':'m','य':'y','र':'r','ल':'l','व':'v','श':'ś','ष':'ṣ','स':'s','ह':'h','ळ':'ḷ'};
+export function iast(d){let o='';const c=[...d];for(let i=0;i<c.length;i++){const x=c[i],n=c[i+1];if(IC[x]){o+=IC[x];if(n==='्'){i++}else if(IM[n]){o+=IM[n];i++}else o+='a'}else if(IV[x])o+=IV[x];else if(x==='ं')o+='ṃ';else if(x==='ः')o+='ḥ';else if(x==='ँ')o+='m̐';else if(x==='ऽ')o+="'";else o+=x}return o}
+export const SRC={vi:'विष्णुनाम · a name of Viṣṇu',kr:'कृष्णनाम · a name of Kṛṣṇa',ra:'रामायणम् · from the Rāmāyaṇa',si:'शिवनाम · a name of Śiva',de:'देवीनाम · a name of Devī',la:'लक्ष्मीनाम · a name of Lakṣmī',sa:'सरस्वतीनाम · a name of Sarasvatī',ga:'गणेशनाम · a name of Gaṇeśa',sk:'स्कन्दनाम · a name of Skanda',ha:'हनुमन्नाम · a name of Hanumān',su:'सूर्यनाम · a name of Sūrya',nv:'नवनाम · new coinage',sw:'संस्कृतशब्दः · Sanskrit word'};
 export function starOf(dateUTC){return nakshatra(dateUTC)}
 /* parse "12 March 2026 10:30 am", "12/03/2026 22:15", "2026-03-12 10:30" (local time at the given UTC offset in hours, default IST) */
 const MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];

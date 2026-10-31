@@ -74,6 +74,6 @@ $('#load').onclick=async()=>{if(!await fromRef($('#ref').value))$('#card').inner
 $('#ref').onkeydown=e=>{if(e.key==='Enter')$('#load').click()};
 (async()=>{const p=new URLSearchParams(location.search).get('t');if(p){const [d,id,s,v]=p.split('/');if(DS.some(x=>x[0]===d))return open(d,id,s,v)}if(p&&await fromRef(p))return;await open('su','bhagavadgita','2',47)})();
 </script>
-<script src="/sri.js?v=12" defer></script>
+<script src="/sri.js?v=13" defer></script>
 </body>
 </html>

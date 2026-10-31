@@ -30,6 +30,11 @@ input,select{font:inherit;font-size:1rem;padding:8px 11px;border:1px solid var(-
 .star{border-left:4px solid var(--saffron);padding:8px 14px;background:var(--paper);border-radius:6px;margin:10px 0;font-family:Spectral,serif}.star b{font-family:"Tiro Devanagari Sanskrit",serif;font-size:1.15rem}
 .warn{color:#a15c00;font-family:Spectral,serif;font-size:.9rem}.note{color:var(--muted);font:14px Spectral,serif}
 .grp{font-weight:400;font-size:1.05rem;margin:18px 0 0;padding-top:10px;border-top:1px solid var(--line)}.grp small{color:var(--muted)}.syl button small{font-size:.7rem;opacity:.7}
+.gbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 12px}.gbar .gl{font:600 15px Spectral,serif;color:var(--muted);margin-right:4px}
+.gbar button{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:26px;padding:9px 20px;font:600 17px Spectral,"Tiro Devanagari Sanskrit",serif;cursor:pointer}
+.gbar .gm[aria-pressed=true]{background:#1f6fb5;border-color:#1f6fb5;color:#fff}.gbar .gf[aria-pressed=true]{background:#c2185b;border-color:#c2185b;color:#fff}.gbar .ga[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.nm.m{border-left:5px solid #1f6fb5}.nm.f{border-left:5px solid #c2185b}.nm.u{border-left:5px solid #8a6d3b}
+.nm .tag.m{background:#dbeafe;color:#1f4f85}.nm .tag.f{background:#fde2ec;color:#9c1450}.nm .src{display:inline-block;font:12px Spectral,serif;color:var(--muted);border:1px solid var(--line);border-radius:9px;padding:0 7px;margin-top:3px}.nm .ia{font:15px Spectral,serif;color:var(--saffron)}
 </style>
 <link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#b4531f"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"></head>
 <body>
@@ -37,11 +42,12 @@ input,select{font:inherit;font-size:1rem;padding:8px 11px;border:1px solid var(-
 <div class="wrap">
 <h1>नामानि · Names</h1>
 <p class="sub">Find the meaning of a Sanskrit name, or choose a Sanskrit name for a baby — by first letter, by birth star (nakṣatra-pāda syllable), or from the date and time of birth.</p>
+<div class="gbar" role="group" aria-label="Boy or girl"><span class="gl">शिशुः · Baby is a</span><button type="button" data-gg="m" class="gm">👦 Boy · बालकः</button><button type="button" data-gg="f" class="gf">👧 Girl · बालिका</button><button type="button" data-gg="all" class="ga">Both · उभौ</button></div>
 <div class="tabs" role="tablist"><button role="tab" data-t="mean">नामार्थः · Meaning of a name</button><button role="tab" data-t="letter">अक्षरम् · By letter</button><button role="tab" data-t="star">नक्षत्रम् · By birth star</button><button role="tab" data-t="dob">जन्मसमयः · By date &amp; time of birth</button></div>
 <div class="panel" id="p-mean"><div class="row"><input id="q" placeholder="e.g. Devnath, श्रीनिवास, లక్ష్మి, Anvita" size="28"><button class="btn" id="qgo">Find meaning</button></div><div id="qout"></div></div>
-<div class="panel" id="p-letter" hidden><div class="row"><span class="g" data-g></span></div><div class="letters" id="letters"></div></div>
-<div class="panel" id="p-star" hidden><div class="row"><span class="g" data-g></span><select id="nak"></select><select id="pada"><option value="-1">All four pādas</option><option value="0">Pāda 1</option><option value="1">Pāda 2</option><option value="2">Pāda 3</option><option value="3">Pāda 4</option></select></div><div class="syl" id="syl"></div></div>
-<div class="panel" id="p-dob" hidden><div class="row"><span class="g" data-g></span></div><div class="row"><label>Date <input type="date" id="dd"></label><label>Time <input type="time" id="tt"></label>
+<div class="panel" id="p-letter" hidden><div class="row"></div><div class="letters" id="letters"></div></div>
+<div class="panel" id="p-star" hidden><div class="row"><select id="nak"></select><select id="pada"><option value="-1">All four pādas</option><option value="0">Pāda 1</option><option value="1">Pāda 2</option><option value="2">Pāda 3</option><option value="3">Pāda 4</option></select></div><div class="syl" id="syl"></div></div>
+<div class="panel" id="p-dob" hidden><div class="row"></div><div class="row"><label>Date <input type="date" id="dd"></label><label>Time <input type="time" id="tt"></label>
   <select id="tz"><option value="5.5">India (IST)</option><option value="5.75">Nepal</option><option value="4">UAE / Oman</option><option value="3">Saudi / Qatar / Kuwait</option><option value="0">UK (winter)</option><option value="1">UK (summer)</option><option value="-5">US East (winter)</option><option value="-4">US East (summer)</option><option value="-8">US West (winter)</option><option value="-7">US West (summer)</option><option value="8">Singapore / Malaysia</option><option value="10">Sydney (winter)</option><option value="11">Sydney (summer)</option><option value="dev">This device's time zone</option></select>
   <button class="btn" id="dgo">Find birth star</button></div><div id="dout"></div>
   <p class="note">The birth star is calculated from the Moon's sidereal position (Lahiri ayanāṃśa), accurate to a few minutes. Name-syllable tables differ a little between regions — please confirm with your family priest or pañcāṅga.</p></div>
@@ -51,16 +57,16 @@ input,select{font:inherit;font-size:1rem;padding:8px 11px;border:1px solid var(-
 import * as Nm from './n/names.js';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=t=>String(t??'').replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const d2t=s=>[...s].map(c=>{const n=c.codePointAt(0);return n>=0x900&&n<=0x97f&&c!=='ऽ'?String.fromCodePoint(n+0x300):c}).join('');
-let G='all',TAB='mean';
+let G='all',TAB='mean';try{G=localStorage.getItem('sm-g')||'all'}catch(e){}
 const GL={all:'All',m:'Boy · बालकः',f:'Girl · बालिका'};
-$$('[data-g]').forEach(s=>{s.innerHTML=Object.entries(GL).map(([k,v])=>`<button type="button" data-gg="${k}" aria-pressed="${k===G}">${v}</button>`).join('')});
-document.addEventListener('click',e=>{const b=e.target.closest('[data-gg]');if(b){G=b.dataset.gg;$$('[data-gg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.gg===G));rerun()}});
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-gg]');if(b){G=b.dataset.gg;try{localStorage.setItem('sm-g',G)}catch(e){}$$('[data-gg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.gg===G));rerun()}});
 function tab(t){TAB=t;$$('[role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));['mean','letter','star','dob'].forEach(x=>$('#p-'+x).hidden=x!==t);$('#res').innerHTML='';rerun();history.replaceState(null,'','#'+t)}
 $$('[role=tab]').forEach(b=>b.onclick=()=>tab(b.dataset.t));
 const say=t=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='hi-IN';u.rate=.7;speechSynthesis.speak(u)}catch(e){}};
 window.__say=say;
-function card(x){return `<div class="nm"><span class="tag">${x.g==='m'?'बालकः · boy':x.g==='f'?'बालिका · girl':'उभयम् · both'}</span><div class="d">${esc(x.d)} <button type="button" onclick="__say('${esc(x.d)}')" title="Listen">🔊</button></div>
- <div class="te">${esc(d2t(x.d))}</div><div class="r">${esc(x.r)}</div><div class="m">${esc(x.m)}</div>${x.near?`<div class="p">No common name begins exactly with ${esc(x.near)}; this one shares its first sound.</div>`:''}${x.p&&x.p.length>1?`<div class="p">${x.p.map(([a,b])=>`${esc(a)} = ${esc(b)}`).join(' · ')}</div>`:''}</div>`}
+function card(x){return `<div class="nm ${x.g}"><span class="tag ${x.g}">${x.g==='m'?'बालकः · boy':x.g==='f'?'बालिका · girl':'उभयम् · boy or girl'}</span><div class="d">${esc(x.d)} <button type="button" onclick="__say('${esc(x.d)}')" title="Listen">🔊</button></div>
+ <div class="te">${esc(d2t(x.d))}</div><div class="r"><span class="ia">${esc(Nm.iast(x.d))}</span> · ${esc(x.r)}</div><div class="m">${esc(x.m)}</div>${x.o?`<span class="src">${esc(Nm.SRC[x.o]||x.o)}</span>`:''}${x.near?`<div class="p">No common name begins exactly with ${esc(x.near)}; this one shares its first sound.</div>`:''}${x.p&&x.p.length>1?`<div class="p">${x.p.map(([a,b])=>`${esc(a)} = ${esc(b)}`).join(' · ')}</div>`:''}</div>`}
 function list(arr,title){$('#res').innerHTML=(title?`<p class="note" style="grid-column:1/-1">${title}</p>`:'')+(arr.length?arr.map(card).join(''):'<p class="note">No common Sanskrit names begin with this syllable. Families often choose a name from another pāda of the same nakṣatra — use the “By birth star” tab with “All four pādas”.</p>')}
 /* meaning */
 async function mean(){const q=$('#q').value.trim();if(!q)return;const r=await Nm.meaning(q);
@@ -82,7 +88,8 @@ async function byStar(){const n=+$('#nak').value,p=+$('#pada').value,P4=Nm.PADA[
 /* grouped results: birth pāda → other pādas → same consonant with any vowel → the star's other sounds */
 function groups(GR,n,p){const T={own:g=>p>=0||g.syl.length<4?`🌟 Names beginning with <b>${g.syl.join(' / ')}</b>${p>=0?' (pāda '+(p+1)+')':''}`:`🌟 Names for all four pādas of ${Nm.NAK[n]}: <b>${g.syl.join(' / ')}</b>`,
    pada:g=>`🌙 Other pādas of ${Nm.NAK[n]}: <b>${g.syl.join(' / ')}</b>`,
-   cons:g=>`🔤 Same sound with any vowel — ${g.syl.map(c=>`<b>${Nm.BARA(c)}</b>`).join('; ')}`,
+   cons:g=>`🔤 Same sound with any vowel — ${g.syl.map(c=>`<b>${Nm.BARA(c)}</b>`).join('; ')}${(k=>k.length?` · also ${k.join(' ')}`:'')([...new Set(g.list.filter(x=>x.d[1]==='्'||x.d[1]==='ृ').map(x=>x.d[1]==='ृ'?x.d.slice(0,2):x.d.slice(0,3)))])}`,
+   rel:g=>`🔁 Related sound${g.syl.length>1?'s':''} (${g.from.join(', ')} → ${g.syl.join(', ')}), any vowel — ${g.syl.map(c=>`<b>${Nm.BARA(c)}</b>`).join('; ')}`,
    cons2:g=>`✨ The star's other sounds with any vowel — ${g.syl.map(c=>`<b>${Nm.BARA(c)}</b>`).join('; ')}`};
   const tot=GR.reduce((a,g)=>a+g.list.length,0);
   $('#res').innerHTML=GR.filter(g=>g.k==='own'||g.list.length).map(g=>`<h3 class="grp" style="grid-column:1/-1">${T[g.k](g)} <small>· ${g.list.length}</small></h3>`+(g.list.length?g.list.map(card).join(''):`<p class="note" style="grid-column:1/-1">No common Sanskrit name in our list begins this way${g.k==='own'?' — see the wider choices below.':'.'}</p>`)).join('')+(tot?'':'<p class="note">No names found.</p>')}
@@ -101,6 +108,6 @@ const P=new URLSearchParams(location.search);if(P.get('m')){$('#q').value=P.get(
 if(P.get('l')){LETTER=P.get('l');tab('letter')}else if(P.get('n')){$('#nak').value=P.get('n');if(P.get('p'))$('#pada').value=P.get('p');tab('star')}
 else if(P.get('d')){$('#dd').value=P.get('d');if(P.get('t'))$('#tt').value=P.get('t');tab('dob')}else tab((location.hash||'#mean').slice(1)||'mean');
 </script>
-<script src="/sri.js?v=12" defer></script>
+<script src="/sri.js?v=13" defer></script>
 </body>
 </html>

@@ -61,6 +61,6 @@ function make(){const k=$('#kind').value,l=+$('#lvl').value,n=+$('#n').value,qs=
   const p=new URLSearchParams(location.search);if(p.get('k'))$('#kind').value=p.get('k');if(p.get('l'))$('#lvl').value=p.get('l');
   make();$('#go').onclick=make;$('#pr').onclick=()=>print();for(const id of ['kind','lvl','n'])$('#'+id).onchange=make})();
 </script>
-<script src="/sri.js?v=12" defer></script>
+<script src="/sri.js?v=13" defer></script>
 </body>
 </html>

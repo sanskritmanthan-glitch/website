@@ -539,7 +539,7 @@ async function saveBundle(id){const B=(await once('offline.json')).find(b=>b.id=
 /* ---------- names: meaning and baby-name suggestions ---------- */
 let NM=null;const nm=async()=>NM||(NM=await import(ROOT+'n/names.js'));
 const gOf=t=>/\b(boy|boys|son|male|baby boy)\b|बालक|लड़का|అబ్బాయి|మగ/i.test(t)?'m':/\b(girl|girls|daughter|female|baby girl)\b|बालिका|लड़की|అమ్మాయి|ఆడ/i.test(t)?'f':'all';
-const nmCard=x=>`<div class="card" style="display:block"><b style="font-size:1.15rem">${esc(x.d)}</b> <span class="ref">${esc(x.r)} · ${x.g==='m'?'boy':x.g==='f'?'girl':'boy/girl'}</span><p>${esc(x.m)}</p>${x.p&&x.p.length>1?`<p class="ref">${x.p.map(([a,b])=>esc(a)+' = '+esc(b)).join(' · ')}</p>`:''}</div>`;
+const nmCard=x=>`<div class="card" style="display:block;border-left:4px solid ${x.g==='m'?'#1f6fb5':x.g==='f'?'#c2185b':'#8a6d3b'}"><b style="font-size:1.15rem">${esc(x.d)}</b> <span class="ref">${NM&&NM.iast?esc(NM.iast(x.d))+' · ':''}${esc(x.r)} · ${x.g==='m'?'👦 boy':x.g==='f'?'👧 girl':'boy/girl'}</span><p>${esc(x.m)}</p>${x.p&&x.p.length>1?`<p class="ref">${x.p.map(([a,b])=>esc(a)+' = '+esc(b)).join(' · ')}</p>`:''}</div>`;
 async function nameIntent(raw,lo){const isName=/\bnames?\b|नाम|పేరు|పేర్లు|नामानि/i.test(raw);if(!isName)return null;const M=await nm();let m;
   // meaning of a name
   if((m=raw.match(/^(?:what is the )?(?:meaning of (?:the )?name|name meaning(?: of)?|what does (?:the )?name)\s+(.+?)(?:\s+mean)?\??$/i)||raw.match(/^(.+?)\s+(?:name meaning|नाम का अर्थ|పేరు అర్థం|నామార్థం)\??$/i))){const q=m[1].trim(),r=await M.meaning(q);
@@ -548,9 +548,9 @@ async function nameIntent(raw,lo){const isName=/\bnames?\b|नाम|పేర�
     return [`“${esc(q)}” can be read as <b>${r.parts.map(p=>esc(p[0])).join(' + ')}</b> = ${r.parts.map(p=>esc(p[1])).join(' + ')}`,'',ROOT+'names.html?m='+encodeURIComponent(q)]}
   const g=gOf(raw);
   // by date (and time) of birth
-  const grp=(GR,M,n,p)=>GR.filter(g=>g.list.length).map(g=>{const h={own:`🌟 Beginning with <b>${g.syl.join(' / ')}</b>`,pada:`🌙 Other pādas of ${M.NAK[n]}: <b>${g.syl.join(' / ')}</b>`,cons:`🔤 Same sound, any vowel: <b>${g.syl.map(M.BARA).join('; ')}</b>`,cons2:`✨ Other sounds of this star: <b>${g.syl.map(M.BARA).join('; ')}</b>`}[g.k];
+  const grp=(GR,M,n,p)=>GR.filter(g=>g.list.length).map(g=>{const h={own:`🌟 Beginning with <b>${g.syl.join(' / ')}</b>`,pada:`🌙 Other pādas of ${M.NAK[n]}: <b>${g.syl.join(' / ')}</b>`,cons:`🔤 Same sound, any vowel: <b>${g.syl.map(M.BARA).join('; ')}</b>`,rel:`🔁 Related sound (${(g.from||[]).join(', ')} → ${g.syl.join(', ')}), any vowel`,cons2:`✨ Other sounds of this star: <b>${g.syl.map(M.BARA).join('; ')}</b>`}[g.k];
     const L=g.list.slice().sort(()=>Math.random()-.5);return `<div class="ref" style="margin-top:8px">${h} · ${g.list.length}</div>`+(g.k==='own'?L.slice(0,5).map(nmCard).join(''):`<p>${L.slice(0,12).map(x=>`<b>${esc(x.d)}</b> <span class="ref">${esc(x.m)}</span>`).join(' · ')}</p>`)}).join('');
-  const spk=GR=>GR.filter(g=>g.list.length).map(g=>({own:'names beginning with ',pada:'other padas: ',cons:'same sound with any vowel: ',cons2:'other sounds of the star: '}[g.k])+g.list.slice(0,3).map(x=>x.d).join(', ')).join('. ');
+  const spk=GR=>GR.filter(g=>g.list.length).map(g=>({own:'names beginning with ',pada:'other padas: ',cons:'same sound with any vowel: ',rel:'related sound: ',cons2:'other sounds of the star: '}[g.k])+g.list.slice(0,3).map(x=>x.d).join(', ')).join('. ');
   // by date (and time) of birth
   const dt=M.parseDT(lo.replace(/\bat\b/g,' '));if(dt){const S=M.starOf(dt.date);const p=dt.timeGiven?S.p:-1;const GR=await M.starGroups(S.n,p,g);
     const d=new Date(dt.date.getTime()+5.5*3600e3).toISOString();
