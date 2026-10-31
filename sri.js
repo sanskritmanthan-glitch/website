@@ -77,6 +77,7 @@ const CSS=`
 #sri .b{background:#fff;border-top-left-radius:3px}#sri .u{background:#fbdcb6;margin-left:auto;border-top-right-radius:3px}
 #sri .m .tm{display:block;text-align:right;font-size:10.5px;color:#8a7a68;margin-top:2px}
 #sri .m a{color:#9c3d16}#sri .m .v{font-size:16px;margin:4px 0;color:#23295e}#sri .m .ref{font-size:12.5px;color:#6b5b48}
+#sri .m .lk.big{display:block;text-align:center;background:#b4531f;color:#fff;font-weight:600;padding:7px 12px;margin-top:8px}
 #sri .m .lk{display:inline-block;margin:4px 6px 0 0;padding:3px 9px;border-radius:12px;background:#f6ead8;text-decoration:none;font-size:13px}
 #sri .card{display:flex;gap:8px;margin:6px 0;padding:6px;border:1px solid #eadbc3;border-radius:10px;background:#fffaf2}
 #sri .card img{width:52px;height:80px;object-fit:cover;border-radius:4px;flex:none;background:#eee}#sri .card b{font-size:14px;display:block}#sri .card p{margin:2px 0;font-size:12.5px;color:#5a4a38}
@@ -108,8 +109,10 @@ document.body.append(fab,tip,box);if(!tip.hidden)setTimeout(()=>{tip.hidden=true
 const log=$('.log',box),inp=$('input',box),spkB=$('.spk',box),micB=$('.mic',box),mlS=$('.ml',box);
 const now=()=>new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
 const scroll=()=>{log.scrollTop=log.scrollHeight};
-function add(html,who='b'){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html+`<span class="tm">${now()}</span>`;log.appendChild(d);
-  d.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>handle(b.dataset.say,b.textContent));scroll();return d}
+const SS={g(k){try{return sessionStorage.getItem('sri-'+k)}catch(e){return null}},s(k,v){try{sessionStorage.setItem('sri-'+k,v)}catch(e){}}};
+function save(){while(log.children.length>60)log.removeChild(log.firstChild);SS.s('log',log.innerHTML);SS.s('open',box.hidden?'0':'1')}
+function add(html,who='b'){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html+`<span class="tm">${now()}</span>`;log.appendChild(d);scroll();save();return d}
+log.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)handle(b.dataset.say,b.textContent)});
 function typing(){const d=document.createElement('div');d.className='m b typing';d.innerHTML='<span></span><span></span><span></span>';log.appendChild(d);scroll();return d}
 const chips=a=>`<div class="chips">${a.map(([l,s])=>`<button type="button" data-say="${esc(s)}">${l}</button>`).join('')}</div>`;
 let LANG=LS.g('lang','');
@@ -124,18 +127,20 @@ const T={
    ok:'Wonderful! I am Bodhinī. How can I assist you?',ask:'What would you like?',thx:'🙏 You are welcome! Ask me anything else.',nf:"Sorry, I couldn't find that. Try the opening words of a verse, a book topic (e.g. Purāṇa, grammar, Telugu), or one of these —",voice:'en-IN'}};
 const L_=()=>T[LANG]||T.en;
 const LANGQ=`Which language do you prefer?<br>भवतः प्रियभाषा का? · మీకు ఏ భాష ఇష్టం? · आपको कौन-सी भाषा पसंद है?`+'<div class="chips"><button type="button" data-say="lang:sa">संस्कृतम्</button><button type="button" data-say="lang:te">తెలుగు</button><button type="button" data-say="lang:hi">हिन्दी</button><button type="button" data-say="lang:en">English</button></div>';
-function open(){box.hidden=false;fab.hidden=true;tip.hidden=true;LS.s('tip','0');if(!log.children.length)hello();setTimeout(()=>inp.focus(),50)}
-function close(){box.hidden=true;fab.hidden=false;stopSpeak()}
+function open(){box.hidden=false;fab.hidden=true;tip.hidden=true;LS.s('tip','0');if(!log.children.length)hello();save();scroll();setTimeout(()=>inp.focus(),50)}
+function close(){box.hidden=true;fab.hidden=false;stopSpeak();save()}
 fab.onclick=open;tip.onclick=open;$('.x',box).onclick=close;$('.home',box).onclick=()=>reply(menuMsg());
 const WEL=`<b>नमस्ते! 🙏</b> Welcome to <b>संस्कृतमन्थनम् · Sanskrit Manthan</b> — <i>भारतीयज्ञानपरम्पराकार्यशाला</i>, a workshop of Indian Knowledge Systems.<br>I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding”.`;
 function hello(){if(!LANG)reply(WEL+'<br><br>'+LANGQ,'Namaste! Welcome to Sanskrit Manthan, a workshop of Indian Knowledge Systems. I am Bodhini. Which language do you prefer?');
   else reply(WEL+'<br><br>'+L_().ok+chips(L_().menu),'Namaste! Welcome to Sanskrit Manthan. '+L_().ok)}
 function setLang(l){LANG=l;LS.s('lang',l);mlS.value=T[l].voice;LS.s('ml',mlS.value);return [L_().ok+chips(L_().menu),L_().ok]}
 const menuMsg=()=>L_().ask+chips(L_().menu);
+/* carry the conversation across pages (this browser tab only) */
+{const old=SS.g('log');if(old){log.innerHTML=old;if(SS.g('open')==='1'){box.hidden=false;fab.hidden=true;tip.hidden=true;setTimeout(scroll,0)}}}
 
 /* ---------- speech (browser built-in, free) ---------- */
 let SPEAK=LS.g('speak','1')==='1';spkB.setAttribute('aria-pressed',SPEAK);
-mlS.value=LS.g('ml','en-IN');mlS.onchange=()=>LS.s('ml',mlS.value);
+mlS.value=LS.g('ml',(T[LANG]||T.en).voice);mlS.onchange=()=>LS.s('ml',mlS.value);
 spkB.onclick=()=>{SPEAK=!SPEAK;LS.s('speak',SPEAK?'1':'0');spkB.setAttribute('aria-pressed',SPEAK);if(!SPEAK)stopSpeak();else say('Voice on.')};
 const synth=window.speechSynthesis;
 function pickVoice(lang){if(!synth)return null;const vs=synth.getVoices();return vs.find(v=>v.lang===lang)||vs.find(v=>v.lang.startsWith(lang.slice(0,2)))||(lang==='en-IN'?vs.find(v=>v.lang.startsWith('en')):null)}
@@ -150,19 +155,28 @@ if(synth)synth.onvoiceschanged=()=>synth.getVoices();
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null;
 if(!SR){micB.hidden=true;mlS.hidden=true}
 micB.onclick=()=>{if(rec){rec.stop();return}rec=new SR();rec.lang=mlS.value;rec.interimResults=true;rec.maxAlternatives=1;micB.classList.add('on');
-  rec.onresult=e=>{inp.value=[...e.results].map(r=>r[0].transcript).join('');if(e.results[e.results.length-1].isFinal){const t=inp.value;inp.value='';handle(t)}};
+  rec.onresult=e=>{inp.value=[...e.results].map(r=>r[0].transcript).join('');if(e.results[e.results.length-1].isFinal){const t=inp.value;inp.value='';handle(t,undefined,true)}};
   rec.onerror=e=>{if(e.error==='not-allowed')reply('Microphone permission was blocked. Allow the microphone for this site in your browser settings, or type instead.')};
   rec.onend=()=>{rec=null;micB.classList.remove('on')};rec.start()};
 $('form',box).onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t)return;inp.value='';handle(t)};
 
 /* ---------- conversation ---------- */
 function reply(html,spoken){add(html,'b');say(spoken!==undefined?spoken:html.replace(/<div class="chips">[\s\S]*$/,'').replace(/<[^>]+>/g,' ').replace(/&[a-z]+;/g,' '))}
-async function handle(text,label){add(esc(typeof label==='string'?label:text),'u');const t=typing();let out;
+let NAV=false;
+async function handle(text,label,voice){add(esc(typeof label==='string'?label:text),'u');const t=typing();let out;NAV=false;
   try{out=await answer(text.trim())}catch(e){console.error(e);out=['Sorry, something went wrong while looking that up. Please try again.'+chips(L_().menu)]}
-  await new Promise(r=>setTimeout(r,250));t.remove();if(typeof out==='string')out=[out];reply(out[0],out[1])}
+  await new Promise(r=>setTimeout(r,250));t.remove();if(typeof out==='string')out=[out];
+  const url=out[2];
+  if(url){const here=location.pathname.replace(/\/$/,'/index.html')+location.hash, there=new URL(url,location.href);
+    const go=(NAV||voice)&&(there.pathname+there.hash)!==here;
+    reply(out[0]+(go?`<div class="ref">↪ ${OPENING[LANG]||OPENING.en}</div>`:`<a class="lk big" href="${esc(url)}">📖 ${OPENW[LANG]||OPENW.en}</a>`),(out[1]||'')+(go?' '+(OPENING[LANG]||OPENING.en):''));
+    if(go){save();const t0=Date.now();const wait=()=>{if(SPEAK&&synth&&synth.speaking&&Date.now()-t0<7000)return setTimeout(wait,300);location.href=url};setTimeout(wait,1200)}}
+  else reply(out[0],out[1])}
+const OPENING={sa:'पृष्ठम् उद्घाट्यते…',te:'పేజీ తెరుస్తున్నాను…',hi:'पृष्ठ खोल रही हूँ…',en:'Opening the page…'};
+const OPENW={sa:'पृष्ठम् उद्घाटयतु',te:'పేజీ తెరవండి',hi:'पृष्ठ खोलें',en:'Open the page'};
 
 const has=(s,...w)=>w.some(x=>s.includes(x));
-async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);let m0;
+async function answer(q){q=speechNorm(digits(q));const raw=q,lo=raw.toLowerCase(),L=loose(raw);let m0;
   if(!raw||/^(hi|hello|hey|namaste|namaskar|namaskaram|menu|help|start|\?)\W*$/i.test(raw)||/^(नमस्ते|नमस्कारः?|నమస్తే|నమస్కారం)/.test(raw))return [menuMsg(),L_().ask];
   m0=raw.match(/^lang:(sa|te|hi|en)$/);if(m0)return setLang(m0[1]);
   if(/^(language|lang|भाषा|భాష)$/i.test(raw))return [LANGQ,'Which language do you prefer?'];
@@ -188,12 +202,14 @@ async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);l
   // meaning
   m=raw.match(/^(?:meaning of|what is the meaning of|what does|define|अर्थः?|అర్థం)\s+(.+?)(?:\s+mean)?\??$/i)||raw.match(/^(.+?)\s+(?:meaning|means|का अर्थ|अर्थः?|అర్థం)\??$/i);
   if(m)return await meaning(m[1].trim());
-  // Pāṇini sūtra by number
-  m=raw.match(/^(?:panini|pāṇini|ashtadhyayi|aṣṭādhyāyī|अष्टाध्यायी|पाणिनि[ः]?|sutra|sūtra|सूत्रम्?|p\.?)?\s*([1-8])\s*[.:,]\s*([1-4])\s*[.:,]\s*(\d{1,3})$/i);
-  if(m)return await panini(m[1],m[2],m[3]);
+  // Pāṇini sūtra by number (also spoken: "panini sutra one two three")
+  m=raw.match(/^(.*?)\s*([1-8])\s*[.:,]\s*([1-4])\s*[.:,]\s*(\d{1,3})$/);
+  if(m){const pre=loose(m[1]);if(!m[1].trim()||/^(p|panini|paniniya|sutra|sutram|astadhyayi|astadhyay)/.test(pre)||/पाणिनि|अष्टाध्यायी|सूत्र|పాణిని|అష్టాధ్యాయి|సూత్ర/.test(m[1]))return await panini(m[2],m[3],m[4])}
   // work + reference: gita 2.47, megha 5, raghu 1.1
   m=raw.match(/^(.+?)\s*(\d+(?:\s*[.:,]\s*\d+)*)$/);
   if(m){const r=await reference(m[1],m[2]);if(r)return r}
+  // a text, a book or a page by its name ("open Meghadūta", "Rudrāntaram", "kośa page")
+  {const r=await byName(raw);if(r)return r}
   // books
   const wantBooks=/\b(book|books|grantha|kavya|kavyas|purana|puranas|novel|publication|e-?book|telugu books|sanskrit books)\b/.test(lo)||has(raw,'ग्रन्थ','पुस्तक','పుస్తక','గ్రంథ');
   const bk=await books(raw);
@@ -202,6 +218,49 @@ async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);l
   if(L.length>=5||isIndic(raw)){const v=await verses(raw);if(v)return v}
   if(bk)return bk;
   return [L_().nf+chips(L_().menu),L_().nf]}
+
+/* ---------- spoken commands ---------- */
+const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90,
+ first:1,second:2,third:3,fourth:4,fifth:5,sixth:6,seventh:7,eighth:8,ninth:9,tenth:10,eleventh:11,twelfth:12,
+ 'एक':1,'दो':2,'तीन':3,'चार':4,'पाँच':5,'पांच':5,'छह':6,'छः':6,'सात':7,'आठ':8,'नौ':9,'दस':10,'पहला':1,'पहले':1,'दूसरा':2,'दूसरे':2,'तीसरा':3,'तीसरे':3,'चौथा':4,'चौथे':4,
+ 'एकम्':1,'द्वे':2,'त्रीणि':3,'चत्वारि':4,'पञ्च':5,'षट्':6,'सप्त':7,'अष्ट':8,'दश':10,'प्रथम':1,'प्रथमः':1,'प्रथमे':1,'द्वितीय':2,'द्वितीयः':2,'द्वितीये':2,'तृतीय':3,'तृतीयः':3,'तृतीये':3,'चतुर्थ':4,'चतुर्थः':4,'चतुर्थे':4,
+ 'ఒకటి':1,'రెండు':2,'మూడు':3,'నాలుగు':4,'ఐదు':5,'ఆరు':6,'ఏడు':7,'ఎనిమిది':8,'తొమ్మిది':9,'పది':10,'మొదటి':1,'రెండవ':2,'రెండో':2,'మూడవ':3,'మూడో':3,'నాలుగవ':4,'నాలుగో':4,'ఐదవ':5,'ఐదో':5};
+const NAVW=/^(please\s+)?(open|go to|goto|take me to|navigate to|visit|show me the|show me|show|bring up|load)\s+|\s+(page|kholo|खोलो|खोलिए|खोलें|दिखाओ|दिखाइए|पर जाओ|उद्घाटय|दर्शय|తెరువు|తెరవండి|చూపించు|చూపించండి|కి వెళ్ళు)$|^(खोलो|उद्घाटय|दर्शय|తెరువు|తెరవండి)\s+/i;
+const CTX=/(chapter|verse|sloka|shloka|adhyay|sarga|canto|sutra|panini|point|dot|number|अध्याय|श्लोक|सूत्र|सर्ग|पाणिनि|అధ్యాయ|శ్లోక|సూత్ర|సర్గ|పాణిని|\d)/i;
+const FILL=/\b(chapter|chapters|adhyaya|adhyayam|adhyay|canto|sarga|verse|verses|shloka|sloka|number|no|part|pada|of|the|from)\b|अध्यायः?|अध्याय|श्लोकः?|सर्गः?|पादः?|संख्या|का|की|के|అధ్యాయం|అధ్యాయము|శ్లోకం|సర్గ|పాదం|లో/gi;
+function speechNorm(q){let s=q.replace(/[?!।]+$/,'').trim();
+  const t0=s;s=s.replace(NAVW,()=>{NAV=true;return ' '}).trim();if(NAV){s=s.replace(NAVW,' ').trim()}
+  if(!CTX.test(s))return s||t0;
+  // number words → digits ("twenty one" → 21)
+  s=s.split(/\s+/).map(w=>{const k=w.toLowerCase().replace(/[,.]$/,'');return NUMW[k]!==undefined?String(NUMW[k]):w}).join(' ').replace(/\b([2-9]0) ([1-9])\b/g,(m,a,b)=>String(+a+ +b));
+  s=s.replace(/\b(point|dot)\b/gi,'.').replace(/(\d+)\s*(st|nd|rd|th|వ|వది|వా)\b/gi,'$1');
+  const nums=s.match(/\d+/g);if(!nums||nums.length>3)return s;
+  if(/^\s*\d+(\s*[.:,]\s*\d+)*\s*$/.test(s))return s.replace(/\s*[.:, ]\s*/g,'.');
+  const name=s.replace(/\d+/g,' ').replace(/[.:,]/g,' ').replace(FILL,' ').replace(/\s+/g,' ').trim();
+  return name?name+' '+nums.join('.'):nums.join('.')}
+/* names of texts on the site, the author's books, and site pages */
+const IXP={mn:'mantra.html',sb:'subhashita.html',ip:'itihasa.html',dh:'dharma.html',ak:'artha.html',ay:'ayurveda.html',rs:'rasa.html',jy:'jyotisha.html',kv:'sahitya.html'};
+const PAGES=[['kosha.html','kosha kosa dictionary nighantu lexicon amarakosha कोश कोशः శబ్దకోశం నిఘంటువు शब्दकोश'],['vyakarana.html','grammar vyakarana व्याकरणम् వ్యాకరణం'],['krida.html','games game krida क्रीडा ఆటలు'],
+ ['shabda.html','shabdarupa shabda noun forms declension शब्दरूपाणि శబ్దరూపాలు'],['dhatu.html','dhaturupa dhatu verb forms conjugation धातुरूपाणि ధాతురూపాలు'],['chandas.html','chandas metre meter छन्दः ఛందస్సు'],['pratyaya.html','pratyaya suffix prefix upasarga प्रत्ययाः'],
+ ['shloka.html','shloka index sloka index kavya index श्लोकान्वेषणम्'],['sutra.html','sutra index sutras सूत्रान्वेषणम्'],['mantra.html','mantra veda vedas upanishad मन्त्राः'],['subhashita.html','subhashita सुभाषितम्'],['itihasa.html','itihasa purana index itihasa purana इतिहासपुराणम्'],
+ ['shastra.html','shastra shastras शास्त्राणि'],['granthalaya.html','library granthalaya text library ग्रन्थालयः గ్రంథాలయం'],['books.html','all books books list catalogue catalog author books पुस्तकें పుస్తకాలు'],['index.html','home homepage main page मुखपृष्ठम्'],['sources.html','sources licences license'],
+ ['ayurveda.html','ayurveda आयुर्वेदः'],['dharma.html','dharmashastra dharma shastra'],['artha.html','arthashastra kamasutra'],['jyotisha.html','jyotisha astronomy ganita'],['rasa.html','rasashastra alchemy'],['sahitya.html','alankara sahitya natya poetics']];
+const fz=s=>loose(s).replace(/([aiu])\1/g,'$1').replace(/ee/g,'i').replace(/oo/g,'u').replace(/([kgcjtdpb])h/g,'$1').replace(/w/g,'v').replace(/m$/,'');
+async function byName(q){const k=fz(q);if(k.length<3)return null;const pageWord=/\b(page|index|tool)\b|पृष्ठ|పేజీ/i.test(q);
+  // 1) the author's books — exact or leading title match
+  BOOKS=BOOKS||await loadBooks();
+  const bk=BOOKS.filter(b=>{const t1=fz(b.t.replace(/\(.*$/,'')),t2=fz((b.t.match(/\(([^)]*)\)/)||[,''])[1]);return t1===k||t2===k||(k.length>=6&&(t1.startsWith(k)||t2.startsWith(k)))});
+  // 2) texts in the site's indexes
+  let tx=null;
+  for(const [d,page] of [['su','sutra.html'],['sl','shloka.html']]){const c=await cat(d);const t=c.texts.find(w=>w.aliases.some(a=>fz(a)===k)||fz(w.title)===k||(k.length>=5&&(fz(w.title).startsWith(k)||w.aliases.some(a=>a.length>=5&&k.startsWith(fz(a))))));if(t){tx={title:t.title,url:ROOT+page+'#'+t.id,n:t.verses};break}}
+  if(!tx&&!bk.length)for(const d in IXP){let c;try{c=await cat(d)}catch(e){continue}const w=c.works.find(w=>(w.aliases||[]).some(a=>fz(a)===k)||fz(w.title)===k||(k.length>=5&&fz(w.title).startsWith(k)));if(w){tx={title:w.title,url:ROOT+IXP[d]+'#'+w.id,n:w.verses};break}}
+  // 3) site pages
+  const pg=PAGES.find(([u,w])=>w.split(' ').some(x=>x.length>=4&&fz(x)===k)||(pageWord&&w.split(' ').some(x=>x.length>=4&&k.startsWith(fz(x)))));
+  if(bk.length===1&&!(tx&&!NAV&&false)){const b=bk[0];return [card(b)+(tx?`<div class="ref">Also in the library: <a href="${tx.url}">${esc(tx.title)} (original text) →</a></div>`:''),b.t.replace(/\(.*?\)/g,''),ROOT+'b/'+b.u]}
+  if(bk.length>1&&!tx){const r=['📘 '+bk.slice(0,4).map(card).join(''),bk.slice(0,3).map(b=>b.t.replace(/\(.*?\)/g,'')).join(', ')];return r}
+  if(tx)return [`📜 <b>${esc(tx.title)}</b> — ${tx.n?tx.n.toLocaleString('en-IN')+' verses, ':''}in the site's library.`+(bk.length?`<div class="ref">The author's book: ${bk.slice(0,2).map(b=>`<a href="${ROOT}b/${b.u}">${esc(b.t)}</a>`).join(' · ')}</div>`:''),tx.title,tx.url];
+  if(pg)return [`🧭 ${esc(pg[1].split(' ').filter(x=>/[ऀ-ॿ]/.test(x))[0]||pg[0].replace('.html',''))}`,'',ROOT+pg[0]];
+  return null}
 
 /* ---------- books ---------- */
 const SHELF={'geya-sa':'purana puranam geya mahapurana purāṇa पुराण పురాణ sanskrit','geya-te':'purana puranam geya mahapurana purāṇa पुराण పురాణ telugu',itihasa:'itihasa ramayana ramayanam mahabharata mahabharatam bharata epic रामायण महाभारत రామాయణ మహాభారత',
@@ -213,7 +272,8 @@ const SHELF={'geya-sa':'purana puranam geya mahapurana purāṇa पुराण
 const LANGW={telugu:'tel','తెలుగు':'tel',sanskrit:'san','संस्कृत':'san','సంస్కృత':'san',english:'eng',hindi:'hin','हिन्दी':'hin'};
 const STOP=new Set('show me any some all the a an of on in for about book books please give list want need i to and or with by from your his author grantha granthas kavya kavyas new latest what which is are there do you have'.split(' '));
 let BOOKS=null;
-async function books(q){BOOKS=BOOKS||(await once('sri-books.json')).map(b=>({...b,hay:loose(b.t+' '+b.s+' '+b.d+' '+(SHELF[b.h]||''))+' '+(SHELF[b.h]||'')}));
+const loadBooks=async()=>(await once('sri-books.json')).map(b=>({...b,hay:loose(b.t+' '+b.s+' '+b.d+' '+(SHELF[b.h]||''))+' '+(SHELF[b.h]||'')}));
+async function books(q){BOOKS=BOOKS||await loadBooks();
   let lang=null;const toks=[];for(const w of q.toLowerCase().split(/[\s,?.!]+/)){if(!w)continue;if(LANGW[w]||LANGW[w.replace(/[ంम्]$/,'')]){lang=LANGW[w]||LANGW[w.replace(/[ంम्]$/,'')];continue}if(STOP.has(w))continue;const l=loose(w);if(l.length>=3)toks.push(l)}
   let list=BOOKS.filter(b=>!lang||b.l===lang);
   if(toks.length){list=list.map(b=>[b,toks.reduce((n,t)=>n+(b.hay.includes(t)?(loose(b.t).includes(t)?3:1):0),0)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
@@ -244,28 +304,28 @@ async function verses(q){const codes=codesFor(q);if(!codes.length)return null;co
   let h=`Verses beginning <b>“${esc(q)}”</b>:`;
   for(const [ds,r] of out){const t=await titleOf(ds,r[1]);h+=`<div class="v">${esc(r[0])}…</div><div class="ref">${esc(t)} ${esc(r[2])}.${esc(r[3])} · <a href="${ROOT}${ds.page}#${encodeURIComponent(r[1])}/${encodeURIComponent(r[2])}/${r[3]}">read full verse →</a></div>`}
   h+=`<a class="lk" href="${ROOT}shloka.html?q=${encodeURIComponent(q)}">More in Śloka index →</a>`;
-  const [ds0,r0]=out[0];return [h,`${r0[0]}. From ${await titleOf(ds0,r0[1])}.`]}
+  const [ds0,r0]=out[0];return [h,`${r0[0]}. From ${await titleOf(ds0,r0[1])}.`,out.length===1?`${ROOT}${ds0.page}#${encodeURIComponent(r0[1])}/${encodeURIComponent(r0[2])}/${r0[3]}`:undefined]}
 
 /* ---------- references: gita 2.47, raghu 1.1, megha 5 ---------- */
 async function reference(name,nums){const k=loose(name),k0=name.trim().toLowerCase();if(k.length<2)return null;
   for(const ds of [{d:'su',page:'sutra.html'},{d:'sl',page:'shloka.html'}]){const c=await cat(ds.d);
     const t=c.texts.find(w=>w.aliases.some(a=>a===k||a===k0))||c.texts.find(w=>k.length>=3&&w.aliases.some(a=>a.length>=3&&(a.startsWith(k)||k.startsWith(a))));
     if(!t)continue;const n=nums.split(/\s*[.:,]\s*/);let s,v;
-    if(t.sargas.length===1){s=String(t.sargas[0][0]);v=+n[n.length-1]}else{v=+n[n.length-1];s=n.slice(0,-1).join('.');if(!s){return [`<b>${esc(t.title)}</b> has ${t.sargas.length} parts. Give a verse too, e.g. <i>${esc(name)} ${n[0]}.1</i>.`+`<br><a class="lk" href="${ROOT}${ds.page}#${t.id}/${n[0]}">Open part ${esc(n[0])} →</a>`]}}
+    if(t.sargas.length===1){s=String(t.sargas[0][0]);v=+n[n.length-1]}else{v=+n[n.length-1];s=n.slice(0,-1).join('.');if(!s){return [`<b>${esc(t.title)}</b> has ${t.sargas.length} parts. Give a verse too, e.g. <i>${esc(name)} ${n[0]}.1</i>.`,'',`${ROOT}${ds.page}#${t.id}/${n[0]}`]}}
     const tx=await once(`${ds.d}/t/${t.id}.json`);const e=tx.v.find(x=>String(x[0])===s&&+x[1]===v);
     if(!e)return [`${esc(t.title)} ${esc(s)}.${v} — I couldn't find that verse number. <a class="lk" href="${ROOT}${ds.page}#${t.id}">Open ${esc(t.title)} →</a>`];
     const lines=e[2];return [`<b>${esc(t.title)} ${esc(s)}.${v}</b><div class="v">${lines.map((x,i)=>esc(x)+(i%2&&i!==lines.length-1?' ।':'')).join('<br>')} ॥</div>`+(e[3]?`<div class="ref">छन्दः: ${esc(e[3])}</div>`:'')+
-      `<a class="lk" href="${ROOT}${ds.page}#${t.id}/${encodeURIComponent(s)}/${v}">Open with context →</a>`+chips([['Next verse',`${name} ${s}.${v+1}`]]),lines.join(' ')]}
+      chips([['Next verse',`${name} ${s}.${v+1}`]]),lines.join(' '),`${ROOT}${ds.page}#${t.id}/${encodeURIComponent(s)}/${v}`]}
   return null}
 const FAV=['2.47','2.20','2.14','2.62','2.63','3.21','3.35','4.7','4.8','4.38','6.5','6.6','9.22','9.26','12.13','12.14','18.66','18.78','2.48','2.50','3.19','5.18','6.17','6.35','7.19','10.20','11.32','13.28','15.7','16.21','17.20'];
 async function gitaDay(){const tx=await once('su/t/bhagavadgita.json');const [a,b]=FAV[new Date().getDate()-1].split('.');const e=tx.v.find(x=>x[0]===a&&+x[1]===+b)||tx.v[0];
-  return [`🕉 <b>भगवद्गीता ${e[0]}.${e[1]}</b> — today's verse<div class="v">${e[2].map((x,i)=>esc(x)+(i%2&&i!==e[2].length-1?' ।':'')).join('<br>')} ॥</div><a class="lk" href="${ROOT}sutra.html#bhagavadgita/${e[0]}/${e[1]}">Read with context →</a>`+chips([['Next verse',`gita ${e[0]}.${e[1]+1}`],['☰ Menu','menu']]),e[2].join(' ')]}
+  return [`🕉 <b>भगवद्गीता ${e[0]}.${e[1]}</b> — today's verse<div class="v">${e[2].map((x,i)=>esc(x)+(i%2&&i!==e[2].length-1?' ।':'')).join('<br>')} ॥</div>`+chips([['Next verse',`gita ${e[0]}.${e[1]+1}`],['☰ Menu','menu']]),e[2].join(' '),`${ROOT}sutra.html#bhagavadgita/${e[0]}/${e[1]}`]}
 
 /* ---------- Pāṇini ---------- */
 async function panini(a,p,n){const S=await once('vy/sutras.json');const k=`ashtadhyayi:${a}.${p}.${+n}`;const s=S[k];
   if(!s)return [`Aṣṭādhyāyī ${a}.${p}.${n} — no such sūtra (pāda ${a}.${p} may have fewer sūtras).`];const dv=s2d(s);
-  return [`<b>अष्टाध्यायी ${a}.${p}.${+n}</b><div class="v">${esc(dv)} ।</div><div class="ref">${esc(s2i(s))}</div><a class="lk" href="${ROOT}sutra.html#ashtadhyayi/${a}.${p}/${+n}">Open in Sūtra index →</a>`+
-    chips([['Next sūtra',`${a}.${p}.${+n+1}`],['Grammar tools','forms of राम']]),dv]}
+  return [`<b>अष्टाध्यायी ${a}.${p}.${+n}</b><div class="v">${esc(dv)} ।</div><div class="ref">${esc(s2i(s))}</div>`+
+    chips([['Next sūtra',`${a}.${p}.${+n+1}`],['Grammar tools','forms of राम']]),dv,`${ROOT}sutra.html#ashtadhyayi/${a}.${p}/${+n}`]}
 
 /* ---------- kośa (Monier-Williams, on the site) ---------- */
 async function meaning(w){const slp=toSLP(w).replace(/\s/g,'');const dv=s2d(slp);const c=code([...dv].find(x=>ALPHA.includes(x))||'');
