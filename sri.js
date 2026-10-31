@@ -1,4 +1,4 @@
-/* श्रीः · Sri — the Sanskrit Manthan helper. Free, rule-based, runs entirely in the browser:
+/* बोधिनी · Bodhinī — the Sanskrit Manthan helper. Free, rule-based, runs entirely in the browser:
    answers from the site's own data (books, ślokas, sūtras, kośa, dhātus), converts scripts,
    and can speak / listen using the browser's built-in speech (Web Speech API). */
 (()=>{if(window.__sri)return;window.__sri=1;
@@ -97,10 +97,10 @@ const CSS=`
 const st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
 
 /* ---------- UI ---------- */
-const fab=document.createElement('button');fab.id='sri-fab';fab.title='श्रीः · Ask Sri';fab.setAttribute('aria-label','Open Sri, the helper');fab.innerHTML=AV;
-const tip=document.createElement('div');tip.id='sri-tip';tip.innerHTML='नमस्ते! I am <b>Sri</b> — ask me anything 🙏';tip.hidden=LS.g('tip','')==='0';
-const box=document.createElement('div');box.id='sri';box.hidden=true;box.setAttribute('aria-label','Sri helper');
-box.innerHTML=`<div class="hd"><div class="av">${AV}</div><div class="nm"><b>श्रीः · Sri</b><small>संस्कृतमन्थनम् सहायिका · online</small></div>
+const fab=document.createElement('button');fab.id='sri-fab';fab.title='बोधिनी · Ask Bodhinī';fab.setAttribute('aria-label','Open Bodhinī, the helper');fab.innerHTML=AV;
+const tip=document.createElement('div');tip.id='sri-tip';tip.innerHTML='नमस्ते! I am <b>Bodhinī</b> · बोधिनी — ask me anything 🙏';tip.hidden=LS.g('tip','')==='0';
+const box=document.createElement('div');box.id='sri';box.hidden=true;box.setAttribute('aria-label','Bodhinī helper');
+box.innerHTML=`<div class="hd"><div class="av">${AV}</div><div class="nm"><b>बोधिनी · Bodhinī</b><small>संस्कृतमन्थनम् सहायिका · online</small></div>
 <button class="spk" title="Speak replies aloud" aria-pressed="false">🔊</button><button class="home" title="Menu">☰</button><button class="x" title="Close">✕</button></div>
 <div class="log" role="log" aria-live="polite"></div>
 <form><input placeholder="Type or speak — śloka, book, word…" aria-label="Message" autocomplete="off"><select class="ml" title="Voice language"><option value="en-IN">EN</option><option value="hi-IN">सं/हि</option><option value="te-IN">తె</option></select><button type="button" class="mic" title="Speak your question">🎤</button><button type="submit" title="Send">➤</button></form>`;
@@ -116,7 +116,7 @@ const MENU=[['📚 Books','show me books'],['🔎 Find a śloka','how to find a 
 function open(){box.hidden=false;fab.hidden=true;tip.hidden=true;LS.s('tip','0');if(!log.children.length)hello();setTimeout(()=>inp.focus(),50)}
 function close(){box.hidden=true;fab.hidden=false;stopSpeak()}
 fab.onclick=open;tip.onclick=open;$('.x',box).onclick=close;$('.home',box).onclick=()=>reply(menuMsg());
-function hello(){reply(`<b>नमस्ते! 🙏 I am श्रीः (Sri).</b><br>I can find ślokas and sūtras, show the author's books, give word meanings, convert scripts and show word forms — from this site's own library.<br><small>Tip: tap 🔊 to hear my replies, 🎤 to speak.</small>`+chips(MENU),'Namaste! I am Sri. How can I help you?')}
+function hello(){reply(`<b>नमस्ते! 🙏 I am बोधिनी (Bodhinī)</b> — “she who awakens understanding”.<br>I can find ślokas and sūtras, show the author's books, give word meanings, convert scripts and show word forms — from this site's own library.<br><small>Tip: tap 🔊 to hear my replies, 🎤 to speak.</small>`+chips(MENU),'Namaste! I am Bodhini. How can I help you?')}
 const menuMsg=()=>`What would you like?`+chips(MENU);
 
 /* ---------- speech (browser built-in, free) ---------- */
@@ -157,7 +157,7 @@ async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);
   if(/\b(print|paper ?back|hard ?copy|physical)\b/.test(lo))return [`The books are currently published as e-books on Google Play. For print copies or bulk/library orders, please write to <a href="mailto:sanskritmanthan@gmail.com">sanskritmanthan@gmail.com</a>.`];
   if(/\b(contact|email|mail|reach|phone)\b/.test(lo)||has(raw,'సంప్రదింప','सम्पर्क'))return [`You can write to <a href="mailto:sanskritmanthan@gmail.com">sanskritmanthan@gmail.com</a> 🙏`];
   if(/\b(author|who wrote|who is|about (the )?(site|author|you))\b/.test(lo)||has(raw,'लेखक','రచయిత'))return [`The books are written by <b>Dr. Mantha Srinivasu</b> (डॉ. मन्था-श्रीनिवासुः · డా. మంథా శ్రీనివాసు) — a scholar of Sanskrit and Education, with 150+ works in Sanskrit and Telugu: Geya Purāṇas, Rāmāyaṇa and Mahābhārata in song, śāstra and grammar kāvyas, Nāṭyaśāstra, kośas, stotras and vacana-kāvyas.<br>This site also offers free tools: śloka and sūtra search, kośa, grammar games and word forms.`+chips([['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka']])];
-  if(/\b(who are you|your name|what are you)\b/.test(lo))return [`I am <b>श्रीः (Sri)</b>, the helper of Sanskrit Manthan. I answer from this site's own library — I am not a general AI, so I may not understand everything, but I try! 🙂`+chips(MENU)];
+  if(/\b(who are you|your name|what are you)\b/.test(lo))return [`I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding” — the helper of Sanskrit Manthan. I answer from this site's own library — I am not a general AI, so I may not understand everything, but I try! 🙂`+chips(MENU)];
   if(/\b(sample|preview|archive)\b|free (sample|preview|copy|read)/.test(lo))return [`Every book has a <b>free preview on Google Play</b> (tap the book, then “Free sample”). Short samples are also being added on archive.org. The tools on this site — śloka search, kośa, grammar — are completely free.`];
   if(has(lo,'verse of the day','shloka of the day','today')||has(raw,'आजचा','अद्य','నేటి'))return await gitaDay();
   // script conversion
