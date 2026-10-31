@@ -29,6 +29,7 @@ h1{font-weight:400;margin:22px 0 4px}.sub{color:var(--muted);margin:0 0 16px}
 <h1>📲 Install the app</h1>
 <p class="sub">Free. No app store and no sign-up. It takes about 10 seconds.</p>
 <div class="hero"><img class="ic" src="icon-192.png" alt=""><div><b>Sanskrit Manthan</b><br><span id="st" class="sub">Checking your device…</span><br><button class="btn" id="inst" hidden>📲 Install now</button></div></div>
+<div class="c me" id="inapp" hidden style="margin-top:12px"></div>
 <div class="grid" id="steps">
  <div class="c" data-os="android"><h2>🤖 Android phone (Chrome)</h2><ol><li>Open <b>sanskritmanthan.in</b> in Chrome</li><li>Tap <kbd>⋮</kbd> (top right)</li><li>Tap <b>Install app</b> or <b>Add to Home screen</b></li><li>Tap <b>Install</b> — the <b>सं</b> icon appears on your home screen</li></ol></div>
  <div class="c" data-os="ios"><h2>🍎 iPhone / iPad (Safari)</h2><ol><li>Open <b>sanskritmanthan.in</b> in <b>Safari</b></li><li>Tap the <b>Share</b> button <kbd>□↑</kbd> at the bottom</li><li>Scroll and tap <b>Add to Home Screen</b></li><li>Tap <b>Add</b></li></ol></div>
@@ -45,6 +46,10 @@ h1{font-weight:400;margin:22px 0 4px}.sub{color:var(--muted);margin:0 0 16px}
 (()=>{const ua=navigator.userAgent,ios=/iphone|ipad|ipod/i.test(ua)||(/macintosh/i.test(ua)&&navigator.maxTouchPoints>1),and=/android/i.test(ua),os=ios?'ios':and?'android':'pc';
  const st=document.getElementById('st'),b=document.getElementById('inst');
  document.querySelectorAll('[data-os]').forEach(c=>{if(c.dataset.os===os){c.classList.add('me');c.parentNode.prepend(c)}});
+ const inapp=/FBAN|FBAV|Instagram|WhatsApp|Line\/|Snapchat|Telegram|; wv\)/i.test(ua);
+ if(inapp){const box=document.getElementById('inapp');box.hidden=false;
+  box.innerHTML=and?'<h2>⚠️ First open this page in Chrome</h2><p>You opened the link inside an app (like WhatsApp), which cannot install apps.</p><a class="btn" style="display:inline-block;text-decoration:none" href="intent://sanskritmanthan.in/app#Intent;scheme=https;package=com.android.chrome;end">Open in Chrome</a><p class="sub" style="margin-top:8px">If nothing happens: tap <kbd>⋮</kbd> at the top right → <b>Open in Chrome</b> / <b>Open in browser</b>.</p>'
+   :'<h2>⚠️ First open this page in Safari</h2><p>You opened the link inside an app (like WhatsApp), which cannot install apps. Tap <kbd>⋯</kbd> or the <b>compass / share</b> icon → <b>Open in Safari</b>, then follow the steps below.</p>'}
  const done=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
  if(done()){st.innerHTML='<span class="ok">✅ You are using the app already.</span> Ask Bodhinī “offline” to save texts for reading without internet.';return}
  st.textContent=ios?'On iPhone/iPad, follow the Safari steps below.':'Tap the button, or follow the steps below.';
