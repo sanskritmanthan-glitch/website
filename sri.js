@@ -109,18 +109,32 @@ const log=$('.log',box),inp=$('input',box),spkB=$('.spk',box),micB=$('.mic',box)
 const now=()=>new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
 const scroll=()=>{log.scrollTop=log.scrollHeight};
 function add(html,who='b'){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html+`<span class="tm">${now()}</span>`;log.appendChild(d);
-  d.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>handle(b.dataset.say,true));scroll();return d}
+  d.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>handle(b.dataset.say,b.textContent));scroll();return d}
 function typing(){const d=document.createElement('div');d.className='m b typing';d.innerHTML='<span></span><span></span><span></span>';log.appendChild(d);scroll();return d}
 const chips=a=>`<div class="chips">${a.map(([l,s])=>`<button type="button" data-say="${esc(s)}">${l}</button>`).join('')}</div>`;
-const MENU=[['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy']];
+let LANG=LS.g('lang','');
+const T={
+ sa:{menu:[['📚 ग्रन्थाः','show me books'],['🔎 श्लोकान्वेषणम्','how to find a shloka'],['📜 सूत्रम् १.१.१','1.1.1'],['🕉 अद्यतनः गीताश्लोकः','verse of the day'],['📖 शब्दार्थः','meaning of dharma'],['🔤 लिप्यन्तरणम्','convert रामः'],['🧮 शब्दरूपाणि','forms of राम'],['ℹ️ परिचयः क्रयणं च','how to buy'],['🌐 भाषा','language']],
+   ok:'उत्तमम्! अहं बोधिनी। कथं भवतः साहाय्यं करवाणि?',ask:'किं करवाणि?',thx:'🙏 स्वागतम्! अन्यत् किमपि पृच्छतु।',nf:'क्षम्यताम्, तत् ग्रन्थालये न लब्धम्। श्लोकस्य आदिपदानि ग्रन्थविषयं वा लिखतु, अथवा एतेषु चिनोतु —',voice:'hi-IN'},
+ te:{menu:[['📚 పుస్తకాలు','show me books'],['🔎 శ్లోకం వెతకండి','how to find a shloka'],['📜 సూత్రం 1.1.1','1.1.1'],['🕉 నేటి గీతా శ్లోకం','verse of the day'],['📖 పదార్థం','meaning of dharma'],['🔤 లిపి మార్పిడి','convert రామః'],['🧮 పద రూపాలు','forms of राम'],['ℹ️ పరిచయం · కొనుగోలు','how to buy'],['🌐 భాష','language']],
+   ok:'సరే! నేను బోధిని. మీకు ఎలా సహాయం చేయగలను?',ask:'మీకు ఏమి కావాలి?',thx:'🙏 సంతోషం! ఇంకేమైనా అడగండి.',nf:'క్షమించండి, అది దొరకలేదు. శ్లోకం మొదటి పదాలు లేదా పుస్తక విషయం టైప్ చేయండి, లేదా వీటిలో ఎంచుకోండి —',voice:'te-IN'},
+ hi:{menu:[['📚 पुस्तकें','show me books'],['🔎 श्लोक खोजें','how to find a shloka'],['📜 सूत्र 1.1.1','1.1.1'],['🕉 आज का गीता श्लोक','verse of the day'],['📖 शब्द का अर्थ','meaning of dharma'],['🔤 लिपि परिवर्तन','convert रामः'],['🧮 शब्द रूप','forms of राम'],['ℹ️ परिचय और खरीद','how to buy'],['🌐 भाषा','language']],
+   ok:'बहुत अच्छा! मैं बोधिनी हूँ। मैं आपकी कैसे सहायता कर सकती हूँ?',ask:'आपको क्या चाहिए?',thx:'🙏 स्वागत है! और कुछ पूछिए।',nf:'क्षमा करें, यह नहीं मिला। श्लोक के आरंभिक शब्द या पुस्तक का विषय लिखें, या इनमें से चुनें —',voice:'hi-IN'},
+ en:{menu:[['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy'],['🌐 Language','language']],
+   ok:'Wonderful! I am Bodhinī. How can I assist you?',ask:'What would you like?',thx:'🙏 You are welcome! Ask me anything else.',nf:"Sorry, I couldn't find that. Try the opening words of a verse, a book topic (e.g. Purāṇa, grammar, Telugu), or one of these —",voice:'en-IN'}};
+const L_=()=>T[LANG]||T.en;
+const LANGQ=`Which language do you prefer?<br>भवतः प्रियभाषा का? · మీకు ఏ భాష ఇష్టం? · आपको कौन-सी भाषा पसंद है?`+'<div class="chips"><button type="button" data-say="lang:sa">संस्कृतम्</button><button type="button" data-say="lang:te">తెలుగు</button><button type="button" data-say="lang:hi">हिन्दी</button><button type="button" data-say="lang:en">English</button></div>';
 function open(){box.hidden=false;fab.hidden=true;tip.hidden=true;LS.s('tip','0');if(!log.children.length)hello();setTimeout(()=>inp.focus(),50)}
 function close(){box.hidden=true;fab.hidden=false;stopSpeak()}
 fab.onclick=open;tip.onclick=open;$('.x',box).onclick=close;$('.home',box).onclick=()=>reply(menuMsg());
-function hello(){reply(`<b>नमस्ते! 🙏 I am बोधिनी (Bodhinī)</b> — “she who awakens understanding”.<br>I can find ślokas and sūtras, show the author's books, give word meanings, convert scripts and show word forms — from this site's own library.<br><small>Tip: tap 🔊 to hear my replies, 🎤 to speak.</small>`+chips(MENU),'Namaste! I am Bodhini. How can I help you?')}
-const menuMsg=()=>`What would you like?`+chips(MENU);
+const WEL=`<b>नमस्ते! 🙏</b> Welcome to <b>संस्कृतमन्थनम् · Sanskrit Manthan</b> — <i>भारतीयज्ञानपरम्पराकार्यशाला</i>, a workshop of Indian Knowledge Systems.<br>I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding”.`;
+function hello(){if(!LANG)reply(WEL+'<br><br>'+LANGQ,'Namaste! Welcome to Sanskrit Manthan, a workshop of Indian Knowledge Systems. I am Bodhini. Which language do you prefer?');
+  else reply(WEL+'<br><br>'+L_().ok+chips(L_().menu),'Namaste! Welcome to Sanskrit Manthan. '+L_().ok)}
+function setLang(l){LANG=l;LS.s('lang',l);mlS.value=T[l].voice;LS.s('ml',mlS.value);return [L_().ok+chips(L_().menu),L_().ok]}
+const menuMsg=()=>L_().ask+chips(L_().menu);
 
 /* ---------- speech (browser built-in, free) ---------- */
-let SPEAK=LS.g('speak','0')==='1';spkB.setAttribute('aria-pressed',SPEAK);
+let SPEAK=LS.g('speak','1')==='1';spkB.setAttribute('aria-pressed',SPEAK);
 mlS.value=LS.g('ml','en-IN');mlS.onchange=()=>LS.s('ml',mlS.value);
 spkB.onclick=()=>{SPEAK=!SPEAK;LS.s('speak',SPEAK?'1':'0');spkB.setAttribute('aria-pressed',SPEAK);if(!SPEAK)stopSpeak();else say('Voice on.')};
 const synth=window.speechSynthesis;
@@ -143,21 +157,23 @@ $('form',box).onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t)ret
 
 /* ---------- conversation ---------- */
 function reply(html,spoken){add(html,'b');say(spoken!==undefined?spoken:html.replace(/<div class="chips">[\s\S]*$/,'').replace(/<[^>]+>/g,' ').replace(/&[a-z]+;/g,' '))}
-async function handle(text,fromChip){add(esc(text),'u');const t=typing();let out;
-  try{out=await answer(text.trim())}catch(e){console.error(e);out=['Sorry, something went wrong while looking that up. Please try again.'+chips(MENU)]}
+async function handle(text,label){add(esc(typeof label==='string'?label:text),'u');const t=typing();let out;
+  try{out=await answer(text.trim())}catch(e){console.error(e);out=['Sorry, something went wrong while looking that up. Please try again.'+chips(L_().menu)]}
   await new Promise(r=>setTimeout(r,250));t.remove();if(typeof out==='string')out=[out];reply(out[0],out[1])}
 
 const has=(s,...w)=>w.some(x=>s.includes(x));
-async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);
-  if(!raw||/^(hi|hello|hey|namaste|namaskar|namaskaram|menu|help|start|\?)\W*$/i.test(raw)||/^(नमस्ते|नमस्कारः?|నమస్తే|నమస్కారం)/.test(raw))return [menuMsg(),'What would you like?'];
-  if(/^(thank|thanks|dhanyavad|धन्यवाद|ధన్యవాద)/i.test(raw))return ['🙏 स्वागतम्! Happy to help — ask anything else.'+chips(MENU)];
+async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);let m0;
+  if(!raw||/^(hi|hello|hey|namaste|namaskar|namaskaram|menu|help|start|\?)\W*$/i.test(raw)||/^(नमस्ते|नमस्कारः?|నమస్తే|నమస్కారం)/.test(raw))return [menuMsg(),L_().ask];
+  m0=raw.match(/^lang:(sa|te|hi|en)$/);if(m0)return setLang(m0[1]);
+  if(/^(language|lang|भाषा|భాష)$/i.test(raw))return [LANGQ,'Which language do you prefer?'];
+  if(/^(thank|thanks|dhanyavad|धन्यवाद|ధన్యవాద)/i.test(raw))return [L_().thx+chips(L_().menu)];
   if(has(lo,'how to find a shloka','find shloka','find a shloka','search shloka'))return [`Just type the <b>opening words</b> of any verse — in Devanagari, Telugu or Roman, e.g. <i>धर्मक्षेत्रे कुरुक्षेत्रे</i>, <i>yada yada hi</i>, <i>వాగర్థావివ</i>.<br>Or a reference like <i>gita 2.47</i>, <i>megha 1</i>, <i>raghu 1.1</i>, <i>yogasutra 1.2</i>, or a Pāṇini sūtra number <i>1.1.1</i>.`+chips([['धर्मक्षेत्रे','धर्मक्षेत्रे कुरुक्षेत्रे'],['gita 2.47','gita 2.47'],['yogasutra 1.2','yogasutra 1.2'],['vagarthaviva','vagarthaviva']])];
   // FAQ
   if(/\b(buy|purchase|price|cost|pay|payment|order|kharid)\b/.test(lo)||has(raw,'खरीद','क्रय','కొన','ధర'))return [`All books are <b>e-books on Google Play Books</b>. Open any book (ask me e.g. “Telugu Purāṇa books”) and tap <b>Google Play</b> — you can buy with your Google account and read on phone, tablet or computer. Google Play also shows a <b>free preview</b> of every book.`+chips([['📚 Show books','show me books'],['✉️ Contact','contact']])];
   if(/\b(print|paper ?back|hard ?copy|physical)\b/.test(lo))return [`The books are currently published as e-books on Google Play. For print copies or bulk/library orders, please write to <a href="mailto:sanskritmanthan@gmail.com">sanskritmanthan@gmail.com</a>.`];
   if(/\b(contact|email|mail|reach|phone)\b/.test(lo)||has(raw,'సంప్రదింప','सम्पर्क'))return [`You can write to <a href="mailto:sanskritmanthan@gmail.com">sanskritmanthan@gmail.com</a> 🙏`];
   if(/\b(author|who wrote|who is|about (the )?(site|author|you))\b/.test(lo)||has(raw,'लेखक','రచయిత'))return [`The books are written by <b>Dr. Mantha Srinivasu</b> (डॉ. मन्था-श्रीनिवासुः · డా. మంథా శ్రీనివాసు) — a scholar of Sanskrit and Education, with 150+ works in Sanskrit and Telugu: Geya Purāṇas, Rāmāyaṇa and Mahābhārata in song, śāstra and grammar kāvyas, Nāṭyaśāstra, kośas, stotras and vacana-kāvyas.<br>This site also offers free tools: śloka and sūtra search, kośa, grammar games and word forms.`+chips([['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka']])];
-  if(/\b(who are you|your name|what are you)\b/.test(lo))return [`I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding” — the helper of Sanskrit Manthan. I answer from this site's own library — I am not a general AI, so I may not understand everything, but I try! 🙂`+chips(MENU)];
+  if(/\b(who are you|your name|what are you)\b/.test(lo))return [`I am <b>बोधिनी (Bodhinī)</b> — “she who awakens understanding” — the helper of Sanskrit Manthan. I answer from this site's own library — I am not a general AI, so I may not understand everything, but I try! 🙂`+chips(L_().menu)];
   if(/\b(sample|preview|archive)\b|free (sample|preview|copy|read)/.test(lo))return [`Every book has a <b>free preview on Google Play</b> (tap the book, then “Free sample”). Short samples are also being added on archive.org. The tools on this site — śloka search, kośa, grammar — are completely free.`];
   if(has(lo,'verse of the day','shloka of the day','today')||has(raw,'आजचा','अद्य','నేటి'))return await gitaDay();
   // script conversion
@@ -185,7 +201,7 @@ async function answer(q){const raw=digits(q),lo=raw.toLowerCase(),L=loose(raw);
   // verses by opening words
   if(L.length>=5||isIndic(raw)){const v=await verses(raw);if(v)return v}
   if(bk)return bk;
-  return [`I couldn't find that in the library 🙏. Try the opening words of a verse, a book topic (e.g. <i>Purāṇa</i>, <i>grammar</i>, <i>Telugu</i>), or one of these:`+chips(MENU),"Sorry, I couldn't find that. Please try one of these options."]}
+  return [L_().nf+chips(L_().menu),L_().nf]}
 
 /* ---------- books ---------- */
 const SHELF={'geya-sa':'purana puranam geya mahapurana purāṇa पुराण పురాణ sanskrit','geya-te':'purana puranam geya mahapurana purāṇa पुराण పురాణ telugu',itihasa:'itihasa ramayana ramayanam mahabharata mahabharatam bharata epic रामायण महाभारत రామాయణ మహాభారత',
