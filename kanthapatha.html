@@ -63,7 +63,7 @@ function show(){const e=CUR.t.v[CUR.i],W=words();let k=0,done=JSON.parse(localSt
   $('#ls').onclick=()=>speak([e[2].join(' ')]);$('#ll').onclick=()=>speak(e[2]);$('#rc').onclick=recite;
   $('#pv').onclick=()=>{if(CUR.i>0){CUR.i--;setLevel(0)}};$('#nx').onclick=()=>{if(CUR.i<CUR.t.v.length-1){CUR.i++;setLevel(0)}};
   $('#lt').onclick=()=>{done[key]=1;localStorage.setItem('sm-kantha',JSON.stringify(done));show()}}
-function speak(parts){try{speechSynthesis.cancel();parts.forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='hi-IN';u.rate=.8;const v=speechSynthesis.getVoices().find(v=>v.lang==='hi-IN');if(v)u.voice=v;speechSynthesis.speak(u)})}catch(e){}}
+function speak(parts){try{speechSynthesis.cancel();parts.forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='hi-IN';u.rate=.6;const v=speechSynthesis.getVoices().find(v=>v.lang==='hi-IN');if(v)u.voice=v;speechSynthesis.speak(u)})}catch(e){}}
 let rec=null;function recite(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#sc').textContent='Your browser has no speech recognition — try Chrome.';return}
   if(rec){rec.stop();return}rec=new SR();rec.lang='hi-IN';rec.continuous=true;rec.interimResults=true;$('#rc').classList.add('on');$('#rc').textContent='⏹ Stop';let heard='';
   rec.onresult=ev=>{heard=[...ev.results].map(r=>r[0].transcript).join(' ');$('#hd').textContent='Heard: '+heard;mark(heard)};
@@ -74,6 +74,6 @@ $('#load').onclick=async()=>{if(!await fromRef($('#ref').value))$('#card').inner
 $('#ref').onkeydown=e=>{if(e.key==='Enter')$('#load').click()};
 (async()=>{const p=new URLSearchParams(location.search).get('t');if(p){const [d,id,s,v]=p.split('/');if(DS.some(x=>x[0]===d))return open(d,id,s,v)}if(p&&await fromRef(p))return;await open('su','bhagavadgita','2',47)})();
 </script>
-<script src="/sri.js?v=11" defer></script>
+<script src="/sri.js?v=12" defer></script>
 </body>
 </html>

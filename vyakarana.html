@@ -193,6 +193,6 @@ start();
 const sb=[...document.querySelectorAll('#script button')];const mark=()=>sb.forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===C.SCRIPT));
 document.body.className='s-'+C.SCRIPT;mark();sb.forEach(b=>b.onclick=()=>{C.setScript(b.dataset.s);mark();window.dispatchEvent(new HashChangeEvent('hashchange'))});
 </script>
-<script src="/sri.js?v=11" defer></script>
+<script src="/sri.js?v=12" defer></script>
 </body>
 </html>

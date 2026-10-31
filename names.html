@@ -57,7 +57,7 @@ $$('[data-g]').forEach(s=>{s.innerHTML=Object.entries(GL).map(([k,v])=>`<button 
 document.addEventListener('click',e=>{const b=e.target.closest('[data-gg]');if(b){G=b.dataset.gg;$$('[data-gg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.gg===G));rerun()}});
 function tab(t){TAB=t;$$('[role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));['mean','letter','star','dob'].forEach(x=>$('#p-'+x).hidden=x!==t);$('#res').innerHTML='';rerun();history.replaceState(null,'','#'+t)}
 $$('[role=tab]').forEach(b=>b.onclick=()=>tab(b.dataset.t));
-const say=t=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='hi-IN';u.rate=.85;speechSynthesis.speak(u)}catch(e){}};
+const say=t=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='hi-IN';u.rate=.7;speechSynthesis.speak(u)}catch(e){}};
 window.__say=say;
 function card(x){return `<div class="nm"><span class="tag">${x.g==='m'?'बालकः · boy':x.g==='f'?'बालिका · girl':'उभयम् · both'}</span><div class="d">${esc(x.d)} <button type="button" onclick="__say('${esc(x.d)}')" title="Listen">🔊</button></div>
  <div class="te">${esc(d2t(x.d))}</div><div class="r">${esc(x.r)}</div><div class="m">${esc(x.m)}</div>${x.near?`<div class="p">No common name begins exactly with ${esc(x.near)}; this one shares its first sound.</div>`:''}${x.p&&x.p.length>1?`<div class="p">${x.p.map(([a,b])=>`${esc(a)} = ${esc(b)}`).join(' · ')}</div>`:''}</div>`}
@@ -101,6 +101,6 @@ const P=new URLSearchParams(location.search);if(P.get('m')){$('#q').value=P.get(
 if(P.get('l')){LETTER=P.get('l');tab('letter')}else if(P.get('n')){$('#nak').value=P.get('n');if(P.get('p'))$('#pada').value=P.get('p');tab('star')}
 else if(P.get('d')){$('#dd').value=P.get('d');if(P.get('t'))$('#tt').value=P.get('t');tab('dob')}else tab((location.hash||'#mean').slice(1)||'mean');
 </script>
-<script src="/sri.js?v=11" defer></script>
+<script src="/sri.js?v=12" defer></script>
 </body>
 </html>
