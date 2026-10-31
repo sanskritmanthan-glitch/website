@@ -169,7 +169,7 @@ const scriptOf=ch=>{const n=ch.codePointAt(0);const r=SCR.find(([a,b])=>n>=a&&n<
 function sayPart(text){// split into runs of one script, each read with a fitting voice
   const runs=[];let cur='',lang='en-IN';for(const ch of text){const l=/[\p{L}\p{M}]/u.test(ch)?(scriptOf(ch)||'en-IN'):null;if(l&&l!==lang&&cur.trim()){runs.push([cur,lang]);cur=''}if(l)lang=l;cur+=ch}if(cur.trim())runs.push([cur,lang]);
   runs.forEach(([p,lang])=>{p=p.trim();if(!p||!/[\p{L}]/u.test(p))return;
-    const u=new SpeechSynthesisUtterance(p);u.lang=lang;const v=pickVoice(lang);if(v)u.voice=v;u.rate=.95;
+    const u=new SpeechSynthesisUtterance(p);u.lang=lang;const v=pickVoice(lang);if(v)u.voice=v;u.rate=/^en/.test(lang)?.95:.72;
     u.onstart=()=>box.classList.add('sri-talk');u.onend=()=>{if(!synth.speaking)box.classList.remove('sri-talk')};synth.speak(u)})}
 if(synth)synth.onvoiceschanged=()=>synth.getVoices();
 /* ---------- screen reader: select any text or śloka on the page → 🔊 ---------- */
