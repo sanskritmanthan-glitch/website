@@ -63,6 +63,7 @@ const CSS=`
 #sri-fab{position:fixed;right:16px;bottom:16px;z-index:9998;width:62px;height:62px;border-radius:50%;border:3px solid #fff;padding:0;cursor:pointer;
  box-shadow:0 6px 18px rgba(80,30,10,.35);background:#f3c98a;overflow:hidden;transition:transform .15s}
 #sri-fab:hover{transform:scale(1.06)}#sri-fab svg{width:100%;height:100%;display:block}
+#sri-sel{position:fixed;z-index:9999;border:0;border-radius:18px;padding:7px 13px;background:#b4531f;color:#fff;font:600 14px system-ui,'Noto Sans Devanagari','Noto Sans Telugu',sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}#sri-sel[hidden]{display:none}
 #sri-tip{position:fixed;right:86px;bottom:30px;z-index:9998;background:#fff;color:#4a2a14;border-radius:14px 14px 2px 14px;padding:7px 11px;font:14px/1.3 system-ui,'Noto Sans Devanagari','Noto Sans Telugu',sans-serif;box-shadow:0 3px 12px rgba(0,0,0,.18);max-width:200px}
 #sri{margin:0;padding:0;border:0;position:fixed;right:16px;bottom:16px;z-index:9999;width:380px;max-width:calc(100vw - 32px);height:600px;max-height:calc(100vh - 32px);display:flex;flex-direction:column;
  border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(60,20,5,.35);background:#efe5d4;font:15px/1.45 system-ui,'Noto Sans Devanagari','Noto Sans Telugu',sans-serif;color:#2b2118}
@@ -77,7 +78,9 @@ const CSS=`
 #sri .b{background:#fff;border-top-left-radius:3px}#sri .u{background:#fbdcb6;margin-left:auto;border-top-right-radius:3px}
 #sri .m .tm{display:block;text-align:right;font-size:10.5px;color:#8a7a68;margin-top:2px}
 #sri .m a{color:#9c3d16}#sri .m .v{font-size:16px;margin:4px 0;color:#23295e}#sri .m .ref{font-size:12.5px;color:#6b5b48}
+#sri .lesson{font-size:14px}#sri .lesson p{margin:4px 0}#sri .lesson table{display:block;overflow-x:auto;max-width:100%;font-size:12.5px}#sri .lesson th,#sri .lesson td{padding:2px 6px;border-bottom:1px solid #eadbc3}
 #sri .m .lk.big{display:block;text-align:center;background:#b4531f;color:#fff;font-weight:600;padding:7px 12px;margin-top:8px}
+#sri .m .lk.buy{background:#1a7f37;color:#fff}#sri .card .mt{color:#9c3d16;font-size:12px;margin:1px 0 3px}
 #sri .m .lk{display:inline-block;margin:4px 6px 0 0;padding:3px 9px;border-radius:12px;background:#f6ead8;text-decoration:none;font-size:13px}
 #sri .card{display:flex;gap:8px;margin:6px 0;padding:6px;border:1px solid #eadbc3;border-radius:10px;background:#fffaf2}
 #sri .card img{width:52px;height:80px;object-fit:cover;border-radius:4px;flex:none;background:#eee}#sri .card b{font-size:14px;display:block}#sri .card p{margin:2px 0;font-size:12.5px;color:#5a4a38}
@@ -117,13 +120,13 @@ function typing(){const d=document.createElement('div');d.className='m b typing'
 const chips=a=>`<div class="chips">${a.map(([l,s])=>`<button type="button" data-say="${esc(s)}">${l}</button>`).join('')}</div>`;
 let LANG=LS.g('lang','');
 const T={
- sa:{menu:[['📚 ग्रन्थाः','show me books'],['🔎 श्लोकान्वेषणम्','how to find a shloka'],['📜 सूत्रम् १.१.१','1.1.1'],['🕉 अद्यतनः गीताश्लोकः','verse of the day'],['📖 शब्दार्थः','meaning of dharma'],['🔤 लिप्यन्तरणम्','convert रामः'],['🧮 शब्दरूपाणि','forms of राम'],['ℹ️ परिचयः क्रयणं च','how to buy'],['🌐 भाषा','language']],
+ sa:{menu:[['📚 ग्रन्थाः','show me books'],['🔎 श्लोकान्वेषणम्','how to find a shloka'],['📜 सूत्रम् १.१.१','1.1.1'],['🕉 अद्यतनः गीताश्लोकः','verse of the day'],['📖 शब्दार्थः','meaning of dharma'],['🔤 लिप्यन्तरणम्','convert रामः'],['🧮 शब्दरूपाणि','forms of राम'],['ℹ️ परिचयः क्रयणं च','how to buy'],['🎮 क्रीडाः','games'],['📘 व्याकरणपाठाः','lessons'],['📖 पठनम्','read gita'],['🔊 पाठकः','sr:help'],['🌐 भाषा','language']],
    ok:'उत्तमम्! अहं बोधिनी। कथं भवतः साहाय्यं करवाणि?',ask:'किं करवाणि?',thx:'🙏 स्वागतम्! अन्यत् किमपि पृच्छतु।',nf:'क्षम्यताम्, तत् ग्रन्थालये न लब्धम्। श्लोकस्य आदिपदानि ग्रन्थविषयं वा लिखतु, अथवा एतेषु चिनोतु —',voice:'hi-IN'},
- te:{menu:[['📚 పుస్తకాలు','show me books'],['🔎 శ్లోకం వెతకండి','how to find a shloka'],['📜 సూత్రం 1.1.1','1.1.1'],['🕉 నేటి గీతా శ్లోకం','verse of the day'],['📖 పదార్థం','meaning of dharma'],['🔤 లిపి మార్పిడి','convert రామః'],['🧮 పద రూపాలు','forms of राम'],['ℹ️ పరిచయం · కొనుగోలు','how to buy'],['🌐 భాష','language']],
+ te:{menu:[['📚 పుస్తకాలు','show me books'],['🔎 శ్లోకం వెతకండి','how to find a shloka'],['📜 సూత్రం 1.1.1','1.1.1'],['🕉 నేటి గీతా శ్లోకం','verse of the day'],['📖 పదార్థం','meaning of dharma'],['🔤 లిపి మార్పిడి','convert రామః'],['🧮 పద రూపాలు','forms of राम'],['ℹ️ పరిచయం · కొనుగోలు','how to buy'],['🎮 ఆటలు','games'],['📘 వ్యాకరణ పాఠాలు','lessons'],['📖 శ్లోక పఠనం','read gita'],['🔊 స్క్రీన్ రీడర్','sr:help'],['🌐 భాష','language']],
    ok:'సరే! నేను బోధిని. మీకు ఎలా సహాయం చేయగలను?',ask:'మీకు ఏమి కావాలి?',thx:'🙏 సంతోషం! ఇంకేమైనా అడగండి.',nf:'క్షమించండి, అది దొరకలేదు. శ్లోకం మొదటి పదాలు లేదా పుస్తక విషయం టైప్ చేయండి, లేదా వీటిలో ఎంచుకోండి —',voice:'te-IN'},
- hi:{menu:[['📚 पुस्तकें','show me books'],['🔎 श्लोक खोजें','how to find a shloka'],['📜 सूत्र 1.1.1','1.1.1'],['🕉 आज का गीता श्लोक','verse of the day'],['📖 शब्द का अर्थ','meaning of dharma'],['🔤 लिपि परिवर्तन','convert रामः'],['🧮 शब्द रूप','forms of राम'],['ℹ️ परिचय और खरीद','how to buy'],['🌐 भाषा','language']],
+ hi:{menu:[['📚 पुस्तकें','show me books'],['🔎 श्लोक खोजें','how to find a shloka'],['📜 सूत्र 1.1.1','1.1.1'],['🕉 आज का गीता श्लोक','verse of the day'],['📖 शब्द का अर्थ','meaning of dharma'],['🔤 लिपि परिवर्तन','convert रामः'],['🧮 शब्द रूप','forms of राम'],['ℹ️ परिचय और खरीद','how to buy'],['🎮 खेल','games'],['📘 व्याकरण पाठ','lessons'],['📖 श्लोक पाठ','read gita'],['🔊 स्क्रीन रीडर','sr:help'],['🌐 भाषा','language']],
    ok:'बहुत अच्छा! मैं बोधिनी हूँ। मैं आपकी कैसे सहायता कर सकती हूँ?',ask:'आपको क्या चाहिए?',thx:'🙏 स्वागत है! और कुछ पूछिए।',nf:'क्षमा करें, यह नहीं मिला। श्लोक के आरंभिक शब्द या पुस्तक का विषय लिखें, या इनमें से चुनें —',voice:'hi-IN'},
- en:{menu:[['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy'],['🌐 Language','language']],
+ en:{menu:[['📚 Books','show me books'],['🔎 Find a śloka','how to find a shloka'],['📜 Sūtra 1.1.1','1.1.1'],['🕉 Gītā verse of the day','verse of the day'],['📖 Word meaning','meaning of dharma'],['🔤 Script converter','convert रामः'],['🧮 Word forms','forms of राम'],['ℹ️ About & buying','how to buy'],['🎮 Games','games'],['📘 Grammar lessons','lessons'],['📖 Read aloud','read gita'],['🔊 Screen reader','sr:help'],['🌐 Language','language']],
    ok:'Wonderful! I am Bodhinī. How can I assist you?',ask:'What would you like?',thx:'🙏 You are welcome! Ask me anything else.',nf:"Sorry, I couldn't find that. Try the opening words of a verse, a book topic (e.g. Purāṇa, grammar, Telugu), or one of these —",voice:'en-IN'}};
 const L_=()=>T[LANG]||T.en;
 const LANGQ=`Which language do you prefer?<br>भवतः प्रियभाषा का? · మీకు ఏ భాష ఇష్టం? · आपको कौन-सी भाषा पसंद है?`+'<div class="chips"><button type="button" data-say="lang:sa">संस्कृतम्</button><button type="button" data-say="lang:te">తెలుగు</button><button type="button" data-say="lang:hi">हिन्दी</button><button type="button" data-say="lang:en">English</button></div>';
@@ -145,13 +148,30 @@ spkB.onclick=()=>{SPEAK=!SPEAK;LS.s('speak',SPEAK?'1':'0');spkB.setAttribute('ar
 const synth=window.speechSynthesis;
 function pickVoice(lang){if(!synth)return null;const vs=synth.getVoices();return vs.find(v=>v.lang===lang)||vs.find(v=>v.lang.startsWith(lang.slice(0,2)))||(lang==='en-IN'?vs.find(v=>v.lang.startsWith('en')):null)}
 function stopSpeak(){try{synth&&synth.cancel()}catch(e){}box.classList.remove('sri-talk');fab.classList.remove('sri-talk')}
-function say(text){if(!SPEAK||!synth||!text)return;stopSpeak();
+function say(text,force,max){if((!SPEAK&&!force)||!synth||!text)return;stopSpeak();
+  if(max){// long text (screen reader): speak in short sentence-sized pieces so browsers don't cut off
+    const chunks=[];text.replace(/\s+/g,' ').slice(0,max).split(/(?<=[।॥.!?;:,])\s+/).forEach(c=>{while(c.length>180){const k=c.lastIndexOf(' ',180);chunks.push(c.slice(0,k>40?k:180));c=c.slice(k>40?k:180)}if(c.trim())chunks.push(c)});
+    chunks.forEach(c=>sayPart(c));return}
   // split into runs by script so Telugu, Devanagari and English each get a fitting voice
   const parts=text.replace(/\s+/g,' ').slice(0,600).match(/[ఀ-౿][ఀ-౿\s,.।॥!?0-9-]*|[ऀ-ॿ][ऀ-ॿ\s,.!?0-9-]*|[^ऀ-ॿఀ-౿]+/g)||[];
-  parts.forEach((p,i)=>{p=p.trim();if(!p||!/[\p{L}]/u.test(p))return;const lang=/[ఀ-౿]/.test(p)?'te-IN':/[ऀ-ॿ]/.test(p)?'hi-IN':'en-IN';
+  parts.forEach(p=>sayPart(p))}
+function sayPart(text){(text.match(/[ఀ-౿][ఀ-౿\s,.।॥!?0-9-]*|[ऀ-ॿ][ऀ-ॿ\s,.!?0-9-]*|[^ऀ-ॿఀ-౿]+/g)||[]).forEach(p=>{p=p.trim();if(!p||!/[\p{L}]/u.test(p))return;const lang=/[ఀ-౿]/.test(p)?'te-IN':/[ऀ-ॿ]/.test(p)?'hi-IN':'en-IN';
     const u=new SpeechSynthesisUtterance(p);u.lang=lang;const v=pickVoice(lang);if(v)u.voice=v;u.rate=.95;
     u.onstart=()=>box.classList.add('sri-talk');u.onend=()=>{if(!synth.speaking)box.classList.remove('sri-talk')};synth.speak(u)})}
 if(synth)synth.onvoiceschanged=()=>synth.getVoices();
+/* ---------- screen reader: select any text or śloka on the page → 🔊 ---------- */
+const SELB={sa:'🔊 श्रावयतु',te:'🔊 చదివి వినిపించు',hi:'🔊 पढ़कर सुनाओ',en:'🔊 Read aloud'};
+const selB=document.createElement('button');selB.id='sri-sel';selB.hidden=true;document.body.appendChild(selB);
+let LASTSEL='';
+function pageSel(){const sel=getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return '';const n=sel.anchorNode;if(n&&box.contains(n.nodeType===1?n:n.parentNode))return '';return sel.toString().trim()}
+document.addEventListener('selectionchange',()=>{clearTimeout(selB._t);selB._t=setTimeout(()=>{const t=pageSel();if(t.length<2||!synth){selB.hidden=true;return}
+  LASTSEL=t;const r=getSelection().getRangeAt(0).getBoundingClientRect();selB.textContent=SELB[LANG]||SELB.en;selB.hidden=false;
+  const top=r.top>48?r.top-42:r.bottom+8;selB.style.top=Math.min(innerHeight-46,Math.max(6,top))+'px';selB.style.left=Math.min(innerWidth-170,Math.max(6,r.left))+'px'},250)});
+selB.addEventListener('mousedown',e=>e.preventDefault());
+selB.onclick=()=>{if(synth.speaking){stopSpeak();selB.hidden=true;return}readText(LASTSEL)};
+function readText(t){if(!t)return false;say(t,true,6000);selB.textContent='⏹';return true}
+function pageText(){const root=document.querySelector('main, article, #out, .verse, #app')||document.body;const c=root.cloneNode(true);
+  c.querySelectorAll('script,style,nav,header,footer,#sri,#sri-fab,#sri-tip,#sri-sel,button,select,input').forEach(x=>x.remove());return c.innerText.replace(/\s+/g,' ').trim()}
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null;
 if(!SR){micB.hidden=true;mlS.hidden=true}
 micB.onclick=()=>{if(rec){rec.stop();return}rec=new SR();rec.lang=mlS.value;rec.interimResults=true;rec.maxAlternatives=1;micB.classList.add('on');
@@ -172,16 +192,30 @@ async function handle(text,label,voice){add(esc(typeof label==='string'?label:te
     reply(out[0]+(go?`<div class="ref">↪ ${OPENING[LANG]||OPENING.en}</div>`:`<a class="lk big" href="${esc(url)}">📖 ${OPENW[LANG]||OPENW.en}</a>`),(out[1]||'')+(go?' '+(OPENING[LANG]||OPENING.en):''));
     if(go){save();const t0=Date.now();const wait=()=>{if(SPEAK&&synth&&synth.speaking&&Date.now()-t0<7000)return setTimeout(wait,300);location.href=url};setTimeout(wait,1200)}}
   else reply(out[0],out[1])}
+const SRH={sa:'🔊 <b>पाठकः</b> — अस्मिन् पृष्ठे कमपि पाठं श्लोकं वा <b>चिनोतु</b> (मूषकेण कर्षतु / दूरभाषे दीर्घं स्पृशतु)। तदा “🔊 श्रावयतु” इति गण्डः दृश्यते — तं स्पृशतु। सम्पूर्णपृष्ठाय “read this page” इति वदतु।',te:'🔊 <b>స్క్రీన్ రీడర్</b> — ఈ పేజీలో ఏదైనా పాఠ్యాన్ని లేదా శ్లోకాన్ని <b>ఎంచుకోండి</b> (మౌస్‌తో లాగండి / ఫోన్‌లో ఎక్కువసేపు నొక్కండి). అప్పుడు “🔊 చదివి వినిపించు” బటన్ కనిపిస్తుంది — దాన్ని నొక్కండి. మొత్తం పేజీ కోసం “ఈ పేజీ చదువు” అనండి.',hi:'🔊 <b>स्क्रीन रीडर</b> — इस पृष्ठ पर कोई भी पाठ या श्लोक <b>चुनें</b> (माउस से खींचें / फ़ोन पर देर तक दबाएँ)। तब “🔊 पढ़कर सुनाओ” बटन दिखेगा — उसे दबाएँ। पूरे पृष्ठ के लिए “यह पृष्ठ पढ़ो” कहें।',en:'🔊 <b>Screen reader</b> — please <b>select</b> any text or śloka on this page (drag with the mouse, or long-press on a phone). A “🔊 Read aloud” button appears — tap it and I will read it out. To hear the whole page, say “read this page”.'};
 const OPENING={sa:'पृष्ठम् उद्घाट्यते…',te:'పేజీ తెరుస్తున్నాను…',hi:'पृष्ठ खोल रही हूँ…',en:'Opening the page…'};
 const OPENW={sa:'पृष्ठम् उद्घाटयतु',te:'పేజీ తెరవండి',hi:'पृष्ठ खोलें',en:'Open the page'};
 
 const has=(s,...w)=>w.some(x=>s.includes(x));
 async function answer(q){q=speechNorm(digits(q));const raw=q,lo=raw.toLowerCase(),L=loose(raw);let m0;
   if(!raw||/^(hi|hello|hey|namaste|namaskar|namaskaram|menu|help|start|\?)\W*$/i.test(raw)||/^(नमस्ते|नमस्कारः?|నమస్తే|నమస్కారం)/.test(raw))return [menuMsg(),L_().ask];
+  {const r=readCmd(raw);if(r){if(READ&&READ.auto)setTimeout(autoNext,0);return r}}
   m0=raw.match(/^lang:(sa|te|hi|en)$/);if(m0)return setLang(m0[1]);
   if(/^(language|lang|भाषा|భాష)$/i.test(raw))return [LANGQ,'Which language do you prefer?'];
   if(/^(thank|thanks|dhanyavad|धन्यवाद|ధన్యవాద)/i.test(raw))return [L_().thx+chips(L_().menu)];
   if(has(lo,'how to find a shloka','find shloka','find a shloka','search shloka'))return [`Just type the <b>opening words</b> of any verse — in Devanagari, Telugu or Roman, e.g. <i>धर्मक्षेत्रे कुरुक्षेत्रे</i>, <i>yada yada hi</i>, <i>వాగర్థావివ</i>.<br>Or a reference like <i>gita 2.47</i>, <i>megha 1</i>, <i>raghu 1.1</i>, <i>yogasutra 1.2</i>, or a Pāṇini sūtra number <i>1.1.1</i>.`+chips([['धर्मक्षेत्रे','धर्मक्षेत्रे कुरुक्षेत्रे'],['gita 2.47','gita 2.47'],['yogasutra 1.2','yogasutra 1.2'],['vagarthaviva','vagarthaviva']])];
+  // screen reader
+  if(/^(screen ?reader|read selected|read selection|read (the )?selected text|read this|read it|selection|पठ्यताम्|चयनित पढ़ो|ఎంచుకున్నది చదువు|screenreader)$/i.test(raw)||raw==='sr:help'){
+    if(raw!=='sr:help'&&LASTSEL){readText(LASTSEL);return [`🔊 “${esc(LASTSEL.slice(0,120))}${LASTSEL.length>120?'…':''}”`,'']}
+    return [SRH[LANG]||SRH.en,(SRH[LANG]||SRH.en).replace(/<[^>]+>/g,' ')]}
+  if(/^(read (this|the) page|read page|read aloud this page|पृष्ठं पठ|यह पृष्ठ पढ़ो|ఈ పేజీ చదువు)$/i.test(raw)){const t=pageText();if(t){readText(t);return ['🔊 '+(OPENING[LANG]?{sa:'पृष्ठं पठ्यते…',te:'పేజీ చదువుతున్నాను…',hi:'पृष्ठ पढ़ रही हूँ…',en:'Reading this page…'}[LANG]||'Reading this page…':'Reading this page…')+chips([['⏹ Stop','stop reading']]),'']}}
+  if(/^(stop reading|stop|silence|चुप|విరమించు)$/i.test(raw)&&!READ){stopSpeak();return ['⏹','']}
+  // reading a text aloud: "read Meghadūta", "recite gita 2", "पठतु रघुवंशम्"
+  {const m=raw.match(/^(?:read|recite|chant|read out|पठ|पठतु|पढ़ो|पढ़िए|सुनाओ|చదువు|చదవండి|వినిపించు)\s+(.+?)(?:\s+(\d+(?:\.\d+)*))?$/i);if(m){const r=await readStart(m[1],m[2]);if(r)return r}}
+  // grammar lessons and game rules
+  {const r=await learnIntent(raw,lo);if(r)return r}
+  // the author's books: buy / price / details / share / sample / similar / new / short
+  {const r=await bookIntent(raw,lo);if(r)return r}
   // FAQ
   if(/\b(buy|purchase|price|cost|pay|payment|order|kharid)\b/.test(lo)||has(raw,'खरीद','क्रय','కొన','ధర'))return [`All books are <b>e-books on Google Play Books</b>. Open any book (ask me e.g. “Telugu Purāṇa books”) and tap <b>Google Play</b> — you can buy with your Google account and read on phone, tablet or computer. Google Play also shows a <b>free preview</b> of every book.`+chips([['📚 Show books','show me books'],['✉️ Contact','contact']])];
   if(/\b(print|paper ?back|hard ?copy|physical)\b/.test(lo))return [`The books are currently published as e-books on Google Play. For print copies or bulk/library orders, please write to <a href="mailto:sanskritmanthan@gmail.com">sanskritmanthan@gmail.com</a>.`];
@@ -218,6 +252,59 @@ async function answer(q){q=speechNorm(digits(q));const raw=q,lo=raw.toLowerCase(
   if(L.length>=5||isIndic(raw)){const v=await verses(raw);if(v)return v}
   if(bk)return bk;
   return [L_().nf+chips(L_().menu),L_().nf]}
+
+/* ---------- grammar: lessons and game rules ---------- */
+const GAMES=[
+ {id:'rupa',t:'धातुरूपचक्रम्',en:'Verb-form wheel',k:'verb form wheel dhatu rupa conjugation lakara tense',r:'A root is shown with a lakāra, person and number — pick the correct verb form. Early levels: the present tense (लट्) with 10 common roots and 3 choices; later levels add लङ्, लोट्, लृट्, विधिलिङ् and more roots; then you see a form and must name its lakāra, person and number; the top levels ask you to <b>type</b> the form yourself, against a timer.'},
+ {id:'shabda',t:'शब्दरूपचक्रम्',en:'Noun-form wheel',k:'noun form wheel shabda declension vibhakti case',r:'A noun is shown with a case (vibhakti) and number — choose its correct form. Levels move from अ-stems (राम, फल, लता) to other vowel and consonant stems, all three genders, pronouns, and finally any Amarakośa word.'},
+ {id:'sandhi',t:'सन्धिशीघ्रम्',en:'Sandhi quick-fire',k:'sandhi quick fire join words',r:'Two words appear — choose (later, type) the joined form. After every answer the Pāṇini sūtra that applies is shown. Levels: सवर्णदीर्घः (a+a→ā), गुणः (a+i→e), वृद्धिः (a+e→ai), यण् and अयादिः, then visarga and consonant sandhi, then mixed quick-fire.'},
+ {id:'chandas',t:'छन्दःपरिचयः',en:'Name the metre',k:'chandas metre meter name the metre',r:'A real verse from the Śloka Index is shown — name its metre. Level 1: अनुष्टुभ्, इन्द्रवज्रा, वसन्ततिलका; then उपजाति, वंशस्थ, रथोद्धता; then the āryā family (counted by mātrās); then long metres — मन्दाक्रान्ता, शिखरिणी, शार्दूलविक्रीडित, स्रग्धरा, मालिनी, हरिणी, पृथ्वी.'},
+ {id:'antya',t:'अन्त्याक्षरी',en:'Verse chain',k:'antyakshari antakshari verse chain',r:'A verse is given; answer with a verse that <b>begins with the syllable it ended on</b>. Type the opening of your verse — it is checked against the Śloka Index. Keep the chain going as long as you can.'},
+ {id:'sudoku',t:'तिङ्सुडोकु',en:'Sudoku of endings',k:'sudoku tin endings',r:'A Sudoku where the nine symbols are the nine verb endings (or forms) of one lakāra instead of numbers 1–9. Every row, column and 3×3 box must contain each ending exactly once.'},
+ {id:'jala',t:'शब्दजालम्',en:'Crossword',k:'crossword shabdajalam',r:'A fresh crossword every time: the clues are Amarakośa synonyms or verb analyses, the answers are Sanskrit words or forms. Type each answer into the grid.'},
+ {id:'mela',t:'रूपमेलनम्',en:'Memory cards',k:'memory cards match pairs',r:'Cards are face down. Flip two at a time — match each form with its grammatical analysis. Clear the board in as few moves as you can.'}];
+const GAME_COMMON=`<div class="ref">🏆 Every quiz level has 10 questions (speed levels: as many as you can before time runs out). Stars: all correct = ★★★, 90% = ★★, 70% = ★ — a star opens the next level. Each correct answer earns tokens (+2 bonus for every 5 in a row); every 100 tokens = a ₹10 voucher for a Sanskrit Manthan book when a promotion is live. Progress is kept in your browser. Answers can be typed in Devanagari, Telugu, IAST or simple Roman.</div>`;
+function gameMsg(g){return [`🎮 <b>${g.t}</b> · ${g.en}<br>${g.r}`+GAME_COMMON,g.en+'. '+g.r.replace(/<[^>]+>/g,''),ROOT+'krida.html#'+g.id]}
+function gamesList(){return [`🎮 <b>क्रीडाङ्गणम् · Grammar games</b> — learn Pāṇini's grammar by playing; every answer is checked by the rules.`+chips(GAMES.map(g=>[g.t,'how to play '+g.en]))+`<a class="lk" href="${ROOT}krida.html">Open the games →</a>`,'Here are the grammar games. Which one shall I explain?']}
+let LEARN=null;
+async function lessonFind(q){LEARN=LEARN||await once('sri-learn.json');const k=fz(q);if(k.length<3)return null;
+  const sc=l=>{const keys=[l.id,fz(l.t),...l.t.split(/[\s·]+/).map(fz),...l.en.toLowerCase().split(/[^a-zāīūṛṣśṇṭḍṃḥ]+/).filter(w=>w.length>3).map(fz)].filter(Boolean);
+    return keys.some(x=>x===k)?3:keys.some(x=>x.length>=4&&(x.startsWith(k)||k.startsWith(x)))?2:keys.some(x=>x.length>=5&&k.includes(x))?1:0};
+  const r=LEARN.lessons.map(l=>[l,sc(l)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);return r.length?r[0][0]:null}
+function lessonMsg(l){const i=LEARN.lessons.indexOf(l),nx=LEARN.lessons[i+1];
+  const sut=l.s.length?`<div class="ref"><b>Key sūtras:</b><br>${l.s.map(([n,t])=>`<a href="${ROOT}sutra.html#ashtadhyayi/${n.split('.').slice(0,2).join('.')}/${n.split('.')[2]}">${n}</a> ${esc(s2d(t))}`).join('<br>')}</div>`:'';
+  const ch=[];if(l.play)ch.push(['🎮 Practise',`how to play ${(GAMES.find(g=>l.play.startsWith(g.id))||GAMES[0]).en}`]);if(nx)ch.push([`Next: ${nx.t}`,`teach ${nx.id}`]);ch.push(['All lessons','grammar lessons']);
+  return [`📘 <b>${l.t}</b> · ${esc(l.en)}<div class="lesson">${l.b}</div>`+sut+chips(ch),l.en+'. '+l.b.replace(/<table[\s\S]*?<\/table>/g,'').replace(/<[^>]+>/g,' ').slice(0,500),ROOT+'vyakarana.html#l/'+l.id]}
+async function lessonsList(){LEARN=LEARN||await once('sri-learn.json');
+  return [`📘 <b>व्याकरणपाठाः · Grammar lessons</b> — ${LEARN.lessons.length} short lessons, each with its sūtras and a game to practise:`+LEARN.units.map((u,ui)=>`<div class="ref"><b>${u[0]}</b> · ${u[1]}</div>`+chips(LEARN.lessons.filter(l=>l.u===ui).map(l=>[l.t,'teach '+l.id]))).join(''),'Here are the grammar lessons. Which one shall I teach?']}
+async function learnIntent(raw,lo){let m;
+  if(/^(games?|grammar games?|krida|क्रीडा|ఆటలు|game rules|rules of (the )?games?|how to play)\??$/i.test(raw))return gamesList();
+  if((m=raw.match(/^(?:how (?:to|do i) play|rules of|rules for|game)\s+(.+?)(?:\s+game)?\??$/i))||(m=raw.match(/^(.+?)\s+(?:game rules|rules|game)\??$/i))){const k=fz(m[1].replace(/^(explain|the|play)\s+/i,''));const g=GAMES.find(g=>fz(g.en)===k||fz(g.t)===k||g.id===k||g.k.split(' ').some(w=>w.length>=4&&fz(w)===k)||fz(g.en).includes(k)&&k.length>=4);if(g)return gameMsg(g)}
+  if(/^(lessons?|grammar lessons?|teach (me )?grammar|learn grammar|vyakarana lessons?|पाठाः|పాఠాలు)\??$/i.test(raw))return await lessonsList();
+  if((m=raw.match(/^(?:teach(?: me)?|explain|lesson on|lesson|what is|what are|learn|पाठय|బోధించు|నేర్పు|समझाओ|सिखाओ)\s+(.+?)\??$/i))){const l=await lessonFind(m[1]);if(l)return lessonMsg(l)}
+  return null}
+
+/* ---------- reading a text aloud, verse by verse ---------- */
+let READ=null;
+async function readStart(name,ref){for(const [d,page] of [['su','sutra.html'],['sl','shloka.html']]){const c=await cat(d);const k=fz(name);
+    const t=c.texts.find(w=>w.aliases.some(a=>fz(a)===k)||fz(w.title)===k||(k.length>=4&&(fz(w.title).startsWith(k)||w.aliases.some(a=>a.length>=4&&(fz(a).startsWith(k)||k.startsWith(fz(a)))))));
+    if(!t)continue;const tx=await once(`${d}/t/${t.id}.json`);let i=0;
+    if(ref){const n=ref.split('.');const v=n.length>1?+n[n.length-1]:0,s=n.length>1?n.slice(0,-1).join('.'):n[0];i=tx.v.findIndex(x=>String(x[0])===s&&(!v||+x[1]===v));if(i<0)i=tx.v.findIndex(x=>String(x[0])===s);if(i<0)i=0}
+    READ={d,page,id:t.id,title:t.title,v:tx.v,i,auto:false};return readShow()}
+  return null}
+const RD={sa:['पूर्वम्','अग्रिमम्','पुनः','निरन्तरं पठ','विरम'],te:['ముందుది','తరువాత','మళ్ళీ','వరుసగా చదువు','ఆపు'],hi:['पिछला','अगला','फिर से','लगातार पढ़ो','रुको'],en:['Previous','Next','Repeat','Read on','Stop']};
+function readShow(){const R=READ,e=R.v[R.i];if(!e){READ=null;return ['✅ End of the text. 🙏']}const lab=RD[LANG]||RD.en;
+  const lines=e[2];return [`📖 <b>${esc(R.title)} ${esc(e[0])}.${e[1]}</b> <span class="ref">(${R.i+1}/${R.v.length})</span><div class="v">${lines.map((x,i)=>esc(x)+(i%2&&i!==lines.length-1?' ।':'')).join('<br>')} ॥</div>`+
+    `<div class="chips"><button type="button" data-say="read:prev">⏮ ${lab[0]}</button><button type="button" data-say="read:next">⏭ ${lab[1]}</button><button type="button" data-say="read:again">🔁 ${lab[2]}</button><button type="button" data-say="read:auto">▶ ${lab[3]}</button><button type="button" data-say="read:stop">⏹ ${lab[4]}</button></div>`+
+    `<a class="lk" href="${ROOT}${R.page}#${R.id}/${encodeURIComponent(e[0])}/${e[1]}">Open on the page →</a>`,lines.join(' ')]}
+function readCmd(raw){if(!READ)return null;const l=raw.toLowerCase().trim();
+  if(/^(read:next|next|next verse|aage|आगे|अगला|अग्रिमम्|తరువాత|తర్వాత)$/.test(l)){READ.i++;return readShow()}
+  if(/^(read:prev|previous|back|prev|पिछला|पूर्वम्|ముందుది|వెనుక)$/.test(l)){READ.i=Math.max(0,READ.i-1);return readShow()}
+  if(/^(read:again|again|repeat|फिर से|पुनः|మళ్ళీ)$/.test(l))return readShow();
+  if(/^(read:auto|read on|keep reading|continue|continuous|लगातार पढ़ो|निरन्तरं पठ|వరుసగా చదువు)$/.test(l)){READ.auto=true;return readShow()}
+  if(/^(read:stop|stop|enough|रुको|विरम|ఆపు)$/.test(l)){READ.auto=false;READ=null;stopSpeak();return ['⏹ OK. '+L_().ask+chips(L_().menu)]}
+  return null}
+function autoNext(){if(!READ||!READ.auto)return;const go=()=>{if(!READ||!READ.auto)return;if(SPEAK&&synth&&synth.speaking)return setTimeout(go,400);setTimeout(()=>{if(READ&&READ.auto){READ.i++;const o=readShow();reply(o[0],o[1]);autoNext()}},1200)};setTimeout(go,800)}
 
 /* ---------- spoken commands ---------- */
 const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90,
@@ -285,8 +372,51 @@ async function books(q){BOOKS=BOOKS||await loadBooks();
   const r=[h,`I found ${list.length} book${list.length>1?'s':''}. ${top.slice(0,3).map(b=>b.t.replace(/\(.*?\)/g,'')).join(', ')}.`];
   r.strong=!!lang||toks.some(t=>SHW.includes(t)||loose(top[0].t).includes(t));return r}
 const SHW=loose(Object.values(SHELF).join(' '))+' '+Object.values(SHELF).join(' ').toLowerCase();
-const card=b=>`<div class="card">${b.c?`<img loading="lazy" src="${ROOT}cv/${esc(b.c)}" alt="">`:''}<div><b>${esc(b.t)}</b><p>${esc(b.d.slice(0,140))}${b.d.length>140?'…':''}</p>
-<a class="lk" href="${esc(b.p)}" target="_blank" rel="noopener">▶ Google Play</a><a class="lk" href="${ROOT}b/${esc(b.u)}">Details</a></div></div>`;
+const LNAME={san:'संस्कृतम्',tel:'తెలుగు',eng:'English',hin:'हिन्दी'};
+const SITE='https://sanskritmanthan.in/';
+const plain=b=>b.t.replace(/\s*\(.*?\)\s*/g,' ').trim();
+const shareUrl=b=>`https://wa.me/?text=${encodeURIComponent('📖 '+plain(b)+' — Dr. Mantha Srinivasu\n'+SITE+'b/'+b.u)}`;
+const UI={buy:{sa:'🛒 क्रीणातु (Google Play)',te:'🛒 కొనండి (Google Play)',hi:'🛒 खरीदें (Google Play)',en:'🛒 Buy on Google Play'},det:{sa:'विवरणम्',te:'వివరాలు',hi:'विवरण',en:'Details'},sh:{sa:'📲 प्रेषयतु',te:'📲 షేర్ చేయండి',hi:'📲 शेयर करें',en:'📲 Share'},pg:{sa:'पृष्ठानि',te:'పేజీలు',hi:'पृष्ठ',en:'pages'}};
+const ui=k=>UI[k][LANG]||UI[k].en;
+const card=b=>`<div class="card">${b.c?`<img loading="lazy" src="${ROOT}cv/${esc(b.c)}" alt="">`:''}<div><b>${esc(b.t)}</b><p class="mt">${b.n?`📄 ${esc(b.n)} ${ui('pg')} · `:''}${LNAME[b.l]||''}${b.pr?` · 💰 ${esc(b.pr)}`:''}</p><p>${esc(b.d.slice(0,140))}${b.d.length>140?'…':''}</p>
+<a class="lk buy" href="${esc(b.p)}" target="_blank" rel="noopener">${ui('buy')}</a><a class="lk" href="${ROOT}b/${esc(b.u)}">${ui('det')}</a><a class="lk" href="${shareUrl(b)}" target="_blank" rel="noopener">${ui('sh')}</a></div></div>`;
+/* ---------- book helpers: find by name, twin edition, details, buying ---------- */
+const bkey=b=>fz(b.t.replace(/\(.*$/,'').replace(/[—–-]\s*(sanskrit|telugu|english|hindi)\s*$/i,''));
+async function findBooks(name){BOOKS=BOOKS||await loadBooks();const k=fz(name.replace(/\b(book|books|the|edition|version)\b/gi,'').replace(/पुस्तक|గ్రంథం|పుస్తకం/g,''));if(k.length<3)return [];
+  const sc=b=>{const t1=fz(b.t.replace(/\(.*$/,'')),t2=fz((b.t.match(/\(([^)]*)\)/)||[,''])[1]),L=[t1,t2];
+    if(L.some(t=>t===k))return 4;if(L.some(t=>t.startsWith(k)))return 3;if(k.length>=4&&L.some(t=>t.includes(k)))return 2;if(k.length>=5&&b.hay.includes(loose(name)))return 1;return 0};
+  let wantL=null;for(const [w,l] of Object.entries(LANGW))if(name.toLowerCase().includes(w))wantL=l;
+  let r=BOOKS.map(b=>[b,sc(b)]).filter(x=>x[1]>0);
+  if(!r.length&&wantL){const k2=fz(name.replace(new RegExp(Object.keys(LANGW).join('|'),'gi'),''));if(k2.length>=3)r=BOOKS.map(b=>{const t1=fz(b.t.replace(/\(.*$/,'')),t2=fz((b.t.match(/\(([^)]*)\)/)||[,''])[1]);return [b,[t1,t2].some(t=>t.includes(k2))?2:0]}).filter(x=>x[1]>0)}
+  if(wantL)r=r.filter(x=>x[0].l===wantL).concat(r.filter(x=>x[0].l!==wantL).map(x=>[x[0],x[1]-0.5]));
+  const top=Math.max(0,...r.map(x=>x[1]));return r.filter(x=>x[1]>=top-0.5&&top>=2||x[1]===top).sort((a,b)=>b[1]-a[1]).map(x=>x[0])}
+function twin(b){const k=bkey(b);return BOOKS.find(x=>x!==b&&x.l!==b.l&&bkey(x)===k)}
+function detail(b,focus){const tw=twin(b),dt=b.dt?new Date(b.dt).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
+  const extra=[dt?`📅 Published ${dt}`:'',`🔎 Free sample: open it on Google Play and tap “Free sample”`+(b.a?` · <a href="https://archive.org/details/sanskritmanthan-${esc(b.u)}-sample" target="_blank" rel="noopener">sample on archive.org</a>`:''),
+    `💰 Price: shown on Google Play in your own currency${b.pr?` (${esc(b.pr)})`:''}.`].filter(Boolean).map(x=>`<div class="ref">${x}</div>`).join('');
+  const ch=[];if(tw)ch.push([`${LNAME[tw.l]} edition`,`details of ${plain(tw)}`]);ch.push(['More like this',`more like ${plain(b)}`]);
+  return [(focus==='buy'?`🛒 <b>${esc(plain(b))}</b> — tap below to buy on Google Play:`:'')+card(b)+extra+chips(ch),plain(b)+(b.n?`, ${b.n} pages`:''),undefined]}
+async function bookIntent(raw,lo){let m;
+  const one=async(name,focus)=>{const r=await findBooks(name);if(!r.length)return null;if(r.length===2&&twin(r[0])===r[1]&&LANG!=='en'){const want=LANG==='te'?'tel':'san';const one1=r.find(b=>b.l===want);if(one1)r.splice(0,2,one1)}
+    if(r.length===1)return focus==='share'?shareMsg(r[0]):focus==='sample'?sampleMsg(r[0]):detail(r[0],focus);
+    return [`I found ${r.length} matching books:`+r.slice(0,5).map(card).join(''),plain(r[0])]};
+  if((m=raw.match(/^(?:buy|purchase|order|price of|cost of|how much (?:is|does|for)|price|cost|rate of|खरीदें|खरीदना|खरीदो|मूल्य|క్రీణాతు|కొనండి|కొనాలి|ధర)\s+(.+?)(?:\s+(?:cost|costs|book))?\??$/i)||raw.match(/^(.+?)\s+(?:price|cost|rate|ధర|ఎంత|की कीमत|कीमत|का मूल्य|मूल्यम्|कितने का है)\??$/i)))return await one(m[1],'buy');
+  if((m=raw.match(/^(?:details? (?:of|about)|tell me about|about|information (?:on|about)|info (?:on|about)|describe|विवरण|వివరాలు)\s+(.+)$/i)||raw.match(/^(.+?)\s+(?:details|book details|వివరాలు|विवरण)$/i)))return await one(m[1]);
+  if((m=raw.match(/^how many pages(?: (?:in|does|has|of))?\s+(.+?)(?: have)?\??$/i)))return await one(m[1]);
+  if((m=raw.match(/^(?:share|send|whatsapp)\s+(.+)$/i)))return await one(m[1],'share');
+  if((m=raw.match(/^(?:free )?(?:sample|preview|read sample)(?: of)?\s+(.+)$/i)))return await one(m[1],'sample');
+  if((m=raw.match(/^(telugu|sanskrit|english|hindi)\s+(?:version|edition|translation)\s+of\s+(.+)$/i)))return await one(m[2]+' '+m[1]);
+  if((m=raw.match(/^more like\s+(.+)$/i))){const r=await findBooks(m[1]);if(r.length){const b=r[0],sim=BOOKS.filter(x=>x!==b&&x.h===b.h&&x.l===b.l);const pick=sim.sort(()=>Math.random()-.5).slice(0,4);if(pick.length)return [`Books like <b>${esc(plain(b))}</b>:`+pick.map(card).join(''),pick.map(plain).join(', ')]}}
+  if(/\b(suggest|recommend|random|surprise me)\b/.test(lo)||/सुझाव|సూచించు|సూచన/.test(raw)){BOOKS=BOOKS||await loadBooks();const b=BOOKS[Math.floor(Math.random()*BOOKS.length)];return [`✨ Here is a book for you:`+card(b)+chips([['Another one','suggest a book'],['☰ Menu','menu']]),plain(b)]}
+  if(/how many books|number of books|total books|कितनी पुस्तक|ఎన్ని పుస్తకాలు/.test(lo)){BOOKS=BOOKS||await loadBooks();const by=l=>BOOKS.filter(b=>b.l===l).length;
+    return [`📚 <b>${BOOKS.length}</b> books on Google Play — ${by('san')} in Sanskrit, ${by('tel')} in Telugu, ${by('eng')} in English, ${by('hin')} in Hindi.<br>Purāṇas & Itihāsas, śāstra and grammar kāvyas, Nāṭya, kośas, stotras, education and vacana-kāvyas.`+chips([['Telugu books','telugu books'],['Sanskrit books','sanskrit books'],['Newest','new books']]),`${BOOKS.length} books`]}
+  if(/\b(new|latest|recent|newest)\b.*\bbooks?\b|new arrivals|नई पुस्तक|కొత్త పుస్తకాలు/.test(lo)){BOOKS=BOOKS||await loadBooks();const r=BOOKS.filter(b=>b.dt).sort((a,b)=>b.dt.localeCompare(a.dt)).slice(0,5);
+    return [`🆕 Newest books:`+r.map(card).join(''),r.map(plain).slice(0,3).join(', ')]}
+  if((m=lo.match(/\b(short|small|quick|under|less than|below)\b\s*(\d+)?\s*(pages?)?/))&&/book|read|pages/.test(lo)){BOOKS=BOOKS||await loadBooks();const lim=+(m[2]||100);const r=BOOKS.filter(b=>+b.n&&+b.n<=lim).sort((a,b)=>a.n-b.n);
+    if(r.length)return [`📗 ${r.length} books of ${lim} pages or fewer — the shortest:`+r.slice(0,5).map(card).join(''),`${r.length} short books`]}
+  return null}
+function shareMsg(b){return [`Share <b>${esc(plain(b))}</b>:<br><a class="lk big" href="${shareUrl(b)}" target="_blank" rel="noopener">📲 WhatsApp</a><div class="ref">Link: ${SITE}b/${esc(b.u)}</div>`,'Tap WhatsApp to share']}
+function sampleMsg(b){return [`🔎 Free sample of <b>${esc(plain(b))}</b>:<br><a class="lk big" href="${esc(b.p)}" target="_blank" rel="noopener">Google Play → “Free sample”</a>`+(b.a?`<a class="lk" href="https://archive.org/details/sanskritmanthan-${esc(b.u)}-sample" target="_blank" rel="noopener">Read sample on archive.org</a>`:''),'Open Google Play and tap Free sample']}
 
 /* ---------- verses by opening words ---------- */
 const DS=[{d:'su',page:'sutra.html',lab:'सूत्र-/दर्शनग्रन्थाः'},{d:'sl',page:'shloka.html',lab:'काव्यम्'},{d:'sb',page:'subhashita.html',lab:'सुभाषितम्',all:1},{d:'mn',page:'mantra.html',lab:'वेदाः/उपनिषदः',all:1}];
