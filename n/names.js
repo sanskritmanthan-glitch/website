@@ -33,6 +33,22 @@ export async function bySyllables(syls,g){await load();const ok=x=>!g||g==='all'
   let out=N.filter(x=>ok(x)&&syls.some(s=>sylMatch(x,s)));
   if(!out.length){const cs=[...new Set(syls.map(s=>[...s][0]))];out=N.filter(x=>ok(x)&&cs.includes(x.d[0])).map(x=>({...x,near:syls.join(' / ')}))}   // no name with these syllables: same first sound
   return out}
+/* --- a star's names in widening circles: birth pāda → other pādas → same consonant with any vowel (da, di, du, de…) → the star's other consonants --- */
+const VOW=new Set(Object.keys(V));
+export const consOf=s=>VOW.has([...s][0])?'V':[...s][0];
+const startsC=(x,c)=>c==='V'?VOW.has(x.d[0]):x.d[0]===c;
+export const BARA=c=>c==='V'?'अ आ इ ई उ ऊ ए ओ':[c,...'ा ि ी ु ू े ै ो ौ'.split(' ').map(m=>c+m)].join(' ');
+export async function starGroups(n,p,g,extra=[]){await load();const ok=x=>!g||g==='all'||x.g===g||x.g==='u';const P=PADA[n],seen=new Set();
+  const take=f=>N.filter(x=>ok(x)&&!seen.has(x.d)&&f(x)).map(x=>(seen.add(x.d),x));
+  const own=[...new Set((p>=0?[P[p]]:P).concat(extra))],G=[{k:'own',syl:own,list:take(x=>own.some(s=>sylMatch(x,s)))}];
+  const oth=P.filter(s=>!own.includes(s));if(oth.length)G.push({k:'pada',syl:oth,list:take(x=>oth.some(s=>sylMatch(x,s)))});
+  const c1=[...new Set(own.map(consOf))];G.push({k:'cons',syl:c1,list:take(x=>c1.some(c=>startsC(x,c)))});
+  const c2=[...new Set(P.map(consOf))].filter(c=>!c1.includes(c));if(c2.length)G.push({k:'cons2',syl:c2,list:take(x=>c2.some(c=>startsC(x,c)))});
+  return G}
+/* names whose first consonant sound matches a Roman syllable like "da", "du", "sh" (any vowel) */
+const RC={k:'क',kh:'ख',g:'ग',gh:'घ',c:'च',ch:'चछ',chh:'छ',j:'ज',jh:'झ',t:'तट',th:'थठ',d:'दड',dh:'धढ',n:'नण',p:'प',ph:'फ',f:'फ',b:'ब',bh:'भ',m:'म',y:'य',r:'रऋ',l:'ल',v:'व',w:'व',s:'सश',sh:'शष',h:'ह',ksh:'क्ष',x:'क्ष',gy:'ज्ञ',jn:'ज्ञ',tr:'त्र',sr:'श्र',shr:'श्र'};
+export async function byRomanCons(q,g){await load();const c=q.toLowerCase().replace(/[^a-z]/g,'').replace(/[aeiou]+$/,'');const key=Object.keys(RC).filter(k=>c===k)[0];if(!key)return [];
+  const set=RC[key];const multi=set.includes('्')?[set]:[...set];return N.filter(x=>(!g||g==='all'||x.g===g||x.g==='u')&&multi.some(ch=>x.d.startsWith(ch)))}
 export function starOf(dateUTC){return nakshatra(dateUTC)}
 /* parse "12 March 2026 10:30 am", "12/03/2026 22:15", "2026-03-12 10:30" (local time at the given UTC offset in hours, default IST) */
 const MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];

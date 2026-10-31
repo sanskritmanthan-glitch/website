@@ -152,7 +152,9 @@ let SPEAK=LS.g('speak','1')==='1';spkB.setAttribute('aria-pressed',SPEAK);
 mlS.value=LS.g('ml',(T[LANG]||T.en).voice);mlS.onchange=()=>LS.s('ml',mlS.value);
 spkB.onclick=()=>{SPEAK=!SPEAK;LS.s('speak',SPEAK?'1':'0');spkB.setAttribute('aria-pressed',SPEAK);if(!SPEAK)stopSpeak();else say('Voice on.')};
 const synth=window.speechSynthesis;
-function pickVoice(lang){if(!synth)return null;const vs=synth.getVoices();return vs.find(v=>v.lang===lang)||vs.find(v=>v.lang.startsWith(lang.slice(0,2)))||(lang==='en-IN'?vs.find(v=>v.lang.startsWith('en')):null)}
+const VFB={'hi-IN':['hi','mr','ne','sa'],'mr-IN':['mr','hi'],'ne-NP':['ne','hi'],'bn-IN':['bn','as'],'ur-IN':['ur','hi']};let NOVOICE=false;
+function pickVoice(lang){if(!synth)return null;const vs=synth.getVoices();const tries=[lang,...(VFB[lang]||[lang.slice(0,2)])];for(const t of tries){const v=vs.find(v=>v.lang.replace('_','-').toLowerCase()===t.toLowerCase())||vs.find(v=>v.lang.toLowerCase().startsWith(t.toLowerCase()));if(v)return v}
+  if(lang.startsWith('en'))return vs.find(v=>v.lang.startsWith('en'))||null;if(vs.length&&!NOVOICE&&lang==='hi-IN'){NOVOICE=true;setTimeout(()=>add('🔇 This browser has no Sanskrit/Hindi voice, so Devanagari text is not read aloud. Use <b>Chrome</b> or <b>Edge</b>, or add a Hindi voice: Windows <i>Settings ▸ Time &amp; language ▸ Speech ▸ Add voices ▸ Hindi</i>; Android <i>Settings ▸ Text-to-speech ▸ Install voice data ▸ Hindi</i>.','b'),300)}return null}
 function stopSpeak(){try{synth&&synth.cancel()}catch(e){}box.classList.remove('sri-talk');fab.classList.remove('sri-talk')}
 function say(text,force,max){if((!SPEAK&&!force)||!synth||!text)return;stopSpeak();
   if(max){// long text (screen reader): speak in short sentence-sized pieces so browsers don't cut off
@@ -342,6 +344,7 @@ const CTX=/(chapter|verse|sloka|shloka|adhyay|sarga|canto|sutra|panini|point|dot
 const FILL=/\b(chapter|chapters|adhyaya|adhyayam|adhyay|canto|sarga|verse|verses|shloka|sloka|number|no|part|pada|of|the|from)\b|अध्यायः?|अध्याय|श्लोकः?|सर्गः?|पादः?|संख्या|का|की|के|అధ్యాయం|అధ్యాయము|శ్లోకం|సర్గ|పాదం|లో/gi;
 function speechNorm(q){let s=q.replace(/[?!।]+$/,'').trim();
   const t0=s;s=s.replace(NAVW,()=>{NAV=true;return ' '}).trim();if(NAV){s=s.replace(NAVW,' ').trim()}
+  if(/\bnames?\b|नाम|పేరు|పేర్లు/i.test(s))return s;   // baby-name questions keep their own numbers (pāda, dates)
   if(!CTX.test(s))return s||t0;
   // number words → digits ("twenty one" → 21)
   s=s.split(/\s+/).map(w=>{const k=w.toLowerCase().replace(/[,.]$/,'');return NUMW[k]!==undefined?String(NUMW[k]):w}).join(' ').replace(/\b([2-9]0) ([1-9])\b/g,(m,a,b)=>String(+a+ +b));
@@ -533,17 +536,23 @@ async function nameIntent(raw,lo){const isName=/\bnames?\b|नाम|పేర�
     return [`“${esc(q)}” can be read as <b>${r.parts.map(p=>esc(p[0])).join(' + ')}</b> = ${r.parts.map(p=>esc(p[1])).join(' + ')}`,'',ROOT+'names.html?m='+encodeURIComponent(q)]}
   const g=gOf(raw);
   // by date (and time) of birth
-  const dt=M.parseDT(lo.replace(/\bat\b/g,' '));if(dt){const S=M.starOf(dt.date);let syls=dt.timeGiven?[S.syl]:M.PADA[S.n];let r=(await M.bySyllables(syls,g));let alt='';if(!r.length){alt=`<div class="ref">No common name begins with ${syls.join('/')} — here are names for the other pādas of ${M.NAK[S.n]}.</div>`;r=await M.bySyllables(M.PADA[S.n],g)}r=r.sort(()=>Math.random()-.5);
+  const grp=(GR,M,n,p)=>GR.filter(g=>g.list.length).map(g=>{const h={own:`🌟 Beginning with <b>${g.syl.join(' / ')}</b>`,pada:`🌙 Other pādas of ${M.NAK[n]}: <b>${g.syl.join(' / ')}</b>`,cons:`🔤 Same sound, any vowel: <b>${g.syl.map(M.BARA).join('; ')}</b>`,cons2:`✨ Other sounds of this star: <b>${g.syl.map(M.BARA).join('; ')}</b>`}[g.k];
+    const L=g.list.slice().sort(()=>Math.random()-.5);return `<div class="ref" style="margin-top:8px">${h} · ${g.list.length}</div>`+(g.k==='own'?L.slice(0,5).map(nmCard).join(''):`<p>${L.slice(0,12).map(x=>`<b>${esc(x.d)}</b> <span class="ref">${esc(x.m)}</span>`).join(' · ')}</p>`)}).join('');
+  const spk=GR=>GR.filter(g=>g.list.length).map(g=>({own:'names beginning with ',pada:'other padas: ',cons:'same sound with any vowel: ',cons2:'other sounds of the star: '}[g.k])+g.list.slice(0,3).map(x=>x.d).join(', ')).join('. ');
+  // by date (and time) of birth
+  const dt=M.parseDT(lo.replace(/\bat\b/g,' '));if(dt){const S=M.starOf(dt.date);const p=dt.timeGiven?S.p:-1;const GR=await M.starGroups(S.n,p,g);
     const d=new Date(dt.date.getTime()+5.5*3600e3).toISOString();
-    return [`⭐ Janma nakṣatra: <b>${M.NAK[S.n]}</b> (${M.NAKE[S.n]}), pāda ${S.p+1} · rāśi ${M.RASHI[S.rashi]}<br>Name syllable: <b>${syls.join(' / ')}</b>${dt.timeGiven?'':' <span class="ref">(add the time of birth for the exact pāda)</span>'}`+alt+r.slice(0,6).map(nmCard).join('')+`<div class="ref">Calculated for India time (IST). Please confirm with your pañcāṅga.</div>`,`${M.NAKE[S.n]}, pada ${S.p+1}. Names starting with ${syls.join(', ')}`,ROOT+`names.html?d=${d.slice(0,10)}${dt.timeGiven?'&t='+d.slice(11,16):''}&g=${g}`]}
+    return [`⭐ Janma nakṣatra: <b>${M.NAK[S.n]}</b> (${M.NAKE[S.n]}), pāda ${S.p+1} · rāśi ${M.RASHI[S.rashi]}<br>Name syllable: <b>${dt.timeGiven?S.syl:M.PADA[S.n].join(' / ')}</b> · all four pādas: ${M.PADA[S.n].join(' · ')}${dt.timeGiven?'':' <span class="ref">(add the time of birth for the exact pāda)</span>'}`+grp(GR,M,S.n,p)+`<div class="ref">Calculated for India time (IST). Please confirm with your pañcāṅga. The page shows every name.</div>`,`${M.NAKE[S.n]}, pada ${S.p+1}, syllable ${S.syl}. `+spk(GR),ROOT+`names.html?d=${d.slice(0,10)}${dt.timeGiven?'&t='+d.slice(11,16):''}&g=${g}`]}
   // by birth star
-  const k=fz(raw);const ni=M.NAKE.findIndex((n,i)=>k.includes(fz(n))||raw.includes(M.NAK[i]));if(ni>=0){const pm=raw.match(/pada\s*(\d)|पाद\s*(\d)|(\d)\s*(?:st|nd|rd|th)?\s*pada/i);const p=pm?(+(pm[1]||pm[2]||pm[3])-1):-1;
-    const syls=p>=0&&p<4?[M.PADA[ni][p]]:M.PADA[ni];const r=(await M.bySyllables(syls,g)).sort(()=>Math.random()-.5);
-    return [`⭐ <b>${M.NAK[ni]}</b>${p>=0?' pāda '+(p+1):''} — name syllables <b>${syls.join(' / ')}</b>`+r.slice(0,6).map(nmCard).join(''),`${M.NAKE[ni]}: names starting with ${syls.join(', ')}`,ROOT+`names.html?n=${ni}${p>=0?'&p='+p:''}&g=${g}`]}
+  const k=M.fz(raw.replace(/\b(nakshatra|nakshatram|star|names?|for|girl|boy|baby|pada|\d)\b/gi,' '));let ni=M.NAK.findIndex(n=>raw.includes(n));if(ni<0){let best=0;M.NAKE.forEach((n,i)=>{const nn=M.fz(n);let L=nn.length;while(L>=5&&!k.includes(nn.slice(0,L)))L--;if(k.includes(nn.slice(0,L))&&L>=Math.min(nn.length,6)&&L>best){best=L;ni=i}})}if(ni>=0){const pm=raw.match(/pada\s*(\d)|पाद\s*(\d)|(\d)\s*(?:st|nd|rd|th)?\s*pada/i);let p=pm?(+(pm[1]||pm[2]||pm[3])-1):-1;if(p>3)p=-1;
+    const GR=await M.starGroups(ni,p,g);
+    return [`⭐ <b>${M.NAK[ni]}</b>${p>=0?' pāda '+(p+1):''} — four pādas: <b>${M.PADA[ni].map((x,i)=>i===p?`[${x}]`:x).join(' · ')}</b>`+grp(GR,M,ni,p),`${M.NAKE[ni]}. `+spk(GR),ROOT+`names.html?n=${ni}${p>=0?'&p='+p:''}&g=${g}`]}
   // by first letter
   if((m=raw.match(/(?:starting|beginning|start|begin)\s+(?:with|from)\s+(?:the\s+)?(?:letter\s+)?["“]?([^\s"”]+)/i)||raw.match(/(?:letter|अक्षर|అక్షరం)\s*["“]?([^\s"”]+)/i)||raw.match(/^([ऀ-ॿఀ-౿]{1,3})\s+(?:से|తో)/))){let L=m[1];if(/[ఀ-౿]/.test(L))L=t2d(L);
-    let r;if(/[ऀ-ॿ]/.test(L))r=await M.byLetter(L,g);else{const N=await M.load();r=N.filter(x=>(g==='all'||x.g===g||x.g==='u')&&x.r.toLowerCase().startsWith(L.toLowerCase()))}r=r.sort(()=>Math.random()-.5);
-    return [`👶 ${r.length} ${g==='m'?'boy':g==='f'?'girl':''} names starting with <b>${esc(m[1])}</b>:`+r.slice(0,8).map(nmCard).join(''),`${r.length} names`,/[ऀ-ॿ]/.test(L)?ROOT+`names.html?l=${encodeURIComponent(L)}&g=${g}`:undefined]}
+    let r,more=[];if(/[ऀ-ॿ]/.test(L)){r=await M.byLetter(L,g);const c=M.consOf(L);if([...L].length>1&&c!=='V'){const seen=new Set(r.map(x=>x.d));more=(await M.byLetter(c,g)).filter(x=>!seen.has(x.d))}}
+    else{const N=await M.load(),l=L.toLowerCase();r=N.filter(x=>(g==='all'||x.g===g||x.g==='u')&&x.r.toLowerCase().startsWith(l));const seen=new Set(r.map(x=>x.d));more=(await M.byRomanCons(l,g)).filter(x=>!seen.has(x.d))}
+    r=r.sort(()=>Math.random()-.5);more=more.sort(()=>Math.random()-.5);
+    return [`👶 ${r.length} ${g==='m'?'boy':g==='f'?'girl':''} names starting with <b>${esc(m[1])}</b>:`+r.slice(0,6).map(nmCard).join('')+(more.length?`<div class="ref" style="margin-top:8px">🔤 Same sound with other vowels · ${more.length}</div><p>${more.slice(0,14).map(x=>`<b>${esc(x.d)}</b> <span class="ref">${esc(x.m)}</span>`).join(' · ')}</p>`:''),`${r.length} names starting with ${m[1]}`+(more.length?`, and ${more.length} more with the same sound, like ${more.slice(0,3).map(x=>x.d).join(', ')}`:''),/[ऀ-ॿ]/.test(L)?ROOT+`names.html?l=${encodeURIComponent(M.consOf(L)==='V'?L:M.consOf(L))}&g=${g}`:undefined]}
   if(/baby|suggest|names? for|नाम सुझा|పేర్లు/i.test(raw))return [`👶 <b>Sanskrit baby names</b> — tell me the first letter, the birth star, or the date and time of birth. For example:`+chips([['Boy names starting with श','boy names starting with श'],['Girl names for Rohiṇī','girl names for rohini nakshatra'],['Born 12 March 2026, 10:30 pm','baby names for born 12 March 2026 10:30 pm'],['Meaning of a name','name meaning devnath']]),'Tell me the first letter, the birth star, or the date and time of birth.',ROOT+'names.html'];
   return null}
 
